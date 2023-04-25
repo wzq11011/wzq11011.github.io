@@ -1,6 +1,98 @@
 <?xml version="1.0" encoding="utf-8"?>
 <search>
   <entry>
+    <title></title>
+    <url>/2023/03/28/SLAM/</url>
+    <content><![CDATA[<h1 id="SLAM"><a href="#SLAM" class="headerlink" title="SLAM"></a>SLAM</h1><p>参考资源：</p>
+<ol>
+<li>《视觉SLAM十四讲》：<a href="https://www.aliyundrive.com/s/MXSSx5869TX">https://www.aliyundrive.com/s/MXSSx5869TX</a></li>
+</ol>
+<h2 id="1-基础知识"><a href="#1-基础知识" class="headerlink" title="1 基础知识"></a>1 基础知识</h2><p>SLAM框架：</p>
+<p>![image-20230327171451079](D:\Users\sebas\OneDrive - 中国科学院自动化研究所\文档\Typora\assets\image-20230327171451079.png)</p>
+<ol>
+<li>传感器信息读取：</li>
+<li>视觉里程计：</li>
+<li>后端优化：</li>
+<li>回环检测：</li>
+<li>建图：</li>
+</ol>
+<h3 id="1-1-三维空间刚体运动"><a href="#1-1-三维空间刚体运动" class="headerlink" title="1.1 三维空间刚体运动"></a>1.1 三维空间刚体运动</h3><h3 id="1-2-李群和李代数"><a href="#1-2-李群和李代数" class="headerlink" title="1.2 李群和李代数"></a>1.2 李群和李代数</h3><h3 id="1-3-相机与图像"><a href="#1-3-相机与图像" class="headerlink" title="1.3 相机与图像"></a>1.3 相机与图像</h3><h5 id="针孔相机模型"><a href="#针孔相机模型" class="headerlink" title="针孔相机模型"></a>针孔相机模型</h5><h5 id="畸变"><a href="#畸变" class="headerlink" title="畸变"></a>畸变</h5><ul>
+<li><p>为什么加入透镜？</p>
+<p>为了更好的成像效果。</p>
+</li>
+<li><p>加入透镜对成像的影响及原因？</p>
+<p>产生畸变，原因：一是透镜自身形状对光纤传播的影响（径向畸变），二是在机械组装过程中，透镜和成像平面不可能完全平行。</p>
+</li>
+</ul>
+<h3 id="1-4-非线性优化"><a href="#1-4-非线性优化" class="headerlink" title="1.4 非线性优化"></a>1.4 非线性优化</h3><h5 id="状态估计："><a href="#状态估计：" class="headerlink" title="状态估计："></a>状态估计：</h5><h5 id="非线性最小二乘"><a href="#非线性最小二乘" class="headerlink" title="非线性最小二乘"></a>非线性最小二乘</h5><h3 id="1-5-视觉里程计1"><a href="#1-5-视觉里程计1" class="headerlink" title="1.5 视觉里程计1"></a>1.5 视觉里程计1</h3><h3 id="1-6-视觉里程计2"><a href="#1-6-视觉里程计2" class="headerlink" title="1.6 视觉里程计2"></a>1.6 视觉里程计2</h3><h3 id="1-7-前端"><a href="#1-7-前端" class="headerlink" title="1.7 前端"></a>1.7 前端</h3><h3 id="1-8-后端1"><a href="#1-8-后端1" class="headerlink" title="1.8 后端1"></a>1.8 后端1</h3><h3 id="1-9-后端2"><a href="#1-9-后端2" class="headerlink" title="1.9 后端2"></a>1.9 后端2</h3><h3 id="1-10-回环检测"><a href="#1-10-回环检测" class="headerlink" title="1.10 回环检测"></a>1.10 回环检测</h3><h3 id="1-11建图"><a href="#1-11建图" class="headerlink" title="1.11建图"></a>1.11建图</h3><h2 id="2-开源项目"><a href="#2-开源项目" class="headerlink" title="2 开源项目"></a>2 开源项目</h2><h3 id="2-1-MonoSLAM"><a href="#2-1-MonoSLAM" class="headerlink" title="2.1 MonoSLAM"></a>2.1 MonoSLAM</h3><h3 id="2-2-PTAM"><a href="#2-2-PTAM" class="headerlink" title="2.2 PTAM"></a>2.2 PTAM</h3><h3 id="2-3-ORBSLAM"><a href="#2-3-ORBSLAM" class="headerlink" title="2.3 ORBSLAM"></a>2.3 ORBSLAM</h3><h3 id="2-4-VINS"><a href="#2-4-VINS" class="headerlink" title="2.4 VINS"></a>2.4 VINS</h3><p>A-LOAM、LOAM-LIVOX、LEGO_LOAM</p>
+<h2 id="3-最新论文"><a href="#3-最新论文" class="headerlink" title="3 最新论文"></a>3 最新论文</h2><h2 id="4-实习面试"><a href="#4-实习面试" class="headerlink" title="4 实习面试"></a>4 实习面试</h2><h3 id="4-1-实习要求"><a href="#4-1-实习要求" class="headerlink" title="4.1 实习要求"></a>4.1 实习要求</h3><h4 id="蔚来SALM算法实习生"><a href="#蔚来SALM算法实习生" class="headerlink" title="蔚来SALM算法实习生"></a>蔚来SALM算法实习生</h4><p>![Snipaste_2023-03-27_15-10-30](D:\Users\sebas\OneDrive - 中国科学院自动化研究所\文档\Typora\assets\Snipaste_2023-03-27_15-10-30-1679901165322-2.png)</p>
+<h4 id="旷世SLAM算法实习生"><a href="#旷世SLAM算法实习生" class="headerlink" title="旷世SLAM算法实习生"></a>旷世SLAM算法实习生</h4><p>岗位职责</p>
+<p>参与多传感器的高精定位和建图工作，包括IMU-轮速-视觉的融合定位以及LIDAR-视觉-IMU高精度地图生成等算法。</p>
+<p>岗位要求</p>
+<p>1、2024届以后毕业的在校生； 2、熟悉多传感器融合算法，对主流<strong>VIO、EKF算法</strong>有深入理解； 3、具有<strong>扎实的C++基础、算法和数据结构基础</strong>，有良好代码风格和代码质量意识，熟悉Linux环境下的程序开发； 4、实习时长3个月以上，6个月优先。</p>
+<h3 id="4-2-面经"><a href="#4-2-面经" class="headerlink" title="4.2 面经"></a>4.2 面经</h3><h4 id="常见面试题"><a href="#常见面试题" class="headerlink" title="常见面试题"></a>常见面试题</h4><p><a href="https://blog.csdn.net/YunLaowang/article/details/101750922">(116条消息) SLAM常见面试题集锦_slam面试题_$南山种豆$的博客-CSDN博客</a></p>
+<ol>
+<li>视觉SLAM框架及组成<ul>
+<li>按照使用的传感器分类：视觉SLAM可分为单目SLAM（MonoSLAM、PTAM、DTAM、LSD-SALM、ORB-SALM、SVO），双目SLAM（LIBVISO2、S-PTAM等）。激光SLAM（LOAM、V-LOAM、cartographer、gmapping）</li>
+<li>按照前端方法分为特征点法（稀疏法）、光流法、系数直接法、半稠密法、稠密法</li>
+<li>按照后端方法：基于滤波（EKF、UKF、PF）与基于图优化的方法</li>
+<li>组成：前端（视觉里程计）、后端（位姿优化）、闭环检测、建图</li>
+</ul>
+</li>
+<li>方法</li>
+<li></li>
+</ol>
+<h3 id="4-3-公司情况"><a href="#4-3-公司情况" class="headerlink" title="4.3 公司情况"></a>4.3 公司情况</h3><p><a href="https://www.nowcoder.com/discuss/418075405665488896?sourceSSR=users">秋招自动驾驶机器人激光雷达相关公司，做视觉感知和SLAM等_牛客网 (nowcoder.com)</a></p>
+<p>相关公司：</p>
+<ul>
+<li>视觉感知、多传感器融合、SLAM建图工作：车企、机器人、自动驾驶方案供应商、激光雷达公司、车联网公司等。</li>
+<li>一般激光雷达公司做视觉比较少，3D点云算法以及激光SLAM较多</li>
+</ul>
+<p>公司汇总：纵目科技、虹软、滴滴、蔚来、地平线、元戎启行、智加科技、小马智行、百度、嬴彻科技、博世、海康、美团、华为、中兴、上汽、万集、依图、理想、小鹏、momenta、京东、360、小米、行歌科技（寒武纪）、商汤、中国一汽、吉利汽车研究院、极氪、旷视、高仙机器人、禾赛、驭势科技、文远知行、顺丰、比亚迪、速腾、大疆</p>
+<p>简历</p>
+<p>目标公司：旷世、蔚来、momenta、百度、腾讯、阿里、字节</p>
+<p>试手公司：</p>
+<h2 id="5-算法题"><a href="#5-算法题" class="headerlink" title="5 算法题"></a>5 算法题</h2><p>代码随想录</p>
+<h2 id="6-C"><a href="#6-C" class="headerlink" title="6 C++"></a>6 C++</h2><h3 id="6-1-namespace"><a href="#6-1-namespace" class="headerlink" title="6.1 namespace"></a>6.1 namespace</h3><p><strong>命名空间</strong>：可以作为附加信息来区分不同库中同名的函数、类、变量等。使用命名空间就定义了上下文。本质上，命名空间定义了一个范围。</p>
+<p><strong>::</strong> 作用域解析运算符，用于辨识和标出属于哪个作用域上下文，特别是属于哪个命名空间</p>
+<h3 id="6-2-编译"><a href="#6-2-编译" class="headerlink" title="6.2 编译"></a>6.2 编译</h3><h4 id="使用-g"><a href="#使用-g" class="headerlink" title="使用 g++"></a>使用 g++</h4><p>使用编译器将一个文本文件编译成可执行程序</p>
+<p>例如：slambook&#x2F;ch2&#x2F;helloSALM.cpp</p>
+<figure class="highlight c++"><table><tr><td class="code"><pre><span class="line"><span class="meta">#<span class="keyword">include</span> <span class="string">&lt;iostream&gt;</span></span></span><br><span class="line"><span class="keyword">using</span> <span class="keyword">namespace</span> std;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="type">int</span> <span class="title">main</span><span class="params">(<span class="type">int</span> argc, <span class="type">char</span> **argv)</span> </span>&#123;</span><br><span class="line">    cout &lt;&lt; <span class="string">&quot;Hello SALM!&quot;</span> &lt;&lt; endl;</span><br><span class="line">    <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+
+
+<p>可以使用 gedit 或者 vim 编辑以上代码，然后使用 g++ 将以上代码编译成一个可执行文件。</p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">sudo apt install g++</span><br><span class="line">g++ helloSLAM.cpp</span><br></pre></td></tr></table></figure>
+
+<p>执行以上命令，检查当前目录会发现多了一个 a.out 文件，它具有可执行性（终端里显示为绿色的可执行文件）。</p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">./a.out</span><br><span class="line"><span class="comment"># 输出为：Hello SLAM!</span></span><br></pre></td></tr></table></figure>
+
+
+
+<h4 id="使用-cmake"><a href="#使用-cmake" class="headerlink" title="使用 cmake"></a>使用 cmake</h4><p>在实际的工程里会有许多的文件夹和源文件，通常一个小型 c++ 项目会包含十几个类，各类间还存在着复杂的依赖关系，其中一部分要编译成可执行文件，一部分要编译成库文件，这时输入的编译命令会很长，整个编译过程会变得异常繁琐。因而采用 cmake进行自动编译。</p>
+<p>cmake：使用 cmake 命令生成一个 makefile 文件，然后 make 会根据 makefile 文件内容编译整个工程。</p>
+<p>例子：slambook&#x2F;ch2&#x2F;CMakeLists.txt</p>
+<figure class="highlight txt"><table><tr><td class="code"><pre><span class="line"># 声明要求的 cmake 最低版本</span><br><span class="line">cmake_minimum_required( VERSION 2.8 )</span><br><span class="line"></span><br><span class="line"># 声明一个 cmake 工程</span><br><span class="line">project (HelloSLAM )</span><br><span class="line"></span><br><span class="line"># 添加一个可执行程序</span><br><span class="line"># 语法：add_executable ( 程序名 源文件代码 )</span><br><span class="line">add_executable ( helloSLAM helloSLAM.cpp )</span><br></pre></td></tr></table></figure>
+
+
+
+<p>CMakeLists.txt 文件告诉 cmake 我们要对该目录下的文件做什么，CMakeLists.txt 文件内容要遵循 cmake 语法。</p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line"><span class="comment"># 调用 cmake 对工程进行分析</span></span><br><span class="line">sudo cmake .</span><br></pre></td></tr></table></figure>
+
+<p>cmake 会输出一些编译器等信息并在当前目录下生成一些中间文件，其中最重要的是 MakeFile，它是自动生成的。</p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line"><span class="comment"># 使用 make 命令对工程进行编译</span></span><br><span class="line">sudo make</span><br><span class="line"></span><br><span class="line"><span class="comment"># 使用多线程进行编译可以加快速度</span></span><br><span class="line">sudo make -j4</span><br><span class="line"></span><br><span class="line"><span class="comment"># </span></span><br></pre></td></tr></table></figure>
+
+
+
+
+
+
+
+
+
+<h3 id="杂记"><a href="#杂记" class="headerlink" title="杂记"></a>杂记</h3>]]></content>
+  </entry>
+  <entry>
     <title>Hello World</title>
     <url>/2023/04/25/hello-world/</url>
     <content><![CDATA[<p>Welcome to <a href="https://hexo.io/">Hexo</a>! This is your very first post. Check <a href="https://hexo.io/docs/">documentation</a> for more info. If you get any problems when using Hexo, you can find the answer in <a href="https://hexo.io/docs/troubleshooting.html">troubleshooting</a> or you can ask me on <a href="https://github.com/hexojs/hexo/issues">GitHub</a>.</p>
@@ -28,5 +120,67 @@
       <tags>
         <tag>blog</tag>
       </tags>
+  </entry>
+  <entry>
+    <title></title>
+    <url>/2023/03/29/Sketch/</url>
+    <content><![CDATA[<h1 id="Sketch-Recognition"><a href="#Sketch-Recognition" class="headerlink" title="Sketch Recognition"></a>Sketch Recognition</h1><h2 id="1-论文"><a href="#1-论文" class="headerlink" title="1 论文"></a>1 论文</h2><h2 id="2-想法"><a href="#2-想法" class="headerlink" title="2 想法"></a>2 想法</h2><h3 id="2-1-连通域算法"><a href="#2-1-连通域算法" class="headerlink" title="2.1 连通域算法"></a>2.1 连通域算法</h3><h2 id="3-代码"><a href="#3-代码" class="headerlink" title="3 代码"></a>3 代码</h2><h3 id="3-1-连通域算法（Connected-Components-Labeling）"><a href="#3-1-连通域算法（Connected-Components-Labeling）" class="headerlink" title="3.1 连通域算法（Connected Components Labeling）"></a>3.1 连通域算法（Connected Components Labeling）</h3><p>通过对二值图像中目标像素的标记，让每个单独的连通区域形成一个被标识的块，进一步地获取这些块的轮廓、外接矩形、质心、不变矩阵等几何参数。</p>
+<p>一个连通域是由具有相同像素值的相邻像素组成，对每个找到的连通域，赋予其一个唯一的标识（Label）以区别其他连通域。</p>
+<p>基本算法：1）Two-pass 两遍扫描  2）Seed-Filling种子填充法</p>
+<h3 id="3-2-膨胀操作"><a href="#3-2-膨胀操作" class="headerlink" title="3.2 膨胀操作"></a>3.2 膨胀操作</h3><figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="keyword">import</span> cv2</span><br><span class="line"><span class="keyword">import</span> numpy <span class="keyword">as</span> np</span><br><span class="line"></span><br><span class="line"><span class="comment"># no module named &quot;cv2&quot;</span></span><br><span class="line"><span class="comment"># pip install python-opencv</span></span><br><span class="line"></span><br><span class="line">img = cv2.imread(<span class="string">&#x27;408.png&#x27;</span>)</span><br><span class="line"><span class="keyword">def</span> <span class="title function_">cv_show</span>(<span class="params">img</span>):</span><br><span class="line">    cv2.imshow(<span class="string">&#x27;&#x27;</span>, img)</span><br><span class="line">    cv2.waitKey(<span class="number">0</span>)</span><br><span class="line">    cv2.destroyAllWindows()</span><br><span class="line"><span class="comment"># cv_show(img)</span></span><br><span class="line"></span><br><span class="line"><span class="comment"># 黑底白字 膨胀操作</span></span><br><span class="line"><span class="comment"># kernel = np.ones((3, 3), dtype=np.uint8)</span></span><br><span class="line"><span class="comment"># dilate = cv2.dilate(img, kernel, 1) # 1:迭代次数，也就是执行几次膨胀操作</span></span><br><span class="line"><span class="comment"># cv_show(dilate)</span></span><br><span class="line"></span><br><span class="line"><span class="comment"># 黑底白字 腐蚀操作</span></span><br><span class="line">kernel = np.ones((<span class="number">3</span>, <span class="number">3</span>), dtype=np.uint8)</span><br><span class="line">erosion = cv2.erode(img, kernel, iterations=<span class="number">3</span>)</span><br><span class="line">ss = np.hstack((img, erosion))</span><br><span class="line">cv_show(ss)</span><br></pre></td></tr></table></figure>
+
+
+
+
+
+<h3 id="3-3-OpenCV取两张图像交集"><a href="#3-3-OpenCV取两张图像交集" class="headerlink" title="3.3 OpenCV取两张图像交集"></a>3.3 OpenCV取两张图像交集</h3><h2 id="4-BUG"><a href="#4-BUG" class="headerlink" title="4 BUG"></a>4 BUG</h2><h3 id="4-1-No-module-named-‘numpy’"><a href="#4-1-No-module-named-‘numpy’" class="headerlink" title="4.1 No module named ‘numpy’"></a>4.1 No module named ‘numpy’</h3><figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">pip3 install numpy</span><br></pre></td></tr></table></figure>
+
+
+
+
+
+<h3 id="4-2-no-module-named-’cv2‘"><a href="#4-2-no-module-named-’cv2‘" class="headerlink" title="4.2 no module named ’cv2‘"></a>4.2 no module named ’cv2‘</h3><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">pip3 install opencv-python</span><br><span class="line"></span><br><span class="line"><span class="comment"># modulenotfounderror: no module named skbuild</span></span><br><span class="line">pip3 install --upgrade pip</span><br><span class="line"></span><br><span class="line"><span class="comment"># 然后再安装 opencv 即可</span></span><br></pre></td></tr></table></figure>
+
+
+
+
+
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line"># 查看 opencv 版本</span><br><span class="line">pkg-config opencv --modversion</span><br></pre></td></tr></table></figure>
+
+
+
+
+
+
+
+]]></content>
+  </entry>
+  <entry>
+    <title></title>
+    <url>/2023/04/24/qinglong/</url>
+    <content><![CDATA[<h1 id="1-Zerotier"><a href="#1-Zerotier" class="headerlink" title="1 Zerotier"></a>1 Zerotier</h1><p>官网：<a href="https://www.zerotier.com/">ZeroTier | Global Area Networking</a></p>
+<p>Zerotier – 下载客户端并加入网络</p>
+<p>Moon – 自建中转服务器</p>
+<p>Linux-Ubuntu</p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line"><span class="comment"># install</span></span><br><span class="line">curl -s https://install.zerotier.com | sudo bash</span><br><span class="line"></span><br><span class="line"><span class="comment"># zerotier command</span></span><br><span class="line"><span class="comment"># start</span></span><br><span class="line">sudo zerotier-one -d</span><br><span class="line"></span><br><span class="line"><span class="comment"># get the status of the server</span></span><br><span class="line">sudo zerotier-cli status</span><br><span class="line"></span><br><span class="line"><span class="comment"># join the network</span></span><br><span class="line">sudo zerotier-cli <span class="built_in">join</span> 6ab565387af13fc7   <span class="comment"># Network-ID</span></span><br><span class="line"></span><br><span class="line"><span class="comment"># cat other device</span></span><br><span class="line">sudo zerotier-cli listpeers </span><br><span class="line"></span><br><span class="line"><span class="comment"># leave the network</span></span><br><span class="line">sudo zerotier-cli leave 6ab565387af13fc7 </span><br></pre></td></tr></table></figure>
+
+
+
+
+
+<h1 id="2-青龙"><a href="#2-青龙" class="headerlink" title="2 青龙"></a>2 青龙</h1><p>Docker-qinglong:<a href="https://hub.docker.com/r/whyour/qinglong">whyour&#x2F;qinglong - Docker Image | Docker Hub</a></p>
+<h2 id="2-1-安装"><a href="#2-1-安装" class="headerlink" title="2.1 安装"></a>2.1 安装</h2><figure class="highlight shell"><table><tr><td class="code"><pre><span class="line"><span class="meta prompt_"># </span><span class="language-bash">拉取 qinglong 镜像</span></span><br><span class="line">sudo docker pull whyour/qinglong</span><br><span class="line"><span class="meta prompt_"></span></span><br><span class="line"><span class="meta prompt_"># </span><span class="language-bash">启动容器（端口映射：-p 前面的是服务器端口，后面的是容器端口）</span></span><br><span class="line">sudo docker run -dit \</span><br><span class="line">  -v $PWD/ql1:/ql/data \</span><br><span class="line">  -p 5701:5700 \</span><br><span class="line">  --name ql1 \</span><br><span class="line">  --hostname ql1 \</span><br><span class="line">  --restart unless-stopped \</span><br><span class="line">  whyour/qinglong:latest</span><br><span class="line"><span class="meta prompt_">  </span></span><br><span class="line"><span class="meta prompt_"># </span><span class="language-bash">访问 http://10.1.16.116:5701/ 配置青龙</span></span><br><span class="line"></span><br></pre></td></tr></table></figure>
+
+
+
+
+
+<h2 id="2-2-拉取脚本并配置"><a href="#2-2-拉取脚本并配置" class="headerlink" title="2.2 拉取脚本并配置"></a>2.2 拉取脚本并配置</h2><h1 id="参考"><a href="#参考" class="headerlink" title="参考"></a>参考</h1><h2 id="1-Zerotier-1"><a href="#1-Zerotier-1" class="headerlink" title="1 Zerotier"></a>1 Zerotier</h2><h2 id="2-qinglong"><a href="#2-qinglong" class="headerlink" title="2 qinglong"></a>2 qinglong</h2><p><a href="https://blog.csdn.net/apple_54531770/article/details/124236904?spm=1001.2101.3001.6650.3&utm_medium=distribute.pc_relevant.none-task-blog-2~default~CTRLIST~Rate-3-124236904-blog-125535606.235%5Ev31%5Epc_relevant_default_base3&depth_1-utm_source=distribute.pc_relevant.none-task-blog-2~default~CTRLIST~Rate-3-124236904-blog-125535606.235%5Ev31%5Epc_relevant_default_base3&utm_relevant_index=6">(125条消息) ELM饿了么获取COOKIE教程附吃货豆脚本_饿了么cookie_掉进电商坑三年没爬出来的东叔的博客-CSDN博客</a></p>
+]]></content>
+  </entry>
+  <entry>
+    <title></title>
+    <url>/2023/04/24/%E4%B8%89%E7%BB%B4%E9%87%8D%E5%BB%BA/</url>
+    <content><![CDATA[]]></content>
   </entry>
 </search>
