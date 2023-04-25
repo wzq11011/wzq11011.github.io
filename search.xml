@@ -7,15 +7,34 @@
 
 
 
-<h2 id="1-2-安装-Homebrew"><a href="#1-2-安装-Homebrew" class="headerlink" title="1.2 安装 Homebrew"></a>1.2 安装 Homebrew</h2><figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">/bin/bash -c &quot;$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)&quot;</span><br></pre></td></tr></table></figure>
+<h2 id="1-2-安装-Homebrew"><a href="#1-2-安装-Homebrew" class="headerlink" title="1.2 安装 Homebrew"></a>1.2 安装 Homebrew</h2><figure class="highlight shell"><table><tr><td class="code"><pre><span class="line">/bin/bash -c &quot;$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)&quot;</span><br></pre></td></tr></table></figure>
 
 
 
-<h2 id="1-3-安装-node-js、git"><a href="#1-3-安装-node-js、git" class="headerlink" title="1.3 安装 node.js、git"></a>1.3 安装 node.js、git</h2><figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">brew install node git</span><br></pre></td></tr></table></figure>
+<h2 id="1-3-安装-node-js、git"><a href="#1-3-安装-node-js、git" class="headerlink" title="1.3 安装 node.js、git"></a>1.3 安装 node.js、git</h2><figure class="highlight shell"><table><tr><td class="code"><pre><span class="line">brew install node git</span><br></pre></td></tr></table></figure>
 
 
 
-<h2 id="1-4-安装-Hexo"><a href="#1-4-安装-Hexo" class="headerlink" title="1.4 安装 Hexo"></a>1.4 安装 Hexo</h2><h1 id="2-Hexo-优化"><a href="#2-Hexo-优化" class="headerlink" title="2 Hexo 优化"></a>2 Hexo 优化</h1><h1 id="3-Hexo-插件记录"><a href="#3-Hexo-插件记录" class="headerlink" title="3 Hexo 插件记录"></a>3 Hexo 插件记录</h1><h3 id="1"><a href="#1" class="headerlink" title="1"></a>1</h3><h3 id="2"><a href="#2" class="headerlink" title="2"></a>2</h3><h3 id="3"><a href="#3" class="headerlink" title="3"></a>3</h3><h2 id="参考"><a href="#参考" class="headerlink" title="参考"></a>参考</h2><ol>
+<h2 id="1-4-安装-Hexo"><a href="#1-4-安装-Hexo" class="headerlink" title="1.4 安装 Hexo"></a>1.4 安装 Hexo</h2><figure class="highlight shell"><table><tr><td class="code"><pre><span class="line">npm install -g hexo-cli</span><br></pre></td></tr></table></figure>
+
+<h2 id="1-5-初始化项目"><a href="#1-5-初始化项目" class="headerlink" title="1.5 初始化项目"></a>1.5 初始化项目</h2><p>在 Documents 目录下创建一个 blog 文件夹，使用 hexo 命令初始化</p>
+<figure class="highlight shell"><table><tr><td class="code"><pre><span class="line"><span class="meta prompt_"># </span><span class="language-bash">~/Documents</span></span><br><span class="line">hexo init blog</span><br><span class="line"><span class="meta prompt_"></span></span><br><span class="line"><span class="meta prompt_"># </span><span class="language-bash">将 hexo 编译生成 HTML 代码</span></span><br><span class="line">hexo generate  # 简化命令：hexo g</span><br><span class="line"><span class="meta prompt_"></span></span><br><span class="line"><span class="meta prompt_"># </span><span class="language-bash">在本地运行</span></span><br><span class="line">hexo serve  # 简化命令：hexo s</span><br><span class="line"><span class="meta prompt_"></span></span><br><span class="line"><span class="meta prompt_"># </span><span class="language-bash">安装远程部署插件</span></span><br><span class="line">npm install hexo-deployer-git --save</span><br><span class="line"><span class="meta prompt_"></span></span><br><span class="line"><span class="meta prompt_"># </span><span class="language-bash">远程部署</span></span><br><span class="line">hexo deploy  # 简化命令：hexo d</span><br></pre></td></tr></table></figure>
+
+
+
+<p>远程部署到 Github Pages 需要更改根目录（~&#x2F;Documents&#x2F;blog）下的 _config.yml 文件</p>
+<figure class="highlight yaml"><table><tr><td class="code"><pre><span class="line"><span class="comment"># Deployment</span></span><br><span class="line"><span class="comment">## Docs: https://hexo.io/docs/one-command-deployment</span></span><br><span class="line"><span class="attr">deploy:</span></span><br><span class="line">  <span class="attr">type:</span> <span class="string">git</span></span><br><span class="line">  <span class="attr">repo:</span> <span class="string">git@github.com:wzq11011/wzq11011.github.io.git</span></span><br><span class="line">  <span class="attr">branch:</span> <span class="string">master</span></span><br></pre></td></tr></table></figure>
+
+
+
+<p>这个地方会报错，需要将本地 git 公钥添加到 github 中。</p>
+<h2 id="1-6-同步源码"><a href="#1-6-同步源码" class="headerlink" title="1.6 同步源码"></a>1.6 同步源码</h2><p>以上的部署只是将 blog&#x2F;public 目录下的所有内容上传到 master 分支上，它们实际上是 hexo 编译生成的静态文件。如果要同步博客源码，可以新建一个 hexo 分支，使用 git 命令同步上传所有源码。</p>
+<figure class="highlight shell"><table><tr><td class="code"><pre><span class="line"><span class="meta prompt_"># </span><span class="language-bash">git 命令</span></span><br><span class="line"><span class="meta prompt_"></span></span><br><span class="line"><span class="meta prompt_"># </span><span class="language-bash">创建分支</span></span><br><span class="line">git branch (branchname)</span><br><span class="line"><span class="meta prompt_"></span></span><br><span class="line"><span class="meta prompt_"># </span><span class="language-bash">切换分支</span></span><br><span class="line">git checkout </span><br></pre></td></tr></table></figure>
+
+
+
+<p></p>
+<h1 id="2-Hexo-优化"><a href="#2-Hexo-优化" class="headerlink" title="2 Hexo 优化"></a>2 Hexo 优化</h1><h1 id="3-Hexo-插件记录"><a href="#3-Hexo-插件记录" class="headerlink" title="3 Hexo 插件记录"></a>3 Hexo 插件记录</h1><h3 id="1"><a href="#1" class="headerlink" title="1"></a>1</h3><h3 id="2"><a href="#2" class="headerlink" title="2"></a>2</h3><h3 id="3"><a href="#3" class="headerlink" title="3"></a>3</h3><h2 id="参考"><a href="#参考" class="headerlink" title="参考"></a>参考</h2><ol>
 <li><a href="https://zhuanlan.zhihu.com/p/371995929">如何在 GitHub 上写博客？ - 知乎 (zhihu.com)</a></li>
 <li><a href="https://www.glwsq.cn/post/hexo-plugins/">hexo插件推荐 - 给力经验分享 (glwsq.cn)</a></li>
 <li></li>
