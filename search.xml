@@ -29,4 +29,9 @@
 <p>More info: <a href="https://hexo.io/docs/one-command-deployment.html">Deployment</a></p>
 ]]></content>
   </entry>
+  <entry>
+    <title>test editor</title>
+    <url>/2023/04/25/test-editor/</url>
+    <content><![CDATA[<h1 id="Hexo-Editor"><a href="#Hexo-Editor" class="headerlink" title="Hexo Editor"></a>Hexo Editor</h1><figure class="highlight shell"><table><tr><td class="code"><pre><span class="line">sudo apt update</span><br></pre></td></tr></table></figure>]]></content>
+  </entry>
 </search>
