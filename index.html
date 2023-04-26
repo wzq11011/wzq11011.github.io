@@ -198,7 +198,7 @@
   
   
   <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
-    <link itemprop="mainEntityOfPage" href="http://example.com/2023/04/25/test-editor/">
+    <link itemprop="mainEntityOfPage" href="http://example.com/2023/04/25/3D-Reconstruction/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="image" content="/images/avatar.gif">
@@ -212,7 +212,7 @@
       <header class="post-header">
         <h2 class="post-title" itemprop="name headline">
           
-            <a href="/2023/04/25/test-editor/" class="post-title-link" itemprop="url">test editor</a>
+            <a href="/2023/04/25/3D-Reconstruction/" class="post-title-link" itemprop="url">3D Reconstruction</a>
         </h2>
 
         <div class="post-meta">
@@ -224,6 +224,13 @@
 
               <time title="创建时间：2023-04-25 17:56:33" itemprop="dateCreated datePublished" datetime="2023-04-25T17:56:33+08:00">2023-04-25</time>
             </span>
+              <span class="post-meta-item">
+                <span class="post-meta-item-icon">
+                  <i class="far fa-calendar-check"></i>
+                </span>
+                <span class="post-meta-item-text">更新于</span>
+                <time title="修改时间：2023-04-26 18:17:24" itemprop="dateModified" datetime="2023-04-26T18:17:24+08:00">2023-04-26</time>
+              </span>
 
           <br>
             <span class="post-meta-item" title="本文字数">
@@ -283,7 +290,7 @@
       <header class="post-header">
         <h2 class="post-title" itemprop="name headline">
           
-            <a href="/2023/04/25/Blog-Hexo/" class="post-title-link" itemprop="url">Blog-Hexo</a>
+            <a href="/2023/04/25/Blog-Hexo/" class="post-title-link" itemprop="url">Blog Hexo</a>
         </h2>
 
         <div class="post-meta">
@@ -300,7 +307,7 @@
                   <i class="far fa-calendar-check"></i>
                 </span>
                 <span class="post-meta-item-text">更新于</span>
-                <time title="修改时间：2023-04-26 14:12:21" itemprop="dateModified" datetime="2023-04-26T14:12:21+08:00">2023-04-26</time>
+                <time title="修改时间：2023-04-26 18:33:02" itemprop="dateModified" datetime="2023-04-26T18:33:02+08:00">2023-04-26</time>
               </span>
             <span class="post-meta-item">
               <span class="post-meta-item-icon">
@@ -322,14 +329,14 @@
                 <i class="far fa-file-word"></i>
               </span>
                 <span class="post-meta-item-text">本文字数：</span>
-              <span>1.5k</span>
+              <span>1.7k</span>
             </span>
             <span class="post-meta-item" title="阅读时长">
               <span class="post-meta-item-icon">
                 <i class="far fa-clock"></i>
               </span>
                 <span class="post-meta-item-text">阅读时长 &asymp;</span>
-              <span>5 分钟</span>
+              <span>6 分钟</span>
             </span>
 
         </div>
@@ -380,6 +387,22 @@
 
 <p>博客源码上传参考以下指令：</p>
 <figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">git init</span><br><span class="line">git checkout -b hexo</span><br><span class="line">git add -A  # 添加文件到暂存区</span><br><span class="line">git commit -m &quot;init blog&quot;  # 将暂存区内容添加到本地仓库，并添加描述“初始化”</span><br><span class="line"><span class="meta prompt_"># </span><span class="language-bash">git remote add origin git@github.com:&#123;username&#125;/&#123;username&#125;.github.io.git</span></span><br><span class="line">git remote add origin git@github.com:wzq11011/wzq11011.github.io.git  # 创建远程仓库 origin</span><br><span class="line">git push origin hexo  # 推送代码到 hexo 分支</span><br></pre></td></tr></table></figure>
+
+
+
+<p>报错：这是因为在 themes 文件夹下使用 git 命令拉取的 next 主题，关联了其他作者的 git 仓库，所以 next 文件夹下的内容会无法提交到远程仓库，报错信息提示是否将其作为子模块提交，这里提供不作为子模块提交的解决办法。</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line">hint: You&#x27;ve added another git repository inside your current repository.</span><br><span class="line">hint: Clones of the outer repository will not contain the contents of</span><br><span class="line">hint: the embedded repository and will not know how to obtain it.</span><br><span class="line">hint: If you meant to add a submodule, use:</span><br><span class="line">hint: </span><br><span class="line">hint: 	git submodule add &lt;url&gt; themes/next</span><br><span class="line">hint: </span><br><span class="line">hint: If you added this path by mistake, you can remove it from the</span><br><span class="line">hint: index with:</span><br><span class="line">hint: </span><br><span class="line">hint: 	git rm --cached themes/next</span><br><span class="line">hint: </span><br><span class="line">hint: See &quot;git help submodule&quot; for more information.</span><br></pre></td></tr></table></figure>
+
+
+
+<p>解决办法：</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta prompt_"># </span><span class="language-bash">从暂存区删除该文件夹</span></span><br><span class="line">git rm --cached themes/next</span><br><span class="line"><span class="meta prompt_"></span></span><br><span class="line"><span class="meta prompt_"># </span><span class="language-bash">查看当前状态</span></span><br><span class="line">git status</span><br><span class="line"><span class="meta prompt_"></span></span><br><span class="line"><span class="meta prompt_"># </span><span class="language-bash">删除 next 文件夹下 .git 文件夹</span></span><br><span class="line">cd themes/next</span><br><span class="line">rm -rf .git</span><br><span class="line"><span class="meta prompt_"></span></span><br><span class="line"><span class="meta prompt_"># </span><span class="language-bash">重新添加 next 文件夹到缓存区</span></span><br><span class="line">git add themes/next/</span><br><span class="line"><span class="meta prompt_"></span></span><br><span class="line"><span class="meta prompt_"># </span><span class="language-bash"></span></span><br><span class="line"><span class="language-bash">git commit -m <span class="string">&quot;add next&quot;</span></span></span><br><span class="line"><span class="meta prompt_"></span></span><br><span class="line"><span class="meta prompt_"># </span><span class="language-bash">推送代码到远程仓库</span></span><br><span class="line">git push origin hexo</span><br></pre></td></tr></table></figure>
+
+
+
+
+
+
 
 
 
@@ -445,11 +468,14 @@
 <p>Pangu：中英文之间留空</p>
 <p>math：数学公式显示</p>
 <p>pjax：</p>
-<h2 id="2-6-标签页、分类页、搜索页"><a href="#2-6-标签页、分类页、搜索页" class="headerlink" title="2.6 标签页、分类页、搜索页"></a>2.6 标签页、分类页、搜索页</h2><h1 id="3-Hexo-插件记录"><a href="#3-Hexo-插件记录" class="headerlink" title="3 Hexo 插件记录"></a>3 Hexo 插件记录</h1><h2 id="3-1"><a href="#3-1" class="headerlink" title="3.1"></a>3.1</h2><h2 id="3-2"><a href="#3-2" class="headerlink" title="3.2"></a>3.2</h2><h2 id="3-3"><a href="#3-3" class="headerlink" title="3.3"></a>3.3</h2><h2 id="3-4-代码高亮"><a href="#3-4-代码高亮" class="headerlink" title="3.4 代码高亮"></a>3.4 代码高亮</h2><h2 id="参考"><a href="#参考" class="headerlink" title="参考"></a>参考</h2><ol>
+<h2 id="2-6-标签页、分类页、搜索页"><a href="#2-6-标签页、分类页、搜索页" class="headerlink" title="2.6 标签页、分类页、搜索页"></a>2.6 标签页、分类页、搜索页</h2><h1 id="3-Hexo-插件记录"><a href="#3-Hexo-插件记录" class="headerlink" title="3 Hexo 插件记录"></a>3 Hexo 插件记录</h1><h2 id="3-1"><a href="#3-1" class="headerlink" title="3.1"></a>3.1</h2><h2 id="3-2"><a href="#3-2" class="headerlink" title="3.2"></a>3.2</h2><h2 id="3-3"><a href="#3-3" class="headerlink" title="3.3"></a>3.3</h2><h2 id="3-4-代码高亮"><a href="#3-4-代码高亮" class="headerlink" title="3.4 代码高亮"></a>3.4 代码高亮</h2><h2 id="3-5-在线编写"><a href="#3-5-在线编写" class="headerlink" title="3.5 在线编写"></a>3.5 在线编写</h2><p>1 Hexo Editor <a target="_blank" rel="noopener" href="http://localhost:5777/#/login">Hexo Editor</a></p>
+<p>2 Hexo Admin <a target="_blank" rel="noopener" href="http://localhost:4000/admin/#/">Hexo Admin</a></p>
+<h2 id="参考"><a href="#参考" class="headerlink" title="参考"></a>参考</h2><ol>
 <li><a target="_blank" rel="noopener" href="https://zhuanlan.zhihu.com/p/371995929">如何在 GitHub 上写博客？ - 知乎 (zhihu.com)</a></li>
 <li><a target="_blank" rel="noopener" href="https://www.glwsq.cn/post/hexo-plugins/">hexo插件推荐 - 给力经验分享 (glwsq.cn)</a></li>
 <li><a target="_blank" rel="noopener" href="https://blog.shipengx.com/archives/208e6058.html">使用Hexo + GitHub Pages搭建个人博客站点 | 朝花夕拾 (shipengx.com)</a></li>
 </ol>
+<p>未完待续！</p>
 
       
     </div>
@@ -676,7 +702,7 @@
     <span class="post-meta-item-icon">
       <i class="fa fa-coffee"></i>
     </span>
-    <span title="站点阅读时长">6 分钟</span>
+    <span title="站点阅读时长">7 分钟</span>
 </div>
   <div class="powered-by">由 <a href="https://hexo.io/" class="theme-link" rel="noopener" target="_blank">Hexo</a> & <a href="https://muse.theme-next.org/" class="theme-link" rel="noopener" target="_blank">NexT.Muse</a> 强力驱动
   </div>

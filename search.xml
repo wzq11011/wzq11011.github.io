@@ -1,25 +1,12 @@
 <?xml version="1.0" encoding="utf-8"?>
 <search>
   <entry>
-    <title>Hello World</title>
-    <url>/2023/04/25/hello-world/</url>
-    <content><![CDATA[<p>Welcome to <a href="https://hexo.io/">Hexo</a>! This is your very first post. Check <a href="https://hexo.io/docs/">documentation</a> for more info. If you get any problems when using Hexo, you can find the answer in <a href="https://hexo.io/docs/troubleshooting.html">troubleshooting</a> or you can ask me on <a href="https://github.com/hexojs/hexo/issues">GitHub</a>.</p>
-<h2 id="Quick-Start"><a href="#Quick-Start" class="headerlink" title="Quick Start"></a>Quick Start</h2><h3 id="Create-a-new-post"><a href="#Create-a-new-post" class="headerlink" title="Create a new post"></a>Create a new post</h3><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">$ hexo new <span class="string">&quot;My New Post&quot;</span></span><br></pre></td></tr></table></figure>
-
-<p>More info: <a href="https://hexo.io/docs/writing.html">Writing</a></p>
-<h3 id="Run-server"><a href="#Run-server" class="headerlink" title="Run server"></a>Run server</h3><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">$ hexo server</span><br></pre></td></tr></table></figure>
-
-<p>More info: <a href="https://hexo.io/docs/server.html">Server</a></p>
-<h3 id="Generate-static-files"><a href="#Generate-static-files" class="headerlink" title="Generate static files"></a>Generate static files</h3><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">$ hexo generate</span><br></pre></td></tr></table></figure>
-
-<p>More info: <a href="https://hexo.io/docs/generating.html">Generating</a></p>
-<h3 id="Deploy-to-remote-sites"><a href="#Deploy-to-remote-sites" class="headerlink" title="Deploy to remote sites"></a>Deploy to remote sites</h3><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">$ hexo deploy</span><br></pre></td></tr></table></figure>
-
-<p>More info: <a href="https://hexo.io/docs/one-command-deployment.html">Deployment</a></p>
-]]></content>
+    <title>3D Reconstruction</title>
+    <url>/2023/04/25/3D-Reconstruction/</url>
+    <content><![CDATA[<h1 id="Hexo-Editor"><a href="#Hexo-Editor" class="headerlink" title="Hexo Editor"></a>Hexo Editor</h1><figure class="highlight shell"><table><tr><td class="code"><pre><span class="line">sudo apt update</span><br></pre></td></tr></table></figure>]]></content>
   </entry>
   <entry>
-    <title>Blog-Hexo</title>
+    <title>Blog Hexo</title>
     <url>/2023/04/25/Blog-Hexo/</url>
     <content><![CDATA[<h1 id="1-Hexo-搭建"><a href="#1-Hexo-搭建" class="headerlink" title="1 Hexo 搭建"></a>1 Hexo 搭建</h1><h2 id="1-1-Macbook-ClashX-终端代理"><a href="#1-1-Macbook-ClashX-终端代理" class="headerlink" title="1.1 Macbook ClashX 终端代理"></a>1.1 Macbook ClashX 终端代理</h2><figure class="highlight shell"><table><tr><td class="code"><pre><span class="line">export https_proxy=http://127.0.0.1:7890 http_proxy=http://127.0.0.1:7890 all_proxy=socks5://127.0.0.1:7890</span><br></pre></td></tr></table></figure>
 
@@ -60,6 +47,22 @@
 
 <p>博客源码上传参考以下指令：</p>
 <figure class="highlight shell"><table><tr><td class="code"><pre><span class="line">git init</span><br><span class="line">git checkout -b hexo</span><br><span class="line">git add -A  # 添加文件到暂存区</span><br><span class="line">git commit -m &quot;init blog&quot;  # 将暂存区内容添加到本地仓库，并添加描述“初始化”</span><br><span class="line"><span class="meta prompt_"># </span><span class="language-bash">git remote add origin git@github.com:&#123;username&#125;/&#123;username&#125;.github.io.git</span></span><br><span class="line">git remote add origin git@github.com:wzq11011/wzq11011.github.io.git  # 创建远程仓库 origin</span><br><span class="line">git push origin hexo  # 推送代码到 hexo 分支</span><br></pre></td></tr></table></figure>
+
+
+
+<p>报错：这是因为在 themes 文件夹下使用 git 命令拉取的 next 主题，关联了其他作者的 git 仓库，所以 next 文件夹下的内容会无法提交到远程仓库，报错信息提示是否将其作为子模块提交，这里提供不作为子模块提交的解决办法。</p>
+<figure class="highlight shell"><table><tr><td class="code"><pre><span class="line">hint: You&#x27;ve added another git repository inside your current repository.</span><br><span class="line">hint: Clones of the outer repository will not contain the contents of</span><br><span class="line">hint: the embedded repository and will not know how to obtain it.</span><br><span class="line">hint: If you meant to add a submodule, use:</span><br><span class="line">hint: </span><br><span class="line">hint: 	git submodule add &lt;url&gt; themes/next</span><br><span class="line">hint: </span><br><span class="line">hint: If you added this path by mistake, you can remove it from the</span><br><span class="line">hint: index with:</span><br><span class="line">hint: </span><br><span class="line">hint: 	git rm --cached themes/next</span><br><span class="line">hint: </span><br><span class="line">hint: See &quot;git help submodule&quot; for more information.</span><br></pre></td></tr></table></figure>
+
+
+
+<p>解决办法：</p>
+<figure class="highlight shell"><table><tr><td class="code"><pre><span class="line"><span class="meta prompt_"># </span><span class="language-bash">从暂存区删除该文件夹</span></span><br><span class="line">git rm --cached themes/next</span><br><span class="line"><span class="meta prompt_"></span></span><br><span class="line"><span class="meta prompt_"># </span><span class="language-bash">查看当前状态</span></span><br><span class="line">git status</span><br><span class="line"><span class="meta prompt_"></span></span><br><span class="line"><span class="meta prompt_"># </span><span class="language-bash">删除 next 文件夹下 .git 文件夹</span></span><br><span class="line">cd themes/next</span><br><span class="line">rm -rf .git</span><br><span class="line"><span class="meta prompt_"></span></span><br><span class="line"><span class="meta prompt_"># </span><span class="language-bash">重新添加 next 文件夹到缓存区</span></span><br><span class="line">git add themes/next/</span><br><span class="line"><span class="meta prompt_"></span></span><br><span class="line"><span class="meta prompt_"># </span><span class="language-bash"></span></span><br><span class="line"><span class="language-bash">git commit -m <span class="string">&quot;add next&quot;</span></span></span><br><span class="line"><span class="meta prompt_"></span></span><br><span class="line"><span class="meta prompt_"># </span><span class="language-bash">推送代码到远程仓库</span></span><br><span class="line">git push origin hexo</span><br></pre></td></tr></table></figure>
+
+
+
+
+
+
 
 
 
@@ -125,11 +128,14 @@
 <p>Pangu：中英文之间留空</p>
 <p>math：数学公式显示</p>
 <p>pjax：</p>
-<h2 id="2-6-标签页、分类页、搜索页"><a href="#2-6-标签页、分类页、搜索页" class="headerlink" title="2.6 标签页、分类页、搜索页"></a>2.6 标签页、分类页、搜索页</h2><h1 id="3-Hexo-插件记录"><a href="#3-Hexo-插件记录" class="headerlink" title="3 Hexo 插件记录"></a>3 Hexo 插件记录</h1><h2 id="3-1"><a href="#3-1" class="headerlink" title="3.1"></a>3.1</h2><h2 id="3-2"><a href="#3-2" class="headerlink" title="3.2"></a>3.2</h2><h2 id="3-3"><a href="#3-3" class="headerlink" title="3.3"></a>3.3</h2><h2 id="3-4-代码高亮"><a href="#3-4-代码高亮" class="headerlink" title="3.4 代码高亮"></a>3.4 代码高亮</h2><h2 id="参考"><a href="#参考" class="headerlink" title="参考"></a>参考</h2><ol>
+<h2 id="2-6-标签页、分类页、搜索页"><a href="#2-6-标签页、分类页、搜索页" class="headerlink" title="2.6 标签页、分类页、搜索页"></a>2.6 标签页、分类页、搜索页</h2><h1 id="3-Hexo-插件记录"><a href="#3-Hexo-插件记录" class="headerlink" title="3 Hexo 插件记录"></a>3 Hexo 插件记录</h1><h2 id="3-1"><a href="#3-1" class="headerlink" title="3.1"></a>3.1</h2><h2 id="3-2"><a href="#3-2" class="headerlink" title="3.2"></a>3.2</h2><h2 id="3-3"><a href="#3-3" class="headerlink" title="3.3"></a>3.3</h2><h2 id="3-4-代码高亮"><a href="#3-4-代码高亮" class="headerlink" title="3.4 代码高亮"></a>3.4 代码高亮</h2><h2 id="3-5-在线编写"><a href="#3-5-在线编写" class="headerlink" title="3.5 在线编写"></a>3.5 在线编写</h2><p>1 Hexo Editor <a href="http://localhost:5777/#/login">Hexo Editor</a></p>
+<p>2 Hexo Admin <a href="http://localhost:4000/admin/#/">Hexo Admin</a></p>
+<h2 id="参考"><a href="#参考" class="headerlink" title="参考"></a>参考</h2><ol>
 <li><a href="https://zhuanlan.zhihu.com/p/371995929">如何在 GitHub 上写博客？ - 知乎 (zhihu.com)</a></li>
 <li><a href="https://www.glwsq.cn/post/hexo-plugins/">hexo插件推荐 - 给力经验分享 (glwsq.cn)</a></li>
 <li><a href="https://blog.shipengx.com/archives/208e6058.html">使用Hexo + GitHub Pages搭建个人博客站点 | 朝花夕拾 (shipengx.com)</a></li>
 </ol>
+<p>未完待续！</p>
 ]]></content>
       <categories>
         <category>Hexo</category>
@@ -141,8 +147,21 @@
       </tags>
   </entry>
   <entry>
-    <title>test editor</title>
-    <url>/2023/04/25/test-editor/</url>
-    <content><![CDATA[<h1 id="Hexo-Editor"><a href="#Hexo-Editor" class="headerlink" title="Hexo Editor"></a>Hexo Editor</h1><figure class="highlight shell"><table><tr><td class="code"><pre><span class="line">sudo apt update</span><br></pre></td></tr></table></figure>]]></content>
+    <title>Hello World</title>
+    <url>/2023/04/25/hello-world/</url>
+    <content><![CDATA[<p>Welcome to <a href="https://hexo.io/">Hexo</a>! This is your very first post. Check <a href="https://hexo.io/docs/">documentation</a> for more info. If you get any problems when using Hexo, you can find the answer in <a href="https://hexo.io/docs/troubleshooting.html">troubleshooting</a> or you can ask me on <a href="https://github.com/hexojs/hexo/issues">GitHub</a>.</p>
+<h2 id="Quick-Start"><a href="#Quick-Start" class="headerlink" title="Quick Start"></a>Quick Start</h2><h3 id="Create-a-new-post"><a href="#Create-a-new-post" class="headerlink" title="Create a new post"></a>Create a new post</h3><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">$ hexo new <span class="string">&quot;My New Post&quot;</span></span><br></pre></td></tr></table></figure>
+
+<p>More info: <a href="https://hexo.io/docs/writing.html">Writing</a></p>
+<h3 id="Run-server"><a href="#Run-server" class="headerlink" title="Run server"></a>Run server</h3><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">$ hexo server</span><br></pre></td></tr></table></figure>
+
+<p>More info: <a href="https://hexo.io/docs/server.html">Server</a></p>
+<h3 id="Generate-static-files"><a href="#Generate-static-files" class="headerlink" title="Generate static files"></a>Generate static files</h3><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">$ hexo generate</span><br></pre></td></tr></table></figure>
+
+<p>More info: <a href="https://hexo.io/docs/generating.html">Generating</a></p>
+<h3 id="Deploy-to-remote-sites"><a href="#Deploy-to-remote-sites" class="headerlink" title="Deploy to remote sites"></a>Deploy to remote sites</h3><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">$ hexo deploy</span><br></pre></td></tr></table></figure>
+
+<p>More info: <a href="https://hexo.io/docs/one-command-deployment.html">Deployment</a></p>
+]]></content>
   </entry>
 </search>
