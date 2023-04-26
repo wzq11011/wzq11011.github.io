@@ -196,13 +196,55 @@ git push origin hexo
 
 
 
+## 1.7 多设备同步
+
+在新设备上拉取博客源码并安装必要的插件
+
+```shell
+git clone https://github.com/wzq11011/wzq11011.github.io.git
+
+cd wzq11011.github.io 
+
+npm install 
+
+# 然后执行脚本，生成部署博客，同步源码到仓库
+sh deploy.sh
+```
+
+
+
+如果在同步仓库时出现权限不足的问题，需要将本机公钥添加到 github 中
+
+问题描述：
+
+> git@github.com: Permission denied (publickey)
+
+解决方法：
+
+```shell
+# 1 验证邮箱与 github 注册邮箱是否一致
+git config --global --list
+
+# 2 设置全局用户名和邮箱
+git config --global user.name "your name"
+git config --global user.email "your email"
+
+# 3 生成密钥
+ssh-keygen -t rsa -C
+
+# 4 将 rsa.pub 公钥内容添加到 github 
+
+# 5 测试
+ssh -T git@github.com
+```
 
 
 
 
 
 
-## 1.7 配置站点信息
+
+## 1.8 配置站点信息
 
 修改根目录下的 _config.yml 文件，在 Site 区域，自定义站点标题、副标题、描述、关键词、作者等
 
@@ -219,7 +261,7 @@ timezone: ''
 
 
 
-## 1.8 修改主题
+## 1.9 修改主题
 
 在 Hexo 官网可以查看更多主题。
 
@@ -441,6 +483,14 @@ pjax：
 1 Hexo Editor [Hexo Editor](http://localhost:5777/#/login)
 
 2 Hexo Admin [Hexo Admin](http://localhost:4000/admin/#/)
+
+
+
+# 4 多终端同步
+
+
+
+在新
 
 
 
