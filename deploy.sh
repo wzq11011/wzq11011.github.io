@@ -1,4 +1,7 @@
-#
+# 新建博客
+hexo new "new post"
+
+
 hexo clean
 
 # 生成博客文件

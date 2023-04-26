@@ -5,8 +5,23 @@ tags:
 Categories:
 ---
 
-# Hexo Editor
+
+
+# 1 Urban-Scene-Semantic-Segmentation
+
+
 
 ```shell
 sudo apt update
 ```
+
+
+
+
+
+
+
+# 2 COLMAP
+
+
+
