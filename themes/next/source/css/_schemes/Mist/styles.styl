@@ -1,0 +1,566 @@
+// 设置外链：鼠标划过时改变字体及下划线（若有的话）颜色
+a:hover, span.exturl:hover {
+    border-bottom-color: rgb(79, 148, 205) !important;
+    color: rgb(79, 148, 205) !important;
+}
+
+// 侧边栏按钮样式
+.sidebar-toggle {
+    right: 30px !important;
+    left: auto !important;
+    bottom: 80px;
+    background-color: rgba(79, 148, 205, 0.75);  // SteelBlue3，可以在https://tool.oschina.net/commons?type=3选取自己喜欢的颜色
+    border-radius: 5px;
+    box-shadow: 0px 0px 10px 0px rgba(0, 0, 0, 0.35);
+    position: fixed;
+    z-index: 9001;
+}
+.page-post-detail .sidebar-toggle-line {
+    background: rgb(0, 255, 255);
+    position: fixed;
+    z-index: 9001;
+}
+
+// 返回顶部按钮样式
+.back-to-top {
+    background: none;
+    bottom: -100px;
+    box-sizing: border-box;
+    color: rgba(79, 148, 205, 0.75);
+    cursor: pointer;
+    font-size: 16px;
+    right: 30px !important;
+    left: auto !important;
+    opacity: 1;
+    padding: 0;
+    position: fixed;
+    text-align: center;
+    transition-property: bottom;
+    z-index: 1300;
+    transition-delay: 0s;
+    transition-duration: 0.2s;
+    transition-timing-function: ease-in-out;
+    width: 24px;
+}
+.back-to-top.back-to-top-on {
+    bottom: 30px;
+}
+
+// 设置滚动条样式
+// 参考https://segmentfault.com/a/1190000003708894
+::-webkit-scrollbar {
+    width: 10px;
+    height: 5px;
+}
+// 滚动槽
+::-webkit-scrollbar-track {
+    background: rgb(220,220,220);
+}
+// 滚动条滑块
+::-webkit-scrollbar-thumb {
+    border-radius: 10px;
+    background-color: #999;
+}
+::-webkit-scrollbar-thumb:hover {
+    background-color: rgb(79, 148, 205);
+}
+
+// 以下为页面主体设置
+// 页面背景色
+body {
+	background-color: #eeeff0
+}
+// 页面圆角阴影背景色
+.post-block {
+    background: #fff;
+	box-shadow: 0px 0px 10px 0px rgba(0, 0, 0, 0.5);
+    border-radius: 0.5rem;
+    padding: 0;
+}
+// 调整页面上端间距
+.content {
+    padding-top: 60px;
+}
+.posts-expand {
+    padding-top: 0px;
+}
+// 文章标题
+.posts-expand .post-title {
+	color: #333;
+    font-weight: 700;
+    line-height: 1.7;
+    padding: 45px 20px 12px;
+    margin: 0;
+    text-align: center;
+}
+// 文章信息
+.posts-expand .post-meta {
+    margin: 0;
+    color: #999;
+    font-size: 12px;
+    background-color: #f5f5f5;
+    text-align: center;
+}
+// 文章主体
+.post-body {
+    padding: 20px 64px 20px 64px;
+}
+// 版权声明
+.post-copyright {
+    margin: -24px 0px 0px 0px;
+}
+// 推荐文章
+.popular-posts-header {
+    margin: 40px 10px 10px 10px;
+}
+// 文章底部tags
+.posts-expand .post-tags {
+    text-align: center;
+}
+.posts-expand .post-tags a {
+    border-bottom: none;
+    font-size: 13px;
+    padding: 0px 5px;
+    border-radius: 3px;
+    transition-duration: 0.2s;
+    transition-timing-function: ease-in-out;
+    transition-delay: 0s;
+    text-align: center;
+}
+// 页面下端页面跳转
+.post-nav {
+    margin: 0;
+	padding: 0 0 10px 0;
+}
+// 评论框
+.vwrap {
+    background: rgb(255, 255, 255);
+}
+// 主页分割线
+.post-eof {
+    height: 0px;
+    margin: 10px;
+}
+// 主页文章标题
+.posts-expand .post-title-link {
+    color: #333;
+}
+.posts-expand .post-title-link:hover {
+    color: rgb(79, 148, 205);
+}
+.posts-expand .home .post-title {
+    text-align: center;
+}
+// 主页标题下划线
+.posts-expand .post-title-link:hover::before {
+    background-color: rgb(79, 148, 205);
+}
+// 主页信息
+.posts-expand .home .post-meta {
+    text-align: center;
+}
+// 主页文章间距
+.posts-expand .post-block:not(:first-child) {
+    margin-top: 60px;
+}
+// 修复推荐文章标题显示
+.post-body .note.primary h4 {
+    border-left: none;
+}
+// readmore按钮
+.post-button {
+    margin-top: 15px;
+    text-align: center;
+}
+.post-button .btn {
+    color: #555 !important;
+    background-color: rgb(255, 255, 255);
+    border-radius: 3px;
+    font-size: 15px;
+    box-shadow: inset 0px 0px 10px 0px rgba(0, 0, 0, 0.35);
+    border: none !important;
+    transition-property: unset;
+    padding: 0px 15px;
+}
+.post-button .btn:hover {
+    color: rgb(255, 255, 255) !important;
+    background-color: rgb(79, 148, 205);
+    border-radius: 3px;
+    font-size: 15px;
+    box-shadow: inset 0px 0px 10px 0px rgba(0, 0, 0, 0.35);
+    background-image: none;
+}
+// 文章底部页面跳转
+.post-nav-item a {
+    color: rgb(0, 0, 0);
+}
+.post-nav-item a:hover {
+    color: rgb(79, 148, 205);
+}
+// 分割线样式
+.post-body hr {
+    height: 1px;
+    border: none;
+	background-image: none;
+    background-color: #666;
+    text-align: center;
+}
+// 文章```代码块顶部样式
+.highlight figcaption {
+	font-family: Source Code Pro, consolas, EB Garamond, Noto Serif SC, sans-serif;
+	font-size: 14px;
+	text-align: left;
+}
+// 文章``代码块的自定义样式
+code {
+	margin: 0px 4px;
+	font-size: 80%;
+}
+// 文章```代码块diff样式
+pre .addition {
+    background: #dfd !important;
+}
+pre .deletion {
+    background: #fdd;
+}
+// 页面底部页码
+.pagination {
+    border: none;
+    margin-top: 60px;
+    text-align: center;
+    border-radius: 100%;
+    background: none !important;
+    box-shadow: none !important;
+}
+.pagination .prev:hover, .pagination .next:hover, .pagination .page-number:hover, .pagination .page-number.current {
+    color: #fff !important;
+    background: rgb(79, 148, 205);
+    text-align: center;
+    border-radius: 100%;
+}
+.pagination .prev, .pagination .next, .pagination .page-number {
+    display: inline-block;
+    margin: 0 8px;
+    width: 20px;
+    height: 40px;
+    line-height: 2.5;
+    border: 0;
+    border-radius: 100%;
+    transition-property: background;
+    text-align: center;
+}
+.pagination .space {
+    color: #222;
+}
+
+// 标签页设定
+.tag-cloud a:hover{
+    color: rgb(79, 148, 205) !important;
+}
+
+// 归档页设定
+.posts-collapse {
+    margin-left: 0;
+	background-color: #fff;
+    box-shadow: 0px 0px 10px 0px rgba(0,0,0,0.5);
+	border-radius: 0.5rem;
+	padding: 48px 64px 32px 64px;
+}
+// 去除小圆点
+.posts-collapse {
+    .collection-year::before {
+        display: none;
+    }
+	.collection-title::before {
+	    display: none;
+	}
+}
+// 消除左侧竖线
+.posts-collapse::before {
+    display: none;
+}
+// 时间轴写作时间
+.posts-collapse .post-meta:hover::before {
+    font-size: 1em;
+    background-color: rgb(79, 148, 205);
+}
+.collection-year {
+    font-size: 1em;
+	.collection-header {
+        margin: 0;
+        text-align: left !important;
+    }
+}
+// 时间轴文章标题左边圆点颜色
+.posts-collapse .post-header:hover::before {
+    background-color: rgb(79, 148, 205);
+}
+// 时间轴文章标题
+.posts-collapse .post-title a {
+    color: rgb(0, 0, 0);
+	font-size: 1em;
+	position: relative;
+}
+.posts-collapse .post-title a:hover {
+    color: rgb(79, 148, 205);
+}
+// 时间轴文章标题底部虚线
+.posts-collapse .post-header:hover {
+    border-bottom-color: rgb(79, 148, 205);
+}
+// 年份
+.posts-collapse .collection-year {
+    margin-bottom: 0px;
+	margin-top: 32px;
+}
+// tags 页面分类
+.posts-collapse .collection-header {
+    margin: 0;
+    text-align: center;
+}
+
+// 本地搜索框
+.search-popup .search-icon, .search-popup .popup-btn-close {
+    color: rgb(79,148,255);
+}
+
+// 调整最大字体
+@media (min-width: 1200px) {
+    .post-body {
+        font-size: 1em;
+    }
+}
+
+//选中文字样式
+::selection {
+    background-color: rgb(79, 148, 205);
+    color: rgb(255, 255, 255);
+}
+.highlight *::selection {
+    background-color: rgb(79, 148, 205);
+    color: rgb(255, 255, 255);
+}
+
+//十二生肖
+.chinese-zodiac {
+    float: right;
+}
+@font-face {
+  font-family: 'chinese-zodiac';
+  font-display: swap;
+  src: url('/fonts/chinese-zodiac.eot');
+  src: url('/fonts/chinese-zodiac.eot') format('embedded-opentype'),
+       url('/fonts/chinese-zodiac.woff2') format('woff2'),
+       url('/fonts/chinese-zodiac.woff') format('woff');
+  font-weight: normal;
+  font-style: normal;
+}
+.symbolic-animals {
+  display: inline-block;
+  font: normal normal normal 14px/1 chinese-zodiac;
+  font-size: inherit;
+  text-rendering: auto;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+.icon-dragon:before { content: '\e806'; font-size: 35px;}
+.icon-tiger:before { content: '\e809'; font-size: 35px;}
+.icon-pig:before { content: '\e810'; font-size: 35px;}
+.icon-horse:before { content: '\e813'; font-size: 35px;}
+.icon-rat:before { content: '\e816'; font-size: 35px;}
+.icon-goat:before { content: '\e818'; font-size: 35px;}
+.icon-snake:before { content: '\e820'; font-size: 35px;}
+.icon-ox:before { content: '\e822'; font-size: 35px;}
+.icon-dog:before { content: '\e825'; font-size: 35px;}
+.icon-rabbit:before { content: '\e826'; font-size: 35px;}
+.icon-monkey:before { content: '\e829'; font-size: 35px;}
+.icon-rooster:before { content: '\e82f'; font-size: 35px;}
+
+// 字体修改
+h1, h2, h3, h4, h5, h6 {
+    font-family: 'Cinzel Decorative','EB Garamond', "Noto Serif SC", sans-serif;
+}
+body {
+    font-family: 'EB Garamond', "Noto Serif SC", sans-serif;
+}
+.post-body {
+    font-family: 'EB Garamond', "Noto Serif SC", sans-serif;
+    color: #333;  // 页面字体加粗
+}
+.posts-expand .post-meta {
+    font-family: 'EB Garamond', "Noto Serif SC", sans-serif;
+}
+pre, code {
+    font-family: 'Source Code Pro', consolas, Menlo, monospace;
+}
+.site-title {
+    font-family: 'Ma Shan Zheng', 'Cinzel Decorative', 'EB Garamond', "Noto Serif SC", sans-serif;
+    font-weight: bold;
+}
+blockquote {
+    font-family: 'EB Garamond', 'STKaiti', 'KaiTi', 'SimKai', 'Noto Serif SC', 'sans-serif';
+}
+
+// 站顶设置
+// 注意，这里webkit-backdrop-filter前有一条横线，不同的浏览器将选择性地使用-webkit-backdrop-filter属性或backdrop-filter
+// 背景模糊效果移动端支持似乎不好，需要将背景透明度关掉
+// 背景模糊效果对搜索功能有影响
+.header {
+    -webkit-backdrop-filter: saturate(180%) blur(1em);
+    //backdrop-filter: saturate(180%) blur(1em);
+    //background: linear-gradient(90deg, rgba(247,149,51,0.101961) 0, rgba(243,112,85,0.101961) 15%, rgba(239,78,123,0.101961) 30%, rgba(161,102,171,0.101961) 44%, rgba(80,115,184,0.101961) 58%, rgba(16,152,173,0.101961) 72%, rgba(7,179,155,0.101961) 86%, rgba(109,186,130,0.101961) 100%);
+    position:fixed;
+    z-index: 1;
+    top:0px;
+    width:100%;
+}
+.content {
+    padding: 120px 24px 0 24px;
+}
+
+// 进度条
+.reading-progress-bar {
+    position:fixed;
+    z-index: 9001;
+}
+
+// 站点名横线设置
+.brand:hover {
+    .logo-line-before i, .logo-line-after i {
+        background: rgb(79, 148, 205) !important;
+    } 
+}
+
+// 设置menu
+.menu .menu-item a {
+    font-weight: bold;
+}
+.menu-item-active a, .menu .menu-item a:hover, .menu .menu-item span.exturl:hover{
+    background: #ddd;
+    font-weight: bold;
+    background-color: rgb(79, 148, 205);
+    color: #fff !important;
+}
+.menu .menu-item .badge {
+    display: none !important;
+}
+
+// 固定GitHub角标
+.github-corner svg {
+    position: fixed !important;
+    z-index: 9000 !important;
+}
+
+// 设置图片阴影
+.post-body iframe, .post-body img, .post-body video {
+    margin-top: 20px;
+    margin-bottom: 20px;
+    box-shadow: 0px 0px 10px 0px rgba(0, 0, 0, 0.35);
+}
+
+// 设置相册
+.post-body .image-caption, .post-body .figure .caption {
+    color: #999;
+    font-size: 0.875em;
+    font-weight: bold;
+    line-height: 1;
+    margin: -10px auto 10px;
+    text-align: center;
+}
+
+// 以下为移动端样式
+// 移动端左上角菜单按钮
+.site-nav-toggle {
+    top: 35px;
+    left: 10px;
+}
+.btn-bar {
+    background-color: rgb(255, 255, 255);
+}
+@media (max-width: 767px) {
+    .menu {
+        text-align: center;
+        box-shadow: 0px 5px 10px 0px rgba(0, 0, 0, 0.5);
+        padding: 10px 10px 10px 10px;
+    }
+    .site-nav {
+        top: initial;
+        background-color: rgba(255, 255, 255, 0.75);
+        border-top: none;
+        border-bottom: none;
+        position: relative;
+        z-index: 1024;
+    }
+    // 移动端不显示GitHub角标
+    .github-corner svg {
+        display: none;
+    }
+}
+// 移动端顶部
+@media (max-width: 767px) {
+    .site-subtitle{
+        letter-spacing: 0px !important;
+        padding-bottom: 0px !important;
+    }
+    .menu .menu-item {
+        margin: 0px 10px !important;
+    }
+    .header {
+        background: linear-gradient(90deg, rgba(247,149,51,1) 0, rgba(243,112,85,1) 15%, rgba(239,78,123,1) 30%, rgba(161,102,171,1) 44%, rgba(80,115,184,1) 58%, rgba(16,152,173,1) 72%, rgba(7,179,155,1) 86%, rgba(109,186,130,1) 100%);
+    }
+}
+// 移动端样式
+@media (max-width: 767px) {
+    // 归档页
+    .posts-collapse {
+		padding: 16px 15px 8px 15px;
+		margin: 0;
+		.post-title a {
+		    font-size: 1em;
+            text-align: center !important;
+		}
+		.post-meta {
+		    font-size: 1em;
+		}
+	}
+	// 消除页边空白
+	.posts-expand {
+        margin: 0px;
+    }
+	.post-body {
+        padding: 20px 15px;
+    }
+	.posts-expand .post-title {
+        padding: 45px 15px 12px;
+        text-align: center !important;
+    }
+    .content{
+        padding-top: 100px;
+        padding-left: 0;
+        padding-right: 0;
+    }
+	// 页面下部空白
+	.main-inner {
+        padding-bottom: 35px;
+    }
+	// 页码
+	.pagination {
+        margin-top: 48px;
+    }
+	// 文章标题
+	.posts-expand .post-title {
+        font-size: 24px;
+        text-align: center !important;
+    }
+	// 字体大小
+	.post-body {
+        font-size: 16px !important;
+    }
+	.post-copyright {
+	    font-size: 14px;
+    }
+    // 设置相册
+    .post-body .image-caption, .post-body .figure .caption {
+        text-align: center !important;
+    }
+}
