@@ -1,11 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <search>
   <entry>
-    <title>test editor</title>
-    <url>/2023/04/25/test-editor/</url>
-    <content><![CDATA[<h1 id="Hexo-Editor"><a href="#Hexo-Editor" class="headerlink" title="Hexo Editor"></a>Hexo Editor</h1><figure class="highlight shell"><table><tr><td class="code"><pre><span class="line">sudo apt update</span><br></pre></td></tr></table></figure>]]></content>
-  </entry>
-  <entry>
     <title>Blog-Hexo</title>
     <url>/2023/04/25/Blog-Hexo/</url>
     <content><![CDATA[<h1 id="1-Hexo-搭建"><a href="#1-Hexo-搭建" class="headerlink" title="1 Hexo 搭建"></a>1 Hexo 搭建</h1><h2 id="1-1-Macbook-ClashX-终端代理"><a href="#1-1-Macbook-ClashX-终端代理" class="headerlink" title="1.1 Macbook ClashX 终端代理"></a>1.1 Macbook ClashX 终端代理</h2><figure class="highlight shell"><table><tr><td class="code"><pre><span class="line">export https_proxy=http://127.0.0.1:7890 http_proxy=http://127.0.0.1:7890 all_proxy=socks5://127.0.0.1:7890</span><br></pre></td></tr></table></figure>
@@ -116,6 +111,11 @@
       <tags>
         <tag>Hexo</tag>
       </tags>
+  </entry>
+  <entry>
+    <title>test editor</title>
+    <url>/2023/04/25/test-editor/</url>
+    <content><![CDATA[<h1 id="Hexo-Editor"><a href="#Hexo-Editor" class="headerlink" title="Hexo Editor"></a>Hexo Editor</h1><figure class="highlight shell"><table><tr><td class="code"><pre><span class="line">sudo apt update</span><br></pre></td></tr></table></figure>]]></content>
   </entry>
   <entry>
     <title>Hello World</title>
