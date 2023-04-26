@@ -63,14 +63,32 @@
 
 
 
-<h2 id="2-2-Favicon"><a href="#2-2-Favicon" class="headerlink" title="2.2 Favicon"></a>2.2 Favicon</h2><p>自定义站点标签栏小图标，默认使用 Hexo 小图标，可以上传图片定制小图标</p>
+<h2 id="2-2-Favicon"><a href="#2-2-Favicon" class="headerlink" title="2.2 Favicon"></a>2.2 Favicon</h2><p>自定义站点标签栏小图标，默认使用 Hexo 小图标，可以上传图片定制小图标，下载图标保存在 themes&#x2F;next&#x2F;source&#x2F;images 目录下</p>
 <figure class="highlight yaml"><table><tr><td class="code"><pre><span class="line"><span class="attr">favicon:</span></span><br><span class="line">  <span class="attr">small:</span> <span class="string">/images/favicon-16x16.png</span></span><br><span class="line">  <span class="attr">medium:</span> <span class="string">/images/favicon-32x32.png</span></span><br><span class="line">  <span class="attr">apple_touch_icon:</span> <span class="string">/images/apple-touch-icon.png</span></span><br><span class="line">  <span class="attr">safari_pinned_tab:</span> <span class="string">/images/logo.svg</span></span><br><span class="line">  <span class="comment"># android_manifest: /images/manifest.json</span></span><br><span class="line">  <span class="comment"># ms_browserconfig: /images/browserconfig.xml</span></span><br></pre></td></tr></table></figure>
 
 
 
+<h2 id="2-3-Code"><a href="#2-3-Code" class="headerlink" title="2.3 Code"></a>2.3 Code</h2><p>更改代码块的颜色为黑色，并把复制按钮的样式改为类似 Mac 的样式，修改 _config.yml 文件</p>
+<figure class="highlight yaml"><table><tr><td class="code"><pre><span class="line"><span class="attr">codeblock:</span></span><br><span class="line">  <span class="comment"># Code Highlight theme</span></span><br><span class="line">  <span class="comment"># Available values: normal | night | night eighties | night blue | night bright | solarized | solarized dark | galactic</span></span><br><span class="line">  <span class="comment"># See: https://github.com/chriskempson/tomorrow-theme</span></span><br><span class="line">  <span class="attr">highlight_theme:</span> <span class="string">night</span> <span class="string">bright</span></span><br><span class="line">  <span class="comment"># Add copy button on codeblock</span></span><br><span class="line">  <span class="attr">copy_button:</span></span><br><span class="line">    <span class="attr">enable:</span> <span class="literal">true</span></span><br><span class="line">    <span class="comment"># Show text copy result.</span></span><br><span class="line">    <span class="attr">show_result:</span> <span class="literal">true</span></span><br><span class="line">    <span class="comment"># Available values: default | flat | mac</span></span><br><span class="line">    <span class="attr">style:</span> <span class="string">mac</span></span><br></pre></td></tr></table></figure>
 
 
-<h1 id=""><a href="#" class="headerlink" title=""></a></h1><h1 id="3-Hexo-插件记录"><a href="#3-Hexo-插件记录" class="headerlink" title="3 Hexo 插件记录"></a>3 Hexo 插件记录</h1><h2 id="3-1"><a href="#3-1" class="headerlink" title="3.1"></a>3.1</h2><h2 id="3-2"><a href="#3-2" class="headerlink" title="3.2"></a>3.2</h2><h2 id="3-3"><a href="#3-3" class="headerlink" title="3.3"></a>3.3</h2><h2 id="3-4-代码高亮"><a href="#3-4-代码高亮" class="headerlink" title="3.4 代码高亮"></a>3.4 代码高亮</h2><h2 id="参考"><a href="#参考" class="headerlink" title="参考"></a>参考</h2><ol>
+
+<h2 id="2-4-top"><a href="#2-4-top" class="headerlink" title="2.4 top"></a>2.4 top</h2><p>浏览网页时，快速返回到网站上端，修改 _config.yml 的 back2top 字段</p>
+<figure class="highlight yaml"><table><tr><td class="code"><pre><span class="line"><span class="attr">back2top:</span></span><br><span class="line">  <span class="attr">enable:</span> <span class="literal">true</span></span><br><span class="line">  <span class="comment"># Back to top in sidebar.</span></span><br><span class="line">  <span class="attr">sidebar:</span> <span class="literal">true</span></span><br><span class="line">  <span class="comment"># Scroll percent label in b2t button.</span></span><br><span class="line">  <span class="attr">scrollpercent:</span> <span class="literal">true</span></span><br></pre></td></tr></table></figure>
+
+
+
+
+
+
+
+
+
+
+
+
+
+<h1 id="3-Hexo-插件记录"><a href="#3-Hexo-插件记录" class="headerlink" title="3 Hexo 插件记录"></a>3 Hexo 插件记录</h1><h2 id="3-1"><a href="#3-1" class="headerlink" title="3.1"></a>3.1</h2><h2 id="3-2"><a href="#3-2" class="headerlink" title="3.2"></a>3.2</h2><h2 id="3-3"><a href="#3-3" class="headerlink" title="3.3"></a>3.3</h2><h2 id="3-4-代码高亮"><a href="#3-4-代码高亮" class="headerlink" title="3.4 代码高亮"></a>3.4 代码高亮</h2><h2 id="参考"><a href="#参考" class="headerlink" title="参考"></a>参考</h2><ol>
 <li><a href="https://zhuanlan.zhihu.com/p/371995929">如何在 GitHub 上写博客？ - 知乎 (zhihu.com)</a></li>
 <li><a href="https://www.glwsq.cn/post/hexo-plugins/">hexo插件推荐 - 给力经验分享 (glwsq.cn)</a></li>
 <li></li>
