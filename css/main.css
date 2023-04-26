@@ -1304,7 +1304,7 @@ pre .javascript .function {
 }
 .links-of-author a::before,
 .links-of-author span.exturl::before {
-  background: #ff0ec9;
+  background: #262b67;
   border-radius: 50%;
   content: ' ';
   display: inline-block;
@@ -1454,7 +1454,7 @@ pre .javascript .function {
   white-space: nowrap;
 }
 .post-toc .nav .nav-child {
-  display: none;
+  display: block;
 }
 .post-toc .nav .active > .nav-child {
   display: block;
