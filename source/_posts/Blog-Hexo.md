@@ -1,5 +1,5 @@
 ---
-title: Blog-Hexo
+title: Blog Hexo
 date: 2023-04-25 16:03:43
 tags: 
 - Hexo
@@ -148,6 +148,57 @@ git commit -m "init blog"  # 将暂存区内容添加到本地仓库，并添加
 git remote add origin git@github.com:wzq11011/wzq11011.github.io.git  # 创建远程仓库 origin
 git push origin hexo  # 推送代码到 hexo 分支
 ```
+
+
+
+报错：这是因为在 themes 文件夹下使用 git 命令拉取的 next 主题，关联了其他作者的 git 仓库，所以 next 文件夹下的内容会无法提交到远程仓库，报错信息提示是否将其作为子模块提交，这里提供不作为子模块提交的解决办法。
+
+```shell
+hint: You've added another git repository inside your current repository.
+hint: Clones of the outer repository will not contain the contents of
+hint: the embedded repository and will not know how to obtain it.
+hint: If you meant to add a submodule, use:
+hint: 
+hint: 	git submodule add <url> themes/next
+hint: 
+hint: If you added this path by mistake, you can remove it from the
+hint: index with:
+hint: 
+hint: 	git rm --cached themes/next
+hint: 
+hint: See "git help submodule" for more information.
+```
+
+
+
+解决办法：
+
+```shell
+# 从暂存区删除该文件夹
+git rm --cached themes/next
+
+# 查看当前状态
+git status
+
+# 删除 next 文件夹下 .git 文件夹
+cd themes/next
+rm -rf .git
+
+# 重新添加 next 文件夹到缓存区
+git add themes/next/
+
+# 
+git commit -m "add next"
+
+# 推送代码到远程仓库
+git push origin hexo
+```
+
+
+
+
+
+
 
 
 
