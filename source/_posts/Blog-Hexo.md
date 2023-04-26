@@ -230,7 +230,7 @@ git config --global user.name "your name"
 git config --global user.email "your email"
 
 # 3 生成密钥
-ssh-keygen -t rsa -C
+ssh-keygen -t rsa -C "your email"
 
 # 4 将 rsa.pub 公钥内容添加到 github 
 
