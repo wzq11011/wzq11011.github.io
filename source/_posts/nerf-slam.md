@@ -2,6 +2,7 @@
 title: nerf-slam
 date: 2023-04-27 16:15:57
 tags:slam
+Categories: slam
 ---
 
 
