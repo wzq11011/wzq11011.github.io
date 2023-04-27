@@ -1,6 +1,5 @@
 # 新建博客
-hexo new "new post"
-
+# hexo new "new post"
 
 hexo clean
 
