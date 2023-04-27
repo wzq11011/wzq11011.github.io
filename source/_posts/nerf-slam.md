@@ -15,9 +15,7 @@ Categories: slam
 
 ## 1 配置环境
 
-
-
-## 1.1 Ubuntu Clash 终端代理
+### 1.1 Ubuntu Clash 终端代理
 
 clash 选择节点并调整为 global 模式，在 ~/.bashrc 中添加以下内容
 
@@ -38,9 +36,7 @@ curl cip.cc
 # 显示香港的节点，则代表成功
 ```
 
-
-
-## 1.2 Install nerf-slam
+### 1.2 Install nerf-slam
 
 项目地址：[ToniRV/NeRF-SLAM: NeRF-SLAM: Real-Time Dense Monocular SLAM with Neural Radiance Fields. https://arxiv.org/abs/2210.13641 + Sigma-Fusion: Probabilistic Volumetric Fusion for Dense Monocular SLAM https://arxiv.org/abs/2210.01276 (github.com)](https://github.com/ToniRV/NeRF-SLAM)
 
@@ -50,6 +46,8 @@ curl cip.cc
 git clone https://github.com/ToniRV/NeRF-SLAM.git --recurse-submodules
 git submodule update --init --recursive
 ```
+
+
 
 使用 conda 创建一个虚拟环境，防止污染其他环境
 
@@ -76,7 +74,9 @@ pip install -r requirements.txt
 pip install -r ./thirdparty/gtsam/python/requirements.txt
 ```
 
-编译 ngp （cmake 版本需要大于 3.22）
+### 1.3 编译 ngp 
+
+官方教程：（cmake 版本需要大于 3.22）
 
 ```shell
 sudo apt install cmake
@@ -84,7 +84,40 @@ cmake ./thirdparty/instant-ngp -B build_ngp
 cmake --build build_ngp --config RelWithDebInfo -j
 ```
 
-编译 gtsam
+实操：
+
+```shell
+# nerf-slam 环境下，安装最新版 cmake
+conda install cmake
+
+# NeRF-SLAM 目录下
+mkdir build_ngp && cd build_ngp
+
+# 编译 ngp
+cmake ../thirdparty/instant-ngp
+
+# 报错 1：randr headers not found;install libxrandr
+sudo apt install libxrandr-dev
+
+# 报错 2：Xinerama headers not found; install libxinerama development package
+sudo apt install libxinerama-dev
+
+# 报错 3：Xcursor headers not found; install libxcursor development package
+sudo apt install libxcursor-dev
+
+# 报错 4：Could NOT find GLEW (missing: GLEW_INCLUDE_DIRS GLEW_LIBRARIES)
+sudo apt install libglew-dev
+
+# 到这一步基本没问题了
+cd ..
+cmake --build build_ngp --config RelWithDebInfo -j
+```
+
+
+
+### 1.4 编译 gtsam
+
+官方教程：
 
 ```shell
 cmake ./thirdparty/gtsam -DGTSAM_BUILD_PYTHON=1 -B build_gtsam 
@@ -101,7 +134,51 @@ python setup.py install
 
 
 
-## 1.3 下载样本数据集
+实操：
+
+```shell
+# 创建编译目录
+mkdir build_gtsam && cd build_gtsam
+
+# 编译 gtsam
+cmake ../thirdparty/gtsam -DGTSAM_BUILD_PYTHON=1
+
+# 报错 1：Missing required Boost components >= v1.65, please install/upgrade Boost or configure your search paths.
+# 解决方式 1： 创建 software，下载 boost 1.65.1 压缩包，解压编译安装
+cd ..
+mkdir software && cd software
+wget https://boostorg.jfrog.io/artifactory/main/release/1.65.1/source/boost_1_65_1.tar.gz
+
+# 解决方法 2：直接使用 apt 命令安装
+conda install boost
+
+cmake --build build_gtsam --config RelWithDebInfo -j
+
+# 报错 ：ModuleNotFoundError: No module named 'pyparsing'
+conda install pyparsing
+
+
+# gtsam 安装 （gtsam > 4.0.3）
+cd software
+wget https://github.com/borglab/gtsam/archive/refs/tags/4.1.0.tar.gz
+tar -xzvf 4.1.0.tar.gz
+cd 4.1.0
+mkdir build && cd build
+
+# 编译，加入参数无TBB编译
+cmake .. -DGTSAM_BUILD_PYTHON=1 -DGTSAM_PYTHON_VERSION=3.10.11 -DGTSAM_WITH_TBB=OFF
+
+make python-intall
+
+cd build_gtsam
+make python-install
+```
+
+
+
+
+
+### 1.5 下载样本数据集
 
 ```shell
 # 下载数据集
@@ -115,7 +192,7 @@ python ./examples/slam_demo.py --dataset_dir=./datasets/Replica/office0 --datase
 
 
 
-## 1.4 监控 GPU
+### 1.6 监控 GPU
 
 
 
