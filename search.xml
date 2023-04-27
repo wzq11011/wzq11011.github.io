@@ -1,6 +1,19 @@
 <?xml version="1.0" encoding="utf-8"?>
 <search>
   <entry>
+    <title>3D Reconstruction</title>
+    <url>/2023/04/25/3D-Reconstruction/</url>
+    <content><![CDATA[<h1 id="1-Urban-Scene-Semantic-Segmentation"><a href="#1-Urban-Scene-Semantic-Segmentation" class="headerlink" title="1 Urban-Scene-Semantic-Segmentation"></a>1 Urban-Scene-Semantic-Segmentation</h1><figure class="highlight shell"><table><tr><td class="code"><pre><span class="line">sudo apt update</span><br></pre></td></tr></table></figure>
+
+
+
+
+
+
+
+<h1 id="2-COLMAP"><a href="#2-COLMAP" class="headerlink" title="2 COLMAP"></a>2 COLMAP</h1>]]></content>
+  </entry>
+  <entry>
     <title>Blog Hexo</title>
     <url>/2023/04/25/Blog-Hexo/</url>
     <content><![CDATA[<h1 id="1-Hexo-搭建"><a href="#1-Hexo-搭建" class="headerlink" title="1 Hexo 搭建"></a>1 Hexo 搭建</h1><h2 id="1-1-Macbook-ClashX-终端代理"><a href="#1-1-Macbook-ClashX-终端代理" class="headerlink" title="1.1 Macbook ClashX 终端代理"></a>1.1 Macbook ClashX 终端代理</h2><figure class="highlight shell"><table><tr><td class="code"><pre><span class="line">export https_proxy=http://127.0.0.1:7890 http_proxy=http://127.0.0.1:7890 all_proxy=socks5://127.0.0.1:7890</span><br></pre></td></tr></table></figure>
@@ -63,7 +76,7 @@
 <p>如果在同步仓库时出现权限不足的问题，需要将本机公钥添加到 github 中</p>
 <p>问题描述：</p>
 <blockquote>
-<p><a href="mailto:&#103;&#105;&#116;&#64;&#x67;&#x69;&#x74;&#x68;&#117;&#98;&#x2e;&#x63;&#x6f;&#109;">&#103;&#105;&#116;&#64;&#x67;&#x69;&#x74;&#x68;&#117;&#98;&#x2e;&#x63;&#x6f;&#109;</a>: Permission denied (publickey)</p>
+<p><a href="mailto:&#x67;&#x69;&#116;&#64;&#103;&#105;&#116;&#104;&#x75;&#x62;&#46;&#x63;&#111;&#x6d;">&#x67;&#x69;&#116;&#64;&#103;&#105;&#116;&#104;&#x75;&#x62;&#46;&#x63;&#111;&#x6d;</a>: Permission denied (publickey)</p>
 </blockquote>
 <p>解决方法：</p>
 <figure class="highlight shell"><table><tr><td class="code"><pre><span class="line"><span class="meta prompt_"># </span><span class="language-bash">1 验证邮箱与 github 注册邮箱是否一致</span></span><br><span class="line">git config --global --list</span><br><span class="line"><span class="meta prompt_"></span></span><br><span class="line"><span class="meta prompt_"># </span><span class="language-bash">2 设置全局用户名和邮箱</span></span><br><span class="line">git config --global user.name &quot;your name&quot;</span><br><span class="line">git config --global user.email &quot;your email&quot;</span><br><span class="line"><span class="meta prompt_"></span></span><br><span class="line"><span class="meta prompt_"># </span><span class="language-bash">3 生成密钥</span></span><br><span class="line">ssh-keygen -t rsa -C &quot;your email&quot;</span><br><span class="line"><span class="meta prompt_"></span></span><br><span class="line"><span class="meta prompt_"># </span><span class="language-bash">4 将 rsa.pub 公钥内容添加到 github</span> </span><br><span class="line"><span class="meta prompt_"></span></span><br><span class="line"><span class="meta prompt_"># </span><span class="language-bash">5 测试</span></span><br><span class="line">ssh -T git@github.com</span><br></pre></td></tr></table></figure>
@@ -179,6 +192,16 @@
     <content><![CDATA[]]></content>
   </entry>
   <entry>
+    <title>new post</title>
+    <url>/2023/04/27/new-post-2/</url>
+    <content><![CDATA[]]></content>
+  </entry>
+  <entry>
+    <title>new post</title>
+    <url>/2023/04/26/new-post/</url>
+    <content><![CDATA[]]></content>
+  </entry>
+  <entry>
     <title>Common Commands Record</title>
     <url>/2023/04/26/%E5%B8%B8%E7%94%A8%E5%91%BD%E4%BB%A4%E8%AE%B0%E5%BD%95/</url>
     <content><![CDATA[<h1 id="1-压缩、解压"><a href="#1-压缩、解压" class="headerlink" title="1 压缩、解压"></a>1 压缩、解压</h1><blockquote>
@@ -215,23 +238,5 @@
       <tags>
         <tag>Linux</tag>
       </tags>
-  </entry>
-  <entry>
-    <title>new post</title>
-    <url>/2023/04/26/new-post/</url>
-    <content><![CDATA[]]></content>
-  </entry>
-  <entry>
-    <title>3D Reconstruction</title>
-    <url>/2023/04/25/3D-Reconstruction/</url>
-    <content><![CDATA[<h1 id="1-Urban-Scene-Semantic-Segmentation"><a href="#1-Urban-Scene-Semantic-Segmentation" class="headerlink" title="1 Urban-Scene-Semantic-Segmentation"></a>1 Urban-Scene-Semantic-Segmentation</h1><figure class="highlight shell"><table><tr><td class="code"><pre><span class="line">sudo apt update</span><br></pre></td></tr></table></figure>
-
-
-
-
-
-
-
-<h1 id="2-COLMAP"><a href="#2-COLMAP" class="headerlink" title="2 COLMAP"></a>2 COLMAP</h1>]]></content>
   </entry>
 </search>
