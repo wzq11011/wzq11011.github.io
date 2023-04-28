@@ -154,25 +154,57 @@ conda install boost
 
 cmake --build build_gtsam --config RelWithDebInfo -j
 
+
 # 报错 ：ModuleNotFoundError: No module named 'pyparsing'
 conda install pyparsing
+
+# 报错：
+# 解决：https://github.com/ToniRV/NeRF-SLAM/issues/23
 
 
 # gtsam 安装 （gtsam > 4.0.3）
 cd software
 wget https://github.com/borglab/gtsam/archive/refs/tags/4.1.0.tar.gz
 tar -xzvf 4.1.0.tar.gz
-cd 4.1.0
+cd gtsam-4.1.0
 mkdir build && cd build
 
 # 编译，加入参数无TBB编译
 cmake .. -DGTSAM_BUILD_PYTHON=1 -DGTSAM_PYTHON_VERSION=3.10.11 -DGTSAM_WITH_TBB=OFF
 
-make python-intall
-
-cd build_gtsam
 make python-install
+
 ```
+
+
+
+Install:
+
+```shell
+python setup.py install
+```
+
+
+
+增加虚拟内存
+
+```shell
+# bs 单位：1024*1024*1024=1073741824
+sudo dd if=/dev/zero of=swapfile bs=1024 count=96000000
+sudo dd if=/dev/zero of=swapfile bs=1073741824 count=48
+
+# 把空间格式化为 swap 
+sudo mkswap /swapfile
+
+# 使用创建的 swap 空间
+chmod 0600 /swapfile
+sudo swapon /swapfile
+
+# 释放空间
+swapoff -a
+```
+
+
 
 
 
@@ -186,6 +218,10 @@ make python-install
 
 # 执行命令
 python ./examples/slam_demo.py --dataset_dir=./datasets/Replica/office0 --dataset_name=nerf --buffer=100 --slam --parallel_run --img_stride=2 --fusion='nerf' --multi_gpu --gui
+
+# 报错：AttributeError: type object 'gtsam.gtsam.Pose3' has no attribute 'identity'. Did you mean: 'Identity'?
+
+
 ```
 
 也可以更改参数 `--fusion='sigma'` 来运行实现 Sigma-Fusion ，论文地址：https://arxiv.org/abs/2210.01276
@@ -198,11 +234,97 @@ python ./examples/slam_demo.py --dataset_dir=./datasets/Replica/office0 --datase
 
 
 
+# 2 [jrpowers](https://github.com/jrpowers)/**[NeRF-SLAM](https://github.com/jrpowers/NeRF-SLAM)**
 
 
 
+## 2.1 Install
+
+[jrpowers/NeRF-SLAM: Real-Time Dense Monocular SLAM with Neural Radiance Fields. https://arxiv.org/abs/2210.13641 + Sigma-Fusion: Probabilistic Volumetric Fusion for Dense Monocular SLAM https://arxiv.org/abs/2210.01276 (github.com)](https://github.com/jrpowers/NeRF-SLAM)
+
+Clone repo with submodules:
+
+```shell
+git clone https://github.com/jrpowers/NeRF-SLAM.git --recurse-submodules
+git submodule update --init --recursive
+cd thirdparty/instant-ngp/ && git checkout feature/nerf_slam
+```
 
 
+
+## 2.2 Install CUDA 11.7 and Pytorch
+
+Use a virtual environment
+
+```shell
+conda create -n nerf-slam
+conda activate nerf-slam
+
+# CUDA
+conda install -c "nvidia/label/cuda-11.7.0" cuda-toolkit
+
+# pytorch
+conda install python==3.7
+pip install torch==1.13.1+cu117 torchvision==0.14.1+cu117 --extra-index-url https://download.pytorch.org/whl/cu117
+```
+
+
+
+## 2.3 Pip install requirements
+
+```shell
+pip install -r requirements.txt
+pip install -r ./thirdparty/gtsam/python/requirements.txt
+```
+
+
+
+## 2.4 Compile ngp(cmake>3.22)
+
+```shell
+# 原版ngp会报错，该分支解决问题
+cd thirdparty/instant-ngp/ && git checkout feature/nerf_slam
+
+# NeRF-SLAM 目录下
+mkdir build_ngp && cd build_ngp
+
+# 编译 ngp
+cmake ../thirdparty/instant-ngp
+cd ..
+cmake --build build_ngp --config RelWithDebInfo -j
+```
+
+
+
+## 2.5 Compile gtsam and enable the python wrapper
+
+```shell
+# 创建编译目录
+mkdir build_gtsam && cd build_gtsam
+
+# 编译 gtsam
+cmake ../thirdparty/gtsam -DGTSAM_BUILD_PYTHON=1
+cd ..
+cmake --build build_gtsam --config RelWithDebInfo -j
+cd build_gtsam
+make python-install
+```
+
+
+
+## 2.6 Run
+
+```shell
+# Install
+python setup.py install
+
+# Download Sample Data
+./scripts/download_replica_sample.bash
+
+# run the command or run.sh
+python ./examples/slam_demo.py --dataset_dir=./datasets/Replica/office0 --dataset_name=nerf --buffer=100 --slam --parallel_run --img_stride=2 --fusion='nerf' --multi_gpu --gui
+./run.sh
+```
 
 
 
