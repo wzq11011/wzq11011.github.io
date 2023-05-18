@@ -1,5 +1,5 @@
 ---
-title: VOLDOR
+title: voldor-imu
 date: 2023-04-25 17:56:33
 tags: voldor
 Categories:

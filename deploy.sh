@@ -15,4 +15,4 @@ git commit -m "update"
 git push origin hexo
 
 # 
-hexo s
+# hexo s
