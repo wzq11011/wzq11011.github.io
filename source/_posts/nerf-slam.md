@@ -232,7 +232,7 @@ python ./examples/slam_demo.py --dataset_dir=./datasets/Replica/office0 --datase
 
 
 
-
+> 如果以上配置仍然出现问题，可按对应问题在 Issues 里面寻找解决方案，或者也可以尝试后面第二节给出的配置流程（亲测：Titan X 显存不足，A6000 可以跑）
 
 # 2 [jrpowers](https://github.com/jrpowers)/**[NeRF-SLAM](https://github.com/jrpowers/NeRF-SLAM)**
 
