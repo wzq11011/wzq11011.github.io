@@ -265,6 +265,24 @@ Docker中国区官方镜像：https://registry.docker-cn.com
 
 原文链接：https://blog.csdn.net/m0_37282062/article/details/115770314
 
+### 1.3.1 docker 换源及存储位置
+
+### 1.3.2 打包发布镜像
+
+```bash
+docker commit 07da voldor-imu:v1
+
+# tag
+docker tag voldor-imu:v1 wzq11011/voldor-imu:v1
+
+# push
+docker push wzq11011/voldor-imu:v1
+```
+
+
+
+
+
 退出容器但不关闭容器：ctrl+p+q
 
 vscode 修改文件提示没有权限，修改文件所有者
@@ -378,6 +396,12 @@ pip install opencv-contrib-python==4.7.0.72
 ```
 
 参考：https://blog.csdn.net/qq_46018888/article/details/121430749
+
+
+
+
+
+
 
 # 3 论文
 
