@@ -76,7 +76,7 @@
 <p>如果在同步仓库时出现权限不足的问题，需要将本机公钥添加到 github 中</p>
 <p>问题描述：</p>
 <blockquote>
-<p><a href="mailto:&#x67;&#105;&#116;&#64;&#103;&#105;&#116;&#104;&#x75;&#x62;&#x2e;&#99;&#x6f;&#109;">&#x67;&#105;&#116;&#64;&#103;&#105;&#116;&#104;&#x75;&#x62;&#x2e;&#99;&#x6f;&#109;</a>: Permission denied (publickey)</p>
+<p><a href="mailto:&#103;&#x69;&#x74;&#x40;&#x67;&#105;&#116;&#104;&#x75;&#98;&#46;&#x63;&#x6f;&#109;">&#103;&#x69;&#x74;&#x40;&#x67;&#105;&#116;&#104;&#x75;&#98;&#46;&#x63;&#x6f;&#109;</a>: Permission denied (publickey)</p>
 </blockquote>
 <p>解决方法：</p>
 <figure class="highlight shell"><table><tr><td class="code"><pre><span class="line"><span class="meta prompt_"># </span><span class="language-bash">1 验证邮箱与 github 注册邮箱是否一致</span></span><br><span class="line">git config --global --list</span><br><span class="line"><span class="meta prompt_"></span></span><br><span class="line"><span class="meta prompt_"># </span><span class="language-bash">2 设置全局用户名和邮箱</span></span><br><span class="line">git config --global user.name &quot;your name&quot;</span><br><span class="line">git config --global user.email &quot;your email&quot;</span><br><span class="line"><span class="meta prompt_"></span></span><br><span class="line"><span class="meta prompt_"># </span><span class="language-bash">3 生成密钥</span></span><br><span class="line">ssh-keygen -t rsa -C &quot;your email&quot;</span><br><span class="line"><span class="meta prompt_"></span></span><br><span class="line"><span class="meta prompt_"># </span><span class="language-bash">4 将 rsa.pub 公钥内容添加到 github</span> </span><br><span class="line"><span class="meta prompt_"></span></span><br><span class="line"><span class="meta prompt_"># </span><span class="language-bash">5 测试</span></span><br><span class="line">ssh -T git@github.com</span><br></pre></td></tr></table></figure>
@@ -291,6 +291,15 @@
       </tags>
   </entry>
   <entry>
+    <title>leetcode</title>
+    <url>/2023/07/13/leetcode/</url>
+    <content><![CDATA[<h1 id="代码随想录"><a href="#代码随想录" class="headerlink" title="代码随想录"></a>代码随想录</h1><p>地址：<a href="https://programmercarl.com/">https://programmercarl.com/</a></p>
+<h2 id="1-算法性能分析"><a href="#1-算法性能分析" class="headerlink" title="1 算法性能分析"></a>1 算法性能分析</h2><h3 id="1-1-时间复杂度"><a href="#1-1-时间复杂度" class="headerlink" title="1.1 时间复杂度"></a>1.1 时间复杂度</h3><h2 id="2-数组"><a href="#2-数组" class="headerlink" title="2 数组"></a>2 数组</h2><h2 id="3-链表"><a href="#3-链表" class="headerlink" title="3 链表"></a>3 链表</h2><h2 id="4-哈希表"><a href="#4-哈希表" class="headerlink" title="4 哈希表"></a>4 哈希表</h2><h2 id="5-字符串"><a href="#5-字符串" class="headerlink" title="5 字符串"></a>5 字符串</h2><h2 id="6-双指针法"><a href="#6-双指针法" class="headerlink" title="6 双指针法"></a>6 双指针法</h2><h2 id="7-栈与队列"><a href="#7-栈与队列" class="headerlink" title="7 栈与队列"></a>7 栈与队列</h2><h2 id="8-二叉树"><a href="#8-二叉树" class="headerlink" title="8 二叉树"></a>8 二叉树</h2><h2 id="9-回溯算法"><a href="#9-回溯算法" class="headerlink" title="9 回溯算法"></a>9 回溯算法</h2><h2 id="10-贪心算法"><a href="#10-贪心算法" class="headerlink" title="10 贪心算法"></a>10 贪心算法</h2><h2 id="11-动态规划"><a href="#11-动态规划" class="headerlink" title="11 动态规划"></a>11 动态规划</h2><h2 id="12-单调栈"><a href="#12-单调栈" class="headerlink" title="12 单调栈"></a>12 单调栈</h2><h2 id="13-额外题目"><a href="#13-额外题目" class="headerlink" title="13 额外题目"></a>13 额外题目</h2>]]></content>
+      <tags>
+        <tag>leetcode</tag>
+      </tags>
+  </entry>
+  <entry>
     <title>Hello World</title>
     <url>/2023/04/25/hello-world/</url>
     <content><![CDATA[<p>Welcome to <a href="https://hexo.io/">Hexo</a>! This is your very first post. Check <a href="https://hexo.io/docs/">documentation</a> for more info. If you get any problems when using Hexo, you can find the answer in <a href="https://hexo.io/docs/troubleshooting.html">troubleshooting</a> or you can ask me on <a href="https://github.com/hexojs/hexo/issues">GitHub</a>.</p>
@@ -408,15 +417,6 @@
 ]]></content>
       <tags>
         <tag>slam</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>leetcode</title>
-    <url>/2023/07/13/leetcode/</url>
-    <content><![CDATA[<h1 id="代码随想录"><a href="#代码随想录" class="headerlink" title="代码随想录"></a>代码随想录</h1><p>地址：<a href="https://programmercarl.com/">https://programmercarl.com/</a></p>
-<h2 id="1-算法性能分析"><a href="#1-算法性能分析" class="headerlink" title="1 算法性能分析"></a>1 算法性能分析</h2><h3 id="1-1-时间复杂度"><a href="#1-1-时间复杂度" class="headerlink" title="1.1 时间复杂度"></a>1.1 时间复杂度</h3><h2 id="2-数组"><a href="#2-数组" class="headerlink" title="2 数组"></a>2 数组</h2><h2 id="3-链表"><a href="#3-链表" class="headerlink" title="3 链表"></a>3 链表</h2><h2 id="4-哈希表"><a href="#4-哈希表" class="headerlink" title="4 哈希表"></a>4 哈希表</h2><h2 id="5-字符串"><a href="#5-字符串" class="headerlink" title="5 字符串"></a>5 字符串</h2><h2 id="6-双指针法"><a href="#6-双指针法" class="headerlink" title="6 双指针法"></a>6 双指针法</h2><h2 id="7-栈与队列"><a href="#7-栈与队列" class="headerlink" title="7 栈与队列"></a>7 栈与队列</h2><h2 id="8-二叉树"><a href="#8-二叉树" class="headerlink" title="8 二叉树"></a>8 二叉树</h2><h2 id="9-回溯算法"><a href="#9-回溯算法" class="headerlink" title="9 回溯算法"></a>9 回溯算法</h2><h2 id="10-贪心算法"><a href="#10-贪心算法" class="headerlink" title="10 贪心算法"></a>10 贪心算法</h2><h2 id="11-动态规划"><a href="#11-动态规划" class="headerlink" title="11 动态规划"></a>11 动态规划</h2><h2 id="12-单调栈"><a href="#12-单调栈" class="headerlink" title="12 单调栈"></a>12 单调栈</h2><h2 id="13-额外题目"><a href="#13-额外题目" class="headerlink" title="13 额外题目"></a>13 额外题目</h2>]]></content>
-      <tags>
-        <tag>leetcode</tag>
       </tags>
   </entry>
   <entry>
