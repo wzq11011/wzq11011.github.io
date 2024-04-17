@@ -1,0 +1,66 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom" xmlns:content="http://purl.org/rss/1.0/modules/content/">
+  <channel>
+    <title>Posts on CodeCoda</title>
+    <link>https://wzq11011.github.io/posts/</link>
+    <description>Recent content in Posts on CodeCoda</description>
+    <generator>Hugo -- 0.125.0</generator>
+    <language>us-en</language>
+    <lastBuildDate>Fri, 02 Jun 2023 15:25:01 +0000</lastBuildDate>
+    <atom:link href="https://wzq11011.github.io/posts/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>sketch recognition</title>
+      <link>https://wzq11011.github.io/posts/sketch-recognition/</link>
+      <pubDate>Fri, 02 Jun 2023 15:25:01 +0000</pubDate>
+      <guid>https://wzq11011.github.io/posts/sketch-recognition/</guid>
+      <description>sketch recognition</description>
+    </item>
+    <item>
+      <title>C&#43;&#43;</title>
+      <link>https://wzq11011.github.io/posts/c/</link>
+      <pubDate>Sat, 20 May 2023 14:32:08 +0000</pubDate>
+      <guid>https://wzq11011.github.io/posts/c/</guid>
+      <description>c&#43;&#43; 学习</description>
+    </item>
+    <item>
+      <title>3D Reconstruction</title>
+      <link>https://wzq11011.github.io/posts/3d-reconstruction/</link>
+      <pubDate>Tue, 25 Apr 2023 17:56:33 +0000</pubDate>
+      <guid>https://wzq11011.github.io/posts/3d-reconstruction/</guid>
+      <description>三维重建</description>
+    </item>
+    <item>
+      <title>voldor-imu</title>
+      <link>https://wzq11011.github.io/posts/voldor/</link>
+      <pubDate>Tue, 25 Apr 2023 17:56:33 +0000</pubDate>
+      <guid>https://wzq11011.github.io/posts/voldor/</guid>
+      <description>voldor 环境配置、ai-imu 论文精读</description>
+    </item>
+    <item>
+      <title>Blog Hexo</title>
+      <link>https://wzq11011.github.io/posts/blog-hexo/</link>
+      <pubDate>Tue, 25 Apr 2023 16:03:43 +0000</pubDate>
+      <guid>https://wzq11011.github.io/posts/blog-hexo/</guid>
+      <description>记录使用 hexo &#43; github pages 搭建个人博客的步骤</description>
+    </item>
+    <item>
+      <title></title>
+      <link>https://wzq11011.github.io/posts/hugo-blog/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      <guid>https://wzq11011.github.io/posts/hugo-blog/</guid>
+      <description>| 更换 hexo 为 hugo，hexo 中 next 主题的文章预览一眼难尽。要么全文预览（很蠢）、要么设置摘要（麻烦）、要么手动截断文章一部分作为预览（麻烦）。我想要的是自动截取一段长度（例如150词）作为预览。
+references:
+手把手教你从0开始搭建自己的个人博客 |第二种姿势 | hugo_哔哩哔哩_bilibili
+使用 Hugo + Github 搭建个人博客 - 知乎 (zhihu.com)
+1 hugo 安装 在 mac 上配置：
+# 安装 brew install hugo # 查看版本 hugo version # 创建 blog 目录 cd Documents hugo new site hugoBlog # 添加主题 cd hugoBlog git init # 在当前目录下初始化一个新的 Git 仓库 git submodule add https://github.com/adityatelange/hugo-PaperMod.git themes/paperMod # 更改主题：根目录下的 config.toml 文件 cho &amp;#39;theme = &amp;#34;paperMod&amp;#34;&amp;#39; &amp;gt;&amp;gt; config.</description>
+    </item>
+    <item>
+      <title>Hello World</title>
+      <link>https://wzq11011.github.io/posts/hello-world/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      <guid>https://wzq11011.github.io/posts/hello-world/</guid>
+      <description>hello hexo</description>
+    </item>
+  </channel>
+</rss>
