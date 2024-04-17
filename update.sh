@@ -3,5 +3,5 @@ hugo -d docs
 
 # 推送代码到远程仓库
 git add .
-git commit -m "update"
+git commit -m "update $(date)"
 git push origin hugo
