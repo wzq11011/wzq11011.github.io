@@ -1,0 +1,578 @@
+<!DOCTYPE html>
+<html lang="en" dir="auto">
+
+<head><script src="/livereload.js?mindelay=10&amp;v=2&amp;port=1313&amp;path=livereload" data-no-instant defer></script><meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+<meta name="robots" content="noindex, nofollow">
+<title>voldor-imu | CodeCoda</title>
+<meta name="keywords" content="">
+<meta name="description" content="voldor 环境配置、ai-imu 论文精读">
+<meta name="author" content="">
+<link rel="canonical" href="http://localhost:1313/posts/voldor/">
+<link crossorigin="anonymous" href="/assets/css/stylesheet.b609c58d5c11bb90b1a54e04005d74ad1ddf22165eb79f5533967e57df9c3b50.css" integrity="sha256-tgnFjVwRu5CxpU4EAF10rR3fIhZet59VM5Z&#43;V9&#43;cO1A=" rel="preload stylesheet" as="style">
+<link rel="icon" href="http://localhost:1313/favicon.ico">
+<link rel="icon" type="image/png" sizes="16x16" href="http://localhost:1313/favicon-16x16.png">
+<link rel="icon" type="image/png" sizes="32x32" href="http://localhost:1313/favicon-32x32.png">
+<link rel="apple-touch-icon" href="http://localhost:1313/apple-touch-icon.png">
+<link rel="mask-icon" href="http://localhost:1313/safari-pinned-tab.svg">
+<meta name="theme-color" content="#2e2e33">
+<meta name="msapplication-TileColor" content="#2e2e33">
+<link rel="alternate" hreflang="en" href="http://localhost:1313/posts/voldor/">
+<noscript>
+    <style>
+        #theme-toggle,
+        .top-link {
+            display: none;
+        }
+
+    </style>
+    <style>
+        @media (prefers-color-scheme: dark) {
+            :root {
+                --theme: rgb(29, 30, 32);
+                --entry: rgb(46, 46, 51);
+                --primary: rgb(218, 218, 219);
+                --secondary: rgb(155, 156, 157);
+                --tertiary: rgb(65, 66, 68);
+                --content: rgb(196, 196, 197);
+                --code-block-bg: rgb(46, 46, 51);
+                --code-bg: rgb(55, 56, 62);
+                --border: rgb(51, 51, 51);
+            }
+
+            .list {
+                background: var(--theme);
+            }
+
+            .list:not(.dark)::-webkit-scrollbar-track {
+                background: 0 0;
+            }
+
+            .list:not(.dark)::-webkit-scrollbar-thumb {
+                border-color: var(--theme);
+            }
+        }
+
+    </style>
+</noscript>
+</head>
+
+<body class="" id="top">
+<script>
+    if (localStorage.getItem("pref-theme") === "dark") {
+        document.body.classList.add('dark');
+    } else if (localStorage.getItem("pref-theme") === "light") {
+        document.body.classList.remove('dark')
+    } else if (window.matchMedia('(prefers-color-scheme: dark)').matches) {
+        document.body.classList.add('dark');
+    }
+
+</script>
+
+<header class="header">
+    <nav class="nav">
+        <div class="logo">
+            <a href="http://localhost:1313/" accesskey="h" title="CodeCoda (Alt + H)">CodeCoda</a>
+            <div class="logo-switches">
+                <button id="theme-toggle" accesskey="t" title="(Alt + T)">
+                    <svg id="moon" xmlns="http://www.w3.org/2000/svg" width="24" height="18" viewBox="0 0 24 24"
+                        fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+                        stroke-linejoin="round">
+                        <path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"></path>
+                    </svg>
+                    <svg id="sun" xmlns="http://www.w3.org/2000/svg" width="24" height="18" viewBox="0 0 24 24"
+                        fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+                        stroke-linejoin="round">
+                        <circle cx="12" cy="12" r="5"></circle>
+                        <line x1="12" y1="1" x2="12" y2="3"></line>
+                        <line x1="12" y1="21" x2="12" y2="23"></line>
+                        <line x1="4.22" y1="4.22" x2="5.64" y2="5.64"></line>
+                        <line x1="18.36" y1="18.36" x2="19.78" y2="19.78"></line>
+                        <line x1="1" y1="12" x2="3" y2="12"></line>
+                        <line x1="21" y1="12" x2="23" y2="12"></line>
+                        <line x1="4.22" y1="19.78" x2="5.64" y2="18.36"></line>
+                        <line x1="18.36" y1="5.64" x2="19.78" y2="4.22"></line>
+                    </svg>
+                </button>
+            </div>
+        </div>
+        <ul id="menu">
+        </ul>
+    </nav>
+</header>
+<main class="main">
+
+<article class="post-single">
+  <header class="post-header">
+    
+    <h1 class="post-title entry-hint-parent">
+      voldor-imu
+    </h1>
+    <div class="post-description">
+      voldor 环境配置、ai-imu 论文精读
+    </div>
+    <div class="post-meta"><span title='2023-04-25 17:56:33 +0000 UTC'>April 25, 2023</span>
+
+</div>
+  </header> 
+  <div class="post-content"><p>VOLDOR-SLAM: For the times when feature-based or direct methods are not good enough (ICRA 2021)</p>
+<h1 id="1-环境配置">1 环境配置<a hidden class="anchor" aria-hidden="true" href="#1-环境配置">#</a></h1>
+<h2 id="11-voldor-slam">1.1 VOLDOR-SLAM<a hidden class="anchor" aria-hidden="true" href="#11-voldor-slam">#</a></h2>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-Shell" data-lang="Shell"><span style="display:flex;"><span><span style="color:#75715e"># env</span>
+</span></span><span style="display:flex;"><span>conda create -n voldor python<span style="color:#f92672">==</span>3.6.9
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e"># activate</span>
+</span></span><span style="display:flex;"><span>conda activate voldor
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e"># install the python dependencies</span>
+</span></span><span style="display:flex;"><span>cd slam_py/install
+</span></span><span style="display:flex;"><span>pip install -r ./requirements.txt
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e"># install OpenCV</span>
+</span></span><span style="display:flex;"><span>sudo apt install libopencv-dev
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e"># PyOpenGL</span>
+</span></span><span style="display:flex;"><span>sudo apt install python-opengl
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e"># Ceres: http://ceres-solver.org/installation.html</span>
+</span></span><span style="display:flex;"><span>wget https://github.com/ceres-solver/ceres-solver/archive/refs/tags/2.1.0.tar.gz
+</span></span><span style="display:flex;"><span>tar -zxvf 2.1.0.tar.gz
+</span></span><span style="display:flex;"><span>mv ceres-solver-2.1.0 ceres-solver
+</span></span><span style="display:flex;"><span>cd ceres-solver
+</span></span><span style="display:flex;"><span>mkdir build <span style="color:#f92672">&amp;&amp;</span> cd build
+</span></span><span style="display:flex;"><span>cmake ..
+</span></span><span style="display:flex;"><span>sudo make install -j12
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e"># pyDBoW3</span>
+</span></span><span style="display:flex;"><span>git clone https://github.com/htkseason/pyDBoW3.git
+</span></span></code></pre></div><p>libboost.python</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-Shell" data-lang="Shell"><span style="display:flex;"><span>wget https://boostorg.jfrog.io/artifactory/main/release/1.68.0/source/boost_1_68_0.tar.gz
+</span></span></code></pre></div><p>在编译安装 pyDBoW3时遇到一些问题，把 build.sh 文件拆分一步步执行，排除错误。</p>
+<p>VOLDOR/slam_py/install/pyDBoW3/src/CMakeLists.txt 中加入 DBoW3 路径</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-Plaintext" data-lang="Plaintext"><span style="display:flex;"><span>set(DBoW3_DIR /home/data1/sebas/projects/VOLDOR/slam_py/install/pyDBoW3/install/DBow3/lib/cmake/DBoW3)
+</span></span><span style="display:flex;"><span>SET(DBoW3_USE_STATIC_LIBS ON)
+</span></span><span style="display:flex;"><span>find_package(DBoW3 REQUIRED)
+</span></span></code></pre></div><p>然后执行在 pyDBoW3/build 目录下执行 cmake 命令</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-Shell" data-lang="Shell"><span style="display:flex;"><span>sudo cmake -DBUILD_PYTHON3<span style="color:#f92672">=</span>on <span style="color:#ae81ff">\
+</span></span></span><span style="display:flex;"><span><span style="color:#ae81ff"></span>      -DPYTHON_EXECUTABLE<span style="color:#f92672">=</span>/usr/bin/python3.6 <span style="color:#ae81ff">\
+</span></span></span><span style="display:flex;"><span><span style="color:#ae81ff"></span>      -DBUILD_STATICALLY_LINKED<span style="color:#f92672">=</span>OFF <span style="color:#ae81ff">\
+</span></span></span><span style="display:flex;"><span><span style="color:#ae81ff"></span>      -DOpenCV_DIR<span style="color:#f92672">=</span>/data/zhangjiguang/wzq/projects/VOLDOR/slam_py/install/pyDBoW3/install/opencv3/build <span style="color:#ae81ff">\
+</span></span></span><span style="display:flex;"><span><span style="color:#ae81ff"></span>      -DDBoW3_DIR<span style="color:#f92672">=</span>/data/zhangjiguang/wzq/projects/VOLDOR/slam_py/install/pyDBoW3/install/DBow3/build <span style="color:#ae81ff">\
+</span></span></span><span style="display:flex;"><span><span style="color:#ae81ff"></span>      -DDBoW3_INCLUDE_DIRS<span style="color:#f92672">=</span>/data/zhangjiguang/wzq/projects/VOLDOR/slam_py/install/pyDBoW3/install/DBow3/src <span style="color:#ae81ff">\
+</span></span></span><span style="display:flex;"><span><span style="color:#ae81ff"></span>      -DCMAKE_BUILD_TYPE<span style="color:#f92672">=</span>Release ../src
+</span></span><span style="display:flex;"><span> 
+</span></span><span style="display:flex;"><span><span style="color:#75715e"># 导入路径的方法：在CMakeLists.txt中更改；或者在命令行设置全局变量 </span>
+</span></span><span style="display:flex;"><span>export DBoW3_DIR<span style="color:#f92672">=</span>/home/data1/sebas/projects/VOLDOR/slam_py/install/pyDBoW3/install/DBow3
+</span></span><span style="display:flex;"><span>export CMAKE_PREFIX_PATH<span style="color:#f92672">=</span>/home/data1/sebas/projects/VOLDOR/slam_py/install/pyDBoW3/install/DBow3:$CMAKE_PREFIX_PATH
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>export CMAKE_PREFIX_PATH<span style="color:#f92672">=</span>/usr/lib/x86_64-linux-gnu:$CMAKE_PREFIX_PATH
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>sudo make -j12
+</span></span></code></pre></div><p>以上命令都执行成功后，在 build 目录下会生成一个 pyDBoW3.so 文件，将其复制到 demo 目录下。</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-Shell" data-lang="Shell"><span style="display:flex;"><span><span style="color:#75715e"># build vo only</span>
+</span></span><span style="display:flex;"><span>cd slam_py/install  
+</span></span><span style="display:flex;"><span>python setup_linux_vo.py build_ext -i
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e"># build full slam pipeline</span>
+</span></span><span style="display:flex;"><span>cd slam_py/install  
+</span></span><span style="display:flex;"><span>python setup_linux_full.py build_ext -i
+</span></span></code></pre></div><h2 id="12-ai-imu">1.2 AI-IMU<a hidden class="anchor" aria-hidden="true" href="#12-ai-imu">#</a></h2>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-Shell" data-lang="Shell"><span style="display:flex;"><span><span style="color:#75715e"># ai-imu</span>
+</span></span><span style="display:flex;"><span>conda create -n ai-imu python<span style="color:#f92672">==</span>3.6.9
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e"># install dependencies</span>
+</span></span><span style="display:flex;"><span>pip install matplotlib numpy termcolor scipy navpy
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e"># torch</span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e"># 新版本会报错</span>
+</span></span><span style="display:flex;"><span>conda install pytorch<span style="color:#f92672">==</span>1.12.1 torchvision<span style="color:#f92672">==</span>0.13.1 torchaudio<span style="color:#f92672">==</span>0.12.1 cudatoolkit<span style="color:#f92672">=</span>10.2 -c pytorch
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e"># 使用旧版本</span>
+</span></span><span style="display:flex;"><span>conda install pytorch torchvision cudatoolkit<span style="color:#f92672">=</span>10.2
+</span></span></code></pre></div><p>clone the repo and test</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-Shell" data-lang="Shell"><span style="display:flex;"><span><span style="color:#75715e"># clone </span>
+</span></span><span style="display:flex;"><span>git clone https://github.com/mbrossar/ai-imu-dr.git
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e"># Download reformated pickle format of the 00-11 KITTI IMU raw data</span>
+</span></span><span style="display:flex;"><span>wget <span style="color:#e6db74">&#34;https://www.dropbox.com/s/ey41xsvfqca30vv/data.zip&#34;</span>
+</span></span><span style="display:flex;"><span>mkdir ai-imu-dr/results
+</span></span><span style="display:flex;"><span>unzip data.zip -d ai-imu-dr
+</span></span><span style="display:flex;"><span>rm data.zip
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e"># Download training parameters</span>
+</span></span><span style="display:flex;"><span>wget <span style="color:#e6db74">&#34;https://www.dropbox.com/s/77kq4s7ziyvsrmi/temp.zip&#34;</span>
+</span></span><span style="display:flex;"><span>unzip temp.zip -d ai-imu-dr/temp
+</span></span><span style="display:flex;"><span>rm temp.zip
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e"># Test the filters</span>
+</span></span><span style="display:flex;"><span>cd ai-imu-dr/src
+</span></span><span style="display:flex;"><span>python3 main_kitti.py
+</span></span></code></pre></div><h2 id="13-docker">1.3 Docker<a hidden class="anchor" aria-hidden="true" href="#13-docker">#</a></h2>
+<p>ubuntu 安装 docker</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-Bash" data-lang="Bash"><span style="display:flex;"><span><span style="color:#75715e"># 安装</span>
+</span></span><span style="display:flex;"><span>sudo apt install docker.io nvidia-docker2
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e"># 创建 docker 用户组</span>
+</span></span><span style="display:flex;"><span>sudo groupadd docker
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e"># 将用户加入 docker 用户组</span>
+</span></span><span style="display:flex;"><span>sudo gpasswd -a <span style="color:#e6db74">${</span>username<span style="color:#e6db74">}</span> docker
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e"># 重启 docker 应用</span>
+</span></span><span style="display:flex;"><span>sudo systemctl restart docker
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e"># 添加访问和执行权限</span>
+</span></span><span style="display:flex;"><span>sudo chmod a+rw /var/run/docker.sock
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e"># 更换 docker 默认存储位置及镜像源</span>
+</span></span><span style="display:flex;"><span>docker info
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e"># 将默认位置的 docker 文件夹复制到新目录</span>
+</span></span><span style="display:flex;"><span>sudo mv /var/lib/docker /home/data1/
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>sudo vim /etc/docker/daemon.json
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e"># 以下为修改内容</span>
+</span></span><span style="display:flex;"><span><span style="color:#f92672">{</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#e6db74">&#34;runtimes&#34;</span>: <span style="color:#f92672">{</span>
+</span></span><span style="display:flex;"><span>        <span style="color:#e6db74">&#34;nvidia&#34;</span>: <span style="color:#f92672">{</span>
+</span></span><span style="display:flex;"><span>            <span style="color:#e6db74">&#34;path&#34;</span>: <span style="color:#e6db74">&#34;nvidia-container-runtime&#34;</span>,
+</span></span><span style="display:flex;"><span>            <span style="color:#e6db74">&#34;runtimeArgs&#34;</span>: <span style="color:#f92672">[]</span>
+</span></span><span style="display:flex;"><span>        <span style="color:#f92672">}</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#f92672">}</span>,
+</span></span><span style="display:flex;"><span>    <span style="color:#e6db74">&#34;data-root&#34;</span>:<span style="color:#e6db74">&#34;/home/data1/docker&#34;</span>,
+</span></span><span style="display:flex;"><span>    <span style="color:#e6db74">&#34;registry-mirrors&#34;</span>:<span style="color:#f92672">[</span>
+</span></span><span style="display:flex;"><span>                        <span style="color:#e6db74">&#34;https://hub-mirror.c.163.com/&#34;</span>,
+</span></span><span style="display:flex;"><span>                        <span style="color:#e6db74">&#34;https://docker.mirrors.ustc.edu.cn/&#34;</span>
+</span></span><span style="display:flex;"><span>                        <span style="color:#f92672">]</span>
+</span></span><span style="display:flex;"><span><span style="color:#f92672">}</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e"># 重启 docker 服务</span>
+</span></span><span style="display:flex;"><span>sudo systemctl daemon-reload
+</span></span><span style="display:flex;"><span>sudo systemctl restart docker
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e"># 查看当前文件夹及文件大小</span>
+</span></span><span style="display:flex;"><span>sudo du -h --max-depth<span style="color:#f92672">=</span><span style="color:#ae81ff">1</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e"># df 以磁盘分区为单位查看文件系统</span>
+</span></span><span style="display:flex;"><span>df -lh
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e"># 拉取镜像:https://hub.docker.com/r/nvidia/cuda/tags?page=3&amp;name=18</span>
+</span></span><span style="display:flex;"><span>docker pull nvidia/cuda:11.4.0-devel-ubuntu18.04
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e"># test</span>
+</span></span><span style="display:flex;"><span>sudo docker run --rm --gpus all nvidia/cuda:11.4.0-devel-ubuntu18.04 nvidia-smi
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e"># -i 控制台交互  -t 支持终端登录  -d 指定容器运行于后台</span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e"># -v 给容器挂载存储卷，挂载到容器某个目录（前者是宿主机目录，后者是容器目录，中间以:分隔）</span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e"># -p 端口映射（前者是宿主机目录，后者是容器目录，中间以:分隔，例如 -p 80:80）</span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e"># -m  --memory=[] 指定容器内存上限</span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e"># --name=[] 指定容器名字</span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e"># --gpus all 使用宿主机gpu</span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e"># --rm 容器停止后自动删除容器，常用来测试</span>
+</span></span><span style="display:flex;"><span>docker run -itd -v ~/work:/work --name<span style="color:#f92672">=</span>Ubuntu20.04-CUDA --gpus all nvidia/cuda:11.4.2-cudnn8-devel-ubuntu20.04
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e"># Titan X</span>
+</span></span><span style="display:flex;"><span>docker run --gpus all -itd --privileged<span style="color:#f92672">=</span>true -p 50097:22 --name voldor-imu <span style="color:#ae81ff">\
+</span></span></span><span style="display:flex;"><span><span style="color:#ae81ff"></span>       -v /home/data1/projects:/home/projects <span style="color:#ae81ff">\
+</span></span></span><span style="display:flex;"><span><span style="color:#ae81ff"></span>       -e DISPLAY<span style="color:#f92672">=</span>$DISPLAY <span style="color:#ae81ff">\
+</span></span></span><span style="display:flex;"><span><span style="color:#ae81ff"></span>       -e GDK_SCALE <span style="color:#ae81ff">\
+</span></span></span><span style="display:flex;"><span><span style="color:#ae81ff"></span>       -e GDK_DPI_SCALE <span style="color:#ae81ff">\
+</span></span></span><span style="display:flex;"><span><span style="color:#ae81ff"></span>       nvidia/cuda:11.4.0-devel-ubuntu18.04 /bin/bash
+</span></span><span style="display:flex;"><span>       
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e"># A6000</span>
+</span></span><span style="display:flex;"><span>docker run --gpus all -itd --privileged<span style="color:#f92672">=</span>true -p 50097:22 --name voldor-imu <span style="color:#ae81ff">\
+</span></span></span><span style="display:flex;"><span><span style="color:#ae81ff"></span>       -v /data/zhangjiguang/wzq/voldor-imu:/home/voldor-imu <span style="color:#ae81ff">\
+</span></span></span><span style="display:flex;"><span><span style="color:#ae81ff"></span>       -e DISPLAY<span style="color:#f92672">=</span>$DISPLAY <span style="color:#ae81ff">\
+</span></span></span><span style="display:flex;"><span><span style="color:#ae81ff"></span>       -e GDK_SCALE <span style="color:#ae81ff">\
+</span></span></span><span style="display:flex;"><span><span style="color:#ae81ff"></span>       -e GDK_DPI_SCALE <span style="color:#ae81ff">\
+</span></span></span><span style="display:flex;"><span><span style="color:#ae81ff"></span>       nvidia/cuda:11.4.0-devel-ubuntu18.04 /bin/bash
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e"># 查看创建的容器ID</span>
+</span></span><span style="display:flex;"><span>docker ps -a 
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e"># 进入已创建的容器</span>
+</span></span><span style="display:flex;"><span>docker attach <span style="color:#f92672">[</span>ID<span style="color:#f92672">]</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e"># 设置 root 密码</span>
+</span></span><span style="display:flex;"><span>passwd
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e"># 配置ssh</span>
+</span></span><span style="display:flex;"><span>apt update
+</span></span><span style="display:flex;"><span>apt install openssh-server vim wget curl cmake
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e"># 设置 ssh 配置文件</span>
+</span></span><span style="display:flex;"><span>sudo vim /etc/ssh/sshd_config
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>Port <span style="color:#ae81ff">22</span>
+</span></span><span style="display:flex;"><span>PermitRootLogin yes  
+</span></span><span style="display:flex;"><span>UsePAM no
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e"># </span>
+</span></span><span style="display:flex;"><span>service ssh restart
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e"># connect</span>
+</span></span><span style="display:flex;"><span>ssh root@10.1.16.116 -X -p <span style="color:#ae81ff">50096</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e"># DISPLAY</span>
+</span></span><span style="display:flex;"><span>export DISPLAY<span style="color:#f92672">=</span>10.1.16.227:0.0
+</span></span><span style="display:flex;"><span>echo $DISPLAY
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e"># test</span>
+</span></span><span style="display:flex;"><span>apt install x11-apps
+</span></span><span style="display:flex;"><span>xclock
+</span></span></code></pre></div><p>其他源介绍：</p>
+<p>科大镜像：https://docker.mirrors.ustc.edu.cn/</p>
+<p>网易：https://hub-mirror.c.163.com/</p>
+<p>七牛云加速器：https://reg-mirror.qiniu.com</p>
+<p>Docker中国区官方镜像：https://registry.docker-cn.com</p>
+<p>阿里云：https://阿里云镜像服务id.mirror.aliyuncs.com</p>
+<p>原文链接：https://blog.csdn.net/m0_37282062/article/details/115770314</p>
+<h3 id="131-docker-换源及存储位置">1.3.1 docker 换源及存储位置<a hidden class="anchor" aria-hidden="true" href="#131-docker-换源及存储位置">#</a></h3>
+<h3 id="132-打包发布镜像">1.3.2 打包发布镜像<a hidden class="anchor" aria-hidden="true" href="#132-打包发布镜像">#</a></h3>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>docker commit 07da voldor-imu:v1
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e"># tag</span>
+</span></span><span style="display:flex;"><span>docker tag voldor-imu:v1 wzq11011/voldor-imu:v1
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e"># push</span>
+</span></span><span style="display:flex;"><span>docker push wzq11011/voldor-imu:v1
+</span></span></code></pre></div><p>退出容器但不关闭容器：ctrl+p+q</p>
+<p>vscode 修改文件提示没有权限，修改文件所有者</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-Bash" data-lang="Bash"><span style="display:flex;"><span><span style="color:#75715e"># 递归修改文件所有者</span>
+</span></span><span style="display:flex;"><span>sudo chown -R sebas projects/
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e"># 更改用户组</span>
+</span></span><span style="display:flex;"><span>chgrp -R sebas projects/
+</span></span><span style="display:flex;"><span>git clone https://github.com/htkseason/VOLDOR.git
+</span></span><span style="display:flex;"><span>git clone https://github.com/mbrossar/ai-imu-dr.git
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e"># python 3.6.9</span>
+</span></span><span style="display:flex;"><span>python3
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e"># pip</span>
+</span></span><span style="display:flex;"><span>apt install python3-pip
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>pip3 install --upgrade pip
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e"># ceres-solver</span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e"># http://ceres-solver.org/installation.html#linux</span>
+</span></span><span style="display:flex;"><span>apt install cmake libgoogle-glog-dev libgflags-dev libatlas-base-dev libeigen3-dev libsuitesparse-dev
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e"># boost</span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e"># https://blog.csdn.net/qq_41854911/article/details/119454212</span>
+</span></span><span style="display:flex;"><span>apt install libboost-all-dev
+</span></span><span style="display:flex;"><span>docker exec -it 07da /bin/bash
+</span></span></code></pre></div><h1 id="2-报错信息记录">2 报错信息记录：<a hidden class="anchor" aria-hidden="true" href="#2-报错信息记录">#</a></h1>
+<h2 id="21-cmake版本问题">2.1 cmake版本问题<a hidden class="anchor" aria-hidden="true" href="#21-cmake版本问题">#</a></h2>
+<p>报错：internal error, please report: running &ldquo;cmake&rdquo; failed: cannot create transient scope: DBus error &ldquo;org.freedesktop.DBus.Error.TimedOut&rdquo;: [Failed to activate service &lsquo;org.freedesktop.systemd1&rsquo;: timed out (service_start_timeout=25000ms)]</p>
+<p>解决：</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-Shell" data-lang="Shell"><span style="display:flex;"><span>pip uninstall cmake
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>sudo apt install cmake
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e"># 然后再重新编译解决</span>
+</span></span></code></pre></div><h2 id="22-boost">2.2 Boost<a hidden class="anchor" aria-hidden="true" href="#22-boost">#</a></h2>
+<p>报错：</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-Shell" data-lang="Shell"><span style="display:flex;"><span>-- Boost 1.54 found.
+</span></span><span style="display:flex;"><span>CMake Error at /usr/lib/cmake/Boost-1.81.0/BoostConfig.cmake:141 <span style="color:#f92672">(</span>find_package<span style="color:#f92672">)</span>:
+</span></span><span style="display:flex;"><span>  Could not find a package configuration file provided by <span style="color:#e6db74">&#34;boost_python-py36&#34;</span>
+</span></span><span style="display:flex;"><span>  <span style="color:#f92672">(</span>requested version 1.81.0<span style="color:#f92672">)</span> with any of the following names:
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>    boost_python-py36Config.cmake
+</span></span><span style="display:flex;"><span>    boost_python-py36-config.cmake
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>  Add the installation prefix of <span style="color:#e6db74">&#34;boost_python-py36&#34;</span> to CMAKE_PREFIX_PATH or
+</span></span><span style="display:flex;"><span>  set <span style="color:#e6db74">&#34;boost_python-py36_DIR&#34;</span> to a directory containing one of the above
+</span></span><span style="display:flex;"><span>  files.  If <span style="color:#e6db74">&#34;boost_python-py36&#34;</span> provides a separate development package or
+</span></span><span style="display:flex;"><span>  SDK, be sure it has been installed.
+</span></span><span style="display:flex;"><span>Call Stack <span style="color:#f92672">(</span>most recent call first<span style="color:#f92672">)</span>:
+</span></span><span style="display:flex;"><span>  /usr/lib/cmake/Boost-1.81.0/BoostConfig.cmake:262 <span style="color:#f92672">(</span>boost_find_component<span style="color:#f92672">)</span>
+</span></span><span style="display:flex;"><span>  /usr/share/cmake-3.10/Modules/FindBoost.cmake:242 <span style="color:#f92672">(</span>find_package<span style="color:#f92672">)</span>
+</span></span><span style="display:flex;"><span>  CMakeLists.txt:130 <span style="color:#f92672">(</span>FIND_PACKAGE<span style="color:#f92672">)</span>
+</span></span></code></pre></div><p>解决：</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-Shell" data-lang="Shell"><span style="display:flex;"><span><span style="color:#75715e"># 手动下载编译 boost</span>
+</span></span><span style="display:flex;"><span>wget https://boostorg.jfrog.io/artifactory/main/release/1.68.0/source/boost_1_68_0.tar.gz
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>tar -zxvf boost_1_68_0.tar.gz
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>./bootstrap.sh --with-libraries<span style="color:#f92672">=</span>all --with-toolset<span style="color:#f92672">=</span>gcc
+</span></span><span style="display:flex;"><span>./b2
+</span></span><span style="display:flex;"><span>sudo ./b2 install
+</span></span><span style="display:flex;"><span>sudo ldconfig
+</span></span></code></pre></div><h2 id="23-opencv">2.3 opencv<a hidden class="anchor" aria-hidden="true" href="#23-opencv">#</a></h2>
+<p>执行demo的时候报错</p>
+<blockquote>
+<p>报错信息如下：</p>
+</blockquote>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-Bash" data-lang="Bash"><span style="display:flex;"><span>Exception in thread Thread-29:
+</span></span><span style="display:flex;"><span>Traceback <span style="color:#f92672">(</span>most recent call last<span style="color:#f92672">)</span>:
+</span></span><span style="display:flex;"><span>  File <span style="color:#e6db74">&#34;/usr/lib/python3.6/threading.py&#34;</span>, line 916, in _bootstrap_inner
+</span></span><span style="display:flex;"><span>    self.run<span style="color:#f92672">()</span>
+</span></span><span style="display:flex;"><span>  File <span style="color:#e6db74">&#34;/usr/lib/python3.6/threading.py&#34;</span>, line 864, in run
+</span></span><span style="display:flex;"><span>    self._target<span style="color:#f92672">(</span>*self._args, **self._kwargs<span style="color:#f92672">)</span>
+</span></span><span style="display:flex;"><span>  File <span style="color:#e6db74">&#34;../slam_py/voldor_slam.py&#34;</span>, line 718, in vo_thread
+</span></span><span style="display:flex;"><span>    cv2.imshow<span style="color:#f92672">(</span><span style="color:#e6db74">&#39;tmpkf_depth&#39;</span>, <span style="color:#f92672">(</span>self.basefocal*0.04<span style="color:#f92672">)</span>/self.frames<span style="color:#f92672">[</span>self.fid_cur_tmpkf<span style="color:#f92672">]</span>.get_scaled_depth<span style="color:#f92672">())</span>
+</span></span><span style="display:flex;"><span>cv2.error: OpenCV<span style="color:#f92672">(</span>4.7.0<span style="color:#f92672">)</span> /tmp/pip-install-ftep5xuc/opencv-python_faa811634b06405b915df5c9319b9c00/opencv/modules/highgui/src/window.cpp:1272: error: <span style="color:#f92672">(</span>-2:Unspecified error<span style="color:#f92672">)</span> The <span style="color:#66d9ef">function</span> is not implemented. Rebuild the library with Windows, GTK+ 2.x or Cocoa support. If you are on Ubuntu or Debian, install libgtk2.0-dev and pkg-config, <span style="color:#66d9ef">then</span> re-run cmake or configure script in <span style="color:#66d9ef">function</span> <span style="color:#e6db74">&#39;cvShowImage&#39;</span>
+</span></span></code></pre></div><p>解决方法</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-Bash" data-lang="Bash"><span style="display:flex;"><span><span style="color:#75715e"># 查看 opencv-python 版本</span>
+</span></span><span style="display:flex;"><span>pip show opencv-python
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e"># 安装对应版本的 opencv-contrib</span>
+</span></span><span style="display:flex;"><span>pip install opencv-contrib-python<span style="color:#f92672">==</span>4.7.0.72
+</span></span></code></pre></div><p>参考：https://blog.csdn.net/qq_46018888/article/details/121430749</p>
+<h1 id="3-论文">3 论文<a hidden class="anchor" aria-hidden="true" href="#3-论文">#</a></h1>
+<h2 id="31-voldor-slam">3.1 VOLDOR-SLAM<a hidden class="anchor" aria-hidden="true" href="#31-voldor-slam">#</a></h2>
+<h3 id="311-摘要总结">3.1.1 摘要总结<a hidden class="anchor" aria-hidden="true" href="#311-摘要总结">#</a></h3>
+<p>作者提出了一种基于外部密集光流输入的密集间接SLAM系统。扩展了概率视觉里程计模型VOLDOR [Min et al. CVPR’20]，通过引入几何先验来从单目捕获中鲁棒地引导估计，同时无缝地支持立体或RGB-D图像。论文中定制的后端将中间几何估计与管理增量姿态图连接性的自适应优先级方案紧密耦合。利用密集光流方法的最新进展，实现了准确和稳健的相机姿态估计，同时构建了细粒度的全局一致的密集环境地图。我们的开源实现在单个GTX1080Ti GPU上在线运行，速度约为15 FPS。</p>
+<p>相关工作部分回顾了间接SLAM、直接SLAM和密集光流方法的相关文献，并指出了它们的优缺点。间接SLAM方法通过稀疏关键点匹配来建立帧间的几何关系，然后通过PnP或BA等算法来估计相机姿态和场景结构。这些方法通常可以实时运行，但是可能受到缺乏纹理、重复结构或退化几何配置等因素的影响。直接SLAM方法通过联合光流估计一致的场景结构和相机姿态来避免关键点匹配，但是这些方法通常对光照变化敏感，需要精确的光度校准，并且需要有足够的纹理区域。密集光流方法通过计算帧间像素级别的运动来提供稠密的几何信息，计算成本高昂，并且可能受到遮挡、运动模糊或低纹理等因素的影响。</p>
+<h3 id="312-使用方法">3.1.2 使用方法<a hidden class="anchor" aria-hidden="true" href="#312-使用方法">#</a></h3>
+<p>论文中使用的方法是<strong>密集间接SLAM</strong>，它基于外部密集光流输入来估计相机姿态和场景结构。论文的方法分为两个部分：前端和后端。</p>
+<ul>
+<li>前端部分是基于VOLDOR的概率视觉里程计模型，它使用密集光流残差来建立帧间的几何关系，并利用几何先验来从单目、双目或RGB-D图像中恢复相机运动和深度图。前端部分还包括了一个帧对齐模块，用于校正光流估计的误差，并提高深度图的质量。</li>
+<li>后端部分是一个定制的位姿图优化模块，它将前端的几何估计与一个自适应的优先级方案紧密耦合，以管理增量位姿图的连接性。后端部分还包括了一个地图重建模块，用于从关键帧的深度图中构建细粒度的全局一致的密集环境地图。</li>
+</ul>
+<h3 id="313-实验部分">3.1.3 实验部分<a hidden class="anchor" aria-hidden="true" href="#313-实验部分">#</a></h3>
+<ul>
+<li>实验部分首先介绍了实验的设置和评估指标，包括相机姿态误差、绝对轨迹误差、相对姿态误差和地图重建误差等。</li>
+<li>然后在四个数据集上进行了实验，分别是TartanAir、KITTI、EuRoC和TUM RGB-D。这些数据集涵盖了不同的输入模式、场景复杂度和运动模式，以验证论文的方法的通用性和鲁棒性。</li>
+<li>接着展示了论文的方法在不同输入模式下的定量结果，包括单目、双目和RGB-D。实验结果表明，论文的方法在所有数据集上都取得了优秀的性能，超过了其他SLAM方法的表现。</li>
+<li>最后展示了论文的方法在不同输入模式下的定性结果，包括相机轨迹、深度图和密集地图。实验结果显示，论文的方法能够有效地估计相机姿态和场景结构，并构建细粒度的全局一致的密集环境地图。</li>
+</ul>
+<h2 id="32-ai-imu">3.2 AI-IMU<a hidden class="anchor" aria-hidden="true" href="#32-ai-imu">#</a></h2>
+<h3 id="321-摘要总结">3.2.1 摘要总结<a hidden class="anchor" aria-hidden="true" href="#321-摘要总结">#</a></h3>
+<p>论文的主要贡献是提出了一种基于惯性测量单元（IMU）的新颖准确的车辆自定位方法：论文的主要思想是利用卡尔曼滤波器和深度神经网络来动态地调整滤波器的噪声参数。作者在KITTI里程计数据集上进行了实验，证明了该方法仅使用IMU就能准确地估计车辆的三维位置、速度、方向和IMU偏差。其结果在平均平移误差上达到了1.10%，与使用激光雷达或立体视觉的顶级方法相媲美。</p>
+<h3 id="322-论文结构">3.2.2 论文结构<a hidden class="anchor" aria-hidden="true" href="#322-论文结构">#</a></h3>
+<p>论文使用的方法主要包括以下几个部分：</p>
+<ul>
+<li>基于IMU的自定位模型，使用一个非线性状态空间模型来描述车辆的运动状态和IMU的偏差，其中状态变量包括位置、速度、方向、陀螺仪偏差和加速度计偏差。</li>
+<li>卡尔曼滤波器，使用一个扩展卡尔曼滤波器（EKF）来根据IMU的测量值对状态变量进行估计和更新，其中测量方程是一个恒等映射。</li>
+<li>神经网络，使用一个多层感知机（MLP）来根据IMU的测量值和历史噪声参数来预测当前的噪声参数，包括过程噪声协方差矩阵和测量噪声协方差矩阵。</li>
+<li>训练策略，使用一个端到端的训练策略来同时优化EKF和MLP的参数，目标函数是最小化EKF的估计误差和MLP的预测误差。</li>
+</ul>
+<h3 id="323-实验部分">3.2.3 实验部分<a hidden class="anchor" aria-hidden="true" href="#323-实验部分">#</a></h3>
+<ul>
+<li>数据集，使用KITTI里程计数据集，该数据集包含了22个序列的车辆运动数据，其中11个序列提供了地面真值1。论文使用了前10个序列作为训练集，后一个序列作为测试集。</li>
+<li>评估指标，使用平均平移误差（ATE）和平均方向误差（AOE）来评估定位的准确性。ATE是指估计的轨迹与地面真值之间的欧氏距离的平均值。AOE是指估计的方向与地面真值之间的角度差的平均值。</li>
+<li>实现细节，使用PyTorch框架实现了EKF和MLP的模型。EKF的状态维度是15，测量维度是6。MLP有两个隐藏层，每层有64个神经元，激活函数是ReLU。训练时使用Adam优化器，学习率是0.001，批大小是256，训练轮数是1000。</li>
+</ul>
+<p>结果分析，使用不同的方法在测试集上进行了定位，并与其他基于激光雷达或立体视觉的方法进行了比较。结果显示，论文提出的方法在ATE上达到了1.10%的误差，在AOE上达到了0.33°的误差。这些结果优于其他仅使用IMU的方法，并且与使用其他传感器的方法相当或更好。</p>
+<h3 id="324-代码部分">3.2.4 代码部分<a hidden class="anchor" aria-hidden="true" href="#324-代码部分">#</a></h3>
+<p>仅使用惯性测量单元在 KITTI 里程计数据集上的平移误差位 1.10%</p>
+<p><img loading="lazy" src="./Voldor.assets/%28null%29-20230518214845352.%28null%29" alt="img"  />
+</p>
+<ul>
+<li>
+<p>main_kitti.py</p>
+</li>
+<li>
+<ul>
+<li>导入必要的模块和库</li>
+<li>class KITTIParameters 定义KITTI数据集参数和类</li>
+<li>class KITTIDataset 读取KITTI数据集文件并处理</li>
+<li>def test_filter 定义测试滤波器</li>
+<li>def launch(<em>args</em>) 程序入口，通过调节read_data的值，来选择是否读数据集。train_filter、test_filter、results_filter
+<ul>
+<li>train_filter()</li>
+<li>test_filter()</li>
+<li>results_filter()</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+<p>卡尔曼滤波是一种用于估计系统状态的递归滤波器，</p>
+<h1 id="4-光流与imu结合">4 光流与IMU结合<a hidden class="anchor" aria-hidden="true" href="#4-光流与imu结合">#</a></h1>
+<ul>
+<li>AI-IMU：对IMU数据进行预处理，得到初始的相机姿态和场景结构的估计，以及IMU偏差的自校准。</li>
+<li>VOLDOR：对密集光流数据进行处理，得到帧间的几何关系和深度图，以及帧对齐的校正。</li>
+<li>将AI-IMU方法和论文的方法的输出作为位姿图优化模块的输入，利用自适应优先级方案来管理增量位姿图的连接性，并进行全局优化。</li>
+<li>使用地图重建模块对关键帧的深度图进行融合，得到细粒度的全局一致的密集环境地图。</li>
+</ul>
+
+
+  </div>
+
+  <footer class="post-footer">
+    <ul class="post-tags">
+    </ul>
+  </footer>
+</article>
+    </main>
+    
+<footer class="footer">
+        <span>&copy; 2024 <a href="http://localhost:1313/">CodeCoda</a></span> · 
+
+    <span>
+        Powered by
+        <a href="https://gohugo.io/" rel="noopener noreferrer" target="_blank">Hugo</a> &
+        <a href="https://github.com/adityatelange/hugo-PaperMod/" rel="noopener" target="_blank">PaperMod</a>
+    </span>
+</footer>
+<a href="#top" aria-label="go to top" title="Go to Top (Alt + G)" class="top-link" id="top-link" accesskey="g">
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 12 6" fill="currentColor">
+        <path d="M12 6H0l6-6z" />
+    </svg>
+</a>
+
+<script>
+    let menu = document.getElementById('menu')
+    if (menu) {
+        menu.scrollLeft = localStorage.getItem("menu-scroll-position");
+        menu.onscroll = function () {
+            localStorage.setItem("menu-scroll-position", menu.scrollLeft);
+        }
+    }
+
+    document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+        anchor.addEventListener("click", function (e) {
+            e.preventDefault();
+            var id = this.getAttribute("href").substr(1);
+            if (!window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
+                document.querySelector(`[id='${decodeURIComponent(id)}']`).scrollIntoView({
+                    behavior: "smooth"
+                });
+            } else {
+                document.querySelector(`[id='${decodeURIComponent(id)}']`).scrollIntoView();
+            }
+            if (id === "top") {
+                history.replaceState(null, null, " ");
+            } else {
+                history.pushState(null, null, `#${id}`);
+            }
+        });
+    });
+
+</script>
+<script>
+    var mybutton = document.getElementById("top-link");
+    window.onscroll = function () {
+        if (document.body.scrollTop > 800 || document.documentElement.scrollTop > 800) {
+            mybutton.style.visibility = "visible";
+            mybutton.style.opacity = "1";
+        } else {
+            mybutton.style.visibility = "hidden";
+            mybutton.style.opacity = "0";
+        }
+    };
+
+</script>
+<script>
+    document.getElementById("theme-toggle").addEventListener("click", () => {
+        if (document.body.className.includes("dark")) {
+            document.body.classList.remove('dark');
+            localStorage.setItem("pref-theme", 'light');
+        } else {
+            document.body.classList.add('dark');
+            localStorage.setItem("pref-theme", 'dark');
+        }
+    })
+
+</script>
+</body>
+
+</html>

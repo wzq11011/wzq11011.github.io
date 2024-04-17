@@ -1,0 +1,1943 @@
+<!DOCTYPE html>
+<html lang="en" dir="auto">
+
+<head><script src="/livereload.js?mindelay=10&amp;v=2&amp;port=1313&amp;path=livereload" data-no-instant defer></script><meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+<meta name="robots" content="noindex, nofollow">
+<title>leetcode | CodeCoda</title>
+<meta name="keywords" content="">
+<meta name="description" content="代码随想录 地址：https://programmercarl.com/
+以下学习内容来自于 chatgpt、通义千问等大语言模型（LLMs） 菜鸟教程 - 学的不仅是技术，更是梦想！
+代码随想录：
+第一遍完成时间：2024-3-1 ~
+1 c&#43;&#43; 引用 指针 定义：在C&#43;&#43;中，指针提供了直接访问内存地址的能力，允许对内存进行灵活的操作。
+1、定义指针：指针是一个变量，其存储的值是另一个变量的内存地址。可使用以下语法定义指针：
+int* ptr; // 定义一个指向整数的指针 此处的 * 表示指针，int* 表示指向整数的指针。
+2、获取地址：可以使用取地址运算符 &amp; 来获取变量的内存地址，并将其赋值给指针：
+int var = 10; int* ptr = &amp;var; // ptr 指向变量 var 的地址 3、解引用：可以使用解引用运算符 * 来访问指针所指向的内存地址存储的值：
+int var = 10; int* ptr = &amp;var; int value = *ptr; // value 的值为10，即 ptr 所指向的内存地址处的值 4、空指针：指针可以指向空地址，表示不指向任何有效的内存位置，可以使用特殊的空指针常量 nullptr 来表示空指针
+int* ptr = nullptr; // 定义一个空指针 5、动态内存分配：可以使用 new 运算符来在堆上动态分配内存，返回分配内存的地址，并将其赋值给指针。需要记得不再使用内存时，使用 delete 运算符释放内存，防止内存泄露。">
+<meta name="author" content="">
+<link rel="canonical" href="http://localhost:1313/posts/leetcode/">
+<link crossorigin="anonymous" href="/assets/css/stylesheet.b609c58d5c11bb90b1a54e04005d74ad1ddf22165eb79f5533967e57df9c3b50.css" integrity="sha256-tgnFjVwRu5CxpU4EAF10rR3fIhZet59VM5Z&#43;V9&#43;cO1A=" rel="preload stylesheet" as="style">
+<link rel="icon" href="http://localhost:1313/favicon.ico">
+<link rel="icon" type="image/png" sizes="16x16" href="http://localhost:1313/favicon-16x16.png">
+<link rel="icon" type="image/png" sizes="32x32" href="http://localhost:1313/favicon-32x32.png">
+<link rel="apple-touch-icon" href="http://localhost:1313/apple-touch-icon.png">
+<link rel="mask-icon" href="http://localhost:1313/safari-pinned-tab.svg">
+<meta name="theme-color" content="#2e2e33">
+<meta name="msapplication-TileColor" content="#2e2e33">
+<link rel="alternate" hreflang="en" href="http://localhost:1313/posts/leetcode/">
+<noscript>
+    <style>
+        #theme-toggle,
+        .top-link {
+            display: none;
+        }
+
+    </style>
+    <style>
+        @media (prefers-color-scheme: dark) {
+            :root {
+                --theme: rgb(29, 30, 32);
+                --entry: rgb(46, 46, 51);
+                --primary: rgb(218, 218, 219);
+                --secondary: rgb(155, 156, 157);
+                --tertiary: rgb(65, 66, 68);
+                --content: rgb(196, 196, 197);
+                --code-block-bg: rgb(46, 46, 51);
+                --code-bg: rgb(55, 56, 62);
+                --border: rgb(51, 51, 51);
+            }
+
+            .list {
+                background: var(--theme);
+            }
+
+            .list:not(.dark)::-webkit-scrollbar-track {
+                background: 0 0;
+            }
+
+            .list:not(.dark)::-webkit-scrollbar-thumb {
+                border-color: var(--theme);
+            }
+        }
+
+    </style>
+</noscript>
+</head>
+
+<body class="" id="top">
+<script>
+    if (localStorage.getItem("pref-theme") === "dark") {
+        document.body.classList.add('dark');
+    } else if (localStorage.getItem("pref-theme") === "light") {
+        document.body.classList.remove('dark')
+    } else if (window.matchMedia('(prefers-color-scheme: dark)').matches) {
+        document.body.classList.add('dark');
+    }
+
+</script>
+
+<header class="header">
+    <nav class="nav">
+        <div class="logo">
+            <a href="http://localhost:1313/" accesskey="h" title="CodeCoda (Alt + H)">CodeCoda</a>
+            <div class="logo-switches">
+                <button id="theme-toggle" accesskey="t" title="(Alt + T)">
+                    <svg id="moon" xmlns="http://www.w3.org/2000/svg" width="24" height="18" viewBox="0 0 24 24"
+                        fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+                        stroke-linejoin="round">
+                        <path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"></path>
+                    </svg>
+                    <svg id="sun" xmlns="http://www.w3.org/2000/svg" width="24" height="18" viewBox="0 0 24 24"
+                        fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+                        stroke-linejoin="round">
+                        <circle cx="12" cy="12" r="5"></circle>
+                        <line x1="12" y1="1" x2="12" y2="3"></line>
+                        <line x1="12" y1="21" x2="12" y2="23"></line>
+                        <line x1="4.22" y1="4.22" x2="5.64" y2="5.64"></line>
+                        <line x1="18.36" y1="18.36" x2="19.78" y2="19.78"></line>
+                        <line x1="1" y1="12" x2="3" y2="12"></line>
+                        <line x1="21" y1="12" x2="23" y2="12"></line>
+                        <line x1="4.22" y1="19.78" x2="5.64" y2="18.36"></line>
+                        <line x1="18.36" y1="5.64" x2="19.78" y2="4.22"></line>
+                    </svg>
+                </button>
+            </div>
+        </div>
+        <ul id="menu">
+        </ul>
+    </nav>
+</header>
+<main class="main">
+
+<article class="post-single">
+  <header class="post-header">
+    
+    <h1 class="post-title entry-hint-parent">
+      leetcode
+      <span class="entry-hint" title="Draft">
+        <svg xmlns="http://www.w3.org/2000/svg" height="35" viewBox="0 -960 960 960" fill="currentColor">
+          <path
+            d="M160-410v-60h300v60H160Zm0-165v-60h470v60H160Zm0-165v-60h470v60H160Zm360 580v-123l221-220q9-9 20-13t22-4q12 0 23 4.5t20 13.5l37 37q9 9 13 20t4 22q0 11-4.5 22.5T862.09-380L643-160H520Zm300-263-37-37 37 37ZM580-220h38l121-122-18-19-19-18-122 121v38Zm141-141-19-18 37 37-18-19Z" />
+        </svg>
+      </span>
+    </h1>
+    <div class="post-meta"><span title='2023-07-13 15:43:58 +0800 CST'>July 13, 2023</span>
+
+</div>
+  </header> 
+  <div class="post-content"><h1 id="代码随想录">代码随想录<a hidden class="anchor" aria-hidden="true" href="#代码随想录">#</a></h1>
+<p>地址：https://programmercarl.com/</p>
+<blockquote>
+<p>以下学习内容来自于 chatgpt、通义千问等大语言模型（LLMs） <a href="http://www.runoob.com">菜鸟教程 - 学的不仅是技术，更是梦想！</a></p>
+</blockquote>
+<p>代码随想录：</p>
+<p>第一遍完成时间：2024-3-1 ~</p>
+<h2 id="1-c">1 c++<a hidden class="anchor" aria-hidden="true" href="#1-c">#</a></h2>
+<h3 id="引用">引用<a hidden class="anchor" aria-hidden="true" href="#引用">#</a></h3>
+<h3 id="指针">指针<a hidden class="anchor" aria-hidden="true" href="#指针">#</a></h3>
+<blockquote>
+<p>定义：在C++中，指针提供了直接访问内存地址的能力，允许对内存进行灵活的操作。</p>
+</blockquote>
+<p>1、定义指针：指针是一个变量，其存储的值是另一个变量的内存地址。可使用以下语法定义指针：</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-C++" data-lang="C++"><span style="display:flex;"><span><span style="color:#66d9ef">int</span><span style="color:#f92672">*</span> ptr; <span style="color:#75715e">// 定义一个指向整数的指针
+</span></span></span></code></pre></div><p>此处的 <code>*</code> 表示指针，<code>int*</code> 表示指向整数的指针。</p>
+<p>2、获取地址：可以使用取地址运算符 <code>&amp;</code> 来获取变量的内存地址，并将其赋值给指针：</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-C++" data-lang="C++"><span style="display:flex;"><span><span style="color:#66d9ef">int</span> var <span style="color:#f92672">=</span> <span style="color:#ae81ff">10</span>;
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">int</span><span style="color:#f92672">*</span> ptr <span style="color:#f92672">=</span> <span style="color:#f92672">&amp;</span>var; <span style="color:#75715e">// ptr 指向变量 var 的地址
+</span></span></span></code></pre></div><p>3、解引用：可以使用解引用运算符 <code>*</code> 来访问指针所指向的内存地址存储的值：</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-C++" data-lang="C++"><span style="display:flex;"><span><span style="color:#66d9ef">int</span> var <span style="color:#f92672">=</span> <span style="color:#ae81ff">10</span>;
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">int</span><span style="color:#f92672">*</span> ptr <span style="color:#f92672">=</span> <span style="color:#f92672">&amp;</span>var;
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">int</span> value <span style="color:#f92672">=</span> <span style="color:#f92672">*</span>ptr; <span style="color:#75715e">// value 的值为10，即 ptr 所指向的内存地址处的值
+</span></span></span></code></pre></div><p>4、空指针：指针可以指向空地址，表示不指向任何有效的内存位置，可以使用特殊的空指针常量 <code>nullptr</code> 来表示空指针</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-C++" data-lang="C++"><span style="display:flex;"><span><span style="color:#66d9ef">int</span><span style="color:#f92672">*</span> ptr <span style="color:#f92672">=</span> <span style="color:#66d9ef">nullptr</span>; <span style="color:#75715e">// 定义一个空指针
+</span></span></span></code></pre></div><p>5、动态内存分配：可以使用 <code>new</code> 运算符来在堆上动态分配内存，返回分配内存的地址，并将其赋值给指针。需要记得不再使用内存时，使用 <code>delete</code> 运算符释放内存，防止内存泄露。</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-C++" data-lang="C++"><span style="display:flex;"><span><span style="color:#66d9ef">int</span><span style="color:#f92672">*</span> ptr <span style="color:#f92672">=</span> <span style="color:#66d9ef">new</span> <span style="color:#66d9ef">int</span>; <span style="color:#75715e">// 在堆上动态分配一个整数的内存，并将其地址赋值给指针
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span><span style="color:#f92672">*</span>ptr <span style="color:#f92672">=</span> <span style="color:#ae81ff">10</span>; <span style="color:#75715e">// 向分配的内存中存储值
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span><span style="color:#66d9ef">delete</span> ptr; <span style="color:#75715e">// 释放分配的内存
+</span></span></span></code></pre></div><p>6、数组指针：指针也可以指向数组的首地址，这样就可以通过指针来访问数组的元素</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-C++" data-lang="C++"><span style="display:flex;"><span><span style="color:#66d9ef">int</span> arr[<span style="color:#ae81ff">5</span>] <span style="color:#f92672">=</span> {<span style="color:#ae81ff">1</span>, <span style="color:#ae81ff">2</span>, <span style="color:#ae81ff">3</span>, <span style="color:#ae81ff">4</span>, <span style="color:#ae81ff">5</span>};
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">int</span><span style="color:#f92672">*</span> ptr <span style="color:#f92672">=</span> arr; <span style="color:#75715e">// 将数组的首地址赋值给指针
+</span></span></span></code></pre></div><p>指针数组：让数组存储指向 int 或 char 或其他数据类型的指针</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-C++" data-lang="C++"><span style="display:flex;"><span><span style="color:#75715e">#include</span> <span style="color:#75715e">&lt;iostream&gt;</span><span style="color:#75715e">
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">using</span> <span style="color:#66d9ef">namespace</span> std;
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">const</span> <span style="color:#66d9ef">int</span> MAX <span style="color:#f92672">=</span> <span style="color:#ae81ff">4</span>;
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">int</span> <span style="color:#a6e22e">main</span>() {
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">const</span> <span style="color:#66d9ef">char</span> <span style="color:#f92672">*</span>names[MAX] <span style="color:#f92672">=</span> {<span style="color:#e6db74">&#34;Zara Ali&#34;</span>, <span style="color:#e6db74">&#34;Hina Ali&#34;</span>, <span style="color:#e6db74">&#34;Nuha Ali&#34;</span>, <span style="color:#e6db74">&#34;Sara Ali&#34;</span>};
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">for</span> (<span style="color:#66d9ef">int</span> i <span style="color:#f92672">=</span> <span style="color:#ae81ff">0</span>; i <span style="color:#f92672">&lt;</span> MAX; i<span style="color:#f92672">++</span> ) {
+</span></span><span style="display:flex;"><span>        cout <span style="color:#f92672">&lt;&lt;</span> <span style="color:#e6db74">&#34;Value of names[&#34;</span> <span style="color:#f92672">&lt;&lt;</span> i <span style="color:#f92672">&lt;&lt;</span> <span style="color:#e6db74">&#34;] = &#34;</span>;
+</span></span><span style="display:flex;"><span>        cout <span style="color:#f92672">&lt;&lt;</span> names[i] <span style="color:#f92672">&lt;&lt;</span> endl;
+</span></span><span style="display:flex;"><span>    }
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">return</span> <span style="color:#ae81ff">0</span>;
+</span></span><span style="display:flex;"><span>}
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e">// 输出结果如下：
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>Value of names[<span style="color:#ae81ff">0</span>] <span style="color:#f92672">=</span> Zara Ali
+</span></span><span style="display:flex;"><span>Value of names[<span style="color:#ae81ff">1</span>] <span style="color:#f92672">=</span> Hina Ali
+</span></span><span style="display:flex;"><span>Value of names[<span style="color:#ae81ff">2</span>] <span style="color:#f92672">=</span> Nuha Ali
+</span></span><span style="display:flex;"><span>Value of names[<span style="color:#ae81ff">3</span>] <span style="color:#f92672">=</span> Sara Ali
+</span></span></code></pre></div><p><code>names</code>是一个数组，数组中每个元素都是一个指向 <code>const char</code> 类型的指针。在将字符串常量作为初始值赋值给 <code>names</code> 数组时，实际上是将这些字符串常量的首地址赋给了 <code>names数组中的指针元素。所以在循环中打印 names[i]</code> 时会输出字符串内容而不是地址。</p>
+<p>7、指针的算术运算：加法、减法等，但要注意指针的类型</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-C++" data-lang="C++"><span style="display:flex;"><span><span style="color:#66d9ef">int</span> arr[<span style="color:#ae81ff">5</span>] <span style="color:#f92672">=</span> {<span style="color:#ae81ff">1</span>, <span style="color:#ae81ff">2</span>, <span style="color:#ae81ff">3</span>, <span style="color:#ae81ff">4</span>, <span style="color:#ae81ff">5</span>};
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">int</span><span style="color:#f92672">*</span> ptr <span style="color:#f92672">=</span> arr;
+</span></span><span style="display:flex;"><span>ptr<span style="color:#f92672">++</span>; <span style="color:#75715e">// 指向数组的下一个元素
+</span></span></span></code></pre></div><p>我们喜欢在程序中使用指针代替数组，因为变量指针可以递增，而数组不能递增，因为数组是一个常量指针。下面的程序递增变量指针，一遍顺序访问数组中的每一个元素：</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-C++" data-lang="C++"><span style="display:flex;"><span><span style="color:#75715e">#include</span> <span style="color:#75715e">&lt;iostream&gt;</span><span style="color:#75715e">
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">using</span> <span style="color:#66d9ef">namespace</span> std;
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">const</span> <span style="color:#66d9ef">int</span> MAX <span style="color:#f92672">=</span> <span style="color:#ae81ff">3</span>;
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">int</span> <span style="color:#a6e22e">main</span>() {
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">int</span> var[MAX] <span style="color:#f92672">=</span> {<span style="color:#ae81ff">10</span>, <span style="color:#ae81ff">100</span>, <span style="color:#ae81ff">200</span>};
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">int</span> <span style="color:#f92672">*</span>ptr;
+</span></span><span style="display:flex;"><span>    
+</span></span><span style="display:flex;"><span>    <span style="color:#75715e">// 指针中的数组地址
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>    ptr <span style="color:#f92672">=</span> var;
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">for</span> (<span style="color:#66d9ef">int</span> i <span style="color:#f92672">=</span> <span style="color:#ae81ff">0</span>; i <span style="color:#f92672">&lt;</span> MAX; i<span style="color:#f92672">++</span>) {
+</span></span><span style="display:flex;"><span>        cout <span style="color:#f92672">&lt;&lt;</span> <span style="color:#e6db74">&#34;Adress of var[&#34;</span> <span style="color:#f92672">&lt;&lt;</span> i <span style="color:#f92672">&lt;&lt;</span> <span style="color:#e6db74">&#34;] = &#34;</span>;
+</span></span><span style="display:flex;"><span>        cout <span style="color:#f92672">&lt;&lt;</span> ptr <span style="color:#f92672">&lt;&lt;</span> endl;
+</span></span><span style="display:flex;"><span>        
+</span></span><span style="display:flex;"><span>        cout <span style="color:#f92672">&lt;&lt;</span> <span style="color:#e6db74">&#34;Value of var[&#34;</span> <span style="color:#f92672">&lt;&lt;</span> i <span style="color:#f92672">&lt;&lt;</span> <span style="color:#e6db74">&#34;] = &#34;</span>;
+</span></span><span style="display:flex;"><span>        cout <span style="color:#f92672">&lt;&lt;</span> <span style="color:#f92672">*</span>ptr <span style="color:#f92672">&lt;&lt;</span> endl;
+</span></span><span style="display:flex;"><span>        
+</span></span><span style="display:flex;"><span>        <span style="color:#75715e">// 将指针移动到下一个位置
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>        ptr<span style="color:#f92672">++</span>;
+</span></span><span style="display:flex;"><span>    }
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">return</span> <span style="color:#ae81ff">0</span>;
+</span></span><span style="display:flex;"><span>}
+</span></span></code></pre></div><p>以上代码的输出结果为：</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-Shell" data-lang="Shell"><span style="display:flex;"><span>Address of var<span style="color:#f92672">[</span>0<span style="color:#f92672">]</span> <span style="color:#f92672">=</span> 0xbfa088b0
+</span></span><span style="display:flex;"><span>Value of var<span style="color:#f92672">[</span>0<span style="color:#f92672">]</span> <span style="color:#f92672">=</span> <span style="color:#ae81ff">10</span>
+</span></span><span style="display:flex;"><span>Address of var<span style="color:#f92672">[</span>1<span style="color:#f92672">]</span> <span style="color:#f92672">=</span> 0xbfa088b4
+</span></span><span style="display:flex;"><span>Value of var<span style="color:#f92672">[</span>1<span style="color:#f92672">]</span> <span style="color:#f92672">=</span> <span style="color:#ae81ff">100</span>
+</span></span><span style="display:flex;"><span>Address of var<span style="color:#f92672">[</span>2<span style="color:#f92672">]</span> <span style="color:#f92672">=</span> 0xbfa088b8
+</span></span><span style="display:flex;"><span>Value of var<span style="color:#f92672">[</span>2<span style="color:#f92672">]</span> <span style="color:#f92672">=</span> <span style="color:#ae81ff">200</span>
+</span></span></code></pre></div><p>指针的比较：指针可以用关系运算符进行比较，如 ==、&lt; 和 &gt; 。如果 p1 和 p2 指向两个相关的变量，例如同一个数组中的不同元素，则可以对 p1 和 p2 进行比较。</p>
+<p>以上程序的另一种写法：只要变量指针所指向的地址小于等于数组最后一个元素的地址 <code>&amp;var[MAX-1]</code> ，就把变量指针进行递增：</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-C++" data-lang="C++"><span style="display:flex;"><span><span style="color:#75715e">#include</span> <span style="color:#75715e">&lt;iostream&gt;</span><span style="color:#75715e">
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">using</span> <span style="color:#66d9ef">namespace</span> std;
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">const</span> <span style="color:#66d9ef">int</span> MAX <span style="color:#f92672">=</span> <span style="color:#ae81ff">3</span>;
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">int</span> <span style="color:#a6e22e">main</span>() {
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">int</span> var[MAX] <span style="color:#f92672">=</span> {<span style="color:#ae81ff">10</span>, <span style="color:#ae81ff">100</span>, <span style="color:#ae81ff">200</span>};
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">int</span> <span style="color:#f92672">*</span>ptr;
+</span></span><span style="display:flex;"><span>    
+</span></span><span style="display:flex;"><span>    ptr <span style="color:#f92672">=</span> var; <span style="color:#75715e">// 将数组中第一个元素的地址赋给指针
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>    <span style="color:#66d9ef">int</span> i <span style="color:#f92672">=</span> <span style="color:#ae81ff">0</span>;
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">while</span> (ptr <span style="color:#f92672">&lt;=</span> <span style="color:#f92672">&amp;</span>var[MAX <span style="color:#f92672">-</span> <span style="color:#ae81ff">1</span>]) {
+</span></span><span style="display:flex;"><span>        cout <span style="color:#f92672">&lt;&lt;</span> <span style="color:#e6db74">&#34;Adress of var[&#34;</span> <span style="color:#f92672">&lt;&lt;</span> i <span style="color:#f92672">&lt;&lt;</span> <span style="color:#e6db74">&#34;] = &#34;</span>;
+</span></span><span style="display:flex;"><span>        cout <span style="color:#f92672">&lt;&lt;</span> ptr <span style="color:#f92672">&lt;&lt;</span> endl;
+</span></span><span style="display:flex;"><span>        
+</span></span><span style="display:flex;"><span>        cout <span style="color:#f92672">&lt;&lt;</span> <span style="color:#e6db74">&#34;Value of var[&#34;</span> <span style="color:#f92672">&lt;&lt;</span> i <span style="color:#f92672">&lt;&lt;</span> <span style="color:#e6db74">&#34;] = &#34;</span>;
+</span></span><span style="display:flex;"><span>        cout <span style="color:#f92672">&lt;&lt;</span> <span style="color:#f92672">*</span>ptr <span style="color:#f92672">&lt;&lt;</span> endl;
+</span></span><span style="display:flex;"><span>        
+</span></span><span style="display:flex;"><span>        <span style="color:#75715e">// 将指针移动到下一个位置
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>        ptr<span style="color:#f92672">++</span>;
+</span></span><span style="display:flex;"><span>        i<span style="color:#f92672">++</span>
+</span></span><span style="display:flex;"><span>    }
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">return</span> <span style="color:#ae81ff">0</span>;
+</span></span><span style="display:flex;"><span>}
+</span></span></code></pre></div><p>8、指针和函数：指针可以作为函数的参数，用于传递地址，实现对函数外部变量的修改。也可以作为函数的返回值，返回指向堆上分配内存的地址。</p>
+<p>C++ 允许您传递指针给函数，只需要简单地声明函数参数为指针类型即可。</p>
+<p>下面的实例中，我们传递一个无符号（C++中用于描述整数类型的关键字，表示该类型的取值范围为非负整数，包括0，不包括负整数）的 long 型指针给函数，并在函数内改变这个值：</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-C++" data-lang="C++"><span style="display:flex;"><span><span style="color:#75715e">#include</span> <span style="color:#75715e">&lt;iostream&gt;</span><span style="color:#75715e">
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e">#include</span> <span style="color:#75715e">&lt;ctime&gt;</span><span style="color:#75715e">
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">using</span> <span style="color:#66d9ef">namespace</span> std;
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e">// 写函数时应习惯性的先声明函数，再定义函数
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span><span style="color:#66d9ef">void</span> <span style="color:#a6e22e">getSeconds</span> (<span style="color:#66d9ef">unsigned</span> <span style="color:#66d9ef">long</span> <span style="color:#f92672">*</span>par)
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">int</span> main() {
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">unsigned</span> <span style="color:#66d9ef">long</span> sec;
+</span></span><span style="display:flex;"><span>    
+</span></span><span style="display:flex;"><span>    getSeconds (<span style="color:#f92672">&amp;</span>sec);
+</span></span><span style="display:flex;"><span>    
+</span></span><span style="display:flex;"><span>    <span style="color:#75715e">// 输出实际值
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>    cout <span style="color:#f92672">&lt;&lt;</span> <span style="color:#e6db74">&#34;Number of seconds: &#34;</span> <span style="color:#f92672">&lt;&lt;</span> sec <span style="color:#f92672">&lt;&lt;</span> endl;
+</span></span><span style="display:flex;"><span>    
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">return</span> <span style="color:#ae81ff">0</span>;
+</span></span><span style="display:flex;"><span>}
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">void</span> <span style="color:#a6e22e">getSeconds</span> (<span style="color:#66d9ef">unsigned</span> <span style="color:#66d9ef">long</span> <span style="color:#f92672">*</span>ptr) {
+</span></span><span style="display:flex;"><span>    <span style="color:#75715e">// 获取当前秒数
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>    <span style="color:#f92672">*</span>ptr <span style="color:#f92672">=</span> time(NULL);
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">return</span>;
+</span></span><span style="display:flex;"><span>}
+</span></span></code></pre></div><p>9、指向指针的指针：指向指针的指针是一种多级间接寻址形式，或者说是一个指针链。指针的指针就是将一个指针的地址存放到另一个指针里面。</p>
+<p>通常，一个指针包含一个变量的地址。当我们定义一个指向指针的指针时，第一个指针包含了第二个指针的地址，第二个指针指向包含实际值的位置。</p>
+<p><img loading="lazy" src="/Users/sebas/Documents/wzq11011.github.io/source/_posts/leetcode.assets/%28null%29" alt="img"  />
+</p>
+<p>一个指向指针的指针变量必须进行如下声明， 即在变量名前放置两个星号。例如，下面声明了一个指向 <code>int</code> 类型指针的指针：</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-C++" data-lang="C++"><span style="display:flex;"><span><span style="color:#66d9ef">int</span> <span style="color:#f92672">**</span>var;    
+</span></span></code></pre></div><p>当一个目标值被一个指针间接指向另一个指针时，访问这个值需要使用两个星号运算符，如下所示：</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-C++" data-lang="C++"><span style="display:flex;"><span><span style="color:#75715e">#include</span> <span style="color:#75715e">&lt;iostream&gt;</span><span style="color:#75715e">
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">using</span> <span style="color:#66d9ef">namespace</span> std;
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">int</span> <span style="color:#a6e22e">main</span>() {
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">int</span> var;
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">int</span> <span style="color:#f92672">*</span>ptr;
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">int</span> <span style="color:#f92672">**</span>pptr;
+</span></span><span style="display:flex;"><span>    
+</span></span><span style="display:flex;"><span>    var <span style="color:#f92672">=</span> <span style="color:#ae81ff">3000</span>;
+</span></span><span style="display:flex;"><span>    
+</span></span><span style="display:flex;"><span>    <span style="color:#75715e">// 获取 var 的地址
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>    ptr <span style="color:#f92672">=</span> <span style="color:#f92672">&amp;</span>var;
+</span></span><span style="display:flex;"><span>    
+</span></span><span style="display:flex;"><span>    <span style="color:#75715e">// 使用运算符 &amp; 获取 ptr 的地址
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>    pptr <span style="color:#f92672">=</span> <span style="color:#f92672">&amp;</span>ptr;
+</span></span><span style="display:flex;"><span>    
+</span></span><span style="display:flex;"><span>    <span style="color:#75715e">// 使用 pptr 获取值
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>    cout <span style="color:#f92672">&lt;&lt;</span> <span style="color:#e6db74">&#34;the value of var: &#34;</span> <span style="color:#f92672">&lt;&lt;</span> var <span style="color:#f92672">&lt;&lt;</span> endl;
+</span></span><span style="display:flex;"><span>    cout <span style="color:#f92672">&lt;&lt;</span> <span style="color:#e6db74">&#34;the value of *ptr: &#34;</span> <span style="color:#f92672">&lt;&lt;</span> <span style="color:#f92672">*</span>ptr <span style="color:#f92672">&lt;&lt;</span> endl;
+</span></span><span style="display:flex;"><span>    cout <span style="color:#f92672">&lt;&lt;</span> <span style="color:#e6db74">&#34;the value of **pptr: &#34;</span> <span style="color:#f92672">&lt;&lt;</span> <span style="color:#f92672">**</span>pptr <span style="color:#f92672">&lt;&lt;</span> endl;
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">return</span> <span style="color:#ae81ff">0</span>;
+</span></span><span style="display:flex;"><span>}
+</span></span></code></pre></div><p>总结：指针是C++中一个非常重要和强大的特性，它可以用于动态内存管理、数组访问、函数调用等方面，但需要谨慎使用，避免出现内存泄露和悬挂指针等问题。</p>
+<h3 id="模板">模板<a hidden class="anchor" aria-hidden="true" href="#模板">#</a></h3>
+<blockquote>
+<p>定义：c++中的模板（Template）是一种通用编程技术，它允许程序员编写通用的代码，使其可以适用于不同的数据类型。模板可以用于函数、类、结构体等，通过模板可以实现泛型编程。</p>
+</blockquote>
+<p>以下是c++模板中的几种常见用法：</p>
+<p>1、函数模板：允许定义通用的函数，可以用于处理不同类型的数据，定义函数模板的语法如下：</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-C++" data-lang="C++"><span style="display:flex;"><span><span style="color:#75715e">// 函数模板声明
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span><span style="color:#66d9ef">template</span> <span style="color:#f92672">&lt;</span><span style="color:#66d9ef">typename</span> T<span style="color:#f92672">&gt;</span>
+</span></span><span style="display:flex;"><span>T add (T a, T b) {
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">return</span> a<span style="color:#f92672">+</span>b;
+</span></span><span style="display:flex;"><span>}
+</span></span></code></pre></div><p>这个函数模板 <code>add</code> 可以对两个相同类型的数据进行加法运算，无论该类型是整数、浮点数、字符串还是其他类型。</p>
+<p>2、类模板：类模板允许定义通用的类，可用于创建不同类型的对象，定义语法如下：</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-C++" data-lang="C++"><span style="display:flex;"><span><span style="color:#66d9ef">template</span> <span style="color:#f92672">&lt;</span><span style="color:#66d9ef">typename</span> T<span style="color:#f92672">&gt;</span>
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">class</span> <span style="color:#a6e22e">Pair</span> {
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">private</span><span style="color:#f92672">:</span>
+</span></span><span style="display:flex;"><span>    T first
+</span></span><span style="display:flex;"><span>}
+</span></span></code></pre></div><h3 id="泛型">泛型<a hidden class="anchor" aria-hidden="true" href="#泛型">#</a></h3>
+<blockquote>
+<p>在编写代码时，经常会遇到相同的逻辑需要用于不同的数据类型，此时没有必要为每种数据类型编写单独的代码。泛型就是为了解决这个问题而提出的一种编程范式。</p>
+<p>c++中，泛型编程通过模板（Template）实现，模板允许程序员编写通用的代码，使得它可以适用于不同的数据类型。</p>
+</blockquote>
+<p>举例：假设我们有一个函数用于交换两个整数的值：</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-C++" data-lang="C++"><span style="display:flex;"><span><span style="color:#66d9ef">void</span> <span style="color:#a6e22e">swapIntegers</span>(<span style="color:#66d9ef">int</span><span style="color:#f92672">&amp;</span> a, <span style="color:#66d9ef">int</span><span style="color:#f92672">&amp;</span> b) {
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">int</span> temp <span style="color:#f92672">=</span> a;
+</span></span><span style="display:flex;"><span>    a <span style="color:#f92672">=</span> b;
+</span></span><span style="display:flex;"><span>    b <span style="color:#f92672">=</span> temp;
+</span></span><span style="display:flex;"><span>}
+</span></span></code></pre></div><p>如果我们需要交换两个浮点数或字符串，就需要重新编写一个交换函数，这样就会导致代码冗余和维护困难。</p>
+<p>而使用泛型，可以定义一个通用的交换函数模板，如下：</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-C++" data-lang="C++"><span style="display:flex;"><span><span style="color:#66d9ef">template</span> <span style="color:#f92672">&lt;</span><span style="color:#66d9ef">typename</span> T<span style="color:#f92672">&gt;</span>
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">void</span> swapIntegers(T<span style="color:#f92672">&amp;</span> a, T<span style="color:#f92672">&amp;</span> b) {
+</span></span><span style="display:flex;"><span>    T temp <span style="color:#f92672">=</span> a;
+</span></span><span style="display:flex;"><span>    a <span style="color:#f92672">=</span> b;
+</span></span><span style="display:flex;"><span>    b <span style="color:#f92672">=</span> a;
+</span></span><span style="display:flex;"><span>}
+</span></span></code></pre></div><p>该模板中，typename T 表示我们将使用一个泛型类型 T，这个模板函数可以接受任意类型的参数 a 和 b，并交换它们的值。调用该函数时，编译器会根据传入参数的类型实例化模板，生成对应的函数版本。</p>
+<h3 id="stl">STL<a hidden class="anchor" aria-hidden="true" href="#stl">#</a></h3>
+<p>STL（Standard Template Lubrary）是 C++ 标准库中的一个重要组成部分，提供了丰富的容器、算法和函数对象等工具，使得 C++ 变成更加高效和便捷。</p>
+<h4 id="容器">容器<a hidden class="anchor" aria-hidden="true" href="#容器">#</a></h4>
+<p><code>vector</code> 是一种动态数组，提供了快速的随机访问和动态调整大小的能力</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-C++" data-lang="C++"><span style="display:flex;"><span><span style="color:#75715e">#include</span> <span style="color:#75715e">&lt;iostream&gt;</span><span style="color:#75715e">
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e">#include</span> <span style="color:#75715e">&lt;vector&gt;</span><span style="color:#75715e">
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span><span style="color:#66d9ef">using</span> <span style="color:#66d9ef">namespace</span> std;
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">int</span> <span style="color:#a6e22e">main</span>() {
+</span></span><span style="display:flex;"><span>    <span style="color:#75715e">// 创建一个向量存储 int 类型数据
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>    vector<span style="color:#f92672">&lt;</span><span style="color:#66d9ef">int</span><span style="color:#f92672">&gt;</span> vec;
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">int</span> i;
+</span></span><span style="display:flex;"><span>    
+</span></span><span style="display:flex;"><span>    <span style="color:#75715e">// 显示 vec 的原始大小
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>    cout <span style="color:#f92672">&lt;&lt;</span> <span style="color:#e6db74">&#34;vector size = &#34;</span> <span style="color:#f92672">&lt;&lt;</span> vec.size() <span style="color:#f92672">&lt;&lt;</span> endl;
+</span></span><span style="display:flex;"><span>    
+</span></span><span style="display:flex;"><span>    <span style="color:#75715e">// 推入 5 个值到向量中
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>    <span style="color:#66d9ef">for</span> (<span style="color:#66d9ef">int</span> i <span style="color:#f92672">=</span> <span style="color:#ae81ff">0</span>; i <span style="color:#f92672">&lt;</span> <span style="color:#ae81ff">5</span>; i<span style="color:#f92672">++</span>) {
+</span></span><span style="display:flex;"><span>        vec.push_back(i);
+</span></span><span style="display:flex;"><span>    }
+</span></span><span style="display:flex;"><span>    
+</span></span><span style="display:flex;"><span>    <span style="color:#75715e">// 使用迭代器 iterator 范文值
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>    vector<span style="color:#f92672">&lt;</span><span style="color:#66d9ef">int</span><span style="color:#f92672">&gt;::</span>iterator v <span style="color:#f92672">=</span> vec.begin();
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">while</span> (v <span style="color:#f92672">!=</span> vec.end()) {
+</span></span><span style="display:flex;"><span>        cout <span style="color:#f92672">&lt;&lt;</span> <span style="color:#e6db74">&#34;value of v = &#34;</span> <span style="color:#f92672">&lt;&lt;</span> <span style="color:#f92672">*</span>v <span style="color:#f92672">&lt;&lt;</span> endl;
+</span></span><span style="display:flex;"><span>        v<span style="color:#f92672">++</span>;
+</span></span><span style="display:flex;"><span>    }
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">return</span> <span style="color:#ae81ff">0</span>;
+</span></span><span style="display:flex;"><span>}
+</span></span></code></pre></div><ul>
+<li>push_back() 成员函数在向量的末尾插入值，如果有必要则拓展向量的大小</li>
+<li>size() 函数显示向量的大小</li>
+<li>begin() 函数返回一个指向向量开头的迭代器</li>
+<li>end() 函数返回一个指向向量末尾的迭代器</li>
+<li>empty() 函数检查向量是否为空</li>
+<li>front() 函数获取向量的第一个元素</li>
+<li>back() 函数获取向量的最后一个元素</li>
+<li>data() 函数返回指向向量数据的指针</li>
+<li>at() 函数获取对应位置的元素</li>
+</ul>
+<h4 id="算法">算法<a hidden class="anchor" aria-hidden="true" href="#算法">#</a></h4>
+<h4 id="迭代器">迭代器<a hidden class="anchor" aria-hidden="true" href="#迭代器">#</a></h4>
+<h2 id="2-leetcode">2 Leetcode<a hidden class="anchor" aria-hidden="true" href="#2-leetcode">#</a></h2>
+<h3 id="21-数组">2.1 数组<a hidden class="anchor" aria-hidden="true" href="#21-数组">#</a></h3>
+<h4 id="27移除元素">27.移除元素<a hidden class="anchor" aria-hidden="true" href="#27移除元素">#</a></h4>
+<p><a href="https://leetcode.cn/problems/remove-element/">力扣题目链接(opens new window)</a></p>
+<p>给你一个数组 nums 和一个值 val，你需要 原地 移除所有数值等于 val 的元素，并返回移除后数组的新长度。</p>
+<p>不要使用额外的数组空间，你必须仅使用 O(1) 额外空间并原地修改输入数组。</p>
+<p>元素的顺序可以改变。你不需要考虑数组中超出新长度后面的元素。</p>
+<p>示例 1: 给定 nums = [3,2,2,3], val = 3, 函数应该返回新的长度 2, 并且 nums 中的前两个元素均为 2。 你不需要考虑数组中超出新长度后面的元素。</p>
+<p>示例 2: 给定 nums = [0,1,2,2,3,0,4,2], val = 2, 函数应该返回新的长度 5, 并且 nums 中的前五个元素为 0, 1, 3, 0, 4。</p>
+<p>你不需要考虑数组中超出新长度后面的元素。</p>
+<p>思路：数组的元素在内存地址中是连续的，不能单独删除数组中的某个元素，只能覆盖。</p>
+<h5 id="方法一暴力求解">方法一：暴力求解<a hidden class="anchor" aria-hidden="true" href="#方法一暴力求解">#</a></h5>
+<p>两层<code>for</code> 循环，一个循环遍历数组元素，第二个循环更新数组</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-C++" data-lang="C++"><span style="display:flex;"><span><span style="color:#66d9ef">class</span> <span style="color:#a6e22e">Solution</span> {
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">public</span><span style="color:#f92672">:</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">int</span> removeElement(vector<span style="color:#f92672">&lt;</span><span style="color:#66d9ef">int</span><span style="color:#f92672">&gt;&amp;</span> nums, <span style="color:#66d9ef">int</span> val) {
+</span></span><span style="display:flex;"><span>        <span style="color:#66d9ef">int</span> size <span style="color:#f92672">=</span>  nums.size();
+</span></span><span style="display:flex;"><span>        <span style="color:#66d9ef">for</span> (<span style="color:#66d9ef">int</span> i <span style="color:#f92672">=</span> <span style="color:#ae81ff">0</span>; i <span style="color:#f92672">&lt;</span> size; i<span style="color:#f92672">++</span>) {
+</span></span><span style="display:flex;"><span>            <span style="color:#66d9ef">if</span> (nums[i] <span style="color:#f92672">==</span> val) {
+</span></span><span style="display:flex;"><span>                <span style="color:#66d9ef">for</span> (<span style="color:#66d9ef">int</span> j <span style="color:#f92672">=</span> i <span style="color:#f92672">+</span> <span style="color:#ae81ff">1</span>; j <span style="color:#f92672">&lt;</span> size; j<span style="color:#f92672">++</span>) {
+</span></span><span style="display:flex;"><span>                    nums[j <span style="color:#f92672">-</span> <span style="color:#ae81ff">1</span>] <span style="color:#f92672">=</span> nums[j];
+</span></span><span style="display:flex;"><span>                }
+</span></span><span style="display:flex;"><span>                <span style="color:#75715e">// 因为每次进 for 都要对 i 加 1，前面删除了一个元素，
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>                <span style="color:#75715e">// 此处 i-1 要保持下一次进入循环后还是原来的 i。
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>                i<span style="color:#f92672">--</span>;  
+</span></span><span style="display:flex;"><span>                size<span style="color:#f92672">--</span>;
+</span></span><span style="display:flex;"><span>            }
+</span></span><span style="display:flex;"><span>        }
+</span></span><span style="display:flex;"><span>        <span style="color:#66d9ef">return</span> size;
+</span></span><span style="display:flex;"><span>    }
+</span></span><span style="display:flex;"><span>};
+</span></span></code></pre></div><p>时间复杂度：<code>O(n^2)</code></p>
+<p>空间复杂度：<code>O(1)</code></p>
+<h5 id="方法二双指针法快慢指针">方法二：双指针法（快慢指针）<a hidden class="anchor" aria-hidden="true" href="#方法二双指针法快慢指针">#</a></h5>
+<p>通过一个快指针和慢指针在一个 <code>for</code> 循环中完成两个 <code>for</code> 循环的工作</p>
+<p>定义快慢指针</p>
+<ul>
+<li>快指针：寻找新数组的元素，新数组就是不含目标元素的数组</li>
+<li>慢指针：指向更新后的新数组下标的位置</li>
+</ul>
+<p>删除过程：</p>
+<p>暂时无法在飞书文档外展示此内容</p>
+<p>双指针法（快慢指针法）在数组、链表、字符串等操作中很常见</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-C++" data-lang="C++"><span style="display:flex;"><span><span style="color:#66d9ef">class</span> <span style="color:#a6e22e">Solution</span> {
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">public</span><span style="color:#f92672">:</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">int</span> removeElement(vector<span style="color:#f92672">&lt;</span><span style="color:#66d9ef">int</span><span style="color:#f92672">&gt;&amp;</span> nums, <span style="color:#66d9ef">int</span> val) {
+</span></span><span style="display:flex;"><span>        <span style="color:#66d9ef">int</span> slowIndex <span style="color:#f92672">=</span> <span style="color:#ae81ff">0</span>;
+</span></span><span style="display:flex;"><span>        <span style="color:#66d9ef">for</span> (<span style="color:#66d9ef">int</span> fastIndex <span style="color:#f92672">=</span> <span style="color:#ae81ff">0</span>; fastIndex <span style="color:#f92672">&lt;</span> nums.size(); fastIndex<span style="color:#f92672">++</span>) {
+</span></span><span style="display:flex;"><span>            <span style="color:#66d9ef">if</span> (val <span style="color:#f92672">!=</span> nums[fastIndex]) {
+</span></span><span style="display:flex;"><span>                <span style="color:#75715e">// 未找到目标值元素时，两个指针都往后走一步
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>                <span style="color:#75715e">// 找目标值元素时，慢指针不动，快指针继续往下走
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>                nums[slowIndex<span style="color:#f92672">++</span>] <span style="color:#f92672">=</span> nums[fastIndex];
+</span></span><span style="display:flex;"><span>            }
+</span></span><span style="display:flex;"><span>        }
+</span></span><span style="display:flex;"><span>        <span style="color:#66d9ef">return</span> slowIndex;
+</span></span><span style="display:flex;"><span>    }
+</span></span><span style="display:flex;"><span>};
+</span></span></code></pre></div><p>时间复杂度：<code>O(n)</code></p>
+<p>空间复杂度：<code>O(1)</code></p>
+<p>相关题目推荐：</p>
+<ul>
+<li><a href="https://leetcode.cn/problems/remove-duplicates-from-sorted-array/">26.删除排序数组中的重复项(opens new window)</a></li>
+<li><a href="https://leetcode.cn/problems/move-zeroes/">283.移动零(opens new window)</a></li>
+<li><a href="https://leetcode.cn/problems/backspace-string-compare/">844.比较含退格的字符串(opens new window)</a></li>
+<li><a href="https://leetcode.cn/problems/squares-of-a-sorted-array/">977.有序数组的平方(opens new window)</a></li>
+</ul>
+<p>Java 版本</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-Java" data-lang="Java"><span style="display:flex;"><span><span style="color:#66d9ef">class</span> <span style="color:#a6e22e">Solution</span> {
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">public</span> <span style="color:#66d9ef">int</span> <span style="color:#a6e22e">removeElement</span>(<span style="color:#66d9ef">int</span><span style="color:#f92672">[]</span> nums, <span style="color:#66d9ef">int</span> val) {
+</span></span><span style="display:flex;"><span>        <span style="color:#75715e">// 快慢指针</span>
+</span></span><span style="display:flex;"><span>        <span style="color:#66d9ef">int</span> slowIndex <span style="color:#f92672">=</span> 0;
+</span></span><span style="display:flex;"><span>        <span style="color:#66d9ef">for</span> (<span style="color:#66d9ef">int</span> fastIndex <span style="color:#f92672">=</span> 0; fastIndex <span style="color:#f92672">&lt;</span> nums.<span style="color:#a6e22e">length</span>; fastIndex<span style="color:#f92672">++</span>) {
+</span></span><span style="display:flex;"><span>            <span style="color:#66d9ef">if</span> (nums<span style="color:#f92672">[</span>fastIndex<span style="color:#f92672">]</span> <span style="color:#f92672">!=</span> val) {
+</span></span><span style="display:flex;"><span>                nums<span style="color:#f92672">[</span>slowIndex<span style="color:#f92672">]</span> <span style="color:#f92672">=</span> nums<span style="color:#f92672">[</span>fastIndex<span style="color:#f92672">]</span>;
+</span></span><span style="display:flex;"><span>                slowIndex<span style="color:#f92672">++</span>;
+</span></span><span style="display:flex;"><span>            }
+</span></span><span style="display:flex;"><span>        }
+</span></span><span style="display:flex;"><span>        <span style="color:#66d9ef">return</span> slowIndex;
+</span></span><span style="display:flex;"><span>    }
+</span></span><span style="display:flex;"><span>}
+</span></span></code></pre></div><h4 id="997有序数组的平方">997.有序数组的平方<a hidden class="anchor" aria-hidden="true" href="#997有序数组的平方">#</a></h4>
+<p><a href="https://leetcode.cn/problems/squares-of-a-sorted-array/">力扣题目链接</a></p>
+<p><a href="https://www.programmercarl.com/0977.%E6%9C%89%E5%BA%8F%E6%95%B0%E7%BB%84%E7%9A%84%E5%B9%B3%E6%96%B9.html#%E6%80%9D%E8%B7%AF">代码随想录</a></p>
+<p>给你一个按 非递减顺序 排序的整数数组 nums，返回 每个数字的平方 组成的新数组，要求也按 非递减顺序 排序。</p>
+<p>示例 1：</p>
+<ul>
+<li>输入：nums = [-4,-1,0,3,10]</li>
+<li>输出：[0,1,9,16,100]</li>
+<li>解释：平方后，数组变为 [16,1,0,9,100]，排序后，数组变为 [0,1,9,16,100]</li>
+</ul>
+<p>示例 2：</p>
+<ul>
+<li>输入：nums = [-7,-3,2,3,11]</li>
+<li>输出：[4,9,9,49,121]</li>
+</ul>
+<h5 id="方法一暴力求解-1">方法一：暴力求解<a hidden class="anchor" aria-hidden="true" href="#方法一暴力求解-1">#</a></h5>
+<p>每个数平方之后，再排序</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-C++" data-lang="C++"><span style="display:flex;"><span><span style="color:#66d9ef">class</span> <span style="color:#a6e22e">Solution</span> {
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">public</span><span style="color:#f92672">:</span>
+</span></span><span style="display:flex;"><span>    vector<span style="color:#f92672">&lt;</span><span style="color:#66d9ef">int</span><span style="color:#f92672">&gt;</span> sortedSquares(vector<span style="color:#f92672">&lt;</span><span style="color:#66d9ef">int</span><span style="color:#f92672">&gt;&amp;</span> A) {
+</span></span><span style="display:flex;"><span>        <span style="color:#66d9ef">for</span>(<span style="color:#66d9ef">int</span> i <span style="color:#f92672">=</span> <span style="color:#ae81ff">0</span>; i <span style="color:#f92672">&lt;</span> A.size(); i<span style="color:#f92672">++</span>) {
+</span></span><span style="display:flex;"><span>            A[i] <span style="color:#f92672">*=</span> A[i];  <span style="color:#75715e">// 遍历每个数，然后平方
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>        }
+</span></span><span style="display:flex;"><span>        sort(A.begin(), A.end()); <span style="color:#75715e">// 快速排序
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>        <span style="color:#66d9ef">return</span> A;
+</span></span><span style="display:flex;"><span>    }
+</span></span><span style="display:flex;"><span>};
+</span></span></code></pre></div><p>该方法的时间复杂度为 O(n + nlogn)，可以近似为 O(nlogn) 的时间复杂度。</p>
+<h5 id="方法二双指针法">方法二：双指针法<a hidden class="anchor" aria-hidden="true" href="#方法二双指针法">#</a></h5>
+<p>双指针法通常用于处理数组或链表等数据结构，这种技巧通常使用两个指针来解决问题，分别称为快指针和慢指针，它们分别在数据结构上以不同的速度移动，以达到解决问题的目的。</p>
+<p>双指针法通常用于解决以下问题：</p>
+<p>1、数组、链表中的搜索或遍历</p>
+<p>2、数组、链表中的查找和匹配</p>
+<p>3、数组、链表中的区间问题</p>
+<p>双指针法分为两种类型：快慢指针、左右指针</p>
+<p>本题使用左右指针，比较左右两侧数值的大小，取较大值存入新数组的最右边（以形成从小到大的排列规律）</p>
+<p>暂时无法在飞书文档外展示此内容</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-C++" data-lang="C++"><span style="display:flex;"><span><span style="color:#66d9ef">class</span> <span style="color:#a6e22e">Solution</span> {
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">public</span><span style="color:#f92672">:</span>
+</span></span><span style="display:flex;"><span>    vector<span style="color:#f92672">&lt;</span><span style="color:#66d9ef">int</span><span style="color:#f92672">&gt;</span> sortedSquares(vector<span style="color:#f92672">&lt;</span><span style="color:#66d9ef">int</span><span style="color:#f92672">&gt;&amp;</span> nums) {
+</span></span><span style="display:flex;"><span>        <span style="color:#66d9ef">int</span> k <span style="color:#f92672">=</span> nums.size() <span style="color:#f92672">-</span> <span style="color:#ae81ff">1</span>;
+</span></span><span style="display:flex;"><span>        vector<span style="color:#f92672">&lt;</span><span style="color:#66d9ef">int</span><span style="color:#f92672">&gt;</span> result(nums.size(), <span style="color:#ae81ff">0</span>);
+</span></span><span style="display:flex;"><span>        <span style="color:#75715e">// for (int i = 0; int j = nums.size() - 1; i &lt;= j) { 没有加分号
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>        <span style="color:#66d9ef">for</span> (<span style="color:#66d9ef">int</span> i <span style="color:#f92672">=</span> <span style="color:#ae81ff">0</span>, j <span style="color:#f92672">=</span> nums.size() <span style="color:#f92672">-</span> <span style="color:#ae81ff">1</span>; i <span style="color:#f92672">&lt;=</span> j;) {
+</span></span><span style="display:flex;"><span>            <span style="color:#66d9ef">if</span> (nums[i] <span style="color:#f92672">*</span> nums[i] <span style="color:#f92672">&lt;</span> nums[j] <span style="color:#f92672">*</span> nums[j]) {
+</span></span><span style="display:flex;"><span>                result[k<span style="color:#f92672">--</span>] <span style="color:#f92672">=</span> nums[j] <span style="color:#f92672">*</span> nums[j];
+</span></span><span style="display:flex;"><span>                j<span style="color:#f92672">--</span>;
+</span></span><span style="display:flex;"><span>            }
+</span></span><span style="display:flex;"><span>            <span style="color:#66d9ef">else</span> {
+</span></span><span style="display:flex;"><span>                result[k<span style="color:#f92672">--</span>] <span style="color:#f92672">=</span> nums[i] <span style="color:#f92672">*</span> nums[i];
+</span></span><span style="display:flex;"><span>                i<span style="color:#f92672">++</span>;
+</span></span><span style="display:flex;"><span>            }
+</span></span><span style="display:flex;"><span>        }
+</span></span><span style="display:flex;"><span>        <span style="color:#66d9ef">return</span> result;
+</span></span><span style="display:flex;"><span>    }
+</span></span><span style="display:flex;"><span>};
+</span></span></code></pre></div><p>时间复杂度：<code>O(n)</code></p>
+<p>Java 版本代码</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-Java" data-lang="Java"><span style="display:flex;"><span><span style="color:#66d9ef">class</span> <span style="color:#a6e22e">Solution</span> {
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">public</span> <span style="color:#66d9ef">int</span><span style="color:#f92672">[]</span> <span style="color:#a6e22e">sortedSquares</span>(<span style="color:#66d9ef">int</span><span style="color:#f92672">[]</span> nums) {
+</span></span><span style="display:flex;"><span>        <span style="color:#66d9ef">int</span> right <span style="color:#f92672">=</span> nums.<span style="color:#a6e22e">length</span> <span style="color:#f92672">-</span> 1;
+</span></span><span style="display:flex;"><span>        <span style="color:#66d9ef">int</span> left <span style="color:#f92672">=</span> 0;
+</span></span><span style="display:flex;"><span>        <span style="color:#66d9ef">int</span><span style="color:#f92672">[]</span> result <span style="color:#f92672">=</span> <span style="color:#66d9ef">new</span> <span style="color:#66d9ef">int</span><span style="color:#f92672">[</span>nums.<span style="color:#a6e22e">length</span><span style="color:#f92672">]</span>;
+</span></span><span style="display:flex;"><span>        <span style="color:#66d9ef">int</span> index <span style="color:#f92672">=</span> result.<span style="color:#a6e22e">length</span> <span style="color:#f92672">-</span> 1;
+</span></span><span style="display:flex;"><span>        <span style="color:#66d9ef">while</span> (left <span style="color:#f92672">&lt;=</span> right) {
+</span></span><span style="display:flex;"><span>            <span style="color:#66d9ef">if</span> (nums<span style="color:#f92672">[</span>left<span style="color:#f92672">]</span> <span style="color:#f92672">*</span> nums<span style="color:#f92672">[</span>left<span style="color:#f92672">]</span> <span style="color:#f92672">&lt;</span> nums<span style="color:#f92672">[</span>right<span style="color:#f92672">]</span> <span style="color:#f92672">*</span> nums<span style="color:#f92672">[</span>right<span style="color:#f92672">]</span>) {
+</span></span><span style="display:flex;"><span>                result<span style="color:#f92672">[</span>index<span style="color:#f92672">--]</span> <span style="color:#f92672">=</span> nums<span style="color:#f92672">[</span>right<span style="color:#f92672">]</span> <span style="color:#f92672">*</span> nums<span style="color:#f92672">[</span>right<span style="color:#f92672">]</span>;
+</span></span><span style="display:flex;"><span>                right<span style="color:#f92672">--</span>;
+</span></span><span style="display:flex;"><span>            } <span style="color:#66d9ef">else</span> {
+</span></span><span style="display:flex;"><span>                result<span style="color:#f92672">[</span>index<span style="color:#f92672">--]</span> <span style="color:#f92672">=</span> nums<span style="color:#f92672">[</span>left<span style="color:#f92672">]</span> <span style="color:#f92672">*</span> nums<span style="color:#f92672">[</span>left<span style="color:#f92672">]</span>;
+</span></span><span style="display:flex;"><span>                left<span style="color:#f92672">++</span>;
+</span></span><span style="display:flex;"><span>            }
+</span></span><span style="display:flex;"><span>        }
+</span></span><span style="display:flex;"><span>        <span style="color:#66d9ef">return</span> result;
+</span></span><span style="display:flex;"><span>    }
+</span></span><span style="display:flex;"><span>}
+</span></span></code></pre></div><h4 id="209长度最小的子数组">209.长度最小的子数组<a hidden class="anchor" aria-hidden="true" href="#209长度最小的子数组">#</a></h4>
+<p><a href="https://leetcode.cn/problems/minimum-size-subarray-sum/">力扣题目链接</a></p>
+<p>给定一个含有 n 个正整数的数组和一个正整数 s ，找出该数组中满足其和 ≥ s 的长度最小的 连续 子数组，并返回其长度。如果不存在符合条件的子数组，返回 0。</p>
+<p>示例：</p>
+<ul>
+<li>输入：s = 7, nums = [2,3,1,2,4,3]</li>
+<li>输出：2</li>
+<li>解释：子数组 [4,3] 是该条件下的长度最小的子数组。</li>
+</ul>
+<p>提示：</p>
+<ul>
+<li>1 &lt;= target &lt;= 10^9</li>
+<li>1 &lt;= nums.length &lt;= 10^5</li>
+<li>1 &lt;= nums[i] &lt;= 10^5</li>
+</ul>
+<h5 id="方法一暴力解法">方法一：暴力解法<a hidden class="anchor" aria-hidden="true" href="#方法一暴力解法">#</a></h5>
+<p>两个 <code>for</code> 循环不断地寻找符合条件的子序列，时间复杂度为 <code>O(n^2)</code> 。</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-C++" data-lang="C++"><span style="display:flex;"><span><span style="color:#66d9ef">class</span> <span style="color:#a6e22e">Solution</span> {
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">public</span><span style="color:#f92672">:</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">int</span> minSubArrayLen(<span style="color:#66d9ef">int</span> s, vector<span style="color:#f92672">&lt;</span><span style="color:#66d9ef">int</span><span style="color:#f92672">&gt;&amp;</span> nums) {
+</span></span><span style="display:flex;"><span>        <span style="color:#66d9ef">int</span> result <span style="color:#f92672">=</span> INT32_MAX; <span style="color:#75715e">// 储存最终的结果（最小子序列长度）
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>        <span style="color:#66d9ef">int</span> sum <span style="color:#f92672">=</span> <span style="color:#ae81ff">0</span>; <span style="color:#75715e">// 子序列之和
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>        <span style="color:#66d9ef">int</span> subLength <span style="color:#f92672">=</span> <span style="color:#ae81ff">0</span>; <span style="color:#75715e">// 子序列长度
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>        <span style="color:#66d9ef">for</span>(<span style="color:#66d9ef">int</span> i <span style="color:#f92672">=</span> <span style="color:#ae81ff">0</span>; i <span style="color:#f92672">&lt;</span> nums.size(); i<span style="color:#f92672">++</span>) {
+</span></span><span style="display:flex;"><span>            sum <span style="color:#f92672">=</span> <span style="color:#ae81ff">0</span>;
+</span></span><span style="display:flex;"><span>            <span style="color:#66d9ef">for</span>(<span style="color:#66d9ef">int</span> j <span style="color:#f92672">=</span> i; j <span style="color:#f92672">&lt;</span> nums.size(); j<span style="color:#f92672">++</span>) {
+</span></span><span style="display:flex;"><span>                sum <span style="color:#f92672">+=</span> nums[j]; <span style="color:#75715e">// 求和
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>                <span style="color:#66d9ef">if</span>(sum <span style="color:#f92672">&gt;=</span> s) {
+</span></span><span style="display:flex;"><span>                    subLength <span style="color:#f92672">=</span> j <span style="color:#f92672">-</span> i <span style="color:#f92672">+</span> <span style="color:#ae81ff">1</span>; <span style="color:#75715e">// 计算子序列的长度
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>                    result <span style="color:#f92672">=</span> result <span style="color:#f92672">&lt;</span> subLength <span style="color:#f92672">?</span> result : subLength;
+</span></span><span style="display:flex;"><span>                    <span style="color:#66d9ef">break</span>; <span style="color:#75715e">// 找到符合条件最短子序列，结束循环
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>                }
+</span></span><span style="display:flex;"><span>            }
+</span></span><span style="display:flex;"><span>        }
+</span></span><span style="display:flex;"><span>        <span style="color:#75715e">// 如果result没有被赋值的话，就返回0，说明没有符合条件的子序列
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>        <span style="color:#66d9ef">return</span> result <span style="color:#f92672">==</span> INT32_MAX <span style="color:#f92672">?</span> <span style="color:#ae81ff">0</span> <span style="color:#f92672">:</span> result;
+</span></span><span style="display:flex;"><span>    }
+</span></span><span style="display:flex;"><span>}
+</span></span></code></pre></div><p>时间复杂度：<code>O(n^2)</code></p>
+<p>空间复杂度：<code>O(1)</code></p>
+<h5 id="方法二滑动窗口">方法二：滑动窗口<a hidden class="anchor" aria-hidden="true" href="#方法二滑动窗口">#</a></h5>
+<p>通过不断调整子序列的起始位置和终止位置，得到想要的结果</p>
+<p>这里还是以题目中的示例来举例，s=7， 数组是 2，3，1，2，4，3，来看一下查找的过程：</p>
+<p>暂时无法在飞书文档外展示此内容</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-C++" data-lang="C++"><span style="display:flex;"><span><span style="color:#66d9ef">class</span> <span style="color:#a6e22e">Solution</span> {
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">public</span><span style="color:#f92672">:</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">int</span> minSubArrayLen (<span style="color:#66d9ef">int</span> s, vector<span style="color:#f92672">&lt;</span><span style="color:#66d9ef">int</span><span style="color:#f92672">&gt;&amp;</span> nums) {
+</span></span><span style="display:flex;"><span>        <span style="color:#66d9ef">int</span> result <span style="color:#f92672">=</span> INT32_MAX;  <span style="color:#75715e">// 保存最终的结果
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>        <span style="color:#66d9ef">int</span> sum <span style="color:#f92672">=</span> <span style="color:#ae81ff">0</span>;  <span style="color:#75715e">// 滑动窗口数值之和
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>        <span style="color:#66d9ef">int</span> i <span style="color:#f92672">=</span> <span style="color:#ae81ff">0</span>;   <span style="color:#75715e">// 滑动窗口的起始位置
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>        <span style="color:#66d9ef">int</span> subLength <span style="color:#f92672">=</span> <span style="color:#ae81ff">0</span>;  <span style="color:#75715e">// 滑动窗口的长度
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>        <span style="color:#66d9ef">for</span> (<span style="color:#66d9ef">int</span> j <span style="color:#f92672">=</span> <span style="color:#ae81ff">0</span>; j <span style="color:#f92672">&lt;</span> nums.size(); j<span style="color:#f92672">++</span>) {
+</span></span><span style="display:flex;"><span>            sum <span style="color:#f92672">+=</span> nums[j];  <span style="color:#75715e">// 计算第一个元素到最后一个元素 j 的序列之和
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>            <span style="color:#75715e">// 如果该序列和大于s，则缩减
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>            <span style="color:#66d9ef">while</span> (sum <span style="color:#f92672">&gt;=</span> s) {
+</span></span><span style="display:flex;"><span>                subLength <span style="color:#f92672">=</span> j <span style="color:#f92672">-</span> i <span style="color:#f92672">+</span> <span style="color:#ae81ff">1</span>;  <span style="color:#75715e">// 计算子序列长度
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>                result <span style="color:#f92672">=</span> result <span style="color:#f92672">&lt;</span> subLength <span style="color:#f92672">?</span> result : subLength;  <span style="color:#75715e">// 将长度存入 result
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>                sum <span style="color:#f92672">-=</span> nums[i<span style="color:#f92672">--</span>];  <span style="color:#75715e">// 缩减长度，同时动态调整子序列的初始位置
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>            }
+</span></span><span style="display:flex;"><span>        }
+</span></span><span style="display:flex;"><span>        <span style="color:#66d9ef">return</span> result <span style="color:#f92672">==</span> INT32_MAX <span style="color:#f92672">?</span> <span style="color:#ae81ff">0</span> <span style="color:#f92672">:</span> result;
+</span></span><span style="display:flex;"><span>    }
+</span></span><span style="display:flex;"><span>}
+</span></span></code></pre></div><ul>
+<li>时间复杂度：O(n)</li>
+<li>空间复杂度：O(1)</li>
+</ul>
+<p>一些录友会疑惑为什么时间复杂度是O(n)。</p>
+<p>不要以为for里放一个while就以为是O(n^2)啊， 主要是看每一个元素被操作的次数，每个元素在滑动窗后进来操作一次，出去操作一次，每个元素都是被操作两次，所以时间复杂度是 2 × n 也就是O(n)。</p>
+<h5 id="相关题目推荐">相关题目推荐<a hidden class="anchor" aria-hidden="true" href="#相关题目推荐">#</a></h5>
+<ul>
+<li>
+<p><a href="https://leetcode.cn/problems/fruit-into-baskets/">904.水果成篮(opens new window)</a></p>
+</li>
+<li>
+<p><a href="https://leetcode.cn/problems/minimum-window-substring/">76.最小覆盖子串(opens new window)</a></p>
+</li>
+</ul>
+<p>Java 语言版本</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-Java" data-lang="Java"><span style="display:flex;"><span><span style="color:#66d9ef">class</span> <span style="color:#a6e22e">Solution</span> {
+</span></span><span style="display:flex;"><span>    <span style="color:#75715e">// 滑动窗口</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">public</span> <span style="color:#66d9ef">int</span> <span style="color:#a6e22e">minSubArrayLen</span> (<span style="color:#66d9ef">int</span> s, <span style="color:#66d9ef">int</span><span style="color:#f92672">[]</span> nums) {
+</span></span><span style="display:flex;"><span>        <span style="color:#66d9ef">int</span> left <span style="color:#f92672">=</span> 0;
+</span></span><span style="display:flex;"><span>        <span style="color:#66d9ef">int</span> sum <span style="color:#f92672">=</span> 0;
+</span></span><span style="display:flex;"><span>        <span style="color:#66d9ef">int</span> result <span style="color:#f92672">=</span> Integer.<span style="color:#a6e22e">MAX_VALUE</span>;
+</span></span><span style="display:flex;"><span>        <span style="color:#66d9ef">for</span> (<span style="color:#66d9ef">int</span> right <span style="color:#f92672">=</span> 0; right <span style="color:#f92672">&lt;</span> nums.<span style="color:#a6e22e">length</span>; right<span style="color:#f92672">++</span>) {
+</span></span><span style="display:flex;"><span>            sum <span style="color:#f92672">+=</span> nums<span style="color:#f92672">[</span>right<span style="color:#f92672">]</span>;
+</span></span><span style="display:flex;"><span>            <span style="color:#66d9ef">while</span> (sum <span style="color:#f92672">&gt;=</span> s) {
+</span></span><span style="display:flex;"><span>                result <span style="color:#f92672">=</span> Math.<span style="color:#a6e22e">min</span>(result, right <span style="color:#f92672">-</span> left <span style="color:#f92672">+</span> 1);
+</span></span><span style="display:flex;"><span>                sum <span style="color:#f92672">-=</span> nums<span style="color:#f92672">[</span>left<span style="color:#f92672">++]</span>;
+</span></span><span style="display:flex;"><span>            }
+</span></span><span style="display:flex;"><span>        }
+</span></span><span style="display:flex;"><span>        <span style="color:#66d9ef">return</span> result <span style="color:#f92672">==</span> Integer.<span style="color:#a6e22e">MAX_VALUE</span> <span style="color:#f92672">?</span> 0 : result;
+</span></span><span style="display:flex;"><span>    }
+</span></span><span style="display:flex;"><span>}
+</span></span></code></pre></div><h4 id="59螺旋矩阵ii">59.螺旋矩阵II<a hidden class="anchor" aria-hidden="true" href="#59螺旋矩阵ii">#</a></h4>
+<p><a href="https://leetcode.cn/problems/spiral-matrix-ii/">力扣题目链接(opens new window)</a></p>
+<p>给定一个正整数 n，生成一个包含 1 到 n^2 所有元素，且元素按顺时针顺序螺旋排列的正方形矩阵。</p>
+<p>示例:</p>
+<p>输入: 3 输出: [ [ 1, 2, 3 ], [ 8, 9, 4 ], [ 7, 6, 5 ] ]</p>
+<p>面试频率较高，模拟过程，十分考察对代码的掌控能力。</p>
+<p>模拟顺时针画矩阵的过程:</p>
+<ul>
+<li>填充上行从左到右</li>
+<li>填充右列从上到下</li>
+<li>填充下行从右到左</li>
+<li>填充左列从下到上</li>
+</ul>
+<p>由外向内一圈一圈这么画下去。</p>
+<p>可以发现这里的边界条件非常多，在一个循环中，如此多的边界条件，如果不按照固定规则来遍历，那就是一进循环深似海，从此offer是路人。</p>
+<p>这里一圈下来，我们要画每四条边，这四条边怎么画，每画一条边都要坚持一致的左闭右开，或者左开右闭的原则，这样这一圈才能按照统一的规则画下来。</p>
+<p><img loading="lazy" src="/Users/sebas/Documents/wzq11011.github.io/source/_posts/leetcode.assets/%28null%29-20240417193332484.%28null%29" alt="img"  />
+</p>
+<p>这里每一种颜色，代表一条边，我们遍历的长度，可以看出每一个拐角处的处理规则，拐角处让给新的一条边来继续画。这也是坚持了每条边左闭右开的原则。</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-C++" data-lang="C++"><span style="display:flex;"><span><span style="color:#66d9ef">class</span> <span style="color:#a6e22e">Solution</span> {
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">public</span><span style="color:#f92672">:</span>
+</span></span><span style="display:flex;"><span>    vector<span style="color:#f92672">&lt;</span>vector<span style="color:#f92672">&lt;</span><span style="color:#66d9ef">int</span><span style="color:#f92672">&gt;&gt;</span> generateMatrix (<span style="color:#66d9ef">int</span> n) {
+</span></span><span style="display:flex;"><span>        <span style="color:#75715e">// 使用 vector 定义一个二维数组
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>        vector<span style="color:#f92672">&lt;</span>vector<span style="color:#f92672">&lt;</span><span style="color:#66d9ef">int</span><span style="color:#f92672">&gt;&gt;</span> res(n, vector<span style="color:#f92672">&lt;</span><span style="color:#66d9ef">int</span><span style="color:#f92672">&gt;</span>(n, <span style="color:#ae81ff">0</span>));
+</span></span><span style="display:flex;"><span>        <span style="color:#66d9ef">int</span> startx <span style="color:#f92672">=</span> <span style="color:#ae81ff">0</span>, starty <span style="color:#f92672">=</span> <span style="color:#ae81ff">0</span>;  <span style="color:#75715e">// 定义每循环一个圈的起始位置
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>        <span style="color:#75715e">// 每个圈循环几次，例如n为奇数3，则loop=1，只循环一圈，矩阵中间的值需要单独处理
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>        <span style="color:#66d9ef">int</span> loop <span style="color:#f92672">=</span> n<span style="color:#f92672">/</span><span style="color:#ae81ff">2</span>;  
+</span></span><span style="display:flex;"><span>        <span style="color:#66d9ef">int</span> mid <span style="color:#f92672">=</span> n<span style="color:#f92672">/</span><span style="color:#ae81ff">2</span>;  <span style="color:#75715e">// 矩阵中间的位置，例如n为3，则中间位置为（1,1），n为5，中间位置为（2,2）
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>        <span style="color:#66d9ef">int</span> count <span style="color:#f92672">=</span> <span style="color:#ae81ff">1</span>;  <span style="color:#75715e">// 用来给矩阵中每一个空格赋值
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>        <span style="color:#66d9ef">int</span> offset <span style="color:#f92672">=</span> <span style="color:#ae81ff">1</span>;  <span style="color:#75715e">// 需要控制每一条边遍历的长度，每次循环右边界收缩一位
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>        <span style="color:#66d9ef">int</span> i,j;
+</span></span><span style="display:flex;"><span>        
+</span></span><span style="display:flex;"><span>        <span style="color:#66d9ef">while</span> (loop<span style="color:#f92672">--</span>) {
+</span></span><span style="display:flex;"><span>            i <span style="color:#f92672">=</span> startx;
+</span></span><span style="display:flex;"><span>            j <span style="color:#f92672">=</span> starty;
+</span></span><span style="display:flex;"><span>            
+</span></span><span style="display:flex;"><span>            <span style="color:#75715e">// 以下的四个for循环模拟转圈的过程
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>            <span style="color:#75715e">// 模拟填充最上面一行，从左到右（左闭右开）
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>            <span style="color:#66d9ef">for</span> (j <span style="color:#f92672">=</span> starty; j <span style="color:#f92672">&lt;</span> n <span style="color:#f92672">-</span> offset; j<span style="color:#f92672">++</span>) {
+</span></span><span style="display:flex;"><span>                res[startx][j] <span style="color:#f92672">=</span> count<span style="color:#f92672">++</span>;
+</span></span><span style="display:flex;"><span>            }
+</span></span><span style="display:flex;"><span>            
+</span></span><span style="display:flex;"><span>            <span style="color:#75715e">// 模拟填充最右边一列，从上到下（左闭右开）
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>            <span style="color:#66d9ef">for</span> (i <span style="color:#f92672">=</span> startx; i <span style="color:#f92672">&lt;</span> n <span style="color:#f92672">-</span> offset; i<span style="color:#f92672">++</span>) {
+</span></span><span style="display:flex;"><span>                res[i][j] <span style="color:#f92672">=</span> count<span style="color:#f92672">++</span>;
+</span></span><span style="display:flex;"><span>            }
+</span></span><span style="display:flex;"><span>            
+</span></span><span style="display:flex;"><span>            <span style="color:#75715e">// 模拟填充最下面一行，从右到左（左闭右开）
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>            <span style="color:#66d9ef">for</span> (; j <span style="color:#f92672">&gt;</span> starty; j<span style="color:#f92672">--</span>) {
+</span></span><span style="display:flex;"><span>                res[i][j] <span style="color:#f92672">=</span> count<span style="color:#f92672">++</span>;
+</span></span><span style="display:flex;"><span>            }
+</span></span><span style="display:flex;"><span>            
+</span></span><span style="display:flex;"><span>            <span style="color:#75715e">// 模拟填充最左边一列，从下到上（左闭右开）
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>            <span style="color:#66d9ef">for</span> (; i <span style="color:#f92672">&gt;</span> startx; i<span style="color:#f92672">--</span>) {
+</span></span><span style="display:flex;"><span>                res[i][j] <span style="color:#f92672">=</span> count<span style="color:#f92672">++</span>
+</span></span><span style="display:flex;"><span>            }
+</span></span><span style="display:flex;"><span>            
+</span></span><span style="display:flex;"><span>            <span style="color:#75715e">// 第二圈开始的时候，起始位置要+1
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>            <span style="color:#75715e">// 例如：第一圈起始位置为（0,0），第二圈起始位置为（1,1）
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>            startx<span style="color:#f92672">++</span>;
+</span></span><span style="display:flex;"><span>            starty<span style="color:#f92672">++</span>;
+</span></span><span style="display:flex;"><span>            
+</span></span><span style="display:flex;"><span>            <span style="color:#75715e">// offset 控制每一圈每一条边遍历的长度
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>            offset<span style="color:#f92672">++</span>;
+</span></span><span style="display:flex;"><span>        }
+</span></span><span style="display:flex;"><span>        
+</span></span><span style="display:flex;"><span>        <span style="color:#75715e">// 如果 n 为奇数的话，需要单独给矩阵最中间的位置赋值
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>        <span style="color:#66d9ef">if</span> (n <span style="color:#f92672">%</span> <span style="color:#ae81ff">2</span>) {
+</span></span><span style="display:flex;"><span>            res[mid][mid] <span style="color:#f92672">=</span> count;
+</span></span><span style="display:flex;"><span>        }
+</span></span><span style="display:flex;"><span>        <span style="color:#66d9ef">return</span> res;
+</span></span><span style="display:flex;"><span>    }
+</span></span><span style="display:flex;"><span>};
+</span></span></code></pre></div><p>时间复杂度：<code>O(n^2)</code></p>
+<p>空间复杂度：<code>O(1)</code></p>
+<p>类题：</p>
+<ul>
+<li><a href="https://leetcode.cn/problems/spiral-matrix/">54.螺旋矩阵(opens new window)</a></li>
+<li><a href="https://leetcode.cn/problems/shun-shi-zhen-da-yin-ju-zhen-lcof/">剑指Offer 29.顺时针打印矩阵(opens new window)</a></li>
+</ul>
+<p><img loading="lazy" src="/Users/sebas/Documents/wzq11011.github.io/source/_posts/leetcode.assets/%28null%29-20240417193332586.%28null%29" alt="img"  />
+</p>
+<h3 id="22-链表">2.2 链表<a hidden class="anchor" aria-hidden="true" href="#22-链表">#</a></h3>
+<h4 id="概念">概念<a hidden class="anchor" aria-hidden="true" href="#概念">#</a></h4>
+<p>链表是一种通过指针串联在一起的线性结构，每个节点由两部分组成，一个数据域（存放数据）一个指针域（存放指向下一个节点的指针），最后一个节点的指针域指向 null （空指针）。</p>
+<p>链表的入口节点（头结点）为 head。</p>
+<p><img loading="lazy" src="/Users/sebas/Documents/wzq11011.github.io/source/_posts/leetcode.assets/%28null%29-20240417193332494.%28null%29" alt="img"  />
+</p>
+<p>双链表：每个节点有两个指针域，一个指向下一节点，一个指向上一节点。双链表既可向前查询又可向后查询。</p>
+<p><img loading="lazy" src="/Users/sebas/Documents/wzq11011.github.io/source/_posts/leetcode.assets/%28null%29-20240417193332459.%28null%29" alt="img"  />
+</p>
+<p>循环链表：首尾相连的链表，可以用来解决约瑟夫环问题。</p>
+<p><img loading="lazy" src="/Users/sebas/Documents/wzq11011.github.io/source/_posts/leetcode.assets/%28null%29-20240417193332452.%28null%29" alt="img"  />
+</p>
+<p>链表的存储方式：数组在内存中是连续分布的，链表在内存中可以不是连续分布的。链表通过指针域的指针链接在内存中各个节点，各个节点散乱分布在内存的某个地址上，分配机制取决于操作系统的内存管理。</p>
+<p><img loading="lazy" src="/Users/sebas/Documents/wzq11011.github.io/source/_posts/leetcode.assets/%28null%29-20240417193332545.%28null%29" alt="img"  />
+</p>
+<p>该链表起始节点为2，终止节点为7，各个节点分布在内存的不同地址空间上，通过指针串联在一起。</p>
+<h4 id="链表节点定义">链表节点定义<a hidden class="anchor" aria-hidden="true" href="#链表节点定义">#</a></h4>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-C++" data-lang="C++"><span style="display:flex;"><span><span style="color:#75715e">// 单链表
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span><span style="color:#66d9ef">struct</span> <span style="color:#a6e22e">ListNode</span> {
+</span></span><span style="display:flex;"><span>  <span style="color:#66d9ef">int</span> val; <span style="color:#75715e">// 节点上存储的元素
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>  ListNode <span style="color:#f92672">*</span>next;  <span style="color:#75715e">// 指向下一节点的指针
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>  ListNode(<span style="color:#66d9ef">int</span> x) <span style="color:#f92672">:</span> val(x), next(NULL) {}  <span style="color:#75715e">// 节点的构造函数  
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>};
+</span></span></code></pre></div><p>如果在链表节点的定义中不定义构造函数，C++会默认生成一个构造函数，但该构造函数不会初始化任何成员变量，例如：</p>
+<ul>
+<li>通过自己定义的构造函数初始化节点：</li>
+</ul>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-C++" data-lang="C++"><span style="display:flex;"><span>ListNode<span style="color:#f92672">*</span> head <span style="color:#f92672">=</span> <span style="color:#66d9ef">new</span> ListNode(<span style="color:#ae81ff">5</span>);
+</span></span></code></pre></div><ul>
+<li>使用默认构造函数初始化节点（注意：初始化时不能直接给变量赋值）：</li>
+</ul>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-C++" data-lang="C++"><span style="display:flex;"><span>ListNode<span style="color:#f92672">*</span> head <span style="color:#f92672">=</span> <span style="color:#66d9ef">new</span> ListNode();
+</span></span><span style="display:flex;"><span>head<span style="color:#f92672">-&gt;</span>val <span style="color:#f92672">=</span> <span style="color:#ae81ff">5</span>;
+</span></span></code></pre></div><h4 id="链表操作">链表操作<a hidden class="anchor" aria-hidden="true" href="#链表操作">#</a></h4>
+<h5 id="删除节点">删除节点<a hidden class="anchor" aria-hidden="true" href="#删除节点">#</a></h5>
+<p>要删除 D 节点，只需要将 C 节点的 next 指针指向 E 节点就可以了。然后再手动的释放 D 节点 （释放内存），其他语言如 Java、Python 有自己的内存回收机制，不用手动释放内存。</p>
+<p><img loading="lazy" src="/Users/sebas/Documents/wzq11011.github.io/source/_posts/leetcode.assets/%28null%29-20240417193332622.%28null%29" alt="img"  />
+</p>
+<h5 id="添加节点">添加节点<a hidden class="anchor" aria-hidden="true" href="#添加节点">#</a></h5>
+<p>添加节点类似，只需要改动指针指向即可。链表的增添和删除都是 <code>O(1)</code> 操作，不会影响其他节点。</p>
+<p>但需注意：如果要删除最后一个节点，需要从头结点查找到倒数第二个节点，然后通过 next 指针进行删除操作，查找的时间复杂度是 <code>O(n)</code>。</p>
+<p><img loading="lazy" src="/Users/sebas/Documents/wzq11011.github.io/source/_posts/leetcode.assets/%28null%29-20240417193332608.%28null%29" alt="img"  />
+</p>
+<h5 id="性能分析">性能分析<a hidden class="anchor" aria-hidden="true" href="#性能分析">#</a></h5>
+<p>数组在定义的时候，长度就是固定的，如果想改动数组的长度，就需要重新定义一个新的数组。</p>
+<p>链表的长度可以是不固定的，并且可以动态增删， 适合数据量不固定，频繁增删，较少查询的场景。</p>
+<p><img loading="lazy" src="/Users/sebas/Documents/wzq11011.github.io/source/_posts/leetcode.assets/%28null%29-20240417193332687.%28null%29" alt="img"  />
+</p>
+<h4 id="203移除链表元素">203.移除链表元素<a hidden class="anchor" aria-hidden="true" href="#203移除链表元素">#</a></h4>
+<p><a href="https://leetcode.cn/problems/remove-linked-list-elements/">力扣题目链接(opens new window)</a></p>
+<p>题意：删除链表中等于给定值 val 的所有节点。</p>
+<p>示例 1： 输入：head = [1,2,6,3,4,5,6], val = 6 输出：[1,2,3,4,5]</p>
+<p>示例 2： 输入：head = [], val = 1 输出：[]</p>
+<p>示例 3： 输入：head = [7,7,7,7], val = 7 输出：[]</p>
+<p>对于单链表，如果删除头结点如何处理？</p>
+<p>两种操作方式：</p>
+<ul>
+<li>直接使用原来的链表进行删除操作</li>
+</ul>
+<p><img loading="lazy" src="/Users/sebas/Documents/wzq11011.github.io/source/_posts/leetcode.assets/%28null%29-20240417193332855.%28null%29" alt="img"  />
+</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-C++" data-lang="C++"><span style="display:flex;"><span><span style="color:#66d9ef">class</span> <span style="color:#a6e22e">Solution</span> {
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">public</span><span style="color:#f92672">:</span>
+</span></span><span style="display:flex;"><span>    ListNode<span style="color:#f92672">*</span> removeElements (ListNode<span style="color:#f92672">*</span> head, <span style="color:#66d9ef">int</span> val) {
+</span></span><span style="display:flex;"><span>        <span style="color:#75715e">// 当链表存在且头结点的值是目标值时，删除头结点
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>        <span style="color:#66d9ef">while</span> (head <span style="color:#f92672">!=</span> NULL <span style="color:#f92672">&amp;&amp;</span> head<span style="color:#f92672">-&gt;</span>val <span style="color:#f92672">==</span> val) {
+</span></span><span style="display:flex;"><span>            ListNode<span style="color:#f92672">*</span> tmp <span style="color:#f92672">=</span> head;
+</span></span><span style="display:flex;"><span>            head <span style="color:#f92672">=</span> head<span style="color:#f92672">-&gt;</span>next;
+</span></span><span style="display:flex;"><span>            <span style="color:#66d9ef">delete</span> tmp;
+</span></span><span style="display:flex;"><span>        }
+</span></span><span style="display:flex;"><span>        
+</span></span><span style="display:flex;"><span>        <span style="color:#75715e">// 删除非头结点
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>        ListNode<span style="color:#f92672">*</span> cur <span style="color:#f92672">=</span> head;
+</span></span><span style="display:flex;"><span>        <span style="color:#66d9ef">while</span> (cur <span style="color:#f92672">!=</span> NULL <span style="color:#f92672">&amp;&amp;</span> cur<span style="color:#f92672">-&gt;</span>next <span style="color:#f92672">!=</span> NULL) {
+</span></span><span style="display:flex;"><span>            <span style="color:#66d9ef">if</span> (cur<span style="color:#f92672">-&gt;</span>next<span style="color:#f92672">-&gt;</span>val <span style="color:#f92672">==</span> val) {
+</span></span><span style="display:flex;"><span>                ListNode<span style="color:#f92672">*</span> tmp <span style="color:#f92672">=</span> cur<span style="color:#f92672">-&gt;</span>next;
+</span></span><span style="display:flex;"><span>                cur<span style="color:#f92672">-&gt;</span>next <span style="color:#f92672">=</span> tmp<span style="color:#f92672">-&gt;</span>next;  <span style="color:#75715e">// cur-&gt;next-&gt;next
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>                <span style="color:#66d9ef">delete</span> tmp;
+</span></span><span style="display:flex;"><span>            } <span style="color:#66d9ef">else</span> {
+</span></span><span style="display:flex;"><span>                cur <span style="color:#f92672">=</span> cur<span style="color:#f92672">-&gt;</span>next;
+</span></span><span style="display:flex;"><span>            }
+</span></span><span style="display:flex;"><span>        }
+</span></span><span style="display:flex;"><span>        <span style="color:#66d9ef">return</span> head;
+</span></span><span style="display:flex;"><span>    }
+</span></span><span style="display:flex;"><span>};
+</span></span></code></pre></div><p>时间复杂度：<code>O(n)</code></p>
+<p>空间复杂度：<code>O(1)</code></p>
+<ul>
+<li>设置一个虚拟头结点进行删除操作</li>
+</ul>
+<p><img loading="lazy" src="/Users/sebas/Documents/wzq11011.github.io/source/_posts/leetcode.assets/%28null%29-20240417193332784.%28null%29" alt="img"  />
+</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-C++" data-lang="C++"><span style="display:flex;"><span><span style="color:#66d9ef">class</span> <span style="color:#a6e22e">Solution</span> {
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">public</span><span style="color:#f92672">:</span>
+</span></span><span style="display:flex;"><span>    ListNode<span style="color:#f92672">*</span> removeElements (ListNode<span style="color:#f92672">*</span> head, <span style="color:#66d9ef">int</span> val) {
+</span></span><span style="display:flex;"><span>        ListNode<span style="color:#f92672">*</span> dummyHead <span style="color:#f92672">=</span> <span style="color:#66d9ef">new</span> ListNode(<span style="color:#ae81ff">0</span>);  <span style="color:#75715e">// 设置一个虚拟头结点
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>        dummyHead<span style="color:#f92672">-&gt;</span>next <span style="color:#f92672">=</span> head;  <span style="color:#75715e">// 将虚拟头结点指向head，方便后面的删除操作
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>        ListNode<span style="color:#f92672">*</span> cur <span style="color:#f92672">=</span> dummyHead;
+</span></span><span style="display:flex;"><span>        <span style="color:#66d9ef">while</span> (cur<span style="color:#f92672">-&gt;</span>next <span style="color:#f92672">!=</span> NULL) {
+</span></span><span style="display:flex;"><span>            <span style="color:#66d9ef">if</span> (cur<span style="color:#f92672">-&gt;</span>next<span style="color:#f92672">-&gt;</span>val <span style="color:#f92672">==</span> val) {
+</span></span><span style="display:flex;"><span>                ListNode<span style="color:#f92672">*</span> tmp <span style="color:#f92672">=</span> cur<span style="color:#f92672">-&gt;</span>next;
+</span></span><span style="display:flex;"><span>                cur<span style="color:#f92672">-&gt;</span>next <span style="color:#f92672">=</span> tmp<span style="color:#f92672">-&gt;</span>next;
+</span></span><span style="display:flex;"><span>                <span style="color:#66d9ef">delete</span> tmp;
+</span></span><span style="display:flex;"><span>            } <span style="color:#66d9ef">else</span> {
+</span></span><span style="display:flex;"><span>                cur <span style="color:#f92672">=</span> cur<span style="color:#f92672">-&gt;</span>next;
+</span></span><span style="display:flex;"><span>            }
+</span></span><span style="display:flex;"><span>        }
+</span></span><span style="display:flex;"><span>        head <span style="color:#f92672">=</span> dummyHead<span style="color:#f92672">-&gt;</span>next;
+</span></span><span style="display:flex;"><span>        <span style="color:#66d9ef">delete</span> dummyHead;
+</span></span><span style="display:flex;"><span>        <span style="color:#66d9ef">return</span> head;
+</span></span><span style="display:flex;"><span>    }
+</span></span><span style="display:flex;"><span>};
+</span></span></code></pre></div><p>时间复杂度：<code>O(n)</code></p>
+<p>空间复杂度：<code>O(1)</code></p>
+<h4 id="707-设计链表">707 设计链表<a hidden class="anchor" aria-hidden="true" href="#707-设计链表">#</a></h4>
+<p><a href="https://leetcode.cn/problems/design-linked-list/">力扣题目链接(opens new window)</a></p>
+<p>题意：</p>
+<p>在链表类中实现这些功能：</p>
+<ul>
+<li>get(index)：获取链表中第 index 个节点的值。如果索引无效，则返回-1。</li>
+<li>addAtHead(val)：在链表的第一个元素之前添加一个值为 val 的节点。插入后，新节点将成为链表的第一个节点。</li>
+<li>addAtTail(val)：将值为 val 的节点追加到链表的最后一个元素。</li>
+<li>addAtIndex(index,val)：在链表中的第 index 个节点之前添加值为 val  的节点。如果 index 等于链表的长度，则该节点将附加到链表的末尾。如果 index 大于链表长度，则不会插入节点。如果index小于0，则在头部插入节点。</li>
+<li>deleteAtIndex(index)：如果索引 index 有效，则删除链表中的第 index 个节点。</li>
+</ul>
+<p><img loading="lazy" src="/Users/sebas/Documents/wzq11011.github.io/source/_posts/leetcode.assets/%28null%29-20240417193332842.%28null%29" alt="img"  />
+</p>
+<ul>
+<li>使用虚拟头结点，代码实现更方便。虚拟头结点通常用于简化链表操作，使得头结点和其他节点的操作一致化。</li>
+</ul>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-C++" data-lang="C++"><span style="display:flex;"><span><span style="color:#66d9ef">class</span> <span style="color:#a6e22e">MyLinkedList</span> {
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">public</span><span style="color:#f92672">:</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#75715e">// 定义链表节点结构体
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>    <span style="color:#66d9ef">struct</span> <span style="color:#a6e22e">LinkedNode</span> {
+</span></span><span style="display:flex;"><span>        <span style="color:#66d9ef">int</span> val;
+</span></span><span style="display:flex;"><span>        LinkedNode<span style="color:#f92672">*</span> next;
+</span></span><span style="display:flex;"><span>        <span style="color:#75715e">// 该构造函数的简写是 C++ 中的一种特性，称为成员初始化列表。
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>        <span style="color:#75715e">// 在构造函数的参数列表后面使用冒号，按照成员变量的顺序列出每个成员变量，
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>        <span style="color:#75715e">// 后面跟着该成员变量的初始化值。
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>        LinkedNode(<span style="color:#66d9ef">int</span> val)<span style="color:#f92672">:</span>val(val), next(<span style="color:#66d9ef">nullptr</span>){}  <span style="color:#75715e">// 构造函数
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>    };
+</span></span><span style="display:flex;"><span>    
+</span></span><span style="display:flex;"><span>    <span style="color:#75715e">// 初始化链表。无参构造函数，用于初始化 &#39;MyLinkedList&#39; 类的对象
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>    MyLinkedList() {
+</span></span><span style="display:flex;"><span>        _dummyHead <span style="color:#f92672">=</span> <span style="color:#66d9ef">new</span> LinkedNode(<span style="color:#ae81ff">0</span>);
+</span></span><span style="display:flex;"><span>        _size <span style="color:#f92672">=</span> <span style="color:#ae81ff">0</span>;
+</span></span><span style="display:flex;"><span>    }
+</span></span><span style="display:flex;"><span>    
+</span></span><span style="display:flex;"><span>    <span style="color:#75715e">// 获取第 index 个节点数值，如果 index 是非法数值直接返回 -1
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>    <span style="color:#66d9ef">int</span> <span style="color:#a6e22e">get</span> (<span style="color:#66d9ef">int</span> index) {
+</span></span><span style="display:flex;"><span>        <span style="color:#66d9ef">if</span> (index <span style="color:#f92672">&gt;</span> _size <span style="color:#f92672">-</span> <span style="color:#ae81ff">1</span> <span style="color:#f92672">||</span> index <span style="color:#f92672">&lt;</span> <span style="color:#ae81ff">0</span>) {
+</span></span><span style="display:flex;"><span>            <span style="color:#66d9ef">return</span> <span style="color:#f92672">-</span><span style="color:#ae81ff">1</span>;
+</span></span><span style="display:flex;"><span>        }
+</span></span><span style="display:flex;"><span>        LinkedNode<span style="color:#f92672">*</span> cur <span style="color:#f92672">=</span> _dummyHead<span style="color:#f92672">-&gt;</span>next;
+</span></span><span style="display:flex;"><span>        <span style="color:#75715e">// 只有当判断为 0 时才会跳出 while 循环，非零情况会一直循环下去
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>        <span style="color:#66d9ef">while</span> (index<span style="color:#f92672">--</span>) {  <span style="color:#75715e">// --index 会陷入死循环，一开始就输入 0
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>            cur <span style="color:#f92672">=</span> cur<span style="color:#f92672">-&gt;</span>next;
+</span></span><span style="display:flex;"><span>        }
+</span></span><span style="display:flex;"><span>        <span style="color:#66d9ef">return</span> cur<span style="color:#f92672">-&gt;</span>val;
+</span></span><span style="display:flex;"><span>    }
+</span></span><span style="display:flex;"><span>    
+</span></span><span style="display:flex;"><span>    <span style="color:#75715e">// 在链表最前面插入一个节点，插入完成后，新插入的结点为链表的新头结点
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>    <span style="color:#66d9ef">void</span> <span style="color:#a6e22e">addAtHead</span> (<span style="color:#66d9ef">int</span> val) {
+</span></span><span style="display:flex;"><span>        LinkedNode<span style="color:#f92672">*</span> newNode <span style="color:#f92672">=</span> <span style="color:#66d9ef">new</span> LinkedNode(val);
+</span></span><span style="display:flex;"><span>        newNode<span style="color:#f92672">-&gt;</span>next <span style="color:#f92672">=</span> _dummyHead<span style="color:#f92672">-&gt;</span>next;
+</span></span><span style="display:flex;"><span>        _dummyHead<span style="color:#f92672">-&gt;</span>next <span style="color:#f92672">=</span> newNode;
+</span></span><span style="display:flex;"><span>        _size<span style="color:#f92672">++</span>;
+</span></span><span style="display:flex;"><span>    }
+</span></span><span style="display:flex;"><span>    
+</span></span><span style="display:flex;"><span>    <span style="color:#75715e">// 在链表最后添加一个节点
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>    <span style="color:#66d9ef">void</span> <span style="color:#a6e22e">addAtTail</span> (<span style="color:#66d9ef">int</span> val) {
+</span></span><span style="display:flex;"><span>        LinkedNode<span style="color:#f92672">*</span> newNode <span style="color:#f92672">=</span> <span style="color:#66d9ef">new</span> LinkedNode(val);
+</span></span><span style="display:flex;"><span>        LinkedNode<span style="color:#f92672">*</span> cur <span style="color:#f92672">=</span> _dummyHead;
+</span></span><span style="display:flex;"><span>        <span style="color:#66d9ef">while</span> (cur<span style="color:#f92672">-&gt;</span>next <span style="color:#f92672">!=</span> <span style="color:#66d9ef">nullptr</span>) {
+</span></span><span style="display:flex;"><span>            cur <span style="color:#f92672">=</span> cur<span style="color:#f92672">-&gt;</span>next;
+</span></span><span style="display:flex;"><span>        }
+</span></span><span style="display:flex;"><span>        cur<span style="color:#f92672">-&gt;</span>next <span style="color:#f92672">=</span> newNode;
+</span></span><span style="display:flex;"><span>        _size<span style="color:#f92672">++</span>;
+</span></span><span style="display:flex;"><span>    }
+</span></span><span style="display:flex;"><span>    
+</span></span><span style="display:flex;"><span>    <span style="color:#75715e">// 在第index个节点之前插入一个新节点，例如index为0，那么新插入的节点为链表的新头节点。
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>    <span style="color:#75715e">// 如果index 等于链表的长度，则说明是新插入的节点为链表的尾结点
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>    <span style="color:#75715e">// 如果index大于链表的长度，则返回空
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>    <span style="color:#75715e">// 如果index小于0，则在头部插入节点
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>    <span style="color:#66d9ef">void</span> <span style="color:#a6e22e">addAtIndex</span> (<span style="color:#66d9ef">int</span> index, <span style="color:#66d9ef">int</span> val) {
+</span></span><span style="display:flex;"><span>        <span style="color:#66d9ef">if</span> (index <span style="color:#f92672">&gt;</span> _size) <span style="color:#66d9ef">return</span>;
+</span></span><span style="display:flex;"><span>        
+</span></span><span style="display:flex;"><span>        <span style="color:#75715e">// index 小于等于零时，添加新的头结点
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>        <span style="color:#66d9ef">if</span> (index <span style="color:#f92672">&lt;</span> <span style="color:#ae81ff">0</span>) index <span style="color:#f92672">=</span> <span style="color:#ae81ff">0</span>;
+</span></span><span style="display:flex;"><span>        LinkedNode<span style="color:#f92672">*</span> newNode <span style="color:#f92672">=</span> <span style="color:#66d9ef">new</span> LinkedNode(val);
+</span></span><span style="display:flex;"><span>        LinkedNode<span style="color:#f92672">*</span> cur <span style="color:#f92672">=</span> _dummyHead;
+</span></span><span style="display:flex;"><span>        <span style="color:#66d9ef">while</span> (index<span style="color:#f92672">--</span>) {
+</span></span><span style="display:flex;"><span>            cur <span style="color:#f92672">=</span> cur<span style="color:#f92672">-&gt;</span>next;
+</span></span><span style="display:flex;"><span>        }
+</span></span><span style="display:flex;"><span>        newNode<span style="color:#f92672">-&gt;</span>next <span style="color:#f92672">=</span> cur<span style="color:#f92672">-&gt;</span>next;
+</span></span><span style="display:flex;"><span>        cur<span style="color:#f92672">-&gt;</span>next <span style="color:#f92672">=</span> newNode;
+</span></span><span style="display:flex;"><span>        _size<span style="color:#f92672">++</span>;
+</span></span><span style="display:flex;"><span>    }
+</span></span><span style="display:flex;"><span>    
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">void</span> <span style="color:#a6e22e">deleteAtIndex</span> (<span style="color:#66d9ef">int</span> index) {
+</span></span><span style="display:flex;"><span>        <span style="color:#66d9ef">if</span> (index <span style="color:#f92672">&gt;=</span> _size <span style="color:#f92672">||</span> index <span style="color:#f92672">&lt;</span> <span style="color:#ae81ff">0</span>) {
+</span></span><span style="display:flex;"><span>            <span style="color:#66d9ef">return</span>;
+</span></span><span style="display:flex;"><span>        }
+</span></span><span style="display:flex;"><span>        LinkedNode<span style="color:#f92672">*</span> cur <span style="color:#f92672">=</span> _dummyHead;
+</span></span><span style="display:flex;"><span>        <span style="color:#66d9ef">while</span> (index<span style="color:#f92672">--</span>) {
+</span></span><span style="display:flex;"><span>            cur <span style="color:#f92672">=</span> cur<span style="color:#f92672">-&gt;</span>next;
+</span></span><span style="display:flex;"><span>        }
+</span></span><span style="display:flex;"><span>        LinkedNode<span style="color:#f92672">*</span> tmp <span style="color:#f92672">=</span> cur<span style="color:#f92672">-&gt;</span>next;
+</span></span><span style="display:flex;"><span>        cur<span style="color:#f92672">-&gt;</span>next <span style="color:#f92672">=</span> tmp<span style="color:#f92672">-&gt;</span>next;
+</span></span><span style="display:flex;"><span>        <span style="color:#66d9ef">delete</span> tmp;
+</span></span><span style="display:flex;"><span>        tmp <span style="color:#f92672">=</span> <span style="color:#66d9ef">nullptr</span>;
+</span></span><span style="display:flex;"><span>        _size<span style="color:#f92672">--</span>;
+</span></span><span style="display:flex;"><span>    }
+</span></span><span style="display:flex;"><span>    
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">void</span> <span style="color:#a6e22e">printLinkedList</span> () {
+</span></span><span style="display:flex;"><span>        LinkedNode cur <span style="color:#f92672">=</span> _dummyHead;
+</span></span><span style="display:flex;"><span>        <span style="color:#66d9ef">while</span> (cur<span style="color:#f92672">-&gt;</span>next <span style="color:#f92672">!=</span> <span style="color:#66d9ef">nullptr</span>) {
+</span></span><span style="display:flex;"><span>            cout <span style="color:#f92672">&lt;&lt;</span> cur<span style="color:#f92672">-&gt;</span>next<span style="color:#f92672">-&gt;</span>val <span style="color:#f92672">&lt;&lt;</span> <span style="color:#e6db74">&#34; &#34;</span>;
+</span></span><span style="display:flex;"><span>            cur <span style="color:#f92672">=</span> cur<span style="color:#f92672">-&gt;</span>next;
+</span></span><span style="display:flex;"><span>        }
+</span></span><span style="display:flex;"><span>        cout <span style="color:#f92672">&lt;&lt;</span> endl;
+</span></span><span style="display:flex;"><span>    }
+</span></span><span style="display:flex;"><span>    
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">private</span><span style="color:#f92672">:</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">int</span> _size;
+</span></span><span style="display:flex;"><span>    LinkedNode<span style="color:#f92672">*</span> _dummyHead;
+</span></span><span style="display:flex;"><span>};
+</span></span></code></pre></div><p>时间复杂度：</p>
+<p>空间复杂度：<code>O(n)</code></p>
+<h4 id="206-翻转链表">206 翻转链表<a hidden class="anchor" aria-hidden="true" href="#206-翻转链表">#</a></h4>
+<p><a href="https://leetcode.cn/problems/reverse-linked-list/">力扣题目链接(opens new window)</a></p>
+<p>题意：反转一个单链表。</p>
+<p>示例: 输入: 1-&gt;2-&gt;3-&gt;4-&gt;5-&gt;NULL 输出: 5-&gt;4-&gt;3-&gt;2-&gt;1-&gt;NULL</p>
+<p>思路：</p>
+<p>直接改变链表 next 指针的指向，可以将链表直接反转，而不用定义一个新的链表。</p>
+<p><img loading="lazy" src="/Users/sebas/Documents/wzq11011.github.io/source/_posts/leetcode.assets/%28null%29-20240417193332807.%28null%29" alt="img"  />
+</p>
+<p>暂时无法在飞书文档外展示此内容</p>
+<h5 id="双指针法">双指针法<a hidden class="anchor" aria-hidden="true" href="#双指针法">#</a></h5>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-C++" data-lang="C++"><span style="display:flex;"><span><span style="color:#66d9ef">class</span> <span style="color:#a6e22e">Solution</span> {
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">public</span><span style="color:#f92672">:</span>
+</span></span><span style="display:flex;"><span>    ListNode<span style="color:#f92672">*</span> reverseList (ListNode<span style="color:#f92672">*</span> head) {
+</span></span><span style="display:flex;"><span>        ListNode<span style="color:#f92672">*</span> tmp;
+</span></span><span style="display:flex;"><span>        ListNode<span style="color:#f92672">*</span> cur <span style="color:#f92672">=</span> head;
+</span></span><span style="display:flex;"><span>        ListNode<span style="color:#f92672">*</span> pre <span style="color:#f92672">=</span> NULL<span style="color:#f92672">:</span>
+</span></span><span style="display:flex;"><span>        <span style="color:#66d9ef">while</span> (cur) {
+</span></span><span style="display:flex;"><span>            tmp <span style="color:#f92672">=</span> cur<span style="color:#f92672">-&gt;</span>next;  <span style="color:#75715e">// 保存 cur 的下一个节点
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>            cur<span style="color:#f92672">-&gt;</span>next <span style="color:#f92672">=</span> pre;  <span style="color:#75715e">// 反转链表节点指向
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>            pre <span style="color:#f92672">=</span> cur;
+</span></span><span style="display:flex;"><span>            cur <span style="color:#f92672">=</span> tmp;
+</span></span><span style="display:flex;"><span>        }
+</span></span><span style="display:flex;"><span>        <span style="color:#66d9ef">return</span> pre;
+</span></span><span style="display:flex;"><span>    }
+</span></span><span style="display:flex;"><span>};
+</span></span></code></pre></div><h5 id="递归法">递归法<a hidden class="anchor" aria-hidden="true" href="#递归法">#</a></h5>
+<p>与双指针法类似的逻辑，当 cur 为空的时候循环结束，不断地将 cur 指向 pre 的过程。</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-C++" data-lang="C++"><span style="display:flex;"><span><span style="color:#66d9ef">class</span> <span style="color:#a6e22e">Solution</span> {
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">public</span><span style="color:#f92672">:</span>
+</span></span><span style="display:flex;"><span>    ListNode<span style="color:#f92672">*</span> reverse (ListNode<span style="color:#f92672">*</span> pre, ListNode<span style="color:#f92672">*</span> cur) {
+</span></span><span style="display:flex;"><span>        <span style="color:#66d9ef">if</span> (cur <span style="color:#f92672">==</span> NULL) <span style="color:#66d9ef">return</span> pre;
+</span></span><span style="display:flex;"><span>        ListNode<span style="color:#f92672">*</span> tmp <span style="color:#f92672">=</span> cur<span style="color:#f92672">-&gt;</span>next;
+</span></span><span style="display:flex;"><span>        cur<span style="color:#f92672">-&gt;</span>next <span style="color:#f92672">=</span> pre;
+</span></span><span style="display:flex;"><span>        <span style="color:#66d9ef">return</span> <span style="color:#a6e22e">reverse</span>(cur, tmp);
+</span></span><span style="display:flex;"><span>    }
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>    ListNode<span style="color:#f92672">*</span> <span style="color:#a6e22e">reverseList</span> (ListNode<span style="color:#f92672">*</span> head) {
+</span></span><span style="display:flex;"><span>        <span style="color:#75715e">// 与双指针法的初始化逻辑一直
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>        <span style="color:#75715e">// ListNode* cur = head;
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>        <span style="color:#75715e">// ListNode* pre = NULL;
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>        <span style="color:#66d9ef">return</span> (NULL, head);
+</span></span><span style="display:flex;"><span>    }
+</span></span><span style="display:flex;"><span>};
+</span></span></code></pre></div><p>时间复杂度：<code>O(n)</code> ，需要递归处理链表的每个节点</p>
+<p>空间复杂度：<code>O(n)</code> ，递归调用了 n 层栈空间</p>
+<p>（未理解）另外一种递归写法：从后往前反转指针指向</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-C++" data-lang="C++"><span style="display:flex;"><span><span style="color:#66d9ef">class</span> <span style="color:#a6e22e">Solution</span> {
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">public</span><span style="color:#f92672">:</span>
+</span></span><span style="display:flex;"><span>    ListNode<span style="color:#f92672">*</span> reverseList (ListNode<span style="color:#f92672">*</span> head) {
+</span></span><span style="display:flex;"><span>        <span style="color:#75715e">// 边缘条件判断
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>        <span style="color:#66d9ef">if</span> (head <span style="color:#f92672">==</span> NULL) <span style="color:#66d9ef">return</span> NULL;
+</span></span><span style="display:flex;"><span>        <span style="color:#66d9ef">if</span> (head<span style="color:#f92672">-&gt;</span>next <span style="color:#f92672">=</span> NULL) <span style="color:#66d9ef">return</span> head;
+</span></span><span style="display:flex;"><span>        
+</span></span><span style="display:flex;"><span>        ListNode<span style="color:#f92672">*</span> last <span style="color:#f92672">=</span> reverseList(head<span style="color:#f92672">-&gt;</span>next);
+</span></span><span style="display:flex;"><span>        
+</span></span><span style="display:flex;"><span>        head<span style="color:#f92672">-&gt;</span>next<span style="color:#f92672">-&gt;</span>next <span style="color:#f92672">=</span> head;
+</span></span><span style="display:flex;"><span>        
+</span></span><span style="display:flex;"><span>        head<span style="color:#f92672">-&gt;</span>next <span style="color:#f92672">=</span> NULL;
+</span></span><span style="display:flex;"><span>        <span style="color:#66d9ef">return</span> last;
+</span></span><span style="display:flex;"><span>    }
+</span></span><span style="display:flex;"><span>};
+</span></span></code></pre></div><p>时间复杂度：<code>O(n)</code></p>
+<p>空间复杂度：<code>O(n)</code></p>
+<h4 id="24-两两交换链表中的节点">24 两两交换链表中的节点<a hidden class="anchor" aria-hidden="true" href="#24-两两交换链表中的节点">#</a></h4>
+<p><a href="https://leetcode.cn/problems/swap-nodes-in-pairs/">力扣题目链接(opens new window)</a></p>
+<p>给定一个链表，两两交换其中相邻的节点，并返回交换后的链表。</p>
+<p>你不能只是单纯的改变节点内部的值，而是需要实际的进行节点交换。</p>
+<p><img loading="lazy" src="/Users/sebas/Documents/wzq11011.github.io/source/_posts/leetcode.assets/%28null%29-20240417193332942.%28null%29" alt="img"  />
+</p>
+<p>思路：</p>
+<p><img loading="lazy" src="/Users/sebas/Documents/wzq11011.github.io/source/_posts/leetcode.assets/%28null%29-20240417193332927.%28null%29" alt="img"  />
+</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-C++" data-lang="C++"><span style="display:flex;"><span><span style="color:#66d9ef">class</span> <span style="color:#a6e22e">Solution</span> {
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">public</span><span style="color:#f92672">:</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#75715e">/**
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e">     * @param head ListNode类
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e">     * @return ListNode类
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e">    */</span>
+</span></span><span style="display:flex;"><span>    ListNode<span style="color:#f92672">*</span> reverseList (ListNode<span style="color:#f92672">*</span> head) {
+</span></span><span style="display:flex;"><span>        ListNode<span style="color:#f92672">*</span> dummyHead <span style="color:#f92672">=</span> <span style="color:#66d9ef">new</span> ListNode(<span style="color:#ae81ff">0</span>);  <span style="color:#75715e">// 设置一个虚拟头结点
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>        dummyHead<span style="color:#f92672">-&gt;</span>next <span style="color:#f92672">=</span> head;
+</span></span><span style="display:flex;"><span>        ListNode<span style="color:#f92672">*</span> cur <span style="color:#f92672">=</span> dummyHead;
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>        <span style="color:#75715e">// 例子： dummyHead(cur) -&gt; 1(tmp) -&gt; 2 -&gt; 3(tmp1) -&gt; 4 -&gt; null
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>        <span style="color:#75715e">// dummyHead(cur) -&gt; 2 -&gt; 1 -&gt; 3 -&gt; 4 -&gt; null
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>        <span style="color:#66d9ef">while</span> (cur<span style="color:#f92672">-&gt;</span>next <span style="color:#f92672">!=</span> <span style="color:#66d9ef">nullptr</span> <span style="color:#f92672">&amp;&amp;</span> cur<span style="color:#f92672">-&gt;</span>next<span style="color:#f92672">-&gt;</span>next <span style="color:#f92672">!=</span> <span style="color:#66d9ef">nullptr</span>) {
+</span></span><span style="display:flex;"><span>            ListNode<span style="color:#f92672">*</span> tmp <span style="color:#f92672">=</span> cur<span style="color:#f92672">-&gt;</span>next;
+</span></span><span style="display:flex;"><span>            ListNode<span style="color:#f92672">*</span> tmp1 <span style="color:#f92672">=</span> tmp<span style="color:#f92672">-&gt;</span>next<span style="color:#f92672">-&gt;</span>next<span style="color:#f92672">-&gt;</span>next;
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>            cur<span style="color:#f92672">-&gt;</span>next <span style="color:#f92672">=</span> tmp<span style="color:#f92672">-&gt;</span>next;
+</span></span><span style="display:flex;"><span>            cur<span style="color:#f92672">-&gt;</span>next<span style="color:#f92672">-&gt;</span>next <span style="color:#f92672">=</span> tmp;
+</span></span><span style="display:flex;"><span>            tmp<span style="color:#f92672">-&gt;</span>next <span style="color:#f92672">=</span> tmp1;
+</span></span><span style="display:flex;"><span>            
+</span></span><span style="display:flex;"><span>            cur <span style="color:#f92672">=</span> cur<span style="color:#f92672">-&gt;</span>next<span style="color:#f92672">-&gt;</span>next;  <span style="color:#75715e">// cur移动两位，准备下一轮的交换
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>        }
+</span></span><span style="display:flex;"><span>        <span style="color:#66d9ef">return</span> dummyHead<span style="color:#f92672">-&gt;</span>next;
+</span></span><span style="display:flex;"><span>    }
+</span></span><span style="display:flex;"><span>};
+</span></span></code></pre></div><p>时间复杂度：<code>O(n)</code></p>
+<p>空间复杂度：<code>O(1)</code></p>
+<h4 id="19-删除链表的倒数第-n-个节点">19 删除链表的倒数第 N 个节点<a hidden class="anchor" aria-hidden="true" href="#19-删除链表的倒数第-n-个节点">#</a></h4>
+<p><a href="https://leetcode.cn/problems/remove-nth-node-from-end-of-list/">力扣题目链接(opens new window)</a></p>
+<p>给你一个链表，删除链表的倒数第 n 个结点，并且返回链表的头结点。</p>
+<p>进阶：你能尝试使用一趟扫描实现吗？</p>
+<p><img loading="lazy" src="/Users/sebas/Documents/wzq11011.github.io/source/_posts/leetcode.assets/%28null%29-20240417193333265.%28null%29" alt="img"  />
+</p>
+<p>思路：</p>
+<h5 id="方法一暴力遍历">方法一：暴力遍历<a hidden class="anchor" aria-hidden="true" href="#方法一暴力遍历">#</a></h5>
+<p>两次遍历，第一遍历得到链表长度 L；第二次遍历找到第 L-n+1 个节点，然后删除。</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-C++" data-lang="C++"><span style="display:flex;"><span><span style="color:#66d9ef">class</span> <span style="color:#a6e22e">Solution</span> {
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">public</span><span style="color:#f92672">:</span>
+</span></span><span style="display:flex;"><span>    ListNode<span style="color:#f92672">*</span> removeNthFromEnd (ListNode<span style="color:#f92672">*</span> head, <span style="color:#66d9ef">int</span> n) {
+</span></span><span style="display:flex;"><span>        
+</span></span><span style="display:flex;"><span>    }
+</span></span><span style="display:flex;"><span>};
+</span></span></code></pre></div><h5 id="方法二双指针法-1">方法二：双指针法<a hidden class="anchor" aria-hidden="true" href="#方法二双指针法-1">#</a></h5>
+<h4 id="链表相交">链表相交<a hidden class="anchor" aria-hidden="true" href="#链表相交">#</a></h4>
+<h4 id="环形链表">环形链表<a hidden class="anchor" aria-hidden="true" href="#环形链表">#</a></h4>
+<h3 id="23-哈希表">2.3 哈希表<a hidden class="anchor" aria-hidden="true" href="#23-哈希表">#</a></h3>
+<h4 id="定义">定义<a hidden class="anchor" aria-hidden="true" href="#定义">#</a></h4>
+<p>哈希表（散列表）是根据关键码的值（key）而直接进行访问的数据结构，提高查找速度。哈希表中的关键码就类似于数组中的下标，因而我们可以通过关键码直接访问数据，如下：</p>
+<p><img loading="lazy" src="/Users/sebas/Documents/wzq11011.github.io/source/_posts/leetcode.assets/%28null%29-20240417193332999.%28null%29" alt="img"  />
+</p>
+<p><strong>一般哈希表都是用来快速判断一个元素是否出现集合里。</strong></p>
+<h4 id="哈希函数">哈希函数<a hidden class="anchor" aria-hidden="true" href="#哈希函数">#</a></h4>
+<p>哈希函数如下图所示，通过hashCode把名字转化为数值，一般hashcode是通过特定编码方式，可以将其他数据格式转化为不同的数值，这样就把学生名字映射为哈希表上的索引数字了。</p>
+<p><img loading="lazy" src="/Users/sebas/Documents/wzq11011.github.io/source/_posts/leetcode.assets/%28null%29-20240417193333089.%28null%29" alt="img"  />
+</p>
+<p>如果 hashCode 得到的数值大于哈希表的大小了，也就是大于tableSize了，怎么办呢？</p>
+<p>此时为了保证映射出来的索引数值都落在哈希表上，我们会在再次对数值做一个取模的操作，这样我们就保证了学生姓名一定可以映射到哈希表上了。</p>
+<p>此时问题又来了，哈希表我们刚刚说过，就是一个数组。</p>
+<p>如果学生的数量大于哈希表的大小怎么办，此时就算哈希函数计算的再均匀，也避免不了会有几位学生的名字同时映射到哈希表 同一个索引下标的位置。</p>
+<h4 id="哈希碰撞">哈希碰撞<a hidden class="anchor" aria-hidden="true" href="#哈希碰撞">#</a></h4>
+<p>如图所示，小李和小王都映射到了索引下标 1 的位置，这一现象叫做<strong>哈希碰撞</strong>。</p>
+<p><img loading="lazy" src="/Users/sebas/Documents/wzq11011.github.io/source/_posts/leetcode.assets/%28null%29-20240417193333142.%28null%29" alt="img"  />
+</p>
+<p>一般哈希碰撞有两种解决方法， 拉链法和线性探测法。</p>
+<h5 id="拉链法"><strong>拉链法</strong><a hidden class="anchor" aria-hidden="true" href="#拉链法">#</a></h5>
+<p>刚刚小李和小王在索引1的位置发生了冲突，发生冲突的元素都被存储在链表中。 这样我们就可以通过索引找到小李和小王了。</p>
+<p><img loading="lazy" src="/Users/sebas/Documents/wzq11011.github.io/source/_posts/leetcode.assets/%28null%29-20240417193333183.%28null%29" alt="img"  />
+</p>
+<p>（数据规模是dataSize， 哈希表的大小为tableSize）</p>
+<p>其实拉链法就是要选择适当的哈希表的大小，这样既不会因为数组空值而浪费大量内存，也不会因为链表太长而在查找上浪费太多时间。</p>
+<h5 id="线性探测法"><strong>线性探测法</strong><a hidden class="anchor" aria-hidden="true" href="#线性探测法">#</a></h5>
+<p>使用线性探测法，一定要保证tableSize大于dataSize。 我们需要依靠哈希表中的空位来解决碰撞问题。</p>
+<p>例如冲突的位置，放了小李，那么就向下找一个空位放置小王的信息。所以要求tableSize一定要大于dataSize ，要不然哈希表上就没有空置的位置来存放冲突的数据了。如图所示：</p>
+<p><img loading="lazy" src="/Users/sebas/Documents/wzq11011.github.io/source/_posts/leetcode.assets/%28null%29-20240417193333218.%28null%29" alt="img"  />
+</p>
+<h4 id="常见的三种哈希结构">常见的三种哈希结构<a hidden class="anchor" aria-hidden="true" href="#常见的三种哈希结构">#</a></h4>
+<p>当我们想使用哈希法来解决问题的时候，一般会选择三种数据结构：数组、集合（set）、映射（map）</p>
+<p>在C++中，set 和 map 分别提供以下三种数据结构，其底层实现以及优劣如下表所示：</p>
+<table>
+<thead>
+<tr>
+<th>集合</th>
+<th>底层实现</th>
+<th>是否有序</th>
+<th>数值是否可以重复</th>
+<th>能否更改数值</th>
+<th>查询效率</th>
+<th>增删效率</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>std::set</td>
+<td>红黑树</td>
+<td>有序</td>
+<td>否</td>
+<td>否</td>
+<td>O(log n)</td>
+<td>O(log n)</td>
+</tr>
+<tr>
+<td>std::multiset</td>
+<td>红黑树</td>
+<td>有序</td>
+<td>是</td>
+<td>否</td>
+<td>O(logn)</td>
+<td>O(logn)</td>
+</tr>
+<tr>
+<td>std::unordered_set</td>
+<td>哈希表</td>
+<td>无序</td>
+<td>否</td>
+<td>否</td>
+<td>O(1)</td>
+<td>O(1)</td>
+</tr>
+</tbody>
+</table>
+<p>std::unordered_set底层实现为哈希表，std::set 和std::multiset 的底层实现是红黑树，红黑树是一种平衡二叉搜索树，所以key值是有序的，但key不可以修改，改动key值会导致整棵树的错乱，所以只能删除和增加。</p>
+<table>
+<thead>
+<tr>
+<th>映射</th>
+<th>底层实现</th>
+<th>是否有序</th>
+<th>数值是否可以重复</th>
+<th>能否更改数值</th>
+<th>查询效率</th>
+<th>增删效率</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>std::map</td>
+<td>红黑树</td>
+<td>key有序</td>
+<td>key不可重复</td>
+<td>key不可修改</td>
+<td>O(logn)</td>
+<td>O(logn)</td>
+</tr>
+<tr>
+<td>std::multimap</td>
+<td>红黑树</td>
+<td>key有序</td>
+<td>key可重复</td>
+<td>key不可修改</td>
+<td>O(log n)</td>
+<td>O(log n)</td>
+</tr>
+<tr>
+<td>std::unordered_map</td>
+<td>哈希表</td>
+<td>key无序</td>
+<td>key不可重复</td>
+<td>key不可修改</td>
+<td>O(1)</td>
+<td>O(1)</td>
+</tr>
+</tbody>
+</table>
+<p>std::unordered_map 底层实现为哈希表，std::map 和std::multimap 的底层实现是红黑树。同理，std::map 和std::multimap 的key也是有序的（这个问题也经常作为面试题，考察对语言容器底层的理解）。</p>
+<p>当我们要使用集合来解决哈希问题的时候，优先使用unordered_set，因为它的查询和增删效率是最优的，如果需要集合是有序的，那么就用set，如果要求不仅有序还要有重复数据的话，那么就用multiset。</p>
+<p>那么再来看一下map ，在map 是一个key value 的数据结构，map中，对key是有限制，对value没有限制的，因为key的存储方式使用红黑树实现的。</p>
+<p>其他语言例如：java里的HashMap ，TreeMap 都是一样的原理。可以灵活贯通。</p>
+<p>虽然std::set、std::multiset 的底层实现是红黑树，不是哈希表，std::set、std::multiset 使用红黑树来索引和存储，不过给我们的使用方式，还是哈希法的使用方式，即key和value。所以使用这些数据结构来解决映射问题的方法，我们依然称之为哈希法。 map也是一样的道理。</p>
+<p>这里在说一下，一些C++的经典书籍上 例如STL源码剖析，说到了hash_set hash_map，这个与unordered_set，unordered_map又有什么关系呢？</p>
+<p>实际上功能都是一样一样的， 但是unordered_set在C++11的时候被引入标准库了，而hash_set并没有，所以建议还是使用unordered_set比较好，这就好比一个是官方认证的，hash_set，hash_map 是C++11标准之前民间高手自发造的轮子。</p>
+<p><img loading="lazy" src="/Users/sebas/Documents/wzq11011.github.io/source/_posts/leetcode.assets/%28null%29-20240417193333279.%28null%29" alt="img"  />
+</p>
+<p>总结：</p>
+<p>当我们遇到了要快速判断一个元素是否出现集合里的时候，就要考虑哈希法。</p>
+<p>但是哈希法也是牺牲了空间换取了时间，因为我们要使用额外的数组，set或者是map来存放数据，才能实现快速的查找。</p>
+<p>如果在做面试题目的时候遇到需要判断一个元素是否出现过的场景也应该第一时间想到哈希法！</p>
+<h4 id="242-有效的字母异位词">242 有效的字母异位词<a hidden class="anchor" aria-hidden="true" href="#242-有效的字母异位词">#</a></h4>
+<p><a href="https://leetcode.cn/problems/valid-anagram/">力扣题目链接(opens new window)</a></p>
+<p>给定两个字符串 s 和 t ，编写一个函数来判断 t 是否是 s 的字母异位词。</p>
+<p>示例 1: 输入: s = &ldquo;anagram&rdquo;, t = &ldquo;nagaram&rdquo; 输出: true</p>
+<p>示例 2: 输入: s = &ldquo;rat&rdquo;, t = &ldquo;car&rdquo; 输出: false</p>
+<p>说明: 你可以假设字符串只包含小写字母。</p>
+<h5 id="方法一暴力求解-2">方法一：暴力求解<a hidden class="anchor" aria-hidden="true" href="#方法一暴力求解-2">#</a></h5>
+<p>两层 for 循环，同时要记录字符是否重复出现，时间复杂度 <code>O(n^2)</code></p>
+<h5 id="方法二排序">方法二：排序<a hidden class="anchor" aria-hidden="true" href="#方法二排序">#</a></h5>
+<p>t 是 sss 的异位词等价于「两个字符串排序后相等」。因此我们可以对字符串 sss 和 ttt 分别排序，看排序后的字符串是否相等即可判断。此外，如果 sss 和 ttt 的长度不同，ttt 必然不是 sss 的异位词。</p>
+<p>作者：<a href="https://leetcode.cn/problems/valid-anagram/solutions/493231/you-xiao-de-zi-mu-yi-wei-ci-by-leetcode-solution/">力扣官方题解</a></p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-C++" data-lang="C++"><span style="display:flex;"><span><span style="color:#66d9ef">class</span> <span style="color:#a6e22e">Solution</span> {
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">public</span><span style="color:#f92672">:</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">bool</span> isAnagram (string s, string t) {
+</span></span><span style="display:flex;"><span>        <span style="color:#66d9ef">if</span> (s.length() <span style="color:#f92672">!=</span> t.length()) {
+</span></span><span style="display:flex;"><span>            <span style="color:#66d9ef">return</span> false;
+</span></span><span style="display:flex;"><span>        }
+</span></span><span style="display:flex;"><span>        sort(s.begin(), s.end());
+</span></span><span style="display:flex;"><span>        sort(t.begin(), t.end());
+</span></span><span style="display:flex;"><span>        <span style="color:#66d9ef">return</span> s <span style="color:#f92672">==</span> t;
+</span></span><span style="display:flex;"><span>    }
+</span></span><span style="display:flex;"><span>};
+</span></span></code></pre></div><p>时间复杂度：排序的时间复杂度为 <code>O(nlogn)</code> ，比较两个字符串是否相等时间复杂度为 <code>O(n)</code> ，总体时间复杂度为 <code>O(nlogn+n)=O(nlogn)</code> 。</p>
+<p>空间复杂度：<code>O(logn)</code></p>
+<h5 id="方法三哈希表-需要重点掌握">方法三：哈希表 （需要重点掌握）<a hidden class="anchor" aria-hidden="true" href="#方法三哈希表-需要重点掌握">#</a></h5>
+<p>定义一个 record 数组用来记录字符串 s 中字符出现的次数，需要把字符映射到数组也就是哈希表的索引下标上，<strong>因为字符a到字符z的ASCII是26个连续的数值，所以字符a映射为下标0，相应的字符z映射为下标25。</strong></p>
+<p>在遍历字符串 s 的时候，<strong>只需要将 s[i] - ‘a’ 所在的元素做 +1 操作即可</strong>，并不需要记住字符 a 的ASCII，只要求出一个相对数值就可以了。</p>
+<p>那看一下如何检查字符串t中是否出现了这些字符，同样在遍历字符串t的时候，<strong>对t中出现的字符映射哈希表索引上的数值再做-1的操作。</strong></p>
+<p>那么<strong>最后检查一下，record数组如果有的元素不为零</strong>，说明字符串s和t一定是谁多了字符或者谁少了字符，return false。</p>
+<p>最后<strong>如果record数组所有元素都为零，说明字符串s和t是字母异位词</strong>，return true。</p>
+<p>时间复杂度为O(n)，空间上因为定义是的一个常量大小的辅助数组，所以空间复杂度为O(1)。</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-C++" data-lang="C++"><span style="display:flex;"><span><span style="color:#66d9ef">class</span> <span style="color:#a6e22e">Solution</span> {
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">public</span><span style="color:#f92672">:</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">bool</span> isAnagram (string s, string t) {
+</span></span><span style="display:flex;"><span>        <span style="color:#66d9ef">int</span> record[<span style="color:#ae81ff">26</span>] <span style="color:#f92672">=</span> {<span style="color:#ae81ff">0</span>};
+</span></span><span style="display:flex;"><span>        <span style="color:#66d9ef">for</span> (<span style="color:#66d9ef">int</span> i <span style="color:#f92672">=</span> <span style="color:#ae81ff">0</span>; i <span style="color:#f92672">&lt;</span> s.size(); i<span style="color:#f92672">++</span>) {
+</span></span><span style="display:flex;"><span>            record[s[i] <span style="color:#f92672">-</span> <span style="color:#e6db74">&#39;a&#39;</span>]<span style="color:#f92672">++</span>;  <span style="color:#75715e">// ASCII 码值相减即为下标
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>        }
+</span></span><span style="display:flex;"><span>        <span style="color:#66d9ef">for</span> (<span style="color:#66d9ef">int</span> i <span style="color:#f92672">=</span> <span style="color:#ae81ff">0</span>; i <span style="color:#f92672">&lt;</span> t.size(); i<span style="color:#f92672">++</span>) {
+</span></span><span style="display:flex;"><span>            record[t[i] <span style="color:#f92672">-</span> <span style="color:#e6db74">&#39;a&#39;</span>]<span style="color:#f92672">--</span>;
+</span></span><span style="display:flex;"><span>        }
+</span></span><span style="display:flex;"><span>        <span style="color:#66d9ef">for</span> (<span style="color:#66d9ef">int</span> i <span style="color:#f92672">=</span> <span style="color:#ae81ff">0</span>; i <span style="color:#f92672">&lt;</span> <span style="color:#ae81ff">26</span>; i<span style="color:#f92672">++</span>) {
+</span></span><span style="display:flex;"><span>            <span style="color:#66d9ef">if</span> (record[i] <span style="color:#f92672">!=</span> <span style="color:#ae81ff">0</span>) {
+</span></span><span style="display:flex;"><span>                <span style="color:#66d9ef">return</span> false;
+</span></span><span style="display:flex;"><span>            }
+</span></span><span style="display:flex;"><span>        }
+</span></span><span style="display:flex;"><span>        <span style="color:#66d9ef">return</span> true;
+</span></span><span style="display:flex;"><span>    }
+</span></span><span style="display:flex;"><span>};
+</span></span></code></pre></div><p>Java 版本</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-Java" data-lang="Java"><span style="display:flex;"><span><span style="color:#66d9ef">class</span> <span style="color:#a6e22e">Solution</span> {
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">public</span> <span style="color:#66d9ef">boolean</span> <span style="color:#a6e22e">isAnagram</span> (String s, String t) {
+</span></span><span style="display:flex;"><span>        <span style="color:#66d9ef">int</span><span style="color:#f92672">[]</span> record <span style="color:#f92672">=</span> <span style="color:#66d9ef">new</span> <span style="color:#66d9ef">int</span><span style="color:#f92672">[</span>26<span style="color:#f92672">]</span>;
+</span></span><span style="display:flex;"><span>        
+</span></span><span style="display:flex;"><span>        <span style="color:#66d9ef">for</span> (<span style="color:#66d9ef">int</span> i <span style="color:#f92672">=</span> 0; i <span style="color:#f92672">&lt;</span> s.<span style="color:#a6e22e">length</span>(); i<span style="color:#f92672">++</span>) {
+</span></span><span style="display:flex;"><span>            <span style="color:#66d9ef">record</span><span style="color:#960050;background-color:#1e0010">[</span><span style="color:#a6e22e">s</span>.<span style="color:#a6e22e">charAt</span>(i) <span style="color:#f92672">-</span> <span style="color:#e6db74">&#39;a&#39;</span><span style="color:#f92672">]++</span>;
+</span></span><span style="display:flex;"><span>        }
+</span></span><span style="display:flex;"><span>        
+</span></span><span style="display:flex;"><span>        <span style="color:#66d9ef">for</span> (<span style="color:#66d9ef">int</span> i <span style="color:#f92672">=</span> 0; i <span style="color:#f92672">&lt;</span> t.<span style="color:#a6e22e">length</span>(); i<span style="color:#f92672">++</span>) {
+</span></span><span style="display:flex;"><span>            <span style="color:#66d9ef">record</span><span style="color:#960050;background-color:#1e0010">[</span><span style="color:#a6e22e">t</span>.<span style="color:#a6e22e">charAt</span>(i) <span style="color:#f92672">-</span> <span style="color:#e6db74">&#39;a&#39;</span><span style="color:#f92672">]--</span>;
+</span></span><span style="display:flex;"><span>        }
+</span></span><span style="display:flex;"><span>        
+</span></span><span style="display:flex;"><span>        <span style="color:#66d9ef">for</span> (<span style="color:#66d9ef">int</span> count:record) {
+</span></span><span style="display:flex;"><span>            <span style="color:#66d9ef">if</span> (count <span style="color:#f92672">!=</span> 0) {
+</span></span><span style="display:flex;"><span>                <span style="color:#66d9ef">return</span> <span style="color:#66d9ef">false</span>;
+</span></span><span style="display:flex;"><span>            }
+</span></span><span style="display:flex;"><span>        }
+</span></span><span style="display:flex;"><span>        <span style="color:#66d9ef">return</span> <span style="color:#66d9ef">true</span>;
+</span></span><span style="display:flex;"><span>    }
+</span></span><span style="display:flex;"><span>}
+</span></span></code></pre></div><h4 id="349-两个数组的交集">349 两个数组的交集<a hidden class="anchor" aria-hidden="true" href="#349-两个数组的交集">#</a></h4>
+<p><a href="https://leetcode.cn/problems/intersection-of-two-arrays/">力扣题目链接(opens new window)</a></p>
+<p>题意：给定两个数组，编写一个函数来计算它们的交集。</p>
+<p><img loading="lazy" src="/Users/sebas/Documents/wzq11011.github.io/source/_posts/leetcode.assets/%28null%29-20240417193333493.%28null%29" alt="img"  />
+</p>
+<p>练习本道题目掌握 unordered_set 这一数据结构。</p>
+<p>注意：输出结果中每一个元素是唯一的，需要去除重复的元素，可以不考虑输出结果的顺序。</p>
+<p><img loading="lazy" src="/Users/sebas/Documents/wzq11011.github.io/source/_posts/leetcode.assets/%28null%29-20240417193333531.%28null%29" alt="img"  />
+</p>
+<ul>
+<li>unordered_set：基于哈希表实现，具有常数时间复杂度的查找操作，可以快速确定元素是否存在于集合中。另外它还可以自动去除重复的元素，具有更好的性能。</li>
+<li>引用传递参数：如果不使用引用传递参数，而直接传递 vector 对象，会触发一次复制构造函数的调用，将原始 vector 复制一份传递给函数，在处理大型 vector 时会消耗大量的时间和内存。通过引用传递参数，函数可以直接修改原始的 vector 对象，而不需要返回值来传递修改后的结果。</li>
+</ul>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-C++" data-lang="C++"><span style="display:flex;"><span><span style="color:#66d9ef">class</span> <span style="color:#a6e22e">Solution</span> {
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">public</span><span style="color:#f92672">:</span>
+</span></span><span style="display:flex;"><span>    vector<span style="color:#f92672">&lt;</span><span style="color:#66d9ef">int</span><span style="color:#f92672">&gt;</span> intersection (vector<span style="color:#f92672">&lt;</span><span style="color:#66d9ef">int</span><span style="color:#f92672">&gt;&amp;</span> nums1, vector<span style="color:#f92672">&lt;</span><span style="color:#66d9ef">int</span><span style="color:#f92672">&gt;&amp;</span> nums2) {
+</span></span><span style="display:flex;"><span>        unordered_set<span style="color:#f92672">&lt;</span><span style="color:#66d9ef">int</span><span style="color:#f92672">&gt;</span> result_set;  <span style="color:#75715e">// 定义无序集合，用于存储两个输入向量的交集
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>        <span style="color:#75715e">// 使用 nums1.begin() 和 nums1.end() 作为参数传递给 unordered_set 的构造函数
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>        <span style="color:#75715e">// 这里的 begin() 和 end() 是 vector&lt;int&gt; 类型的成员函数，
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>        <span style="color:#75715e">// 用于返回指向 nums1 向量的第一个元素和最后一个元素之后的位置的迭代器。
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>        <span style="color:#75715e">// nums_set 对象被初始化为包含从 nums1.begin() 到 nums1.end() 范围内的所有唯一元素的无序集合。
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>        unordered_set<span style="color:#f92672">&lt;</span><span style="color:#66d9ef">int</span><span style="color:#f92672">&gt;</span> nums_set(nums1.begin(), nums1.end());
+</span></span><span style="display:flex;"><span>        <span style="color:#66d9ef">for</span> (<span style="color:#66d9ef">int</span> num : nums2) {
+</span></span><span style="display:flex;"><span>            <span style="color:#75715e">// 遍历 nums2 中每一个元素，判断当前遍历元素 num 是否在 nums1 中存在
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>            <span style="color:#75715e">// find() 返回一个迭代器：如何查找元素存在，则返回一个指向该元素的迭代器。
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>            <span style="color:#75715e">// 否则，返回指向集合尾部的迭代器，通常使用 unordered_set.end() 表示
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>            <span style="color:#66d9ef">if</span> (nums_set.find(num) <span style="color:#f92672">!=</span> nums_set.end()) {
+</span></span><span style="display:flex;"><span>                result_set.insert(num);
+</span></span><span style="display:flex;"><span>            }
+</span></span><span style="display:flex;"><span>        }
+</span></span><span style="display:flex;"><span>        <span style="color:#66d9ef">return</span> vector<span style="color:#f92672">&lt;</span><span style="color:#66d9ef">int</span><span style="color:#f92672">&gt;</span>(result_set.begin(), result_set.end());
+</span></span><span style="display:flex;"><span>    }
+</span></span><span style="display:flex;"><span>};
+</span></span></code></pre></div><p>时间复杂度：<code>O(n+m)</code> ，m 是最后将 set 转为 vector</p>
+<p>空间复杂度：<code>O(n)</code></p>
+<p>使用数组来做哈希表（条件：元素的值有范围，不能太大）</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-C++" data-lang="C++"><span style="display:flex;"><span><span style="color:#66d9ef">class</span> <span style="color:#a6e22e">Solution</span> {
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">public</span><span style="color:#f92672">:</span>
+</span></span><span style="display:flex;"><span>    vector<span style="color:#f92672">&lt;</span><span style="color:#66d9ef">int</span><span style="color:#f92672">&gt;</span> intersection (vector<span style="color:#f92672">&lt;</span><span style="color:#66d9ef">int</span><span style="color:#f92672">&gt;&amp;</span> nums1, vector<span style="color:#f92672">&lt;</span><span style="color:#66d9ef">int</span><span style="color:#f92672">&gt;&amp;</span> nums2) {
+</span></span><span style="display:flex;"><span>        unordered_set<span style="color:#f92672">&lt;</span><span style="color:#66d9ef">int</span><span style="color:#f92672">&gt;</span> result_set;
+</span></span><span style="display:flex;"><span>        <span style="color:#66d9ef">int</span> hash[<span style="color:#ae81ff">1005</span>] <span style="color:#f92672">=</span> {<span style="color:#ae81ff">0</span>};
+</span></span><span style="display:flex;"><span>        <span style="color:#66d9ef">if</span> (<span style="color:#66d9ef">int</span> num : nums1) {
+</span></span><span style="display:flex;"><span>            hash[num] <span style="color:#f92672">=</span> <span style="color:#ae81ff">1</span>;
+</span></span><span style="display:flex;"><span>        }
+</span></span><span style="display:flex;"><span>        <span style="color:#66d9ef">for</span> (<span style="color:#66d9ef">int</span> num : nums2) {
+</span></span><span style="display:flex;"><span>            <span style="color:#66d9ef">if</span> (hash[num] <span style="color:#f92672">==</span> <span style="color:#ae81ff">1</span>) {
+</span></span><span style="display:flex;"><span>                result_set.insert(num);
+</span></span><span style="display:flex;"><span>            }
+</span></span><span style="display:flex;"><span>        }
+</span></span><span style="display:flex;"><span>        <span style="color:#66d9ef">return</span> vector<span style="color:#f92672">&lt;</span><span style="color:#66d9ef">int</span><span style="color:#f92672">&gt;</span>(result_set.begin(), result_set.end());
+</span></span><span style="display:flex;"><span>    }
+</span></span><span style="display:flex;"><span>};
+</span></span></code></pre></div><h4 id="202-快乐数">202 快乐数<a hidden class="anchor" aria-hidden="true" href="#202-快乐数">#</a></h4>
+<p><a href="https://leetcode.cn/problems/happy-number/">力扣题目链接(opens new window)</a></p>
+<p>编写一个算法来判断一个数 n 是不是快乐数。</p>
+<p>「快乐数」定义为：对于一个正整数，每一次将该数替换为它每个位置上的数字的平方和，然后重复这个过程直到这个数变为 1，也可能是 无限循环 但始终变不到 1。如果 可以变为  1，那么这个数就是快乐数。</p>
+<p>如果 n 是快乐数就返回 True ；不是，则返回 False 。</p>
+<p>示例：</p>
+<p>输入：19</p>
+<p>输出：true</p>
+<p>解释：</p>
+<p>1^2 + 9^2 = 82</p>
+<p>8^2 + 2^2 = 68</p>
+<p>6^2 + 8^2 = 100</p>
+<p>1^2 + 0^2 + 0^2 = 1</p>
+<h5 id="分析">分析<a hidden class="anchor" aria-hidden="true" href="#分析">#</a></h5>
+<p>求和的时候，sum 的值可能会重复出现，所以需要快速判断一个元素是否在集合中，考虑使用哈希法。</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-C++" data-lang="C++"><span style="display:flex;"><span><span style="color:#66d9ef">class</span> <span style="color:#a6e22e">Solution</span> {
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">public</span><span style="color:#f92672">:</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#75715e">// 计算一个数各个位置上数字的平方和
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>    <span style="color:#66d9ef">int</span> getSum (<span style="color:#66d9ef">int</span> n) {
+</span></span><span style="display:flex;"><span>        <span style="color:#66d9ef">int</span> sum <span style="color:#f92672">=</span> <span style="color:#ae81ff">0</span>;
+</span></span><span style="display:flex;"><span>        <span style="color:#66d9ef">while</span> (n) {
+</span></span><span style="display:flex;"><span>            sum <span style="color:#f92672">+=</span> (n <span style="color:#f92672">%</span> <span style="color:#ae81ff">10</span>) <span style="color:#f92672">*</span> (n <span style="color:#f92672">%</span> <span style="color:#ae81ff">10</span>);
+</span></span><span style="display:flex;"><span>            n <span style="color:#f92672">/=</span> <span style="color:#ae81ff">10</span>;
+</span></span><span style="display:flex;"><span>        }
+</span></span><span style="display:flex;"><span>        <span style="color:#66d9ef">return</span> sum;
+</span></span><span style="display:flex;"><span>    }
+</span></span><span style="display:flex;"><span>    
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">bool</span> <span style="color:#a6e22e">isHappy</span> (<span style="color:#66d9ef">int</span> n) {
+</span></span><span style="display:flex;"><span>        unordered_set<span style="color:#f92672">&lt;</span><span style="color:#66d9ef">int</span><span style="color:#f92672">&gt;</span> set;
+</span></span><span style="display:flex;"><span>        <span style="color:#66d9ef">while</span> (<span style="color:#ae81ff">1</span>) {
+</span></span><span style="display:flex;"><span>            <span style="color:#66d9ef">int</span> sum <span style="color:#f92672">=</span> getSum(n);
+</span></span><span style="display:flex;"><span>            <span style="color:#66d9ef">if</span> (sum <span style="color:#f92672">==</span> <span style="color:#ae81ff">1</span>) <span style="color:#66d9ef">return</span> true;
+</span></span><span style="display:flex;"><span>            
+</span></span><span style="display:flex;"><span>            <span style="color:#75715e">// 如果该 sum 曾经出现过，说明已经进入了无限循环，立即退出
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>            <span style="color:#66d9ef">if</span> (set.find(sum) <span style="color:#f92672">!=</span> set.end()) {
+</span></span><span style="display:flex;"><span>                <span style="color:#66d9ef">return</span> false;
+</span></span><span style="display:flex;"><span>            } <span style="color:#66d9ef">else</span> {
+</span></span><span style="display:flex;"><span>                set.insert(sum);
+</span></span><span style="display:flex;"><span>            }
+</span></span><span style="display:flex;"><span>            n <span style="color:#f92672">=</span> sum;
+</span></span><span style="display:flex;"><span>        }
+</span></span><span style="display:flex;"><span>    }
+</span></span><span style="display:flex;"><span>};
+</span></span></code></pre></div><ul>
+<li>时间复杂度: O(logn)</li>
+<li>空间复杂度: O(logn)</li>
+</ul>
+<h4 id="两数之和">两数之和<a hidden class="anchor" aria-hidden="true" href="#两数之和">#</a></h4>
+<p><a href="https://leetcode.cn/problems/two-sum/">力扣题目链接(opens new window)</a></p>
+<p>给定一个整数数组 nums 和一个目标值 target，请你在该数组中找出和为目标值的那 两个 整数，并返回他们的数组下标。</p>
+<p>你可以假设每种输入只会对应一个答案。但是，数组中同一个元素不能使用两遍。</p>
+<p>示例:</p>
+<p>给定 nums = [2, 7, 11, 15], target = 9</p>
+<p>因为 nums[0] + nums[1] = 2 + 7 = 9</p>
+<p>所以返回 [0, 1]</p>
+<h5 id="思路">思路<a hidden class="anchor" aria-hidden="true" href="#思路">#</a></h5>
+<p>1、暴力求解：两层 for 循环查找，时间复杂度为 <code>O(n^2)</code></p>
+<p>2、map</p>
+<p>再来看一下使用数组和set来做哈希法的局限。</p>
+<ul>
+<li>数组的大小是受限制的，而且如果元素很少，而哈希值太大会造成内存空间的浪费。</li>
+</ul>
+<p>注意到方法一的时间复杂度较高的原因是寻找 target - x 的时间复杂度过高。因此，我们需要一种更优秀的方法，能够快速寻找数组中是否存在目标元素。如果存在，我们需要找出它的索引。</p>
+<p>使用哈希表，可以将寻找 target - x 的时间复杂度降低到从 O(N)O(N)O(N) 降低到 O(1)O(1)O(1)。</p>
+<p>这样我们创建一个哈希表，对于每一个 x，我们首先查询哈希表中是否存在 target - x，然后将 x 插入到哈希表中，即可保证不会让 x 和自己匹配。</p>
+<p>作者：力扣官方题解</p>
+<p>链接：https://leetcode.cn/problems/two-sum/solutions/434597/liang-shu-zhi-he-by-leetcode-solution/</p>
+<p>来源：力扣（LeetCode）</p>
+<p>著作权归作者所有。商业转载请联系作者获得授权，非商业转载请注明出处。</p>
+<p>此时就要选择另一种数据结构：map ，map是一种key value的存储结构，可以用key保存数值，用value再保存数值所在的下标。</p>
+<p>C++中map，有三种类型：</p>
+<table>
+<thead>
+<tr>
+<th>映射</th>
+<th>底层实现</th>
+<th>是否有序</th>
+<th>数值是否可以重复</th>
+<th>能否更改数值</th>
+<th>查询效率</th>
+<th>增删效率</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>std::map</td>
+<td>红黑树</td>
+<td>key有序</td>
+<td>key不可重复</td>
+<td>key不可修改</td>
+<td>O(log n)</td>
+<td>O(log n)</td>
+</tr>
+<tr>
+<td>std::multimap</td>
+<td>红黑树</td>
+<td>key有序</td>
+<td>key可重复</td>
+<td>key不可修改</td>
+<td>O(log n)</td>
+<td>O(log n)</td>
+</tr>
+<tr>
+<td>std::unordered_map</td>
+<td>哈希表</td>
+<td>key无序</td>
+<td>key不可重复</td>
+<td>key不可修改</td>
+<td>O(1)</td>
+<td>O(1)</td>
+</tr>
+</tbody>
+</table>
+<p>std::unordered_map 底层实现为哈希表，std::map 和std::multimap 的底层实现是红黑树。</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-C++" data-lang="C++"><span style="display:flex;"><span><span style="color:#66d9ef">class</span> <span style="color:#a6e22e">Solution</span> {
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">public</span><span style="color:#f92672">:</span>
+</span></span><span style="display:flex;"><span>    vector<span style="color:#f92672">&lt;</span><span style="color:#66d9ef">int</span><span style="color:#f92672">&gt;</span> twoSum(vector<span style="color:#f92672">&lt;</span><span style="color:#66d9ef">int</span><span style="color:#f92672">&gt;&amp;</span> nums, <span style="color:#66d9ef">int</span> target) {
+</span></span><span style="display:flex;"><span>        unordered_map<span style="color:#f92672">&lt;</span><span style="color:#66d9ef">int</span>, <span style="color:#66d9ef">int</span><span style="color:#f92672">&gt;</span> hashtable;
+</span></span><span style="display:flex;"><span>        <span style="color:#66d9ef">for</span> (<span style="color:#66d9ef">int</span> i <span style="color:#f92672">=</span> <span style="color:#ae81ff">0</span>; i <span style="color:#f92672">&lt;</span> nums.size(); i<span style="color:#f92672">++</span>) {
+</span></span><span style="display:flex;"><span>            <span style="color:#75715e">// auto 关键字用于自动推断变量的类型
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>            <span style="color:#75715e">// 通过 auto 关键字，编译器会根据 hashtable.find(target - nums[i]) 返回的类型
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>            <span style="color:#75715e">// 自动推断 it 的类型为哈希表的迭代器类型，而无需显式地指定其类型。
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>            <span style="color:#66d9ef">auto</span> iter <span style="color:#f92672">=</span> hashtable.find(target <span style="color:#f92672">-</span> nums[i]);
+</span></span><span style="display:flex;"><span>            <span style="color:#66d9ef">if</span> (iter <span style="color:#f92672">!=</span> hashtable.end()) {
+</span></span><span style="display:flex;"><span>                <span style="color:#66d9ef">return</span> {iter<span style="color:#f92672">-&gt;</span>second, i}
+</span></span><span style="display:flex;"><span>            }
+</span></span><span style="display:flex;"><span>            hashtable[nums[i]] <span style="color:#f92672">=</span> i;
+</span></span><span style="display:flex;"><span>        }
+</span></span><span style="display:flex;"><span>        <span style="color:#66d9ef">return</span> {};
+</span></span><span style="display:flex;"><span>    }
+</span></span><span style="display:flex;"><span>};
+</span></span></code></pre></div><ul>
+<li>时间复杂度: O(n)</li>
+<li>空间复杂度: O(n)</li>
+</ul>
+<h4 id="454-四数相加ii">454 四数相加II<a hidden class="anchor" aria-hidden="true" href="#454-四数相加ii">#</a></h4>
+<p><a href="https://leetcode.cn/problems/4sum-ii/">力扣题目链接(opens new window)</a></p>
+<p>给定四个包含整数的数组列表 A , B , C , D ,计算有多少个元组 (i, j, k, l) ，使得 A[i] + B[j] + C[k] + D[l] = 0。</p>
+<p>为了使问题简单化，所有的 A, B, C, D 具有相同的长度 N，且 0 ≤ N ≤ 500 。所有整数的范围在 -2^28 到 2^28 - 1 之间，最终结果不会超过 2^31 - 1 。</p>
+<p>例如:</p>
+<p>输入:</p>
+<ul>
+<li>A = [ 1, 2]</li>
+<li>B = [-2,-1]</li>
+<li>C = [-1, 2]</li>
+<li>D = [ 0, 2]</li>
+</ul>
+<p>输出:</p>
+<p>2</p>
+<p>解释:</p>
+<p>两个元组如下:</p>
+<ol>
+<li>(0, 0, 0, 1) -&gt; A[0] + B[0] + C[0] + D[1] = 1 + (-2) + (-1) + 2 = 0</li>
+<li>(1, 1, 0, 0) -&gt; A[1] + B[1] + C[0] + D[0] = 2 + (-1) + (-1) + 0 = 0</li>
+</ol>
+<p>思路与算法</p>
+<p>我们可以将四个数组分成两部分，AAA 和 BBB 为一组，CCC 和 DDD 为另外一组。</p>
+<p>对于 AAA 和 BBB，我们使用二重循环对它们进行遍历，得到所有 A[i]+B[j]A[i]+B[j]A[i]+B[j] 的值并存入哈希映射中。对于哈希映射中的每个键值对，每个键表示一种 A[i]+B[j]A[i]+B[j]A[i]+B[j]，对应的值为 A[i]+B[j]A[i]+B[j]A[i]+B[j] 出现的次数。</p>
+<p>对于 CCC 和 DDD，我们同样使用二重循环对它们进行遍历。当遍历到 C[k]+D[l]C[k]+D[l]C[k]+D[l] 时，如果 −(C[k]+D[l])-(C[k]+D[l])−(C[k]+D[l]) 出现在哈希映射中，那么将 −(C[k]+D[l])-(C[k]+D[l])−(C[k]+D[l]) 对应的值累加进答案中。</p>
+<p>最终即可得到满足 A[i]+B[j]+C[k]+D[l]=0A[i]+B[j]+C[k]+D[l]=0A[i]+B[j]+C[k]+D[l]=0 的四元组数目。</p>
+<p>作者：力扣官方题解</p>
+<p>链接：https://leetcode.cn/problems/4sum-ii/solutions/499745/si-shu-xiang-jia-ii-by-leetcode-solution/</p>
+<p>来源：力扣（LeetCode）</p>
+<p>著作权归作者所有。商业转载请联系作者获得授权，非商业转载请注明出处。</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-C++" data-lang="C++"><span style="display:flex;"><span><span style="color:#66d9ef">class</span> <span style="color:#a6e22e">Solution</span> {
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">public</span><span style="color:#f92672">:</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">int</span> fourSumCount(vector<span style="color:#f92672">&lt;</span><span style="color:#66d9ef">int</span><span style="color:#f92672">&gt;&amp;</span> nums1, vector<span style="color:#f92672">&lt;</span><span style="color:#66d9ef">int</span><span style="color:#f92672">&gt;&amp;</span> nums2, vector<span style="color:#f92672">&lt;</span><span style="color:#66d9ef">int</span><span style="color:#f92672">&gt;&amp;</span> nums3, vector<span style="color:#f92672">&lt;</span><span style="color:#66d9ef">int</span><span style="color:#f92672">&gt;&amp;</span> nums4) {
+</span></span><span style="display:flex;"><span>        unordered_map<span style="color:#f92672">&lt;</span><span style="color:#66d9ef">int</span>, <span style="color:#66d9ef">int</span><span style="color:#f92672">&gt;</span> countAB;
+</span></span><span style="display:flex;"><span>        <span style="color:#66d9ef">for</span> (<span style="color:#66d9ef">int</span> a : nums1) {
+</span></span><span style="display:flex;"><span>            <span style="color:#66d9ef">for</span> (<span style="color:#66d9ef">int</span> b : nums2) {
+</span></span><span style="display:flex;"><span>                countAB[a <span style="color:#f92672">+</span> b]<span style="color:#f92672">++</span>;
+</span></span><span style="display:flex;"><span>            }
+</span></span><span style="display:flex;"><span>        }
+</span></span><span style="display:flex;"><span>        <span style="color:#66d9ef">int</span> count <span style="color:#f92672">=</span> <span style="color:#ae81ff">0</span>;
+</span></span><span style="display:flex;"><span>        <span style="color:#66d9ef">for</span> (<span style="color:#66d9ef">int</span> c : nums3) {
+</span></span><span style="display:flex;"><span>            <span style="color:#66d9ef">for</span> (<span style="color:#66d9ef">int</span> d : nums4) {
+</span></span><span style="display:flex;"><span>                <span style="color:#66d9ef">if</span> (countAB.find(<span style="color:#ae81ff">0</span> <span style="color:#f92672">-</span> (c <span style="color:#f92672">+</span> d)) <span style="color:#f92672">!=</span> countAB.end()) {
+</span></span><span style="display:flex;"><span>                    count <span style="color:#f92672">+=</span> countAB[<span style="color:#ae81ff">0</span> <span style="color:#f92672">-</span> (c <span style="color:#f92672">+</span> d)];
+</span></span><span style="display:flex;"><span>                }
+</span></span><span style="display:flex;"><span>            }
+</span></span><span style="display:flex;"><span>        }
+</span></span><span style="display:flex;"><span>        <span style="color:#66d9ef">return</span> count;
+</span></span><span style="display:flex;"><span>    }
+</span></span><span style="display:flex;"><span>};
+</span></span></code></pre></div><ul>
+<li>时间复杂度: O(n^2)</li>
+<li>空间复杂度: O(n^2)，最坏情况下A和B的值各不相同，相加产生的数字个数为 n^2</li>
+</ul>
+<h4 id="383-赎金信">383 赎金信<a hidden class="anchor" aria-hidden="true" href="#383-赎金信">#</a></h4>
+<p><a href="https://leetcode.cn/problems/ransom-note/">力扣题目链接(opens new window)</a></p>
+<p>给定一个赎金信 (ransom) 字符串和一个杂志(magazine)字符串，判断第一个字符串 ransom 能不能由第二个字符串 magazines 里面的字符构成。如果可以构成，返回 true ；否则返回 false。</p>
+<p>(题目说明：为了不暴露赎金信字迹，要从杂志上搜索各个需要的字母，组成单词来表达意思。杂志字符串中的每个字符只能在赎金信字符串中使用一次。)</p>
+<p>注意：</p>
+<p>你可以假设两个字符串均只含有小写字母。</p>
+<p>canConstruct(&ldquo;a&rdquo;, &ldquo;b&rdquo;) -&gt; false</p>
+<p>canConstruct(&ldquo;aa&rdquo;, &ldquo;ab&rdquo;) -&gt; false</p>
+<p>canConstruct(&ldquo;aa&rdquo;, &ldquo;aab&rdquo;) -&gt; true</p>
+<h5 id="暴力解法">暴力解法<a hidden class="anchor" aria-hidden="true" href="#暴力解法">#</a></h5>
+<p>两层 for 循环，不断的寻找</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-C++" data-lang="C++"><span style="display:flex;"><span><span style="color:#66d9ef">class</span> <span style="color:#a6e22e">Solution</span> {
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">public</span><span style="color:#f92672">:</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">bool</span> canConstruct (string ransomNote, string magazine) {
+</span></span><span style="display:flex;"><span>        <span style="color:#66d9ef">for</span> (<span style="color:#66d9ef">int</span> i <span style="color:#f92672">=</span> <span style="color:#ae81ff">0</span>; i <span style="color:#f92672">&lt;</span> magazine.size(); i<span style="color:#f92672">++</span>) {
+</span></span><span style="display:flex;"><span>            <span style="color:#66d9ef">for</span> (<span style="color:#66d9ef">int</span> j <span style="color:#f92672">=</span> <span style="color:#ae81ff">0</span>; j <span style="color:#f92672">&lt;</span> ransomNote.size(); j<span style="color:#f92672">++</span>) {
+</span></span><span style="display:flex;"><span>                <span style="color:#66d9ef">if</span> (magazine[i] <span style="color:#f92672">==</span> ransomNote[j]) {
+</span></span><span style="display:flex;"><span>                    ransomeNote.erase(ransomNote.begin() <span style="color:#f92672">+</span> j);
+</span></span><span style="display:flex;"><span>                    <span style="color:#66d9ef">break</span>;
+</span></span><span style="display:flex;"><span>                }
+</span></span><span style="display:flex;"><span>            }
+</span></span><span style="display:flex;"><span>        }
+</span></span><span style="display:flex;"><span>        <span style="color:#66d9ef">if</span> (ransomNote.length() <span style="color:#f92672">==</span> <span style="color:#ae81ff">0</span>) {
+</span></span><span style="display:flex;"><span>        <span style="color:#66d9ef">return</span> true;
+</span></span><span style="display:flex;"><span>        }
+</span></span><span style="display:flex;"><span>        <span style="color:#66d9ef">return</span> false;
+</span></span><span style="display:flex;"><span>    }
+</span></span><span style="display:flex;"><span>};
+</span></span></code></pre></div><ul>
+<li>时间复杂度: O(n^2)</li>
+<li>空间复杂度: O(1)</li>
+</ul>
+<h5 id="哈希表">哈希表<a hidden class="anchor" aria-hidden="true" href="#哈希表">#</a></h5>
+<p>题目中说只有小写字母，可以采用空间换时间的哈希策略，用一个长度为 26 的数组来记录 magazine 中字母出现的次数。然后再使用 ransomNote 去验证该数组中是否包含了其所需的所有字母。（相比较于使用 map，在数据量大的时候，map空间消耗更大一些。）</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-C++" data-lang="C++"><span style="display:flex;"><span><span style="color:#66d9ef">class</span> <span style="color:#a6e22e">Solution</span> {
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">public</span><span style="color:#f92672">:</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">bool</span> canConstruct(string ransomNote, string magazine) {
+</span></span><span style="display:flex;"><span>        <span style="color:#75715e">// 代码随想录
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>        <span style="color:#75715e">// int record[26] = {0};
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>        <span style="color:#75715e">// if (ransomNote.size() &gt; magazine.size()) {
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>        <span style="color:#75715e">//     return false;
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>        <span style="color:#75715e">// }
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>        <span style="color:#75715e">// for (int i = 0; i &lt; magazine.size(); i++) {
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>        <span style="color:#75715e">//     record[magazine[i] - &#39;a&#39;]++;
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>        <span style="color:#75715e">// }
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>        <span style="color:#75715e">// for (int j = 0; j &lt; ransomNote.size(); j++) {
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>        <span style="color:#75715e">//     record[ransomNote[j] - &#39;a&#39;]--;
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>        <span style="color:#75715e">//     if (record[ransomNote[j] - &#39;a&#39;] &lt; 0) {
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>        <span style="color:#75715e">//         return false;
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>        <span style="color:#75715e">//     }
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>        <span style="color:#75715e">// }
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>        <span style="color:#75715e">// return true;
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>
+</span></span><span style="display:flex;"><span>        <span style="color:#75715e">// leetcode 官方题解
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>        <span style="color:#66d9ef">if</span> (ransomNote.size() <span style="color:#f92672">&gt;</span> magazine.size()) {
+</span></span><span style="display:flex;"><span>            <span style="color:#66d9ef">return</span> false;
+</span></span><span style="display:flex;"><span>        }
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>        vector<span style="color:#f92672">&lt;</span><span style="color:#66d9ef">int</span><span style="color:#f92672">&gt;</span> cnt(<span style="color:#ae81ff">26</span>);
+</span></span><span style="display:flex;"><span>        <span style="color:#75715e">// auto 关键字用于自动类型推断
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>        <span style="color:#75715e">// auto&amp; 自动推断并创建一个引用变量 
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>        <span style="color:#66d9ef">for</span> (<span style="color:#66d9ef">auto</span> <span style="color:#f92672">&amp;</span> c : magazine) {
+</span></span><span style="display:flex;"><span>            cnt[c <span style="color:#f92672">-</span> <span style="color:#e6db74">&#39;a&#39;</span>]<span style="color:#f92672">++</span>;
+</span></span><span style="display:flex;"><span>        }
+</span></span><span style="display:flex;"><span>        <span style="color:#66d9ef">for</span> (<span style="color:#66d9ef">auto</span> <span style="color:#f92672">&amp;</span> c : ransomNote) {
+</span></span><span style="display:flex;"><span>            cnt[c <span style="color:#f92672">-</span> <span style="color:#e6db74">&#39;a&#39;</span>]<span style="color:#f92672">--</span>;
+</span></span><span style="display:flex;"><span>            <span style="color:#66d9ef">if</span> (cnt[c <span style="color:#f92672">-</span> <span style="color:#e6db74">&#39;a&#39;</span>] <span style="color:#f92672">&lt;</span> <span style="color:#ae81ff">0</span>) {
+</span></span><span style="display:flex;"><span>                <span style="color:#66d9ef">return</span> false;
+</span></span><span style="display:flex;"><span>            }
+</span></span><span style="display:flex;"><span>        }
+</span></span><span style="display:flex;"><span>        <span style="color:#66d9ef">return</span> true;
+</span></span><span style="display:flex;"><span>    }
+</span></span><span style="display:flex;"><span>};
+</span></span></code></pre></div><h4 id="三数之和">三数之和<a hidden class="anchor" aria-hidden="true" href="#三数之和">#</a></h4>
+<p><a href="https://leetcode.cn/problems/3sum/">力扣题目链接(opens new window)</a></p>
+<p>给你一个包含 n 个整数的数组 nums，判断 nums 中是否存在三个元素 a，b，c ，使得 a + b + c = 0 ？请你找出所有满足条件且不重复的三元组。</p>
+<p>注意： 答案中不可以包含重复的三元组。</p>
+<p>示例：</p>
+<p>给定数组 nums = [-1, 0, 1, 2, -1, -4]，</p>
+<p>满足要求的三元组集合为： [ [-1, 0, 1], [-1, -1, 2] ]</p>
+<h5 id="哈希法">哈希法<a hidden class="anchor" aria-hidden="true" href="#哈希法">#</a></h5>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-C++" data-lang="C++"><span style="display:flex;"><span><span style="color:#66d9ef">class</span> <span style="color:#a6e22e">Solution</span> {
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">public</span><span style="color:#f92672">:</span>
+</span></span><span style="display:flex;"><span>    vector<span style="color:#f92672">&lt;</span>vector<span style="color:#f92672">&lt;</span><span style="color:#66d9ef">int</span><span style="color:#f92672">&gt;&gt;</span> threeSum (vector<span style="color:#f92672">&lt;</span><span style="color:#66d9ef">int</span><span style="color:#f92672">&gt;&amp;</span> nums) {
+</span></span><span style="display:flex;"><span>        
+</span></span><span style="display:flex;"><span>    }
+</span></span><span style="display:flex;"><span>};
+</span></span></code></pre></div><h5 id="排序双指针">排序+双指针<a hidden class="anchor" aria-hidden="true" href="#排序双指针">#</a></h5>
+<h4 id="四数之和">四数之和<a hidden class="anchor" aria-hidden="true" href="#四数之和">#</a></h4>
+<h3 id="24-字符串">2.4 字符串<a hidden class="anchor" aria-hidden="true" href="#24-字符串">#</a></h3>
+<h4 id="344-反转字符串">344 反转字符串<a hidden class="anchor" aria-hidden="true" href="#344-反转字符串">#</a></h4>
+<p><a href="https://leetcode.cn/problems/reverse-string/">力扣题目链接(opens new window)</a></p>
+<p>编写一个函数，其作用是将输入的字符串反转过来。输入字符串以字符数组 char[] 的形式给出。</p>
+<p>不要给另外的数组分配额外的空间，你必须原地修改输入数组、使用 O(1) 的额外空间解决这一问题。</p>
+<p>你可以假设数组中的所有字符都是 ASCII 码表中的可打印字符。</p>
+<p>示例 1：</p>
+<p>输入：[&ldquo;h&rdquo;,&ldquo;e&rdquo;,&ldquo;l&rdquo;,&ldquo;l&rdquo;,&ldquo;o&rdquo;]</p>
+<p>输出：[&ldquo;o&rdquo;,&ldquo;l&rdquo;,&ldquo;l&rdquo;,&ldquo;e&rdquo;,&ldquo;h&rdquo;]</p>
+<p>示例 2：</p>
+<p>输入：[&ldquo;H&rdquo;,&ldquo;a&rdquo;,&ldquo;n&rdquo;,&ldquo;n&rdquo;,&ldquo;a&rdquo;,&ldquo;h&rdquo;]</p>
+<p>输出：[&ldquo;h&rdquo;,&ldquo;a&rdquo;,&ldquo;n&rdquo;,&ldquo;n&rdquo;,&ldquo;a&rdquo;,&ldquo;H&rdquo;]</p>
+<p>分析：与之前反转链表的思路一样，使用双指针的方法</p>
+<p>暂时无法在飞书文档外展示此内容</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-C++" data-lang="C++"><span style="display:flex;"><span><span style="color:#66d9ef">class</span> <span style="color:#a6e22e">Solution</span> {
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">public</span><span style="color:#f92672">:</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">void</span> reverseString (vector<span style="color:#f92672">&lt;</span><span style="color:#66d9ef">char</span><span style="color:#f92672">&gt;&amp;</span> s) {
+</span></span><span style="display:flex;"><span>        <span style="color:#66d9ef">for</span> (<span style="color:#66d9ef">int</span> i <span style="color:#f92672">=</span> <span style="color:#ae81ff">0</span>, j <span style="color:#f92672">=</span> s.size()<span style="color:#f92672">-</span><span style="color:#ae81ff">1</span>; i <span style="color:#f92672">&lt;</span> s.size()<span style="color:#f92672">/</span><span style="color:#ae81ff">2</span>; i<span style="color:#f92672">++</span>,j<span style="color:#f92672">--</span>) {
+</span></span><span style="display:flex;"><span>            swap(s[i], s[j]);
+</span></span><span style="display:flex;"><span>        }
+</span></span><span style="display:flex;"><span>    }
+</span></span><span style="display:flex;"><span>};
+</span></span></code></pre></div><ul>
+<li>时间复杂度: O(n)</li>
+<li>空间复杂度: O(1)</li>
+</ul>
+<h4 id="541-反转字符串ii">541 反转字符串II<a hidden class="anchor" aria-hidden="true" href="#541-反转字符串ii">#</a></h4>
+<p><a href="https://leetcode.cn/problems/reverse-string-ii/">力扣题目链接(opens new window)</a></p>
+<p>给定一个字符串 s 和一个整数 k，从字符串开头算起, 每计数至 2k 个字符，就反转这 2k 个字符中的前 k 个字符。</p>
+<p>如果剩余字符少于 k 个，则将剩余字符全部反转。</p>
+<p>如果剩余字符小于 2k 但大于或等于 k 个，则反转前 k 个字符，其余字符保持原样。</p>
+<p>示例:</p>
+<p>输入: s = &ldquo;abcdefg&rdquo;, k = 2</p>
+<p>输出: &ldquo;bacdfeg&rdquo;</p>
+<p>分析：按照题目意思，反转每个下标从 2k的倍数开始的，长度为 k 的子串。若该子串长度不足 k，则反转整个子串。</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-C++" data-lang="C++"><span style="display:flex;"><span><span style="color:#66d9ef">class</span> <span style="color:#a6e22e">Solution</span> {
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">public</span><span style="color:#f92672">:</span>
+</span></span><span style="display:flex;"><span>    string reverseStr(string s, <span style="color:#66d9ef">int</span> k) {
+</span></span><span style="display:flex;"><span>        <span style="color:#66d9ef">int</span> n <span style="color:#f92672">=</span> s.length();
+</span></span><span style="display:flex;"><span>        <span style="color:#66d9ef">for</span> (<span style="color:#66d9ef">int</span> i <span style="color:#f92672">=</span> <span style="color:#ae81ff">0</span>; i <span style="color:#f92672">&lt;</span> n; i <span style="color:#f92672">+=</span> <span style="color:#ae81ff">2</span> <span style="color:#f92672">*</span> k) {
+</span></span><span style="display:flex;"><span>            reverse(s.begin() <span style="color:#f92672">+</span> i, s.begin() <span style="color:#f92672">+</span> min(i <span style="color:#f92672">+</span> k, n));
+</span></span><span style="display:flex;"><span>        }
+</span></span><span style="display:flex;"><span>        <span style="color:#66d9ef">return</span> s;
+</span></span><span style="display:flex;"><span>    }
+</span></span><span style="display:flex;"><span>};
+</span></span></code></pre></div><h4 id="替换数字">替换数字<a hidden class="anchor" aria-hidden="true" href="#替换数字">#</a></h4>
+<p><a href="https://kamacoder.com/problempage.php?pid=1064">卡码网题目链接(opens new window)</a></p>
+<p>给定一个字符串 s，它包含小写字母和数字字符，请编写一个函数，将字符串中的字母字符保持不变，而将每个数字字符替换为number。</p>
+<p>例如，对于输入字符串 &ldquo;a1b2c3&rdquo;，函数应该将其转换为 &ldquo;anumberbnumbercnumber&rdquo;。</p>
+<p>对于输入字符串 &ldquo;a5b&rdquo;，函数应该将其转换为 &ldquo;anumberb&rdquo;</p>
+<p>输入：一个字符串 s,s 仅包含小写字母和数字字符。</p>
+<p>输出：打印一个新的字符串，其中每个数字字符都被替换为了number</p>
+<p>样例输入：a1b2c3</p>
+<p>样例输出：anumberbnumbercnumber</p>
+<p>数据范围：1 &lt;= s.length &lt; 10000。</p>
+<p>思路：（java 中的 string 不能修改，本题需要使用额外的辅助空间）</p>
+<p>双指针法一步步填充：<code>i</code> 指向新长度的末尾，<code>j</code> 指向旧长度的末尾。</p>
+<p>很多数组填充类问题，都是预先给数组扩容到填充的大小，然后在从后向前进行操作。优点：</p>
+<ul>
+<li>不用申请新数组。</li>
+<li>从后向前填充元素，避免了从前向后填充元素时，要把添加元素之后的所有元素都向后移动的问题。</li>
+</ul>
+<p><img loading="lazy" src="/Users/sebas/Documents/wzq11011.github.io/source/_posts/leetcode.assets/%28null%29-20240417193333471.%28null%29" alt="img"  />
+</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-C++" data-lang="C++"><span style="display:flex;"><span><span style="color:#75715e">#include</span> <span style="color:#75715e">&lt;iostream&gt;</span><span style="color:#75715e">
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span><span style="color:#66d9ef">using</span> <span style="color:#66d9ef">namespace</span> std;
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e">// class Solution {
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>    
+</span></span><span style="display:flex;"><span><span style="color:#75715e">// };
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">int</span> <span style="color:#a6e22e">main</span>() {
+</span></span><span style="display:flex;"><span>    string s;
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">while</span> (cin <span style="color:#f92672">&gt;&gt;</span> s) {
+</span></span><span style="display:flex;"><span>        <span style="color:#66d9ef">int</span> count <span style="color:#f92672">=</span> <span style="color:#ae81ff">0</span>;  <span style="color:#75715e">// 统计数字的个数
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>        <span style="color:#66d9ef">int</span> sOldSize <span style="color:#f92672">=</span> s.size();
+</span></span><span style="display:flex;"><span>        <span style="color:#66d9ef">for</span> (<span style="color:#66d9ef">int</span> i <span style="color:#f92672">=</span> <span style="color:#ae81ff">0</span>; i <span style="color:#f92672">&lt;</span> sOldSize; i<span style="color:#f92672">++</span>) {
+</span></span><span style="display:flex;"><span>            <span style="color:#66d9ef">if</span> (s[i] <span style="color:#f92672">&gt;=</span> <span style="color:#e6db74">&#39;0&#39;</span> <span style="color:#f92672">&amp;&amp;</span> s[i] <span style="color:#f92672">&lt;=</span> <span style="color:#e6db74">&#39;9&#39;</span>) {
+</span></span><span style="display:flex;"><span>                count<span style="color:#f92672">++</span>;
+</span></span><span style="display:flex;"><span>            }
+</span></span><span style="display:flex;"><span>        }
+</span></span><span style="display:flex;"><span>        
+</span></span><span style="display:flex;"><span>        <span style="color:#75715e">// 计算扩充字符串后 s 的大小，然后重构 s
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>        s.resize(sOldSize <span style="color:#f92672">+</span> count <span style="color:#f92672">*</span> <span style="color:#ae81ff">5</span>);
+</span></span><span style="display:flex;"><span>        <span style="color:#66d9ef">int</span> sNewSize <span style="color:#f92672">=</span> s.size();
+</span></span><span style="display:flex;"><span>        
+</span></span><span style="display:flex;"><span>        <span style="color:#75715e">// 从后向前将空格替换为 number
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>        <span style="color:#66d9ef">for</span> (<span style="color:#66d9ef">int</span> i <span style="color:#f92672">=</span> sNewSize <span style="color:#f92672">-</span> <span style="color:#ae81ff">1</span>, j <span style="color:#f92672">=</span> sOldSize <span style="color:#f92672">-</span> <span style="color:#ae81ff">1</span>; j <span style="color:#f92672">&lt;</span> i; i<span style="color:#f92672">--</span>, j<span style="color:#f92672">--</span>) {
+</span></span><span style="display:flex;"><span>            <span style="color:#66d9ef">if</span> (s[j] <span style="color:#f92672">&gt;</span> <span style="color:#e6db74">&#39;9&#39;</span> <span style="color:#f92672">||</span> s[j] <span style="color:#f92672">&lt;</span> <span style="color:#e6db74">&#39;0&#39;</span>) {
+</span></span><span style="display:flex;"><span>                s[i] <span style="color:#f92672">=</span> s[j];
+</span></span><span style="display:flex;"><span>            } <span style="color:#66d9ef">else</span> {
+</span></span><span style="display:flex;"><span>                s[i] <span style="color:#f92672">=</span> <span style="color:#e6db74">&#39;r&#39;</span>;
+</span></span><span style="display:flex;"><span>                s[i <span style="color:#f92672">-</span> <span style="color:#ae81ff">1</span>] <span style="color:#f92672">=</span> <span style="color:#e6db74">&#39;e&#39;</span>;
+</span></span><span style="display:flex;"><span>                s[i <span style="color:#f92672">-</span> <span style="color:#ae81ff">2</span>] <span style="color:#f92672">=</span> <span style="color:#e6db74">&#39;b&#39;</span>;
+</span></span><span style="display:flex;"><span>                s[i <span style="color:#f92672">-</span> <span style="color:#ae81ff">3</span>] <span style="color:#f92672">=</span> <span style="color:#e6db74">&#39;m&#39;</span>;
+</span></span><span style="display:flex;"><span>                s[i <span style="color:#f92672">-</span> <span style="color:#ae81ff">4</span>] <span style="color:#f92672">=</span> <span style="color:#e6db74">&#39;u&#39;</span>;
+</span></span><span style="display:flex;"><span>                s[i <span style="color:#f92672">-</span> <span style="color:#ae81ff">5</span>] <span style="color:#f92672">=</span> <span style="color:#e6db74">&#39;n&#39;</span>;
+</span></span><span style="display:flex;"><span>                i <span style="color:#f92672">-=</span> <span style="color:#ae81ff">5</span>;
+</span></span><span style="display:flex;"><span>            }
+</span></span><span style="display:flex;"><span>        }
+</span></span><span style="display:flex;"><span>        cout <span style="color:#f92672">&lt;&lt;</span> s <span style="color:#f92672">&lt;&lt;</span> endl;
+</span></span><span style="display:flex;"><span>    }
+</span></span><span style="display:flex;"><span>}
+</span></span></code></pre></div><ul>
+<li>时间复杂度：O(n)</li>
+<li>空间复杂度：O(1)</li>
+</ul>
+<p>双指针题目汇总：</p>
+<ul>
+<li><a href="https://programmercarl.com/0027.%E7%A7%BB%E9%99%A4%E5%85%83%E7%B4%A0.html">27.移除元素(opens new window)</a></li>
+<li><a href="https://programmercarl.com/0015.%E4%B8%89%E6%95%B0%E4%B9%8B%E5%92%8C.html">15.三数之和(opens new window)</a></li>
+<li><a href="https://programmercarl.com/0018.%E5%9B%9B%E6%95%B0%E4%B9%8B%E5%92%8C.html">18.四数之和(opens new window)</a></li>
+<li><a href="https://programmercarl.com/0206.%E7%BF%BB%E8%BD%AC%E9%93%BE%E8%A1%A8.html">206.翻转链表(opens new window)</a></li>
+<li><a href="https://programmercarl.com/0142.%E7%8E%AF%E5%BD%A2%E9%93%BE%E8%A1%A8II.html">142.环形链表II(opens new window)</a></li>
+<li><a href="https://programmercarl.com/0344.%E5%8F%8D%E8%BD%AC%E5%AD%97%E7%AC%A6%E4%B8%B2.html">344.反转字符串(opens new window)</a></li>
+</ul>
+<p>字符串是若干字符组成的有限序列，也可以理解为是一个字符数组。在 C++ 中，提供一个 string 类，该类会提供一个 size 接口，可以用来判断 string 类字符串是否结束。</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-C++" data-lang="C++"><span style="display:flex;"><span><span style="color:#75715e">// 判断字符串是否结束
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>string a <span style="color:#f92672">=</span> <span style="color:#e6db74">&#34;asd&#34;</span>;
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">for</span> (<span style="color:#66d9ef">int</span> i <span style="color:#f92672">=</span> <span style="color:#ae81ff">0</span>; i <span style="color:#f92672">&lt;</span> a.size(); i<span style="color:#f92672">++</span>) {
+</span></span><span style="display:flex;"><span>}
+</span></span></code></pre></div><p><code>vector&lt;char&gt;</code> 和 <code>string</code> 在基本操作上没区别，但 <code>string</code> 会提供更多的字符串的处理接口。</p>
+<h4 id="151-反转字符串里的单词">151 反转字符串里的单词<a hidden class="anchor" aria-hidden="true" href="#151-反转字符串里的单词">#</a></h4>
+<p><a href="https://leetcode.cn/problems/reverse-words-in-a-string/">力扣题目链接(opens new window)</a></p>
+<p>给定一个字符串，逐个翻转字符串中的每个单词。</p>
+<p>示例 1：</p>
+<p>输入: &ldquo;the sky is blue&rdquo;</p>
+<p>输出: &ldquo;blue is sky the&rdquo;</p>
+<p>示例 2：</p>
+<p>输入: &quot;  hello world!  &quot;</p>
+<p>输出: &ldquo;world! hello&rdquo;</p>
+<p>解释: 输入字符串可以在前面或者后面包含多余的空格，但是反转后的字符不能包括。</p>
+<p>示例 3：</p>
+<p>输入: &ldquo;a good   example&rdquo;</p>
+<p>输出: &ldquo;example good a&rdquo;</p>
+<p>解释: 如果两个单词间有多余的空格，将反转后单词间的空格减少到只含一个。</p>
+<p>思路：</p>
+<ul>
+<li>简单：使用 <code>split</code> 库函数，分隔单词，然后定义新的 <code>string</code> 字符串，最后倒序相加</li>
+<li>进阶：（要求不能使用辅助空间，空间复杂度要求为 <code>O(1)</code>）</li>
+<li>方法：移除多余空格、将整个字符串反转、将每个单词反转</li>
+</ul>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-C++" data-lang="C++"></code></pre></div><h4 id="右旋转字符串">右旋转字符串<a hidden class="anchor" aria-hidden="true" href="#右旋转字符串">#</a></h4>
+<h4 id="实现-strstr">实现 strStr()<a hidden class="anchor" aria-hidden="true" href="#实现-strstr">#</a></h4>
+<h4 id="重复的字符串">重复的字符串<a hidden class="anchor" aria-hidden="true" href="#重复的字符串">#</a></h4>
+<h3 id="25-双指针法">2.5 双指针法<a hidden class="anchor" aria-hidden="true" href="#25-双指针法">#</a></h3>
+<h3 id="26-栈与队列">2.6 栈与队列<a hidden class="anchor" aria-hidden="true" href="#26-栈与队列">#</a></h3>
+<p>GPT</p>
+<p>队列（Queue）</p>
+<p>原理：</p>
+<ul>
+<li>队列是一种先进先出（FIFO，First In First Out）的数据结构，类似于现实生活中排队的场景，先到先服务。</li>
+<li>在队列中，元素从队列的一端（称为队尾）添加，从另一端（称为队首）移除。</li>
+<li>新的元素总是被添加到队列的末尾，而最老的元素总是在队列的开头。</li>
+</ul>
+<p>用法：</p>
+<ul>
+<li>队列常用于模拟排队、任务调度、广度优先搜索（BFS）等场景。</li>
+<li>实现队列通常有两种方式：基于数组实现的顺序队列和基于链表实现的链式队列。</li>
+<li>在C++中，可以使用<code>std::queue</code>模板类来实现队列，其提供了队列的常用操作，如入队、出队、查看队首元素等。</li>
+</ul>
+<p>栈（Stack）</p>
+<p>原理：</p>
+<ul>
+<li>栈是一种后进先出（LIFO，Last In First Out）的数据结构，类似于一摞盘子，最后放上去的盘子最先被取走。</li>
+<li>在栈中，元素的添加和删除操作只能在栈顶进行。</li>
+<li>新的元素总是被添加到栈顶，而最新添加的元素总是在栈顶，最老的元素在栈底。</li>
+</ul>
+<p>用法：</p>
+<ul>
+<li>栈常用于递归函数调用、表达式求值、括号匹配、深度优先搜索（DFS）等场景。</li>
+<li>实现栈通常有两种方式：基于数组实现的顺序栈和基于链表实现的链式栈。</li>
+<li>在C++中，可以使用<code>std::stack</code>模板类来实现栈，其提供了栈的常用操作，如入栈、出栈、查看栈顶元素等。</li>
+</ul>
+<p>一些常见的示例：</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-C++" data-lang="C++"><span style="display:flex;"><span><span style="color:#75715e">#include</span> <span style="color:#75715e">&lt;iostream&gt;</span><span style="color:#75715e">
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e">#include</span> <span style="color:#75715e">&lt;queue&gt;</span><span style="color:#75715e">
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">int</span> <span style="color:#a6e22e">main</span>() {
+</span></span><span style="display:flex;"><span>    <span style="color:#75715e">// 创建一个队列
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>    std<span style="color:#f92672">::</span>queue<span style="color:#f92672">&lt;</span><span style="color:#66d9ef">int</span><span style="color:#f92672">&gt;</span> q;
+</span></span><span style="display:flex;"><span>    
+</span></span><span style="display:flex;"><span>    <span style="color:#75715e">// 入队操作
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>    q.push(<span style="color:#ae81ff">10</span>);
+</span></span><span style="display:flex;"><span>    q.push(<span style="color:#ae81ff">20</span>);
+</span></span><span style="display:flex;"><span>    q.push(<span style="color:#ae81ff">30</span>);
+</span></span><span style="display:flex;"><span>    
+</span></span><span style="display:flex;"><span>    <span style="color:#75715e">// 出队操作
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>    <span style="color:#66d9ef">while</span> (<span style="color:#f92672">!</span>q.empty()) {
+</span></span><span style="display:flex;"><span>        std<span style="color:#f92672">::</span>cout <span style="color:#f92672">&lt;&lt;</span> q.front() <span style="color:#f92672">&lt;&lt;</span> <span style="color:#e6db74">&#34; &#34;</span>;  <span style="color:#75715e">// 访问队首元素
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>        p.pop();  <span style="color:#75715e">// 移除队首元素
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>    }
+</span></span><span style="display:flex;"><span>    std<span style="color:#f92672">::</span>cout <span style="color:#f92672">&lt;&lt;</span> std<span style="color:#f92672">::</span>endl;
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">return</span> <span style="color:#ae81ff">0</span>;
+</span></span><span style="display:flex;"><span>}
+</span></span></code></pre></div><p>同理：对栈也有类似的操作</p>
+<p>push()：入栈操作</p>
+<p>empty(): 判断栈内元素是否为空</p>
+<p>top(): 访问栈顶元素</p>
+<p>pop(): 移除栈顶元素</p>
+<h4 id="基础">基础<a hidden class="anchor" aria-hidden="true" href="#基础">#</a></h4>
+<p>队列是先进先出，栈是先进后出。</p>
+<p><img loading="lazy" src="/Users/sebas/Documents/wzq11011.github.io/source/_posts/leetcode.assets/%28null%29-20240417193333432.%28null%29" alt="img"  />
+</p>
+<ol>
+<li>C++中stack 是容器么？</li>
+<li>我们使用的stack是属于哪个版本的STL？</li>
+<li>我们使用的STL中stack是如何实现的？</li>
+<li>stack 提供迭代器来遍历stack空间么？</li>
+</ol>
+<p>首先大家要知道 栈和队列是STL（C++标准库）里面的两个数据结构。</p>
+<p>C++标准库是有多个版本的，要知道我们使用的STL是哪个版本，才能知道对应的栈和队列的实现原理。</p>
+<p>那么来介绍一下，三个最为普遍的STL版本：</p>
+<ol>
+<li>HP STL 其他版本的C++ STL，一般是以HP STL为蓝本实现出来的，HP STL是C++ STL的第一个实现版本，而且开放源代码。</li>
+<li>P.J.Plauger STL 由P.J.Plauger参照HP STL实现出来的，被Visual C++编译器所采用，不是开源的。</li>
+<li>SGI STL 由Silicon Graphics Computer Systems公司参照HP STL实现，被Linux的C++编译器GCC所采用，SGI STL是开源软件，源码可读性甚高。</li>
+</ol>
+<p>接下来介绍的栈和队列也是SGI STL里面的数据结构， 知道了使用版本，才知道对应的底层实现。</p>
+<p>栈先进后出，如图所示：</p>
+<p><img loading="lazy" src="/Users/sebas/Documents/wzq11011.github.io/source/_posts/leetcode.assets/%28null%29-20240417193333592.%28null%29" alt="img"  />
+</p>
+<p>栈提供 push 和 pop 等等接口，所有元素必须符合先进后出规则，所以栈不提供走访功能，也不提供迭代器(iterator)。 不像是set 或者map 提供迭代器iterator来遍历所有元素。</p>
+<p>栈是以底层容器完成其所有的工作，对外提供统一的接口，底层容器是可插拔的（也就是说我们可以控制使用哪种容器来实现栈的功能）。</p>
+<p>所以STL中栈往往不被归类为容器，而被归类为container adapter（容器适配器）。</p>
+<p>那么问题来了，STL 中栈是用什么容器实现的？</p>
+<p>从下图中可以看出，栈的内部结构，栈的底层实现可以是vector，deque，list 都是可以的， 主要就是数组和链表的底层实现。</p>
+<p><img loading="lazy" src="/Users/sebas/Documents/wzq11011.github.io/source/_posts/leetcode.assets/%28null%29-20240417193333661.%28null%29" alt="img"  />
+</p>
+<p>我们常用的<strong>SGI STL，如果没有指定底层实现的话，默认是以deque为缺省情况下栈的底层结构</strong>。</p>
+<p>deque是一个双向队列，只要封住一段，只开通另一端就可以实现栈的逻辑了。</p>
+<p>SGI STL中 队列底层实现缺省情况下一样使用deque实现的。</p>
+<p>我们也可以指定vector为栈的底层实现，初始化语句如下：</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-C++" data-lang="C++"><span style="display:flex;"><span>std<span style="color:#f92672">::</span>stack<span style="color:#f92672">&lt;</span><span style="color:#66d9ef">int</span>, std<span style="color:#f92672">::</span>vector<span style="color:#f92672">&lt;</span><span style="color:#66d9ef">int</span><span style="color:#f92672">&gt;&gt;</span> third;  <span style="color:#75715e">// 使用 vector 为底层容器的栈
+</span></span></span></code></pre></div><p>队列中先进先出的数据结构，同样不允许有遍历行为，不提供迭代器, SGI STL中队列一样是以deque为缺省情况下的底部结构。</p>
+<p>也可以指定list 为起底层实现，初始化queue的语句如下：</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-C++" data-lang="C++"><span style="display:flex;"><span>std<span style="color:#f92672">::</span>queue<span style="color:#f92672">&lt;</span><span style="color:#66d9ef">int</span>, std<span style="color:#f92672">::</span>list<span style="color:#f92672">&lt;</span><span style="color:#66d9ef">int</span> third; <span style="color:#75715e">// 定义以list为底层容器的队列
+</span></span></span></code></pre></div><p>所以STL 队列也不被归类为容器，而被归类为container adapter（ 容器适配器）。</p>
+<h3 id="27-二叉树">2.7 二叉树<a hidden class="anchor" aria-hidden="true" href="#27-二叉树">#</a></h3>
+<h3 id="28-回溯算法">2.8 回溯算法<a hidden class="anchor" aria-hidden="true" href="#28-回溯算法">#</a></h3>
+<h3 id="29-贪心算法">2.9 贪心算法<a hidden class="anchor" aria-hidden="true" href="#29-贪心算法">#</a></h3>
+<h3 id="210-动态规划">2.10 动态规划<a hidden class="anchor" aria-hidden="true" href="#210-动态规划">#</a></h3>
+<h3 id="211-单调栈">2.11 单调栈<a hidden class="anchor" aria-hidden="true" href="#211-单调栈">#</a></h3>
+<h3 id="212-图论">2.12 图论<a hidden class="anchor" aria-hidden="true" href="#212-图论">#</a></h3>
+<h2 id="3-牛客网">3 牛客网<a hidden class="anchor" aria-hidden="true" href="#3-牛客网">#</a></h2>
+<h2 id="4-其他问题">4 其他问题<a hidden class="anchor" aria-hidden="true" href="#4-其他问题">#</a></h2>
+<h3 id="acm模型">ACM模型<a hidden class="anchor" aria-hidden="true" href="#acm模型">#</a></h3>
+<p>在 Leetcode 上刷题，采用的是核心代码模型。而很多公司的笔试题和面试题都是 ACM 模型，即需要自己处理数据的输入输出。</p>
+<p>练习地址：<a href="https://kamacoder.com/problemset.php?page=1">卡码网KamaCoder</a></p>
+<p>题解地址：<a href="https://github.com/youngyangyang04/kamacoder-solutions">GitHub - youngyangyang04/kamacoder-solutions: 卡码网题解全集</a></p>
+<p>使用git提交代码：<a href="https://www.programmercarl.com/qita/join.html">如何在Github上提交PR(pull request) | 代码随想录</a></p>
+<h2 id="5-刷题记录">5 刷题记录<a hidden class="anchor" aria-hidden="true" href="#5-刷题记录">#</a></h2>
+<p>回溯</p>
+<p>贪心</p>
+<p>分治</p>
+<p>动态规划：</p>
+<p><a href="https://leetcode.cn/problems/palindromic-substrings/description/">647. 回文子串 - 力扣（LeetCode）</a>   （2024-4-11 20:31）</p>
+<p><a href="https://leetcode.cn/problems/longest-palindromic-substring/description/">5. 最长回文子串 - 力扣（LeetCode）</a>（2024-4-11 20:31）</p>
+<h2 id="6-面试高频考点">6 面试高频考点<a hidden class="anchor" aria-hidden="true" href="#6-面试高频考点">#</a></h2>
+<blockquote>
+<p>参考：<a href="https://interviewguide.cn/notes/03-hunting_job/03-algorithm/04-high_frquency_algorithm/01-high_frquency_algorithm.html#_12%E3%80%81top-k%E9%97%AE%E9%A2%98">面试高频算法真题</a></p>
+</blockquote>
+<h3 id="61-排序算法">6.1 排序算法<a hidden class="anchor" aria-hidden="true" href="#61-排序算法">#</a></h3>
+<h4 id="冒泡排序">冒泡排序<a hidden class="anchor" aria-hidden="true" href="#冒泡排序">#</a></h4>
+<h4 id="快速排序">快速排序<a hidden class="anchor" aria-hidden="true" href="#快速排序">#</a></h4>
+<h4 id="归并排序">归并排序<a hidden class="anchor" aria-hidden="true" href="#归并排序">#</a></h4>
+<h4 id="堆排序">堆排序<a hidden class="anchor" aria-hidden="true" href="#堆排序">#</a></h4>
+
+
+  </div>
+
+  <footer class="post-footer">
+    <ul class="post-tags">
+    </ul>
+  </footer>
+</article>
+    </main>
+    
+<footer class="footer">
+        <span>&copy; 2024 <a href="http://localhost:1313/">CodeCoda</a></span> · 
+
+    <span>
+        Powered by
+        <a href="https://gohugo.io/" rel="noopener noreferrer" target="_blank">Hugo</a> &
+        <a href="https://github.com/adityatelange/hugo-PaperMod/" rel="noopener" target="_blank">PaperMod</a>
+    </span>
+</footer>
+<a href="#top" aria-label="go to top" title="Go to Top (Alt + G)" class="top-link" id="top-link" accesskey="g">
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 12 6" fill="currentColor">
+        <path d="M12 6H0l6-6z" />
+    </svg>
+</a>
+
+<script>
+    let menu = document.getElementById('menu')
+    if (menu) {
+        menu.scrollLeft = localStorage.getItem("menu-scroll-position");
+        menu.onscroll = function () {
+            localStorage.setItem("menu-scroll-position", menu.scrollLeft);
+        }
+    }
+
+    document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+        anchor.addEventListener("click", function (e) {
+            e.preventDefault();
+            var id = this.getAttribute("href").substr(1);
+            if (!window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
+                document.querySelector(`[id='${decodeURIComponent(id)}']`).scrollIntoView({
+                    behavior: "smooth"
+                });
+            } else {
+                document.querySelector(`[id='${decodeURIComponent(id)}']`).scrollIntoView();
+            }
+            if (id === "top") {
+                history.replaceState(null, null, " ");
+            } else {
+                history.pushState(null, null, `#${id}`);
+            }
+        });
+    });
+
+</script>
+<script>
+    var mybutton = document.getElementById("top-link");
+    window.onscroll = function () {
+        if (document.body.scrollTop > 800 || document.documentElement.scrollTop > 800) {
+            mybutton.style.visibility = "visible";
+            mybutton.style.opacity = "1";
+        } else {
+            mybutton.style.visibility = "hidden";
+            mybutton.style.opacity = "0";
+        }
+    };
+
+</script>
+<script>
+    document.getElementById("theme-toggle").addEventListener("click", () => {
+        if (document.body.className.includes("dark")) {
+            document.body.classList.remove('dark');
+            localStorage.setItem("pref-theme", 'light');
+        } else {
+            document.body.classList.add('dark');
+            localStorage.setItem("pref-theme", 'dark');
+        }
+    })
+
+</script>
+</body>
+
+</html>

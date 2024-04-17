@@ -1,0 +1,483 @@
+<!DOCTYPE html>
+<html lang="en" dir="auto">
+
+<head><script src="/livereload.js?mindelay=10&amp;v=2&amp;port=1313&amp;path=livereload" data-no-instant defer></script><meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+<meta name="robots" content="noindex, nofollow">
+<title>Blog Hexo | CodeCoda</title>
+<meta name="keywords" content="">
+<meta name="description" content="记录使用 hexo &#43; github pages 搭建个人博客的步骤">
+<meta name="author" content="">
+<link rel="canonical" href="http://localhost:1313/posts/blog-hexo/">
+<link crossorigin="anonymous" href="/assets/css/stylesheet.b609c58d5c11bb90b1a54e04005d74ad1ddf22165eb79f5533967e57df9c3b50.css" integrity="sha256-tgnFjVwRu5CxpU4EAF10rR3fIhZet59VM5Z&#43;V9&#43;cO1A=" rel="preload stylesheet" as="style">
+<link rel="icon" href="http://localhost:1313/favicon.ico">
+<link rel="icon" type="image/png" sizes="16x16" href="http://localhost:1313/favicon-16x16.png">
+<link rel="icon" type="image/png" sizes="32x32" href="http://localhost:1313/favicon-32x32.png">
+<link rel="apple-touch-icon" href="http://localhost:1313/apple-touch-icon.png">
+<link rel="mask-icon" href="http://localhost:1313/safari-pinned-tab.svg">
+<meta name="theme-color" content="#2e2e33">
+<meta name="msapplication-TileColor" content="#2e2e33">
+<link rel="alternate" hreflang="en" href="http://localhost:1313/posts/blog-hexo/">
+<noscript>
+    <style>
+        #theme-toggle,
+        .top-link {
+            display: none;
+        }
+
+    </style>
+    <style>
+        @media (prefers-color-scheme: dark) {
+            :root {
+                --theme: rgb(29, 30, 32);
+                --entry: rgb(46, 46, 51);
+                --primary: rgb(218, 218, 219);
+                --secondary: rgb(155, 156, 157);
+                --tertiary: rgb(65, 66, 68);
+                --content: rgb(196, 196, 197);
+                --code-block-bg: rgb(46, 46, 51);
+                --code-bg: rgb(55, 56, 62);
+                --border: rgb(51, 51, 51);
+            }
+
+            .list {
+                background: var(--theme);
+            }
+
+            .list:not(.dark)::-webkit-scrollbar-track {
+                background: 0 0;
+            }
+
+            .list:not(.dark)::-webkit-scrollbar-thumb {
+                border-color: var(--theme);
+            }
+        }
+
+    </style>
+</noscript>
+</head>
+
+<body class="" id="top">
+<script>
+    if (localStorage.getItem("pref-theme") === "dark") {
+        document.body.classList.add('dark');
+    } else if (localStorage.getItem("pref-theme") === "light") {
+        document.body.classList.remove('dark')
+    } else if (window.matchMedia('(prefers-color-scheme: dark)').matches) {
+        document.body.classList.add('dark');
+    }
+
+</script>
+
+<header class="header">
+    <nav class="nav">
+        <div class="logo">
+            <a href="http://localhost:1313/" accesskey="h" title="CodeCoda (Alt + H)">CodeCoda</a>
+            <div class="logo-switches">
+                <button id="theme-toggle" accesskey="t" title="(Alt + T)">
+                    <svg id="moon" xmlns="http://www.w3.org/2000/svg" width="24" height="18" viewBox="0 0 24 24"
+                        fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+                        stroke-linejoin="round">
+                        <path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"></path>
+                    </svg>
+                    <svg id="sun" xmlns="http://www.w3.org/2000/svg" width="24" height="18" viewBox="0 0 24 24"
+                        fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+                        stroke-linejoin="round">
+                        <circle cx="12" cy="12" r="5"></circle>
+                        <line x1="12" y1="1" x2="12" y2="3"></line>
+                        <line x1="12" y1="21" x2="12" y2="23"></line>
+                        <line x1="4.22" y1="4.22" x2="5.64" y2="5.64"></line>
+                        <line x1="18.36" y1="18.36" x2="19.78" y2="19.78"></line>
+                        <line x1="1" y1="12" x2="3" y2="12"></line>
+                        <line x1="21" y1="12" x2="23" y2="12"></line>
+                        <line x1="4.22" y1="19.78" x2="5.64" y2="18.36"></line>
+                        <line x1="18.36" y1="5.64" x2="19.78" y2="4.22"></line>
+                    </svg>
+                </button>
+            </div>
+        </div>
+        <ul id="menu">
+        </ul>
+    </nav>
+</header>
+<main class="main">
+
+<article class="post-single">
+  <header class="post-header">
+    
+    <h1 class="post-title entry-hint-parent">
+      Blog Hexo
+    </h1>
+    <div class="post-description">
+      记录使用 hexo &#43; github pages 搭建个人博客的步骤
+    </div>
+    <div class="post-meta"><span title='2023-04-25 16:03:43 +0000 UTC'>April 25, 2023</span>
+
+</div>
+  </header> 
+  <div class="post-content"><h1 id="1-hexo-搭建">1 Hexo 搭建<a hidden class="anchor" aria-hidden="true" href="#1-hexo-搭建">#</a></h1>
+<h2 id="11-macbook-clashx-终端代理">1.1 Macbook ClashX 终端代理<a hidden class="anchor" aria-hidden="true" href="#11-macbook-clashx-终端代理">#</a></h2>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-shell" data-lang="shell"><span style="display:flex;"><span>export https_proxy<span style="color:#f92672">=</span>http://127.0.0.1:7890 http_proxy<span style="color:#f92672">=</span>http://127.0.0.1:7890 all_proxy<span style="color:#f92672">=</span>socks5://127.0.0.1:7890
+</span></span></code></pre></div><h2 id="12-安装-homebrew">1.2 安装 Homebrew<a hidden class="anchor" aria-hidden="true" href="#12-安装-homebrew">#</a></h2>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-shell" data-lang="shell"><span style="display:flex;"><span>/bin/bash -c <span style="color:#e6db74">&#34;</span><span style="color:#66d9ef">$(</span>curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh<span style="color:#66d9ef">)</span><span style="color:#e6db74">&#34;</span>
+</span></span></code></pre></div><h2 id="13-安装-nodejsgit">1.3 安装 node.js、git<a hidden class="anchor" aria-hidden="true" href="#13-安装-nodejsgit">#</a></h2>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-shell" data-lang="shell"><span style="display:flex;"><span>brew install node git
+</span></span></code></pre></div><h2 id="14-安装-hexo">1.4 安装 Hexo<a hidden class="anchor" aria-hidden="true" href="#14-安装-hexo">#</a></h2>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-shell" data-lang="shell"><span style="display:flex;"><span>npm install -g hexo-cli
+</span></span></code></pre></div><h2 id="15-初始化项目">1.5 初始化项目<a hidden class="anchor" aria-hidden="true" href="#15-初始化项目">#</a></h2>
+<p>在 Documents 目录下创建一个 blog 文件夹，使用 hexo 命令初始化</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-shell" data-lang="shell"><span style="display:flex;"><span><span style="color:#75715e"># ~/Documents</span>
+</span></span><span style="display:flex;"><span>hexo init blog
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e"># 将 hexo 编译生成 HTML 代码</span>
+</span></span><span style="display:flex;"><span>hexo generate  <span style="color:#75715e"># 简化命令：hexo g</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e"># 在本地运行</span>
+</span></span><span style="display:flex;"><span>hexo serve  <span style="color:#75715e"># 简化命令：hexo s</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e"># 安装远程部署插件</span>
+</span></span><span style="display:flex;"><span>npm install hexo-deployer-git --save
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e"># 远程部署</span>
+</span></span><span style="display:flex;"><span>hexo deploy  <span style="color:#75715e"># 简化命令：hexo d</span>
+</span></span></code></pre></div><p>远程部署到 Github Pages 需要更改根目录（~/Documents/blog）下的 _config.yml 文件</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-yaml" data-lang="yaml"><span style="display:flex;"><span><span style="color:#75715e"># Deployment</span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e">## Docs: https://hexo.io/docs/one-command-deployment</span>
+</span></span><span style="display:flex;"><span><span style="color:#f92672">deploy</span>:
+</span></span><span style="display:flex;"><span>  <span style="color:#f92672">type</span>: <span style="color:#ae81ff">git</span>
+</span></span><span style="display:flex;"><span>  <span style="color:#f92672">repo</span>: <span style="color:#ae81ff">git@github.com:wzq11011/wzq11011.github.io.git</span>
+</span></span><span style="display:flex;"><span>  <span style="color:#f92672">branch</span>: <span style="color:#ae81ff">master</span>
+</span></span></code></pre></div><p>这个地方会报错，需要将本地 git 公钥添加到 github 中。</p>
+<h2 id="16-同步源码">1.6 同步源码<a hidden class="anchor" aria-hidden="true" href="#16-同步源码">#</a></h2>
+<p>以上的部署只是将 blog/public 目录下的所有内容上传到 master 分支上，它们实际上是 hexo 编译生成的静态文件。如果要同步博客源码，可以新建一个 hexo 分支，使用 git 命令同步上传所有源码。</p>
+<p>Git 基本使用：<a href="https://www.runoob.com/git/git-basic-operations.html">Git 基本操作 | 菜鸟教程 (runoob.com)</a></p>
+<p><img loading="lazy" src="./Blog-Hexo.assets/image-20230425211932942.png" alt="image-20230425211932942"  />
+</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-shell" data-lang="shell"><span style="display:flex;"><span><span style="color:#75715e"># 一个简单的操作流程</span>
+</span></span><span style="display:flex;"><span>git init  <span style="color:#75715e"># 初始化仓库</span>
+</span></span><span style="display:flex;"><span>git add .  <span style="color:#75715e"># 添加文件到暂存区</span>
+</span></span><span style="display:flex;"><span>git commit -m <span style="color:#e6db74">&#34;描述&#34;</span>  <span style="color:#75715e"># 将暂存区内容添加到仓库，并添加描述</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>git status  <span style="color:#75715e"># 查看当前仓库状态，显示有变更的文件</span>
+</span></span><span style="display:flex;"><span>git diff  <span style="color:#75715e"># 比较文件的不同，即暂存区和工作区的差异</span>
+</span></span><span style="display:flex;"><span>git reset  <span style="color:#75715e"># 回退版本</span>
+</span></span><span style="display:flex;"><span>git rm  <span style="color:#75715e"># 将文件从暂存区和工作区删除</span>
+</span></span><span style="display:flex;"><span>git mv	<span style="color:#75715e"># 移动或重命名工作区文件</span>
+</span></span><span style="display:flex;"><span>git remote	<span style="color:#75715e"># 查看当前的远程仓库</span>
+</span></span><span style="display:flex;"><span>git remote add  <span style="color:#75715e"># 添加远程仓库</span>
+</span></span><span style="display:flex;"><span>git clone  <span style="color:#75715e"># clone 一个仓库</span>
+</span></span><span style="display:flex;"><span>git pull/fetch  <span style="color:#75715e"># 拉取仓库</span>
+</span></span><span style="display:flex;"><span>git push  <span style="color:#75715e"># 上传本地代码到远程仓库</span>
+</span></span></code></pre></div><p>Git 分支管理</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-shell" data-lang="shell"><span style="display:flex;"><span><span style="color:#75715e"># git 命令</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e"># 创建分支</span>
+</span></span><span style="display:flex;"><span>git branch <span style="color:#f92672">(</span>branchname<span style="color:#f92672">)</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e"># 删除分支</span>
+</span></span><span style="display:flex;"><span>git branch -d <span style="color:#f92672">(</span>branchname<span style="color:#f92672">)</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e"># 切换分支</span>
+</span></span><span style="display:flex;"><span>git checkout <span style="color:#f92672">(</span>branchname<span style="color:#f92672">)</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e"># 合并分支</span>
+</span></span><span style="display:flex;"><span>git merge
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e"># 查看日志</span>
+</span></span><span style="display:flex;"><span>git log
+</span></span></code></pre></div><p>博客源码上传参考以下指令：</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-shell" data-lang="shell"><span style="display:flex;"><span>git init
+</span></span><span style="display:flex;"><span>git checkout -b hexo
+</span></span><span style="display:flex;"><span>git add -A  <span style="color:#75715e"># 添加文件到暂存区</span>
+</span></span><span style="display:flex;"><span>git commit -m <span style="color:#e6db74">&#34;init blog&#34;</span>  <span style="color:#75715e"># 将暂存区内容添加到本地仓库，并添加描述“初始化”</span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e"># git remote add origin git@github.com:{username}/{username}.github.io.git</span>
+</span></span><span style="display:flex;"><span>git remote add origin git@github.com:wzq11011/wzq11011.github.io.git  <span style="color:#75715e"># 创建远程仓库 origin</span>
+</span></span><span style="display:flex;"><span>git push origin hexo  <span style="color:#75715e"># 推送代码到 hexo 分支</span>
+</span></span></code></pre></div><p>报错：这是因为在 themes 文件夹下使用 git 命令拉取的 next 主题，关联了其他作者的 git 仓库，所以 next 文件夹下的内容会无法提交到远程仓库，报错信息提示是否将其作为子模块提交，这里提供不作为子模块提交的解决办法。</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-shell" data-lang="shell"><span style="display:flex;"><span>hint: You<span style="color:#960050;background-color:#1e0010">&#39;</span>ve added another git repository inside your current repository.
+</span></span><span style="display:flex;"><span>hint: Clones of the outer repository will not contain the contents of
+</span></span><span style="display:flex;"><span>hint: the embedded repository and will not know how to obtain it.
+</span></span><span style="display:flex;"><span>hint: If you meant to add a submodule, use:
+</span></span><span style="display:flex;"><span>hint: 
+</span></span><span style="display:flex;"><span>hint: 	git submodule add &lt;url&gt; themes/next
+</span></span><span style="display:flex;"><span>hint: 
+</span></span><span style="display:flex;"><span>hint: If you added this path by mistake, you can remove it from the
+</span></span><span style="display:flex;"><span>hint: index with:
+</span></span><span style="display:flex;"><span>hint: 
+</span></span><span style="display:flex;"><span>hint: 	git rm --cached themes/next
+</span></span><span style="display:flex;"><span>hint: 
+</span></span><span style="display:flex;"><span>hint: See <span style="color:#e6db74">&#34;git help submodule&#34;</span> <span style="color:#66d9ef">for</span> more information.
+</span></span></code></pre></div><p>解决办法：</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-shell" data-lang="shell"><span style="display:flex;"><span><span style="color:#75715e"># 从暂存区删除该文件夹</span>
+</span></span><span style="display:flex;"><span>git rm --cached themes/next
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e"># 查看当前状态</span>
+</span></span><span style="display:flex;"><span>git status
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e"># 删除 next 文件夹下 .git 文件夹</span>
+</span></span><span style="display:flex;"><span>cd themes/next
+</span></span><span style="display:flex;"><span>rm -rf .git
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e"># 重新添加 next 文件夹到缓存区</span>
+</span></span><span style="display:flex;"><span>git add themes/next/
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e"># </span>
+</span></span><span style="display:flex;"><span>git commit -m <span style="color:#e6db74">&#34;add next&#34;</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e"># 推送代码到远程仓库</span>
+</span></span><span style="display:flex;"><span>git push origin hexo
+</span></span></code></pre></div><h2 id="17-多设备同步">1.7 多设备同步<a hidden class="anchor" aria-hidden="true" href="#17-多设备同步">#</a></h2>
+<p>在新设备上拉取博客源码并安装必要的插件</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-shell" data-lang="shell"><span style="display:flex;"><span>git clone https://github.com/wzq11011/wzq11011.github.io.git
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>cd wzq11011.github.io 
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>npm install 
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e"># 然后执行脚本，生成部署博客，同步源码到仓库</span>
+</span></span><span style="display:flex;"><span>sh deploy.sh
+</span></span></code></pre></div><p>如果在同步仓库时出现权限不足的问题，需要将本机公钥添加到 github 中</p>
+<p>问题描述：</p>
+<blockquote>
+<p><a href="mailto:git@github.com">git@github.com</a>: Permission denied (publickey)</p>
+</blockquote>
+<p>解决方法：</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-shell" data-lang="shell"><span style="display:flex;"><span><span style="color:#75715e"># 1 验证邮箱与 github 注册邮箱是否一致</span>
+</span></span><span style="display:flex;"><span>git config --global --list
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e"># 2 设置全局用户名和邮箱</span>
+</span></span><span style="display:flex;"><span>git config --global user.name <span style="color:#e6db74">&#34;your name&#34;</span>
+</span></span><span style="display:flex;"><span>git config --global user.email <span style="color:#e6db74">&#34;your email&#34;</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e"># 3 生成密钥</span>
+</span></span><span style="display:flex;"><span>ssh-keygen -t rsa -C <span style="color:#e6db74">&#34;your email&#34;</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e"># 4 将 rsa.pub 公钥内容添加到 github </span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e"># 5 测试</span>
+</span></span><span style="display:flex;"><span>ssh -T git@github.com
+</span></span></code></pre></div><h2 id="18-配置站点信息">1.8 配置站点信息<a hidden class="anchor" aria-hidden="true" href="#18-配置站点信息">#</a></h2>
+<p>修改根目录下的 _config.yml 文件，在 Site 区域，自定义站点标题、副标题、描述、关键词、作者等</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-yaml" data-lang="yaml"><span style="display:flex;"><span><span style="color:#75715e"># Site</span>
+</span></span><span style="display:flex;"><span><span style="color:#f92672">title</span>: <span style="color:#ae81ff">CodeCoda</span>
+</span></span><span style="display:flex;"><span><span style="color:#f92672">subtitle</span>: <span style="color:#ae81ff">宝剑锋从磨砺出，梅花香自苦寒来</span>
+</span></span><span style="display:flex;"><span><span style="color:#f92672">description</span>: <span style="color:#e6db74">&#39;&#39;</span>
+</span></span><span style="display:flex;"><span><span style="color:#f92672">keywords</span>:
+</span></span><span style="display:flex;"><span><span style="color:#f92672">author</span>: <span style="color:#ae81ff">wzq11011</span>
+</span></span><span style="display:flex;"><span><span style="color:#f92672">language</span>: <span style="color:#ae81ff">zh-CN </span> <span style="color:#75715e"># en</span>
+</span></span><span style="display:flex;"><span><span style="color:#f92672">timezone</span>: <span style="color:#e6db74">&#39;&#39;</span>
+</span></span></code></pre></div><h2 id="19-修改主题">1.9 修改主题<a hidden class="anchor" aria-hidden="true" href="#19-修改主题">#</a></h2>
+<p>在 Hexo 官网可以查看更多主题。</p>
+<p>更改主题为 Next ，Github地址：<a href="https://github.com/theme-next/hexo-theme-next">theme-next/hexo-theme-next: Elegant and powerful theme for Hexo. (github.com)</a></p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-shell" data-lang="shell"><span style="display:flex;"><span><span style="color:#75715e"># 也可以在 github 上下载压缩文件，解压到 blog/themes/ 目录下，解压后重命名为 next</span>
+</span></span><span style="display:flex;"><span>git clone https://github.com/theme-next/hexo-theme-next themes/next
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e"># 修改根目录下的 _config.yml 文件，找到 theme 字样，修改为 next。</span>
+</span></span><span style="display:flex;"><span>theme: next
+</span></span></code></pre></div><h1 id="2-hexo-优化">2 Hexo 优化<a hidden class="anchor" aria-hidden="true" href="#2-hexo-优化">#</a></h1>
+<h2 id="21-更改主题样式">2.1 更改主题样式<a hidden class="anchor" aria-hidden="true" href="#21-更改主题样式">#</a></h2>
+<p>在 <code>blog/themes/next/_config.yml</code> 中更改 <code>Next</code> 主题样式为 <code>Pisces</code></p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-yaml" data-lang="yaml"><span style="display:flex;"><span><span style="color:#75715e"># ---------------------------------------------------------------</span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e"># Scheme Settings</span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e"># ---------------------------------------------------------------</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e"># Schemes</span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e"># scheme: Muse</span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e">#scheme: Mist</span>
+</span></span><span style="display:flex;"><span><span style="color:#f92672">scheme</span>: <span style="color:#ae81ff">Pisces</span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e">#scheme: Gemini</span>
+</span></span></code></pre></div><h2 id="22-favicon">2.2 Favicon<a hidden class="anchor" aria-hidden="true" href="#22-favicon">#</a></h2>
+<p>自定义站点标签栏小图标，默认使用 Hexo 小图标，可以上传图片定制小图标，下载图标保存在 themes/next/source/images 目录下</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-yaml" data-lang="yaml"><span style="display:flex;"><span><span style="color:#f92672">favicon</span>:
+</span></span><span style="display:flex;"><span>  <span style="color:#f92672">small</span>: <span style="color:#ae81ff">/images/favicon-16x16.png</span>
+</span></span><span style="display:flex;"><span>  <span style="color:#f92672">medium</span>: <span style="color:#ae81ff">/images/favicon-32x32.png</span>
+</span></span><span style="display:flex;"><span>  <span style="color:#f92672">apple_touch_icon</span>: <span style="color:#ae81ff">/images/apple-touch-icon.png</span>
+</span></span><span style="display:flex;"><span>  <span style="color:#f92672">safari_pinned_tab</span>: <span style="color:#ae81ff">/images/logo.svg</span>
+</span></span><span style="display:flex;"><span>  <span style="color:#75715e"># android_manifest: /images/manifest.json</span>
+</span></span><span style="display:flex;"><span>  <span style="color:#75715e"># ms_browserconfig: /images/browserconfig.xml</span>
+</span></span></code></pre></div><h2 id="23-code">2.3 Code<a hidden class="anchor" aria-hidden="true" href="#23-code">#</a></h2>
+<p>更改代码块的颜色为黑色，并把复制按钮的样式改为类似 Mac 的样式，修改 _config.yml 文件</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-yaml" data-lang="yaml"><span style="display:flex;"><span><span style="color:#f92672">codeblock</span>:
+</span></span><span style="display:flex;"><span>  <span style="color:#75715e"># Code Highlight theme</span>
+</span></span><span style="display:flex;"><span>  <span style="color:#75715e"># Available values: normal | night | night eighties | night blue | night bright | solarized | solarized dark | galactic</span>
+</span></span><span style="display:flex;"><span>  <span style="color:#75715e"># See: https://github.com/chriskempson/tomorrow-theme</span>
+</span></span><span style="display:flex;"><span>  <span style="color:#f92672">highlight_theme</span>: <span style="color:#ae81ff">night</span>
+</span></span><span style="display:flex;"><span>  <span style="color:#75715e"># Add copy button on codeblock</span>
+</span></span><span style="display:flex;"><span>  <span style="color:#f92672">copy_button</span>:
+</span></span><span style="display:flex;"><span>    <span style="color:#f92672">enable</span>: <span style="color:#66d9ef">true</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#75715e"># Show text copy result.</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#f92672">show_result</span>: <span style="color:#66d9ef">true</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#75715e"># Available values: default | flat | mac</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#f92672">style</span>: <span style="color:#ae81ff">mac</span>
+</span></span></code></pre></div><h2 id="24-评论系统">2.4 评论系统<a hidden class="anchor" aria-hidden="true" href="#24-评论系统">#</a></h2>
+<p>注册一个 OAuth Application，链接为 <a href="https://github.com/settings/applications/new">New OAuth Application (github.com)</a>  Homepage URL 和 Authorization callback URL 填博客主域名，拿到 Client ID、Client Secret ，然后在 _config.yml 中更改对应参数即可。</p>
+<p>在 blog/themes/next/_config.yml 中，补充 active 参数为 gitalk</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-yaml" data-lang="yaml"><span style="display:flex;"><span><span style="color:#75715e"># Multiple Comment System Support</span>
+</span></span><span style="display:flex;"><span><span style="color:#f92672">comments</span>:
+</span></span><span style="display:flex;"><span>  <span style="color:#75715e"># Available values: tabs | buttons</span>
+</span></span><span style="display:flex;"><span>  <span style="color:#f92672">style</span>: <span style="color:#ae81ff">tabs</span>
+</span></span><span style="display:flex;"><span>  <span style="color:#75715e"># Choose a comment system to be displayed by default.</span>
+</span></span><span style="display:flex;"><span>  <span style="color:#75715e"># Available values: changyan | disqus | disqusjs | gitalk | livere | valine</span>
+</span></span><span style="display:flex;"><span>  <span style="color:#f92672">active</span>: <span style="color:#ae81ff">gitalk</span>
+</span></span><span style="display:flex;"><span>  <span style="color:#75715e"># Setting `true` means remembering the comment system selected by the visitor.</span>
+</span></span><span style="display:flex;"><span>  <span style="color:#f92672">storage</span>: <span style="color:#66d9ef">true</span>
+</span></span><span style="display:flex;"><span>  <span style="color:#75715e"># Lazyload all comment systems.</span>
+</span></span><span style="display:flex;"><span>  <span style="color:#f92672">lazyload</span>: <span style="color:#66d9ef">false</span>
+</span></span><span style="display:flex;"><span>  <span style="color:#75715e"># Modify texts or order for any navs, here are some examples.</span>
+</span></span><span style="display:flex;"><span>  <span style="color:#f92672">nav</span>:
+</span></span><span style="display:flex;"><span>    <span style="color:#75715e">#disqus:</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#75715e">#  text: Load Disqus</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#75715e">#  order: -1</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#75715e">#gitalk:</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#75715e">#  order: -2</span>
+</span></span></code></pre></div><p>然后再 gitalk 区域填写各项参数</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-yaml" data-lang="yaml"><span style="display:flex;"><span><span style="color:#75715e"># Gitalk</span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e"># For more information: https://gitalk.github.io, https://github.com/gitalk/gitalk</span>
+</span></span><span style="display:flex;"><span><span style="color:#f92672">gitalk</span>:
+</span></span><span style="display:flex;"><span>  <span style="color:#f92672">enable</span>: <span style="color:#66d9ef">true</span>
+</span></span><span style="display:flex;"><span>  <span style="color:#f92672">github_id</span>: <span style="color:#ae81ff">wzq11011</span> <span style="color:#75715e"># </span>
+</span></span><span style="display:flex;"><span>  <span style="color:#f92672">repo</span>: <span style="color:#ae81ff">wzq11011.github.io</span> <span style="color:#75715e"># Repository name to store issues</span>
+</span></span><span style="display:flex;"><span>  <span style="color:#f92672">client_id</span>: {<span style="color:#ae81ff">your client_id}</span> <span style="color:#75715e"># Github Application Client ID</span>
+</span></span><span style="display:flex;"><span>  <span style="color:#f92672">client_secret</span>: {<span style="color:#ae81ff">your client_secret}</span> <span style="color:#75715e"># Github Application Client Secret</span>
+</span></span><span style="display:flex;"><span>  <span style="color:#f92672">admin_user</span>: <span style="color:#ae81ff">wzq11011</span> <span style="color:#75715e"># GitHub repo owner and collaborators, only these guys can initialize gitHub issues</span>
+</span></span><span style="display:flex;"><span>  <span style="color:#f92672">distraction_free_mode</span>: <span style="color:#66d9ef">true</span> <span style="color:#75715e"># Facebook-like distraction free mode</span>
+</span></span><span style="display:flex;"><span>  <span style="color:#75715e"># Gitalk&#39;s display language depends on user&#39;s browser or system environment</span>
+</span></span><span style="display:flex;"><span>  <span style="color:#75715e"># If you want everyone visiting your site to see a uniform language, you can set a force language value</span>
+</span></span><span style="display:flex;"><span>  <span style="color:#75715e"># Available values: en | es-ES | fr | ru | zh-CN | zh-TW</span>
+</span></span><span style="display:flex;"><span>  <span style="color:#f92672">language</span>: <span style="color:#ae81ff">zh-CN</span>
+</span></span></code></pre></div><h2 id="25-other">2.5 other<a hidden class="anchor" aria-hidden="true" href="#25-other">#</a></h2>
+<p>top:浏览网页时，快速返回到网站上端，修改 _config.yml 的 back2top 字段</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-yaml" data-lang="yaml"><span style="display:flex;"><span><span style="color:#f92672">back2top</span>:
+</span></span><span style="display:flex;"><span>  <span style="color:#f92672">enable</span>: <span style="color:#66d9ef">true</span>
+</span></span><span style="display:flex;"><span>  <span style="color:#75715e"># Back to top in sidebar.</span>
+</span></span><span style="display:flex;"><span>  <span style="color:#f92672">sidebar</span>: <span style="color:#66d9ef">true</span>
+</span></span><span style="display:flex;"><span>  <span style="color:#75715e"># Scroll percent label in b2t button.</span>
+</span></span><span style="display:flex;"><span>  <span style="color:#f92672">scrollpercent</span>: <span style="color:#66d9ef">true</span>
+</span></span></code></pre></div><p>Reading_process：阅读进度，sidebar——是否显示侧栏，scrollpercent——显示阅读百分比</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-yaml" data-lang="yaml"><span style="display:flex;"><span><span style="color:#75715e"># Reading progress bar</span>
+</span></span><span style="display:flex;"><span><span style="color:#f92672">reading_progress</span>:
+</span></span><span style="display:flex;"><span>  <span style="color:#f92672">enable</span>: <span style="color:#66d9ef">false</span>
+</span></span><span style="display:flex;"><span>  <span style="color:#75715e"># Available values: top | bottom</span>
+</span></span><span style="display:flex;"><span>  <span style="color:#f92672">position</span>: <span style="color:#ae81ff">top</span>
+</span></span><span style="display:flex;"><span>  <span style="color:#f92672">color</span>: <span style="color:#e6db74">&#34;#37c6c0&#34;</span>
+</span></span><span style="display:flex;"><span>  <span style="color:#f92672">height</span>: <span style="color:#ae81ff">3px</span>
+</span></span></code></pre></div><p>Bookmark：书签，可根据阅读历史记录，定位上次位置</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-yaml" data-lang="yaml"><span style="display:flex;"><span><span style="color:#75715e"># Bookmark Support</span>
+</span></span><span style="display:flex;"><span><span style="color:#f92672">bookmark</span>:
+</span></span><span style="display:flex;"><span>  <span style="color:#f92672">enable</span>: <span style="color:#66d9ef">true</span>
+</span></span><span style="display:flex;"><span>  <span style="color:#75715e"># Customize the color of the bookmark.</span>
+</span></span><span style="display:flex;"><span>  <span style="color:#f92672">color</span>: <span style="color:#e6db74">&#34;#222&#34;</span>
+</span></span><span style="display:flex;"><span>  <span style="color:#75715e"># If auto, save the reading progress when closing the page or clicking the bookmark-icon.</span>
+</span></span><span style="display:flex;"><span>  <span style="color:#75715e"># If manual, only save it by clicking the bookmark-icon.</span>
+</span></span><span style="display:flex;"><span>  <span style="color:#f92672">save</span>: <span style="color:#ae81ff">auto</span>
+</span></span></code></pre></div><p>Github_banner：github 链接</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-yaml" data-lang="yaml"><span style="display:flex;"><span><span style="color:#75715e"># `Follow me on GitHub` banner in the top-right corner.</span>
+</span></span><span style="display:flex;"><span><span style="color:#f92672">github_banner</span>:
+</span></span><span style="display:flex;"><span>  <span style="color:#f92672">enable</span>: <span style="color:#66d9ef">true</span>
+</span></span><span style="display:flex;"><span>  <span style="color:#f92672">permalink</span>: <span style="color:#ae81ff">https://github.com/wzq11011</span>
+</span></span><span style="display:flex;"><span>  <span style="color:#f92672">title</span>: <span style="color:#ae81ff">Follow me on GitHub</span>
+</span></span></code></pre></div><p>Pangu：中英文之间留空</p>
+<p>math：数学公式显示</p>
+<p>pjax：</p>
+<h2 id="26-标签页分类页搜索页">2.6 标签页、分类页、搜索页<a hidden class="anchor" aria-hidden="true" href="#26-标签页分类页搜索页">#</a></h2>
+<h1 id="3-hexo-插件记录">3 Hexo 插件记录<a hidden class="anchor" aria-hidden="true" href="#3-hexo-插件记录">#</a></h1>
+<h2 id="31">3.1<a hidden class="anchor" aria-hidden="true" href="#31">#</a></h2>
+<h2 id="32">3.2<a hidden class="anchor" aria-hidden="true" href="#32">#</a></h2>
+<h2 id="33">3.3<a hidden class="anchor" aria-hidden="true" href="#33">#</a></h2>
+<h2 id="34-代码高亮">3.4 代码高亮<a hidden class="anchor" aria-hidden="true" href="#34-代码高亮">#</a></h2>
+<h2 id="35-在线编写">3.5 在线编写<a hidden class="anchor" aria-hidden="true" href="#35-在线编写">#</a></h2>
+<p>1 Hexo Editor <a href="http://localhost:5777/#/login">Hexo Editor</a></p>
+<p>2 Hexo Admin <a href="http://localhost:4000/admin/#/">Hexo Admin</a></p>
+<h1 id="4-多终端同步">4 多终端同步<a hidden class="anchor" aria-hidden="true" href="#4-多终端同步">#</a></h1>
+<p>在新</p>
+<h2 id="参考">参考<a hidden class="anchor" aria-hidden="true" href="#参考">#</a></h2>
+<ol>
+<li><a href="https://zhuanlan.zhihu.com/p/371995929">如何在 GitHub 上写博客？ - 知乎 (zhihu.com)</a></li>
+<li><a href="https://www.glwsq.cn/post/hexo-plugins/">hexo插件推荐 - 给力经验分享 (glwsq.cn)</a></li>
+<li><a href="https://blog.shipengx.com/archives/208e6058.html">使用Hexo + GitHub Pages搭建个人博客站点 | 朝花夕拾 (shipengx.com)</a></li>
+</ol>
+<p>未完待续！</p>
+
+
+  </div>
+
+  <footer class="post-footer">
+    <ul class="post-tags">
+    </ul>
+  </footer>
+</article>
+    </main>
+    
+<footer class="footer">
+        <span>&copy; 2024 <a href="http://localhost:1313/">CodeCoda</a></span> · 
+
+    <span>
+        Powered by
+        <a href="https://gohugo.io/" rel="noopener noreferrer" target="_blank">Hugo</a> &
+        <a href="https://github.com/adityatelange/hugo-PaperMod/" rel="noopener" target="_blank">PaperMod</a>
+    </span>
+</footer>
+<a href="#top" aria-label="go to top" title="Go to Top (Alt + G)" class="top-link" id="top-link" accesskey="g">
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 12 6" fill="currentColor">
+        <path d="M12 6H0l6-6z" />
+    </svg>
+</a>
+
+<script>
+    let menu = document.getElementById('menu')
+    if (menu) {
+        menu.scrollLeft = localStorage.getItem("menu-scroll-position");
+        menu.onscroll = function () {
+            localStorage.setItem("menu-scroll-position", menu.scrollLeft);
+        }
+    }
+
+    document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+        anchor.addEventListener("click", function (e) {
+            e.preventDefault();
+            var id = this.getAttribute("href").substr(1);
+            if (!window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
+                document.querySelector(`[id='${decodeURIComponent(id)}']`).scrollIntoView({
+                    behavior: "smooth"
+                });
+            } else {
+                document.querySelector(`[id='${decodeURIComponent(id)}']`).scrollIntoView();
+            }
+            if (id === "top") {
+                history.replaceState(null, null, " ");
+            } else {
+                history.pushState(null, null, `#${id}`);
+            }
+        });
+    });
+
+</script>
+<script>
+    var mybutton = document.getElementById("top-link");
+    window.onscroll = function () {
+        if (document.body.scrollTop > 800 || document.documentElement.scrollTop > 800) {
+            mybutton.style.visibility = "visible";
+            mybutton.style.opacity = "1";
+        } else {
+            mybutton.style.visibility = "hidden";
+            mybutton.style.opacity = "0";
+        }
+    };
+
+</script>
+<script>
+    document.getElementById("theme-toggle").addEventListener("click", () => {
+        if (document.body.className.includes("dark")) {
+            document.body.classList.remove('dark');
+            localStorage.setItem("pref-theme", 'light');
+        } else {
+            document.body.classList.add('dark');
+            localStorage.setItem("pref-theme", 'dark');
+        }
+    })
+
+</script>
+</body>
+
+</html>

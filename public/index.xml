@@ -1,0 +1,114 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom" xmlns:content="http://purl.org/rss/1.0/modules/content/">
+  <channel>
+    <title>CodeCoda</title>
+    <link>http://localhost:1313/</link>
+    <description>Recent content on CodeCoda</description>
+    <generator>Hugo -- 0.125.0</generator>
+    <language>us-en</language>
+    <lastBuildDate>Wed, 17 Apr 2024 22:37:44 +0800</lastBuildDate>
+    <atom:link href="http://localhost:1313/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>My First Post</title>
+      <link>http://localhost:1313/posts/my-first-post/</link>
+      <pubDate>Wed, 17 Apr 2024 22:37:44 +0800</pubDate>
+      <guid>http://localhost:1313/posts/my-first-post/</guid>
+      <description>| test
+test test </description>
+    </item>
+    <item>
+      <title>leetcode</title>
+      <link>http://localhost:1313/posts/leetcode/</link>
+      <pubDate>Thu, 13 Jul 2023 15:43:58 +0800</pubDate>
+      <guid>http://localhost:1313/posts/leetcode/</guid>
+      <description>代码随想录 地址：https://programmercarl.com/
+以下学习内容来自于 chatgpt、通义千问等大语言模型（LLMs） 菜鸟教程 - 学的不仅是技术，更是梦想！
+代码随想录：
+第一遍完成时间：2024-3-1 ~
+1 c++ 引用 指针 定义：在C++中，指针提供了直接访问内存地址的能力，允许对内存进行灵活的操作。
+1、定义指针：指针是一个变量，其存储的值是另一个变量的内存地址。可使用以下语法定义指针：
+int* ptr; // 定义一个指向整数的指针 此处的 * 表示指针，int* 表示指向整数的指针。
+2、获取地址：可以使用取地址运算符 &amp;amp; 来获取变量的内存地址，并将其赋值给指针：
+int var = 10; int* ptr = &amp;amp;var; // ptr 指向变量 var 的地址 3、解引用：可以使用解引用运算符 * 来访问指针所指向的内存地址存储的值：
+int var = 10; int* ptr = &amp;amp;var; int value = *ptr; // value 的值为10，即 ptr 所指向的内存地址处的值 4、空指针：指针可以指向空地址，表示不指向任何有效的内存位置，可以使用特殊的空指针常量 nullptr 来表示空指针
+int* ptr = nullptr; // 定义一个空指针 5、动态内存分配：可以使用 new 运算符来在堆上动态分配内存，返回分配内存的地址，并将其赋值给指针。需要记得不再使用内存时，使用 delete 运算符释放内存，防止内存泄露。</description>
+    </item>
+    <item>
+      <title>sketch recognition</title>
+      <link>http://localhost:1313/posts/sketch-recognition/</link>
+      <pubDate>Fri, 02 Jun 2023 15:25:01 +0000</pubDate>
+      <guid>http://localhost:1313/posts/sketch-recognition/</guid>
+      <description>sketch recognition</description>
+    </item>
+    <item>
+      <title>C&#43;&#43;</title>
+      <link>http://localhost:1313/posts/c/</link>
+      <pubDate>Sat, 20 May 2023 14:32:08 +0000</pubDate>
+      <guid>http://localhost:1313/posts/c/</guid>
+      <description>c&#43;&#43; 学习</description>
+    </item>
+    <item>
+      <title>nerf-slam</title>
+      <link>http://localhost:1313/posts/nerf-slam/</link>
+      <pubDate>Thu, 27 Apr 2023 16:15:57 +0800</pubDate>
+      <guid>http://localhost:1313/posts/nerf-slam/</guid>
+      <description>Nerf-SLAM 1 配置环境 1.1 Ubuntu Clash 终端代理 clash 选择节点并调整为 global 模式，在 ~/.bashrc 中添加以下内容
+export https_proxy=http://127.0.0.1:7890 export http_proxy=http://127.0.0.1:7890 export all_proxy=socks5://127.0.0.1:7890 保存文件，并更新文件
+source ~/.bashrc # 测试终端是否代理 curl cip.cc # 显示香港的节点，则代表成功 1.2 Install nerf-slam 项目地址：ToniRV/NeRF-SLAM: NeRF-SLAM: Real-Time Dense Monocular SLAM with Neural Radiance Fields. https://arxiv.org/abs/2210.13641 + Sigma-Fusion: Probabilistic Volumetric Fusion for Dense Monocular SLAM https://arxiv.org/abs/2210.01276 (github.com)
+使用 git 拉取项目代码
+git clone https://github.com/ToniRV/NeRF-SLAM.git --recurse-submodules git submodule update --init --recursive 使用 conda 创建一个虚拟环境，防止污染其他环境
+# 创建一个名为 nerf-slam 的虚拟环境 conda create -n nerf-slam # 查看所有虚拟环境 conda env list # 进入创建的虚拟环境 conda activate nerf-slam # install torch (CUDA 11.</description>
+    </item>
+    <item>
+      <title>Common Commands Record</title>
+      <link>http://localhost:1313/posts/common-commands/</link>
+      <pubDate>Wed, 26 Apr 2023 20:14:54 +0800</pubDate>
+      <guid>http://localhost:1313/posts/common-commands/</guid>
+      <description>1 压缩、解压 tar 参数含义
+-c：建立压缩档案 -x：解压 -t：查看内容 -z：有 gzip 属性的 -j：有 bz2 属性的 -Z：有 compress 属性的 -v：显示所有过程 -f：使用档案名字。该参数为最后一个参数，后面只能接档案名字 -O：将文件解开到标准输出 常用压缩和解压命令
+压缩：
+# 将目录里所有 jpg 文件打包成 jpg.tar tar -cvf jpg.tar *.jpg # 将目录里所有的 jpg 文件打包成 jpg.tar 后，使用 gzip 压缩，生成 jpg.tar.gz tar -czvf jpg.tar.gz *.jpg # 将目录内指定文件打包为 tar.bz2 形式 tar -cjvf jpg.tar.bz2 *.jpg 解压：
+# 解压 tar 包 tar -xvf fileName.tar # 解压 *.tar.gz 或者 *.tgz tar -xzvf fileName.tar.gz # 解压 tar.bz2 tar -xjvf fileName.</description>
+    </item>
+    <item>
+      <title>3D Reconstruction</title>
+      <link>http://localhost:1313/posts/3d-reconstruction/</link>
+      <pubDate>Tue, 25 Apr 2023 17:56:33 +0000</pubDate>
+      <guid>http://localhost:1313/posts/3d-reconstruction/</guid>
+      <description>三维重建</description>
+    </item>
+    <item>
+      <title>voldor-imu</title>
+      <link>http://localhost:1313/posts/voldor/</link>
+      <pubDate>Tue, 25 Apr 2023 17:56:33 +0000</pubDate>
+      <guid>http://localhost:1313/posts/voldor/</guid>
+      <description>voldor 环境配置、ai-imu 论文精读</description>
+    </item>
+    <item>
+      <title>Blog Hexo</title>
+      <link>http://localhost:1313/posts/blog-hexo/</link>
+      <pubDate>Tue, 25 Apr 2023 16:03:43 +0000</pubDate>
+      <guid>http://localhost:1313/posts/blog-hexo/</guid>
+      <description>记录使用 hexo &#43; github pages 搭建个人博客的步骤</description>
+    </item>
+    <item>
+      <title></title>
+      <link>http://localhost:1313/posts/hugo-blog/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      <guid>http://localhost:1313/posts/hugo-blog/</guid>
+      <description>| 更换 hexo 为 hugo，hexo 中 next 主题的文章预览一眼难尽。要么全文预览（很蠢）、要么设置摘要（麻烦）、要么手动截断文章一部分作为预览（麻烦）。我想要的是自动截取一段长度（例如150词）作为预览。
+references:
+手把手教你从0开始搭建自己的个人博客 |第二种姿势 | hugo_哔哩哔哩_bilibili
+使用 Hugo + Github 搭建个人博客 - 知乎 (zhihu.com)
+1 hugo 安装 在 mac 上配置：
+# 安装 brew install hugo # 查看版本 hugo version # 创建 blog 目录 cd Documents hugo new site hugoBlog # 添加主题 cd hugoBlog git init # 在当前目录下初始化一个新的 Git 仓库 git submodule add https://github.com/adityatelange/hugo-PaperMod.git themes/paperMod # 更改主题：根目录下的 config.toml 文件 cho &amp;#39;theme = &amp;#34;paperMod&amp;#34;&amp;#39; &amp;gt;&amp;gt; config.</description>
+    </item>
+    <item>
+      <title>Hello World</title>
+      <link>http://localhost:1313/posts/hello-world/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      <guid>http://localhost:1313/posts/hello-world/</guid>
+      <description>hello hexo</description>
+    </item>
+  </channel>
+</rss>

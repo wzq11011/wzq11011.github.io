@@ -1,0 +1,4 @@
+baseURL = 'https://wzq11011.github.io/'
+languageCode = 'us-en'
+title = 'CodeCoda'
+theme = "paperMod"
