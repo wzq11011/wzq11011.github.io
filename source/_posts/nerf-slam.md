@@ -115,6 +115,45 @@ cmake --build build_ngp --config RelWithDebInfo -j
 
 
 
+按以上步骤操作，最后运行demo.py会报 pyngp 错误，使用另一个分支解决
+
+报错信息：
+
+```shell
+self.ngp = ngp.Testbed(mode, 0) # NGP can only use device = 0
+TypeError: __init__(): incompatible constructor arguments. The following argument types are supported:
+    1. pyngp.Testbed(arg0: pyngp.TestbedMode)
+    2. pyngp.Testbed(arg0: pyngp.TestbedMode, arg1: str, arg2: str)
+    3. pyngp.Testbed(arg0: pyngp.TestbedMode, arg1: str, arg2: json)
+```
+
+解决方法：
+
+```shell
+# 删除原 instant-ngp
+cd thirdparty
+rm -rf instant-ngp
+
+# 地址：https://github.com/ToniRV/instant-ngp/tree/feature/nerf_slam
+git clone https://github.com/ToniRV/instant-ngp.git
+
+# 安装依赖
+sudo apt-get install build-essential git python3-dev python3-pip libopenexr-dev libxi-dev libglfw3-dev libglew-dev libomp-dev libxinerama-dev libxcursor-dev
+
+# 更新
+git submodule update --init --recursive
+
+# NeRF-SLAM/
+mkdir build_ngp && cd build_ngp
+
+# 编译 ngp
+cmake ../thirdparty/instant-ngp
+cd ..
+cmake --build build_ngp --config RelWithDebInfo -j
+```
+
+
+
 ### 1.4 编译 gtsam
 
 官方教程：
@@ -194,7 +233,13 @@ python ./examples/slam_demo.py --dataset_dir=./datasets/Replica/office0 --datase
 
 ### 1.6 监控 GPU
 
+### 1.7 X11
 
+报错信息：
+
+```shell
+03:47:17 ERROR    GLFW error #65544: X11: The DISPLAY environment variable is missing
+```
 
 
 
