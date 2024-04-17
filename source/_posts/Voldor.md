@@ -3,7 +3,7 @@ title: voldor-imu
 date: 2023-04-25 17:56:33
 tags: voldor
 Categories:
-
+Description: voldor 环境配置、ai-imu 论文精读
 ---
 
 VOLDOR-SLAM: For the times when feature-based or direct methods are not good enough (ICRA 2021)

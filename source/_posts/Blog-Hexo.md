@@ -7,6 +7,7 @@ tags:
 categories: 
   - Hexo
   - Blog
+Description:记录使用 hexo + github pages 搭建个人博客的步骤
 ---
 
 
@@ -240,10 +241,6 @@ ssh -T git@github.com
 
 
 
-
-
-
-
 ## 1.8 配置站点信息
 
 修改根目录下的 _config.yml 文件，在 Site 区域，自定义站点标题、副标题、描述、关键词、作者等
@@ -449,8 +446,6 @@ Pangu：中英文之间留空
 math：数学公式显示
 
 pjax：
-
-
 
 ## 2.6 标签页、分类页、搜索页
 
