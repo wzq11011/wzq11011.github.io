@@ -11,8 +11,8 @@ hexo d
 
 # 推送代码到远程仓库
 git add .
-git commit -m "update"
+git commit -m "update1"
 git push origin hexo
 
 # 
-hexo s
+# hexo s
