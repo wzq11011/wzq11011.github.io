@@ -122,7 +122,7 @@
   </li>
         <li class="menu-item menu-item-tags">
 
-    <a href="/tags/" rel="section"><i class="fa fa-tags fa-fw"></i>标签<span class="badge">2</span></a>
+    <a href="/tags/" rel="section"><i class="fa fa-tags fa-fw"></i>标签<span class="badge">5</span></a>
 
   </li>
         <li class="menu-item menu-item-categories">
@@ -132,7 +132,7 @@
   </li>
         <li class="menu-item menu-item-archives">
 
-    <a href="/archives/" rel="section"><i class="fa fa-archive fa-fw"></i>归档<span class="badge">3</span></a>
+    <a href="/archives/" rel="section"><i class="fa fa-archive fa-fw"></i>归档<span class="badge">7</span></a>
 
   </li>
         <li class="menu-item menu-item-schedule">
@@ -194,6 +194,633 @@
 
           <div class="content index posts-expand">
             
+      
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="http://example.com/2024/04/17/hot%20100/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="name" content="wzq11011">
+      <meta itemprop="description" content="">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="CodeCoda">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          
+            <a href="/2024/04/17/hot%20100/" class="post-title-link" itemprop="url">hot 100</a>
+        </h2>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-calendar"></i>
+              </span>
+              <span class="post-meta-item-text">发表于</span>
+              
+
+              <time title="创建时间：2024-04-17 18:34:54 / 修改时间：18:35:24" itemprop="dateCreated datePublished" datetime="2024-04-17T18:34:54+08:00">2024-04-17</time>
+            </span>
+
+          <br>
+            <span class="post-meta-item" title="本文字数">
+              <span class="post-meta-item-icon">
+                <i class="far fa-file-word"></i>
+              </span>
+                <span class="post-meta-item-text">本文字数：</span>
+              <span>4k</span>
+            </span>
+            <span class="post-meta-item" title="阅读时长">
+              <span class="post-meta-item-icon">
+                <i class="far fa-clock"></i>
+              </span>
+                <span class="post-meta-item-text">阅读时长 &asymp;</span>
+              <span>15 分钟</span>
+            </span>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+          <blockquote>
+<p>Leetcode hot 100 刷题记录</p>
+</blockquote>
+<h1 id="1-哈希"><a href="#1-哈希" class="headerlink" title="1 哈希"></a>1 哈希</h1><p>基础知识：</p>
+<ul>
+<li>unordered_map：基于哈希表（Hash Table）实现，用于存储键值对。通过哈希函数将键转化为哈希码，然后使用哈希码作为索引快速定位到桶（bucket），每个桶内可能包含多个元素（当发生哈希冲突时） 对于查找、插入和删除操作，在理想情况下，时间复杂度为<code>O(1)</code>。<ul>
+<li>insert({key,value})：使用 pair 插入元素</li>
+<li>emplace({key, value})：使用 emplace_back 方式构造并插入元素</li>
+<li>erase()、clear() 删除所有元素</li>
+<li>size()、empty() 映射为空则返回 true、bucket_count() 返回桶数量</li>
+<li>begin()、end()、bucket() （返回键所在的桶编号）</li>
+</ul>
+</li>
+<li>unordered_set：一种关联容器，类似于 <code>set</code> ，无序，基于哈希表实现。容器中每一个元素都是唯一的，可以高效地插入、删除、查找。<ul>
+<li><p>插入元素：insert()</p>
+</li>
+<li><p>查找元素</p>
+</li>
+<li><pre><code class="C++">if (mySet.find(42) != mySet.end())  // 元素存在
+if (mySet.count(&quot;banana&quot;) &gt; 0) &#123;
+    // banana 存在于集合中
+&#125;
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line">- 删除元素：<span class="built_in">erase</span>()</span><br><span class="line">- 遍历元素</span><br><span class="line">- ```C++</span><br><span class="line">  <span class="keyword">for</span> (<span class="type">const</span> <span class="keyword">auto</span>&amp; item : mySet) &#123;</span><br><span class="line">      <span class="comment">// 遍历并处理每个元素</span></span><br><span class="line">      std::count &lt;&lt; item &lt;&lt; std::endl;</span><br><span class="line">  &#125;</span><br></pre></td></tr></table></figure>
+</code></pre>
+</li>
+<li><p><code>emplace()</code>：在容器内直接构造元素。</p>
+</li>
+<li><p><code>empty()</code>：检查容器是否为空。</p>
+</li>
+<li><p><code>size()</code>：获取容器中元素的数量。</p>
+</li>
+<li><p><code>clear()</code>：清空所有元素。</p>
+</li>
+</ul>
+</li>
+</ul>
+<p>（emplace主要用在序列容器汇总，emplace_back主要用在序列容器中）</p>
+<ul>
+<li>emplace_back：是 C++ 标准库中某些容器类（如 vector、deque、list等序列容器，以及 unordered_map、map等关联容器）提供的成员函数，该方法允许在容器的末尾直接构造新的元素，而不用先创建好元素再插入。避免了额外拷贝或移动构造函数的调用，相比较于先创建临时变量再用 <code>push_back</code> 添加的方式，这种方法更高效，省去了临时对象的创建和销毁过程。</li>
+</ul>
+<h2 id="1-1-字母异位词"><a href="#1-1-字母异位词" class="headerlink" title="1.1 字母异位词"></a>1.1 字母异位词</h2><p>题目链接：<a target="_blank" rel="noopener" href="https://leetcode.cn/problems/group-anagrams/solutions/520469/zi-mu-yi-wei-ci-fen-zu-by-leetcode-solut-gyoc/?envType=study-plan-v2&envId=top-100-liked">49. 字母异位词分组 - 力扣（LeetCode）</a></p>
+<p>思路：</p>
+<ul>
+<li>判断两个字符串是否相等，可以对字符串中的字母做排序，然后比较二者是否相等。</li>
+<li>使用哈希表存储每一组字母异位词，键为字母异位词标志（排序后的字符串），值为字母异位词。</li>
+</ul>
+<p>方法一：字母排序</p>
+<ul>
+<li>时间复杂度：<code>O(NKlogK)</code><ul>
+<li>遍历单词：<code>O(N)</code></li>
+<li>排序字符：<code>O(KlogK)</code></li>
+</ul>
+</li>
+<li>空间复杂度：<code>O(NK)</code></li>
+</ul>
+<p><code>n</code> 是 <code>strs</code> 中字符串的数量，<code>k</code> 是 <code>strs</code> 中字符串的最大长度。需要使用哈希表存储全部字符串。</p>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">class</span> <span class="title class_">Solution</span> &#123;</span><br><span class="line"><span class="keyword">public</span>:</span><br><span class="line">    vector&lt;vector&lt;string&gt;&gt; <span class="built_in">groupAnagrams</span>(vector&lt;string&gt;&amp; strs) &#123;</span><br><span class="line">        unordered_map&lt;string, vector&lt;string&gt;&gt; map;</span><br><span class="line">        <span class="keyword">for</span> (string str : strs) &#123;</span><br><span class="line">            string key = str;</span><br><span class="line">            <span class="built_in">sort</span>(key.<span class="built_in">begin</span>(), key.<span class="built_in">end</span>());</span><br><span class="line">            map[key].<span class="built_in">emplace_back</span>(str);</span><br><span class="line">        &#125;</span><br><span class="line"></span><br><span class="line">        vector&lt;vector&lt;string&gt;&gt; result;</span><br><span class="line">        <span class="keyword">for</span> (<span class="keyword">auto</span> it = map.<span class="built_in">begin</span>(); it != map.<span class="built_in">end</span>(); it++) &#123;</span><br><span class="line">            result.<span class="built_in">emplace_back</span>(it-&gt;second);</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">return</span> result;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
+
+<p>方法二：字符计数 （代码未理解）</p>
+<p> 互为字母异位词的两个字符串包含的字母相同，相同字母出现的次数也相同，可以将每个字母出现的次数使用字符串表示，作为哈希表的键。</p>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">class</span> <span class="title class_">Solution</span> &#123;</span><br><span class="line"><span class="keyword">public</span>:</span><br><span class="line">    vector&lt;vector&lt;string&gt;&gt; <span class="built_in">groupAnagrams</span>(vector&lt;string&gt;&amp; strs) &#123;</span><br><span class="line">        <span class="comment">// 自定义对 array&lt;int, 26&gt; 类型的哈希函数</span></span><br><span class="line">        <span class="keyword">auto</span> arrayHash = [fn = hash&lt;<span class="type">int</span>&gt;&#123;&#125;] (<span class="type">const</span> array&lt;<span class="type">int</span>, <span class="number">26</span>&gt;&amp; arr) -&gt; <span class="type">size_t</span> &#123;</span><br><span class="line">            <span class="keyword">return</span> <span class="built_in">accumulate</span>(arr.<span class="built_in">begin</span>(), arr.<span class="built_in">end</span>(), <span class="number">0u</span>, [&amp;](<span class="type">size_t</span> acc, <span class="type">int</span> num) &#123;</span><br><span class="line">                <span class="built_in">return</span> (acc &lt;&lt; <span class="number">1</span>) ^ <span class="built_in">fn</span>(num);</span><br><span class="line">            &#125;);</span><br><span class="line">        &#125;;</span><br><span class="line"></span><br><span class="line">        unordered_map&lt;array&lt;<span class="type">int</span>, 26&gt;, vector&lt;string&gt;, <span class="keyword">decltype</span>(arrayHash)&gt; <span class="built_in">mp</span>(<span class="number">0</span>, arrayHash);</span><br><span class="line">        <span class="keyword">for</span> (string&amp; str: strs) &#123;</span><br><span class="line">            array&lt;<span class="type">int</span>, 26&gt; counts&#123;&#125;;</span><br><span class="line">            <span class="type">int</span> length = str.<span class="built_in">length</span>();</span><br><span class="line">            <span class="keyword">for</span> (<span class="type">int</span> i = <span class="number">0</span>; i &lt; length; ++i) &#123;</span><br><span class="line">                counts[str[i] - <span class="string">&#x27;a&#x27;</span>] ++;</span><br><span class="line">            &#125;</span><br><span class="line">            mp[counts].<span class="built_in">emplace_back</span>(str);</span><br><span class="line">        &#125;</span><br><span class="line">        vector&lt;vector&lt;string&gt;&gt; ans;</span><br><span class="line">        <span class="keyword">for</span> (<span class="keyword">auto</span> it = mp.<span class="built_in">begin</span>(); it != mp.<span class="built_in">end</span>(); ++it) &#123;</span><br><span class="line">            ans.<span class="built_in">emplace_back</span>(it-&gt;second);</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">return</span> ans;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
+
+<h2 id="1-2-最长连续序列"><a href="#1-2-最长连续序列" class="headerlink" title="1.2 最长连续序列"></a>1.2 最长连续序列</h2><blockquote>
+<p>题目链接：<a target="_blank" rel="noopener" href="https://leetcode.cn/problems/longest-consecutive-sequence/description/?envType=study-plan-v2&envId=top-100-liked">128. 最长连续序列 - 力扣（LeetCode）</a></p>
+</blockquote>
+<p>思路：枚举数组中每一个数 <code>x</code> ，以此数为起点找连续序列（即不断寻找 <code>x+1</code> 、<code>x+2</code> 、<code>x+3</code> … <code>x+y</code> ），假设最长匹配到了 <code>x+y</code> ，则以 <code>x</code> 为起点的最长序列长度为 <code>y+1</code> 。</p>
+<p>优化：</p>
+<p>1、使用 set 对数组去重，避免重复的起点。</p>
+<p>2、如果已知有一个 <code>x,x+1,x+2,⋯,x+y</code> 的连续序列，则以 <code>x+1，x+2,...,x+y</code> 中的数为起点造成重复。以要枚举的起点为 <code>x</code> 为例，在哈希表中检查是否存在 <code>x-1</code> 来判断是否跳过该起点。</p>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">class</span> <span class="title class_">Solution</span> &#123;</span><br><span class="line"><span class="keyword">public</span>:</span><br><span class="line">    <span class="function"><span class="type">int</span> <span class="title">longestConsecutive</span><span class="params">(vector&lt;<span class="type">int</span>&gt;&amp; nums)</span> </span>&#123;</span><br><span class="line">        <span class="type">int</span> result = <span class="number">0</span>;</span><br><span class="line">        unordered_set&lt;<span class="type">int</span>&gt; num_set;</span><br><span class="line">        <span class="keyword">for</span> (<span class="type">const</span> <span class="type">int</span>&amp; num : nums) &#123;</span><br><span class="line">            num_set.<span class="built_in">insert</span>(num);</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">for</span> (<span class="type">const</span> <span class="type">int</span>&amp; num : num_set) &#123;</span><br><span class="line">            <span class="keyword">if</span> (num_set.<span class="built_in">find</span>(num<span class="number">-1</span>) == num_set.<span class="built_in">end</span>()) &#123;</span><br><span class="line">                <span class="type">int</span> currentNum = num;</span><br><span class="line">                <span class="type">int</span> currentLength = <span class="number">1</span>;</span><br><span class="line">                <span class="keyword">while</span> (num_set.<span class="built_in">find</span>(currentNum + <span class="number">1</span>) != num_set.<span class="built_in">end</span>()) &#123;</span><br><span class="line">                    currentNum++;</span><br><span class="line">                    currentLength++;</span><br><span class="line">                &#125;</span><br><span class="line">                result = <span class="built_in">max</span>(result, currentLength);</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">return</span> result;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
+
+<h1 id="2-双指针"><a href="#2-双指针" class="headerlink" title="2 双指针"></a>2 双指针</h1><h2 id="2-1-移动零"><a href="#2-1-移动零" class="headerlink" title="2.1 移动零"></a>2.1 移动零</h2><blockquote>
+<p>题目链接：<a target="_blank" rel="noopener" href="https://leetcode.cn/problems/move-zeroes/description/?envType=study-plan-v2&envId=top-100-liked">283. 移动零 - 力扣（LeetCode）</a></p>
+</blockquote>
+<p>思路：左指针找零，右指针找非零数，然后交换并右移，直到数组最后一个数。</p>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">class</span> <span class="title class_">Solution</span> &#123;</span><br><span class="line"><span class="keyword">public</span>:</span><br><span class="line">    <span class="function"><span class="type">void</span> <span class="title">moveZeroes</span><span class="params">(vector&lt;<span class="type">int</span>&gt;&amp; nums)</span> </span>&#123;</span><br><span class="line">        <span class="type">int</span> left = <span class="number">0</span>;</span><br><span class="line">        <span class="type">int</span> right = <span class="number">0</span>;</span><br><span class="line">        <span class="keyword">while</span> (right &lt; nums.<span class="built_in">size</span>()) &#123;</span><br><span class="line">            <span class="keyword">if</span> (nums[right] != <span class="number">0</span>) &#123;</span><br><span class="line">                <span class="keyword">if</span> (nums[left] == <span class="number">0</span>) <span class="built_in">swap</span>(nums[left], nums[right]); </span><br><span class="line">                left++;</span><br><span class="line">            &#125;</span><br><span class="line">            right++;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
+
+<p>时间复杂度：<code>O(n)</code></p>
+<p>空间复杂度：<code>O(1)</code></p>
+<h2 id="2-2-盛最多水的容器"><a href="#2-2-盛最多水的容器" class="headerlink" title="2.2 盛最多水的容器"></a>2.2 盛最多水的容器</h2><blockquote>
+<p>题目链接：<a target="_blank" rel="noopener" href="https://leetcode.cn/problems/container-with-most-water/description/?envType=study-plan-v2&envId=top-100-liked">11. 盛最多水的容器 - 力扣（LeetCode）</a></p>
+</blockquote>
+<p>思路：以双指针为数组的左右边界，固定一个指针，移动另一个指针，不断地计算面积从而得到容量的最大值。</p>
+<p>优化：</p>
+<p>1、如果左指针高度比右指针低，则固定右指针，移动左指针，反之亦然。（我们期望较小的一边在移动过程中变大，从而增加盛水容量）</p>
+<p>2、如果移动后高度小于等于原高度，则面积必然减小，省略计算面积的步骤。（简化计算）</p>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">class</span> <span class="title class_">Solution</span> &#123;</span><br><span class="line"><span class="keyword">public</span>:</span><br><span class="line">    <span class="function"><span class="type">int</span> <span class="title">maxArea</span><span class="params">(vector&lt;<span class="type">int</span>&gt;&amp; height)</span> </span>&#123;</span><br><span class="line">        <span class="type">int</span> left = <span class="number">0</span>, right = height.<span class="built_in">size</span>() - <span class="number">1</span>;</span><br><span class="line">        <span class="type">int</span> result = <span class="number">0</span>;</span><br><span class="line">        <span class="keyword">while</span> (left &lt; right) &#123;</span><br><span class="line">            result = <span class="built_in">max</span>(result, <span class="built_in">min</span>(height[left], height[right]) * (right - left));</span><br><span class="line">            <span class="keyword">if</span> (height[left] &lt;= height[right]) left++;</span><br><span class="line">            <span class="keyword">else</span> right--; </span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">return</span> result;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
+
+<h2 id="2-3-三数之和"><a href="#2-3-三数之和" class="headerlink" title="2.3 三数之和"></a>2.3 三数之和</h2><blockquote>
+<p>题目链接：<a target="_blank" rel="noopener" href="https://leetcode.cn/problems/3sum/description/?envType=study-plan-v2&envId=top-100-liked">15. 三数之和 - 力扣（LeetCode）</a></p>
+</blockquote>
+<p>思路：for 循环里面包着左右指针。<code>i</code> 的下标从 0 开始，定义 <code>left</code> 在 <code>i+1</code> 位置上， <code>right</code> 在数组末尾上。判断 <code>nums[i]+nums[left]+nums[right]</code> 的值，大于 0 右指针左移，小于 0 左指针右移。</p>
+<p>优化：</p>
+<p>1、如果排序后第一个元素大于0，则三数合必大于0；</p>
+<p>2、对 i 去重，如果当前的 <code>nums[i]</code> 与前一个相等，则跳过</p>
+<p>3、对 <code>left right</code> 去重，类似第 2 步。</p>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">class</span> <span class="title class_">Solution</span> &#123;</span><br><span class="line"><span class="keyword">public</span>:</span><br><span class="line">    vector&lt;vector&lt;<span class="type">int</span>&gt;&gt; <span class="built_in">threeSum</span>(vector&lt;<span class="type">int</span>&gt;&amp; nums) &#123;</span><br><span class="line">        <span class="comment">// for 循环里面包着左右指针</span></span><br><span class="line">        vector&lt;vector&lt;<span class="type">int</span>&gt;&gt; result;</span><br><span class="line">        <span class="built_in">sort</span>(nums.<span class="built_in">begin</span>(), nums.<span class="built_in">end</span>());</span><br><span class="line">        <span class="keyword">for</span> (<span class="type">int</span> i = <span class="number">0</span>; i &lt; nums.<span class="built_in">size</span>(); i++) &#123;</span><br><span class="line">            <span class="keyword">if</span> (nums[i] &gt; <span class="number">0</span>) <span class="keyword">return</span> result;</span><br><span class="line">            <span class="comment">// 对 i 去重</span></span><br><span class="line">            <span class="keyword">if</span> (i &gt; <span class="number">0</span> &amp;&amp; nums[i] == nums[i<span class="number">-1</span>]) <span class="keyword">continue</span>;</span><br><span class="line">            <span class="type">int</span> left = i + <span class="number">1</span>, right = nums.<span class="built_in">size</span>() - <span class="number">1</span>;</span><br><span class="line">            <span class="keyword">while</span> (left &lt; right) &#123;</span><br><span class="line">                <span class="keyword">if</span> (nums[i] + nums[left] + nums[right] &gt; <span class="number">0</span>) &#123;</span><br><span class="line">                    right--;</span><br><span class="line">                    <span class="keyword">while</span> (left &lt; right &amp;&amp; nums[right] == nums[right<span class="number">-1</span>]) right--;</span><br><span class="line">                &#125;</span><br><span class="line">                </span><br><span class="line">                <span class="keyword">else</span> <span class="keyword">if</span> (nums[i] + nums[left] + nums[right] &lt; <span class="number">0</span>) &#123;</span><br><span class="line">                    left++;</span><br><span class="line">                    <span class="keyword">while</span> (left &lt; right &amp;&amp; nums[left] == nums[left+<span class="number">1</span>]) left++;</span><br><span class="line">                &#125;</span><br><span class="line">                <span class="keyword">else</span> &#123;</span><br><span class="line">                    result.<span class="built_in">push_back</span>(&#123;nums[i], nums[left], nums[right]&#125;);</span><br><span class="line">                    <span class="comment">// 找到一组三元组后，对 left 和 right 去重</span></span><br><span class="line">                    left++;</span><br><span class="line">                    right--;</span><br><span class="line">                &#125;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">return</span> result;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
+
+<h2 id="2-4-接雨水"><a href="#2-4-接雨水" class="headerlink" title="2.4 接雨水"></a>2.4 接雨水</h2><blockquote>
+<p>题目链接：<a target="_blank" rel="noopener" href="https://leetcode.cn/problems/trapping-rain-water/description/">42. 接雨水 - 力扣（LeetCode）</a></p>
+</blockquote>
+<p>思路：</p>
+<p>对于下标为 <code>i</code> 的格子，其能接的最大雨水量为两边最大高度的较小值，减去<code>i</code> 处的高度 <code>height[i]</code> 。</p>
+<p>对每个下标 <code>i</code> 向两边扫描得到最大高度，时间复杂度为 <code>O(n)</code>；然后对每个下标求能接的雨水量，时间复杂度也为 <code>O(n)</code> ，总时间复杂度为 <code>O(n^2)</code> 。</p>
+<p>优化：</p>
+<p>1、使用动态规划更快地得到每个位置两边的最大高度。</p>
+<p>创建两个长度为 <code>n</code> 的数组 <code>leftMax</code> 和 <code>rightMax</code> ，<code>leftMax[i]</code> 表示下标 <code>i</code> 及其左边位置中的最大高度，<code>rightMax[i]</code> 表示下标 <code>i</code> 及其右边位置中的最大高度。</p>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">class</span> <span class="title class_">Solution</span> &#123;</span><br><span class="line"><span class="keyword">public</span>:</span><br><span class="line">    <span class="function"><span class="type">int</span> <span class="title">trap</span><span class="params">(vector&lt;<span class="type">int</span>&gt;&amp; height)</span> </span>&#123;</span><br><span class="line">        <span class="type">int</span> n = height.<span class="built_in">size</span>();</span><br><span class="line">        <span class="keyword">if</span> (n == <span class="number">0</span>)</span><br><span class="line">            <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line"></span><br><span class="line">        <span class="function">vector&lt;<span class="type">int</span>&gt; <span class="title">leftMax</span><span class="params">(n, <span class="number">0</span>)</span></span>;</span><br><span class="line">        <span class="comment">// leftMax[0] = height[0];</span></span><br><span class="line">        <span class="keyword">for</span> (<span class="type">int</span> i = <span class="number">0</span>; i &lt; n; i++) &#123;</span><br><span class="line">            <span class="keyword">if</span> (i == <span class="number">0</span>) leftMax[i] = height[i];</span><br><span class="line">            <span class="keyword">else</span> leftMax[i] = <span class="built_in">max</span>(leftMax[i - <span class="number">1</span>], height[i]);</span><br><span class="line">        &#125;</span><br><span class="line"></span><br><span class="line">        <span class="function">vector&lt;<span class="type">int</span>&gt; <span class="title">rightMax</span><span class="params">(n, <span class="number">0</span>)</span></span>;</span><br><span class="line">        <span class="keyword">for</span> (<span class="type">int</span> i = n - <span class="number">1</span>; i &gt;= <span class="number">0</span>; i--) &#123;</span><br><span class="line">            <span class="keyword">if</span> (i == n - <span class="number">1</span>) rightMax[i] = height[i];</span><br><span class="line">            <span class="keyword">else</span> rightMax[i] = <span class="built_in">max</span>(rightMax[i + <span class="number">1</span>], height[i]);</span><br><span class="line">        &#125;</span><br><span class="line"></span><br><span class="line">        <span class="type">int</span> ans = <span class="number">0</span>;</span><br><span class="line">        <span class="keyword">for</span> (<span class="type">int</span> i = <span class="number">0</span>; i &lt; n; i++) &#123;</span><br><span class="line">            ans += <span class="built_in">min</span>(leftMax[i], rightMax[i]) - height[i];</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">return</span> ans;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
+
+<p>时间复杂度：<code>O(n)</code> ，实际对整个数组遍历了三次</p>
+<p>空间复杂度：<code>O(n)</code> ，需要创建两个长度为 <code>n</code> 的数组 <code>leftMax</code> 和 <code>rightMax</code> 。</p>
+<p>2、单调栈</p>
+<p>3、双指针</p>
+<p>动态规划中需要维护两个数组 <code>leftMax</code> 和 <code>rightMax</code> ，空间复杂度为 <code>O(n)</code> </p>
+<h1 id="3-滑动窗口"><a href="#3-滑动窗口" class="headerlink" title="3 滑动窗口"></a>3 滑动窗口</h1><blockquote>
+<p>参考：<a target="_blank" rel="noopener" href="https://labuladong.online/algo/essential-technique/sliding-window-framework/#%E6%BB%91%E5%8A%A8%E7%AA%97%E5%8F%A3%E6%A1%86%E6%9E%B6%E6%A6%82%E8%A7%88">我写了首诗，把滑动窗口算法变成了默写题</a></p>
+</blockquote>
+<p>滑动窗口算法主要用来解决子数组问题，如寻找符合某个条件的最长&#x2F;最短子数组。</p>
+<p>通过维护一个窗口，不断滑动，更新答案。算法模板如下：</p>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line"><span class="function">volid <span class="title">slidingWindow</span><span class="params">(string s)</span> </span>&#123;</span><br><span class="line">    unordered_map&lt;<span class="type">char</span>, <span class="type">int</span>&gt; window;</span><br><span class="line">    </span><br><span class="line">    <span class="type">int</span> left = <span class="number">0</span>, right = <span class="number">0</span>;</span><br><span class="line">    <span class="keyword">while</span> (right &lt; s.<span class="built_in">size</span>()) &#123;</span><br><span class="line">        <span class="type">char</span> c = s[right];  <span class="comment">// c 是将要移入窗口的元素</span></span><br><span class="line">        window.<span class="built_in">add</span>(c);</span><br><span class="line">        right++;</span><br><span class="line">    &#125;</span><br><span class="line">    </span><br><span class="line">    <span class="comment">// 判断窗口是否要收缩</span></span><br><span class="line">    <span class="keyword">while</span> (left &lt; right &amp;&amp; window needs shrink) &#123;</span><br><span class="line">        <span class="type">char</span> d = s[left];  <span class="comment">// d 是将要从窗口移除的元素</span></span><br><span class="line">        window.<span class="built_in">remove</span>(d);  </span><br><span class="line">        left++;  <span class="comment">// 缩小窗口</span></span><br><span class="line">        <span class="comment">// 对窗口内数据更新...</span></span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h2 id="3-1-无重复字符的最长子串"><a href="#3-1-无重复字符的最长子串" class="headerlink" title="3.1 无重复字符的最长子串"></a>3.1 无重复字符的最长子串</h2><blockquote>
+<p>题目链接：<a target="_blank" rel="noopener" href="https://leetcode.cn/problems/longest-substring-without-repeating-characters/?envType=study-plan-v2&envId=top-100-liked">3. 无重复字符的最长子串 - 力扣（LeetCode）</a></p>
+</blockquote>
+<p>思路：<code>for</code> 循环控制滑动窗口的左侧边界，右侧边界 <code>right</code> 逐一向右遍历元素，使用 <code>unordered_set</code> 判断是否有重复元素，有重复元素就把左边界向右移动，直至窗口内无重复元素，比较各个窗口，记录最大长度。</p>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">class</span> <span class="title class_">Solution</span> &#123;</span><br><span class="line"><span class="keyword">public</span>:</span><br><span class="line">    <span class="function"><span class="type">int</span> <span class="title">lengthOfLongestSubstring</span><span class="params">(string s)</span> </span>&#123;</span><br><span class="line">        <span class="type">int</span> n = s.<span class="built_in">size</span>();</span><br><span class="line">        <span class="type">int</span> right = <span class="number">0</span>, ans = <span class="number">0</span>;</span><br><span class="line">        unordered_set&lt;<span class="type">char</span>&gt; set;</span><br><span class="line"></span><br><span class="line">        <span class="keyword">for</span> (<span class="type">int</span> i = <span class="number">0</span>; i &lt; n; i++) &#123;</span><br><span class="line">            <span class="keyword">while</span> (right &lt; n &amp;&amp; !set.<span class="built_in">count</span>(s[right])) &#123;</span><br><span class="line">                set.<span class="built_in">insert</span>(s[right++]);</span><br><span class="line">            &#125;</span><br><span class="line">            set.<span class="built_in">erase</span>(s[i]);</span><br><span class="line">            ans = <span class="built_in">max</span>(ans, right - i);</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">return</span> ans;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
+
+<p>类题：</p>
+<p><a target="_blank" rel="noopener" href="https://leetcode.cn/problems/permutation-in-string/">567. 字符串的排列 - 力扣（LeetCode）</a></p>
+<p><a target="_blank" rel="noopener" href="https://leetcode.cn/problems/longest-substring-without-repeating-characters/">3. 无重复字符的最长子串 - 力扣（LeetCode）</a></p>
+<h2 id="3-2-找到字符串中所有字母异位词"><a href="#3-2-找到字符串中所有字母异位词" class="headerlink" title="3.2 找到字符串中所有字母异位词"></a>3.2 找到字符串中所有字母异位词</h2><blockquote>
+<p>题目链接：<a target="_blank" rel="noopener" href="https://leetcode.cn/problems/find-all-anagrams-in-a-string/description/?envType=study-plan-v2&envId=top-100-liked">438. 找到字符串中所有字母异位词 - 力扣（LeetCode）</a></p>
+</blockquote>
+<p>思路：套用模板</p>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">class</span> <span class="title class_">Solution</span> &#123;</span><br><span class="line"><span class="keyword">public</span>:</span><br><span class="line">    <span class="function">vector&lt;<span class="type">int</span>&gt; <span class="title">findAnagrams</span><span class="params">(string s, string p)</span> </span>&#123;</span><br><span class="line">        unordered_map&lt;<span class="type">char</span>, <span class="type">int</span>&gt; need, window;</span><br><span class="line">        <span class="keyword">for</span> (<span class="type">char</span> c : p) need[c]++;</span><br><span class="line">        </span><br><span class="line">        <span class="type">int</span> left = <span class="number">0</span>, right = <span class="number">0</span>;  <span class="comment">// 左闭右开</span></span><br><span class="line">        <span class="type">int</span> start = <span class="number">0</span>, valid = <span class="number">0</span>;</span><br><span class="line">        vector&lt;<span class="type">int</span>&gt; res;</span><br><span class="line"></span><br><span class="line">        <span class="keyword">while</span> (right &lt; s.<span class="built_in">size</span>()) &#123;</span><br><span class="line">            <span class="type">char</span> c = s[right++];</span><br><span class="line">            <span class="keyword">if</span> (need.<span class="built_in">count</span>(c)) &#123;</span><br><span class="line">                window[c]++;</span><br><span class="line">                <span class="keyword">if</span> (window[c] == need[c]) valid++;</span><br><span class="line">            &#125;</span><br><span class="line"></span><br><span class="line">            <span class="comment">// 判断是否缩小窗口</span></span><br><span class="line">            <span class="keyword">while</span> (right - left &gt;= p.<span class="built_in">size</span>()) &#123;</span><br><span class="line">                <span class="keyword">if</span> (valid == need.<span class="built_in">size</span>()) res.<span class="built_in">push_back</span>(left);</span><br><span class="line">                <span class="type">char</span> d = s[left++];</span><br><span class="line">                <span class="keyword">if</span> (need.<span class="built_in">count</span>(d)) &#123;</span><br><span class="line">                    <span class="keyword">if</span> (window[d] == need[d]) valid--;</span><br><span class="line">                    window[d]--;</span><br><span class="line">                &#125;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">return</span> res;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
+
+<h1 id="4-子串"><a href="#4-子串" class="headerlink" title="4 子串"></a>4 子串</h1><ul>
+<li>前缀和</li>
+<li>优先队列：一种抽象数据类型，类似队列，其中元素按照一定优先级顺序排列，出队顺序按照优先级从高到低（或从低到高）。</li>
+</ul>
+<h2 id="4-1-和为-K-的子数组"><a href="#4-1-和为-K-的子数组" class="headerlink" title="4.1 和为 K 的子数组"></a>4.1 和为 K 的子数组</h2><blockquote>
+<p>题目链接：<a target="_blank" rel="noopener" href="https://leetcode.cn/problems/subarray-sum-equals-k/description/?envType=study-plan-v2&envId=top-100-liked">560. 和为 K 的子数组 - 力扣（LeetCode）</a></p>
+</blockquote>
+<p>思路：</p>
+<p>1、暴力解法：枚举</p>
+<p>两层 <code>for</code> 循环，先固定左侧 <code>left</code> ，然后向右移动 <code>right</code> ，直到窗口内元素相加和为 <code>k</code> ，此时计数加 1。时间复杂度 <code>O(n^2)</code> ，容易超时。</p>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">class</span> <span class="title class_">Solution</span> &#123;</span><br><span class="line"><span class="keyword">public</span>:</span><br><span class="line">    <span class="function"><span class="type">int</span> <span class="title">subarraySum</span><span class="params">(vector&lt;<span class="type">int</span>&gt;&amp; nums, <span class="type">int</span> k)</span> </span>&#123;</span><br><span class="line">        <span class="comment">// 暴力解法：枚举</span></span><br><span class="line">        <span class="type">int</span> n = nums.<span class="built_in">size</span>();</span><br><span class="line">        <span class="type">int</span> res = <span class="number">0</span>;</span><br><span class="line">        <span class="keyword">for</span> (<span class="type">int</span> left = <span class="number">0</span>; left &lt; n; left++) &#123;</span><br><span class="line">            <span class="type">int</span> sum = <span class="number">0</span>;</span><br><span class="line">            <span class="keyword">for</span> (<span class="type">int</span> right = left; right &lt; n; right++) &#123;</span><br><span class="line">                sum += nums[right];</span><br><span class="line">                <span class="keyword">if</span> (sum == k) res++;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">return</span> res;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
+
+<p>2、前缀和 + 哈希表优化</p>
+<p>思路：计算前 <code>i</code> 个数的和，存储到数组中。如果前 <code>i</code> 个数的和与前 <code>j</code> 个数之和的差为 <code>k</code> （<code>0&lt;=j&lt;i</code>)，则 <code>i</code> 与 <code>j</code> 之间的子数组满足要求</p>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">class</span> <span class="title class_">Solution</span> &#123;</span><br><span class="line"><span class="keyword">public</span>:</span><br><span class="line">    <span class="function"><span class="type">int</span> <span class="title">subarraySum</span><span class="params">(vector&lt;<span class="type">int</span>&gt;&amp; nums, <span class="type">int</span> k)</span> </span>&#123;</span><br><span class="line">        unordered_map&lt;<span class="type">int</span>, <span class="type">int</span>&gt; map;</span><br><span class="line">        map[<span class="number">0</span>] = <span class="number">1</span>;</span><br><span class="line">        <span class="type">int</span> sum = <span class="number">0</span>, res = <span class="number">0</span>;</span><br><span class="line">        <span class="keyword">for</span> (<span class="type">const</span> <span class="type">int</span>&amp; x : nums) &#123;</span><br><span class="line">            sum += x;</span><br><span class="line">            <span class="keyword">if</span> (map.<span class="built_in">find</span>(sum - k) != map.<span class="built_in">end</span>()) res += map[sum - k];</span><br><span class="line">            map[sum]++;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">return</span> res;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
+
+<h2 id="4-2-滑动窗口最大值"><a href="#4-2-滑动窗口最大值" class="headerlink" title="4.2 滑动窗口最大值"></a>4.2 滑动窗口最大值</h2><blockquote>
+<p>题目链接：<a target="_blank" rel="noopener" href="https://leetcode.cn/problems/sliding-window-maximum/description/?envType=study-plan-v2&envId=top-100-liked">239. 滑动窗口最大值 - 力扣（LeetCode）</a></p>
+</blockquote>
+<p>思路：对于每个滑动窗口，可以使用 <code>O(k)</code> 的时间复杂度遍历其中每个元素，找出其中最大值。对于长度为 <code>n</code> 的数组，窗口数量为 <code>n-k+1</code> ，总时间复杂度为 <code>O(n*(n-k+1))=O(n*(n-k))</code> 。</p>
+<p>1、优先队列：初始时，将数组 <code>nums</code> 的前 <code>k</code> 个元素放入优先队列中，每次向右移动窗口时，将一个新元素放入优先队列中，此时堆顶元素为堆中最大值。此最大值可能在新窗口中，也可能在上一窗口的最左侧（此时需要删除该最大值，重新计算堆中最大值作为新窗口的最大值）。</p>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">class</span> <span class="title class_">Solution</span> &#123;</span><br><span class="line"><span class="keyword">public</span>:</span><br><span class="line">    <span class="function">vector&lt;<span class="type">int</span>&gt; <span class="title">maxSlidingWindow</span><span class="params">(vector&lt;<span class="type">int</span>&gt;&amp; nums, <span class="type">int</span> k)</span> </span>&#123;</span><br><span class="line">        <span class="comment">// 优先队列 prioriry_queue</span></span><br><span class="line">        <span class="type">int</span> n = nums.<span class="built_in">size</span>();</span><br><span class="line">        priority_queue&lt;pair&lt;<span class="type">int</span>, <span class="type">int</span>&gt;&gt; q;</span><br><span class="line">        vector&lt;<span class="type">int</span>&gt; res;</span><br><span class="line">        <span class="keyword">for</span> (<span class="type">int</span> i = <span class="number">0</span>; i &lt; k; i++) &#123;</span><br><span class="line">            q.<span class="built_in">emplace</span>(nums[i], i);</span><br><span class="line">        &#125;</span><br><span class="line">        res.<span class="built_in">push_back</span>(q.<span class="built_in">top</span>().first);</span><br><span class="line">        <span class="keyword">for</span> (<span class="type">int</span> i = k; i &lt; n; i++) &#123;</span><br><span class="line">            q.<span class="built_in">emplace</span>(nums[i], i);</span><br><span class="line">            <span class="keyword">while</span> (q.<span class="built_in">top</span>().second &lt;= i - k) q.<span class="built_in">pop</span>();</span><br><span class="line">            res.<span class="built_in">push_back</span>(q.<span class="built_in">top</span>().first);</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">return</span> res;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
+
+<p>2、单调队列</p>
+<h2 id="4-3-最小覆盖子串"><a href="#4-3-最小覆盖子串" class="headerlink" title="4.3 最小覆盖子串"></a>4.3 最小覆盖子串</h2><blockquote>
+<p>题目链接：<a target="_blank" rel="noopener" href="https://leetcode.cn/problems/minimum-window-substring/description/?envType=study-plan-v2&envId=top-100-liked">76. 最小覆盖子串 - 力扣（LeetCode）</a></p>
+</blockquote>
+<p>思路：</p>
+<p>1、在字符串 <code>S</code>(source) 中使用双指针寻找符合条件的 <code>T</code> (target) ，初始化 <code>left=right=0</code> ，把左闭右开的 <code>[left,right)</code> 当做窗口。</p>
+<p>2、<code>right</code> 不断地右移直至窗口中元素都包含 <code>T</code> 中所有字符</p>
+<p>3、然后 <code>left</code> 左移缩小窗口，直到窗口内字符串不再符合要求</p>
+<p>4、重复2、3步，直到 <code>right</code> 到达字符串 <code>S</code> 的末尾。</p>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">class</span> <span class="title class_">Solution</span> &#123;</span><br><span class="line"><span class="keyword">public</span>:</span><br><span class="line">    <span class="function">string <span class="title">minWindow</span><span class="params">(string s, string t)</span> </span>&#123;</span><br><span class="line">        <span class="comment">// need：记录所需的字符</span></span><br><span class="line">        <span class="comment">// window：记录窗口内包含的字符</span></span><br><span class="line">        unordered_map&lt;<span class="type">char</span>, <span class="type">int</span>&gt; need, window;</span><br><span class="line"></span><br><span class="line">        <span class="comment">// 对于哈希表，使用方括号访问键对应的值 map[key]，但当 key 不存在时，</span></span><br><span class="line">        <span class="comment">// C++会自动创建该 key，并把 map[key] 赋值为 0。</span></span><br><span class="line">        <span class="keyword">for</span> (<span class="type">char</span> c : t) need[c]++;</span><br><span class="line"></span><br><span class="line">        <span class="type">int</span> left = <span class="number">0</span>, right = <span class="number">0</span>;</span><br><span class="line">        <span class="type">int</span> valid = <span class="number">0</span>;  <span class="comment">// 记录 window 内符合要求的字符数</span></span><br><span class="line">        <span class="type">int</span> start = <span class="number">0</span>, len = INT_MAX;  <span class="comment">// 记录最小覆盖子串起始索引及长度</span></span><br><span class="line"></span><br><span class="line">        <span class="keyword">while</span> (right &lt; s.<span class="built_in">size</span>()) &#123;</span><br><span class="line">            <span class="comment">// right 右移，扩大滑窗，直至窗口内元素满足要求</span></span><br><span class="line">            <span class="type">char</span> c = s[right++];</span><br><span class="line">            <span class="keyword">if</span> (need.<span class="built_in">count</span>(c)) &#123;</span><br><span class="line">                window[c]++;</span><br><span class="line">                <span class="keyword">if</span> (window[c] == need[c]) valid++;</span><br><span class="line">            &#125;</span><br><span class="line"></span><br><span class="line">            <span class="comment">// 判断是否要缩小窗口</span></span><br><span class="line">            <span class="keyword">while</span> (valid == need.<span class="built_in">size</span>()) &#123;</span><br><span class="line">                <span class="comment">// 记录最小子串长度，如果当前子串长度小于之前的最小子串长度</span></span><br><span class="line">                <span class="keyword">if</span> (right - left &lt; len) &#123;</span><br><span class="line">                    start = left;</span><br><span class="line">                    len = right - left;</span><br><span class="line">                &#125;</span><br><span class="line"></span><br><span class="line">                <span class="comment">// 如果最左侧要移除的元素是 need 中所需元素，导致 valid - 1，进而跳出 while 循环。</span></span><br><span class="line">                <span class="type">char</span> d = s[left++];  <span class="comment">// 将要移除的元素</span></span><br><span class="line">                <span class="keyword">if</span> (need.<span class="built_in">count</span>(d)) &#123;</span><br><span class="line">                    <span class="keyword">if</span> (window[d] == need[d]) valid--;</span><br><span class="line">                    window[d]--;</span><br><span class="line">                &#125;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">return</span> len == INT_MAX ? <span class="string">&quot;&quot;</span> : s.<span class="built_in">substr</span>(start, len);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
+
+<h1 id="5-普通数组"><a href="#5-普通数组" class="headerlink" title="5 普通数组"></a>5 普通数组</h1><h2 id="5-1-最大子数组和"><a href="#5-1-最大子数组和" class="headerlink" title="5.1 最大子数组和"></a>5.1 最大子数组和</h2><blockquote>
+<p>题目链接：<a target="_blank" rel="noopener" href="https://leetcode.cn/problems/maximum-subarray/description/?envType=study-plan-v2&envId=top-100-liked">53. 最大子数组和 - 力扣（LeetCode）</a></p>
+</blockquote>
+<p>思路：</p>
+<p>1、动态规划：假设 <code>nums</code> 数组长度为 <code>n</code> ，下标从 <code>0</code> 到 <code>n-1</code> 。使用 <code>f(i)</code> 表示以第 <code>i</code> 个数结尾的数组中最大的子数组和。只需求出每个 <code>f(i)</code> ，然后取最大值即可。考虑 <code>nums[i]</code> 单独成为一段或者加入 <code>f(i-1)</code> 对应的那一段，动态转移方程为 <code>f(i) = max&#123; f(i-1)+nums[i], nums[i]&#125;</code> 。（注意：不管取那一段都是以 <code>nums[i]</code> 结尾的）</p>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">class</span> <span class="title class_">Solution</span> &#123;</span><br><span class="line"><span class="keyword">public</span>:</span><br><span class="line">    <span class="function"><span class="type">int</span> <span class="title">maxSubArray</span><span class="params">(vector&lt;<span class="type">int</span>&gt;&amp; nums)</span> </span>&#123;</span><br><span class="line">        <span class="type">int</span> dp = <span class="number">0</span>, res = INT_MIN;</span><br><span class="line">        <span class="keyword">for</span> (<span class="type">int</span> i = <span class="number">0</span>; i &lt; nums.<span class="built_in">size</span>(); i++) &#123;</span><br><span class="line">            <span class="keyword">if</span> (i == <span class="number">0</span>) dp = nums[i];</span><br><span class="line">            <span class="keyword">else</span> dp = <span class="built_in">max</span>(dp + nums[i], nums[i]);</span><br><span class="line">            res = <span class="built_in">max</span>(res, dp);</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">return</span> res;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
+
+<p>时间复杂度：<code>O(n)</code></p>
+<p>空间复杂度：<code>O(1)</code></p>
+<p>2、分治</p>
+<h2 id="5-2-合并区间"><a href="#5-2-合并区间" class="headerlink" title="5.2 合并区间"></a>5.2 合并区间</h2><blockquote>
+<p>题目链接：<a target="_blank" rel="noopener" href="https://leetcode.cn/problems/merge-intervals/description/?envType=study-plan-v2&envId=top-100-liked">56. 合并区间 - 力扣（LeetCode）</a></p>
+</blockquote>
+<p>思路：将列表中的区间按照左端点升序排序，将第一个区间加入 res 数组，然后依次考虑后面的区间。如果当前区间左端点大于 res 数组中最后一个区间的右端点，则不合并（即添加到 res 数组中）。若小于等于，则两个区间重合，使用当前区间的右端点更新数组中最后一个区间的右端点。</p>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">class</span> <span class="title class_">Solution</span> &#123;</span><br><span class="line"><span class="keyword">public</span>:</span><br><span class="line">    vector&lt;vector&lt;<span class="type">int</span>&gt;&gt; <span class="built_in">merge</span>(vector&lt;vector&lt;<span class="type">int</span>&gt;&gt;&amp; intervals) &#123;</span><br><span class="line">        vector&lt;vector&lt;<span class="type">int</span>&gt;&gt; res;</span><br><span class="line">        <span class="built_in">sort</span>(intervals.<span class="built_in">begin</span>(), intervals.<span class="built_in">end</span>());</span><br><span class="line">        <span class="keyword">for</span> (<span class="keyword">auto</span> interval : intervals) &#123;</span><br><span class="line">            <span class="keyword">if</span> (res.<span class="built_in">empty</span>() || res.<span class="built_in">back</span>()[<span class="number">1</span>] &lt; interval[<span class="number">0</span>]) &#123;</span><br><span class="line">                res.<span class="built_in">push_back</span>(interval);</span><br><span class="line">            &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">                res.<span class="built_in">back</span>()[<span class="number">1</span>] = <span class="built_in">max</span>(res.<span class="built_in">back</span>()[<span class="number">1</span>], interval[<span class="number">1</span>]);</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">return</span> res;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
+
+<h2 id="5-3-轮转数组"><a href="#5-3-轮转数组" class="headerlink" title="5.3 轮转数组"></a>5.3 轮转数组</h2><blockquote>
+<p>题目链接：<a target="_blank" rel="noopener" href="https://leetcode.cn/problems/rotate-array/description/?envType=study-plan-v2&envId=top-100-liked">189. 轮转数组 - 力扣（LeetCode）</a></p>
+</blockquote>
+<p>思路：</p>
+<p>1、使用额外的数组：<code>n</code> 表示数组长度，遍历原数组，将原数组下标为 <code>i</code> 的元素放到新数组下标为 <code>(i+k)mod n</code> 的位置，然后将新数组拷贝到原数组。</p>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">class</span> <span class="title class_">Solution</span> &#123;</span><br><span class="line"><span class="keyword">public</span>:</span><br><span class="line">    <span class="function"><span class="type">void</span> <span class="title">rotate</span><span class="params">(vector&lt;<span class="type">int</span>&gt;&amp; nums, <span class="type">int</span> k)</span> </span>&#123;</span><br><span class="line">        <span class="type">int</span> n = nums.<span class="built_in">size</span>();</span><br><span class="line">        <span class="function">vector&lt;<span class="type">int</span>&gt; <span class="title">res</span><span class="params">(n)</span></span>;</span><br><span class="line">        <span class="keyword">for</span> (<span class="type">int</span> i = <span class="number">0</span>; i &lt; n; i++) &#123;</span><br><span class="line">            res[(i + k) % n] = nums[i];</span><br><span class="line">        &#125;</span><br><span class="line">        nums.<span class="built_in">assign</span>(res.<span class="built_in">begin</span>(), res.<span class="built_in">end</span>());  <span class="comment">// 拷贝数组</span></span><br><span class="line">    &#125;</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
+
+<p>2、</p>
+<h2 id="5-4-除自身以外数组的乘积"><a href="#5-4-除自身以外数组的乘积" class="headerlink" title="5.4 除自身以外数组的乘积"></a>5.4 除自身以外数组的乘积</h2><blockquote>
+<p>题目链接：<a target="_blank" rel="noopener" href="https://leetcode.cn/problems/product-of-array-except-self/description/?envType=study-plan-v2&envId=top-100-liked">238. 除自身以外数组的乘积 - 力扣（LeetCode）</a></p>
+</blockquote>
+<p>思路：</p>
+<p>1、左右乘积列表：分解问题，对于给定索引<code>i</code> ，将左边数字乘积和右边数字乘积相乘得到答案。初始化两个空数组<code>L</code> 和 <code>R</code> ，因为第一个元素左边没有元素，所以 <code>L[0]</code> 初始化为 1，<code>L[i] = L[i-1] * nums[i]</code> 。<code>R</code> 同理，索引 <code>i</code> 处的值为：<code>L[i] * R[i]</code> 。</p>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"></span><br></pre></td></tr></table></figure>
+
+<h2 id="5-5-缺失的第一个正数"><a href="#5-5-缺失的第一个正数" class="headerlink" title="5.5 缺失的第一个正数"></a>5.5 缺失的第一个正数</h2><h1 id=""><a href="#" class="headerlink" title=""></a></h1>
+      
+    </div>
+
+    
+    
+    
+      <footer class="post-footer">
+        <div class="post-eof"></div>
+      </footer>
+  </article>
+  
+  
+  
+
+      
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="http://example.com/2023/05/20/C/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="name" content="wzq11011">
+      <meta itemprop="description" content="">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="CodeCoda">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          
+            <a href="/2023/05/20/C/" class="post-title-link" itemprop="url">C++</a>
+        </h2>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-calendar"></i>
+              </span>
+              <span class="post-meta-item-text">发表于</span>
+              
+
+              <time title="创建时间：2023-05-20 14:32:08 / 修改时间：14:51:52" itemprop="dateCreated datePublished" datetime="2023-05-20T14:32:08+08:00">2023-05-20</time>
+            </span>
+
+          <br>
+            <span class="post-meta-item" title="本文字数">
+              <span class="post-meta-item-icon">
+                <i class="far fa-file-word"></i>
+              </span>
+                <span class="post-meta-item-text">本文字数：</span>
+              <span>259</span>
+            </span>
+            <span class="post-meta-item" title="阅读时长">
+              <span class="post-meta-item-icon">
+                <i class="far fa-clock"></i>
+              </span>
+                <span class="post-meta-item-text">阅读时长 &asymp;</span>
+              <span>1 分钟</span>
+            </span>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+          <h1 id="1-C"><a href="#1-C" class="headerlink" title="1 C++"></a>1 C++</h1><p>基础：变量、条件、循环、字符串、数组、函数、结构体等</p>
+<p>重要：指针和内存管理</p>
+<p>书籍：c++ primer</p>
+<h1 id="2-数据结构与算法"><a href="#2-数据结构与算法" class="headerlink" title="2 数据结构与算法"></a>2 数据结构与算法</h1><p>大话数据结构、剑指offer、leetcode 刷题</p>
+<p>常见的数据结构：字符串、链表、二叉树、堆、栈、队列、哈希等</p>
+<p>常见的算法：查找、排序、动态规划等</p>
+<h1 id="3-操作系统"><a href="#3-操作系统" class="headerlink" title="3 操作系统"></a>3 操作系统</h1><p>进程和线程：原子性、并发、锁等</p>
+<p>内存：内存分布、内存调度</p>
+<h1 id="4-计算机网络"><a href="#4-计算机网络" class="headerlink" title="4 计算机网络"></a>4 计算机网络</h1><p>TCP&#x2F;IP协议栈：ARP协议、IP协议、ICMP协议、TCP协议、UDP协议、DNS协议、HTTP&#x2F;HTTPS协议</p>
+<p>书籍：tcp&#x2F;ip详解</p>
+<h1 id="5-设计模式"><a href="#5-设计模式" class="headerlink" title="5 设计模式"></a>5 设计模式</h1><p>单例、工厂、代理、策略、模板方法</p>
+<p>书籍：《大话设计模式》</p>
+<h1 id="5-实践"><a href="#5-实践" class="headerlink" title="5 实践"></a>5 实践</h1><ul>
+<li><p>Linux操作系统、shell编程、脚本</p>
+</li>
+<li><p>编译、调试工具： GNU官方关于gcc和gdb的官方文档。《跟我一起写makefile》  gdb调试《debugging with gdb》</p>
+</li>
+<li><p>Linux系统编程、多线程编程（线程、资源、信号、同步、互斥、锁等）、 网络编程</p>
+</li>
+</ul>
+<p>书籍：</p>
+<h1 id="else"><a href="#else" class="headerlink" title="else"></a>else</h1><p>b站：程序羊</p>
+
+      
+    </div>
+
+    
+    
+    
+      <footer class="post-footer">
+        <div class="post-eof"></div>
+      </footer>
+  </article>
+  
+  
+  
+
+      
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="http://example.com/2023/04/27/nerf-slam/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="name" content="wzq11011">
+      <meta itemprop="description" content="">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="CodeCoda">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          
+            <a href="/2023/04/27/nerf-slam/" class="post-title-link" itemprop="url">nerf-slam</a>
+        </h2>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-calendar"></i>
+              </span>
+              <span class="post-meta-item-text">发表于</span>
+
+              <time title="创建时间：2023-04-27 16:15:57" itemprop="dateCreated datePublished" datetime="2023-04-27T16:15:57+08:00">2023-04-27</time>
+            </span>
+              <span class="post-meta-item">
+                <span class="post-meta-item-icon">
+                  <i class="far fa-calendar-check"></i>
+                </span>
+                <span class="post-meta-item-text">更新于</span>
+                <time title="修改时间：2023-04-28 03:50:17" itemprop="dateModified" datetime="2023-04-28T03:50:17+08:00">2023-04-28</time>
+              </span>
+
+          <br>
+            <span class="post-meta-item" title="本文字数">
+              <span class="post-meta-item-icon">
+                <i class="far fa-file-word"></i>
+              </span>
+                <span class="post-meta-item-text">本文字数：</span>
+              <span>846</span>
+            </span>
+            <span class="post-meta-item" title="阅读时长">
+              <span class="post-meta-item-icon">
+                <i class="far fa-clock"></i>
+              </span>
+                <span class="post-meta-item-text">阅读时长 &asymp;</span>
+              <span>3 分钟</span>
+            </span>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+          <h1 id="Nerf-SLAM"><a href="#Nerf-SLAM" class="headerlink" title="Nerf-SLAM"></a>Nerf-SLAM</h1><h2 id="1-配置环境"><a href="#1-配置环境" class="headerlink" title="1 配置环境"></a>1 配置环境</h2><h3 id="1-1-Ubuntu-Clash-终端代理"><a href="#1-1-Ubuntu-Clash-终端代理" class="headerlink" title="1.1 Ubuntu Clash 终端代理"></a>1.1 Ubuntu Clash 终端代理</h3><p>clash 选择节点并调整为 global 模式，在 ~&#x2F;.bashrc 中添加以下内容</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">export https_proxy=http://127.0.0.1:7890 </span><br><span class="line">export http_proxy=http://127.0.0.1:7890 </span><br><span class="line">export all_proxy=socks5://127.0.0.1:7890</span><br></pre></td></tr></table></figure>
+
+<p>保存文件，并更新文件</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">source ~/.bashrc</span><br><span class="line"><span class="meta prompt_"></span></span><br><span class="line"><span class="meta prompt_"># </span><span class="language-bash">测试终端是否代理</span></span><br><span class="line">curl cip.cc</span><br><span class="line"><span class="meta prompt_"></span></span><br><span class="line"><span class="meta prompt_"># </span><span class="language-bash">显示香港的节点，则代表成功</span></span><br></pre></td></tr></table></figure>
+
+<h3 id="1-2-Install-nerf-slam"><a href="#1-2-Install-nerf-slam" class="headerlink" title="1.2 Install nerf-slam"></a>1.2 Install nerf-slam</h3><p>项目地址：<a target="_blank" rel="noopener" href="https://github.com/ToniRV/NeRF-SLAM">ToniRV&#x2F;NeRF-SLAM: NeRF-SLAM: Real-Time Dense Monocular SLAM with Neural Radiance Fields. https://arxiv.org/abs/2210.13641 + Sigma-Fusion: Probabilistic Volumetric Fusion for Dense Monocular SLAM https://arxiv.org/abs/2210.01276 (github.com)</a></p>
+<p>使用 git 拉取项目代码</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">git clone https://github.com/ToniRV/NeRF-SLAM.git --recurse-submodules</span><br><span class="line">git submodule update --init --recursive</span><br></pre></td></tr></table></figure>
+
+
+
+<p>使用 conda 创建一个虚拟环境，防止污染其他环境</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta prompt_"># </span><span class="language-bash">创建一个名为 nerf-slam 的虚拟环境</span></span><br><span class="line">conda create -n nerf-slam</span><br><span class="line"><span class="meta prompt_"></span></span><br><span class="line"><span class="meta prompt_"># </span><span class="language-bash">查看所有虚拟环境</span></span><br><span class="line">conda env list</span><br><span class="line"><span class="meta prompt_"></span></span><br><span class="line"><span class="meta prompt_"># </span><span class="language-bash">进入创建的虚拟环境</span></span><br><span class="line">conda activate nerf-slam</span><br><span class="line"><span class="meta prompt_"></span></span><br><span class="line"><span class="meta prompt_"># </span><span class="language-bash">install torch (CUDA 11.3)</span></span><br><span class="line">pip install torch==1.12.1+cu113 torchvision==0.13.1+cu113 --extra-index-url https://download.pytorch.org/whl/cu113</span><br></pre></td></tr></table></figure>
+
+<p>使用 pip 安装依赖</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">pip install -r requirements.txt</span><br><span class="line"><span class="meta prompt_"></span></span><br><span class="line"><span class="meta prompt_"># </span><span class="language-bash">安装第三方库 gtsam 所需的依赖</span></span><br><span class="line">pip install -r ./thirdparty/gtsam/python/requirements.txt</span><br></pre></td></tr></table></figure>
+
+<h3 id="1-3-编译-ngp"><a href="#1-3-编译-ngp" class="headerlink" title="1.3 编译 ngp"></a>1.3 编译 ngp</h3><p>官方教程：（cmake 版本需要大于 3.22）</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">sudo apt install cmake</span><br><span class="line">cmake ./thirdparty/instant-ngp -B build_ngp</span><br><span class="line">cmake --build build_ngp --config RelWithDebInfo -j</span><br></pre></td></tr></table></figure>
+
+<p>实操：</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta prompt_"># </span><span class="language-bash">nerf-slam 环境下，安装最新版 cmake</span></span><br><span class="line">conda install cmake</span><br><span class="line"><span class="meta prompt_"></span></span><br><span class="line"><span class="meta prompt_"># </span><span class="language-bash">NeRF-SLAM 目录下</span></span><br><span class="line">mkdir build_ngp &amp;&amp; cd build_ngp</span><br><span class="line"><span class="meta prompt_"></span></span><br><span class="line"><span class="meta prompt_"># </span><span class="language-bash">编译 ngp</span></span><br><span class="line">cmake ../thirdparty/instant-ngp</span><br><span class="line"><span class="meta prompt_"></span></span><br><span class="line"><span class="meta prompt_"># </span><span class="language-bash">报错 1：randr headers not found;install libxrandr</span></span><br><span class="line">sudo apt install libxrandr-dev</span><br><span class="line"><span class="meta prompt_"></span></span><br><span class="line"><span class="meta prompt_"># </span><span class="language-bash">报错 2：Xinerama headers not found; install libxinerama development package</span></span><br><span class="line">sudo apt install libxinerama-dev</span><br><span class="line"><span class="meta prompt_"></span></span><br><span class="line"><span class="meta prompt_"># </span><span class="language-bash">报错 3：Xcursor headers not found; install libxcursor development package</span></span><br><span class="line">sudo apt install libxcursor-dev</span><br><span class="line"><span class="meta prompt_"></span></span><br><span class="line"><span class="meta prompt_"># </span><span class="language-bash">报错 4：Could NOT find GLEW (missing: GLEW_INCLUDE_DIRS GLEW_LIBRARIES)</span></span><br><span class="line">sudo apt install libglew-dev</span><br><span class="line"><span class="meta prompt_"></span></span><br><span class="line"><span class="meta prompt_"># </span><span class="language-bash">到这一步基本没问题了</span></span><br><span class="line">cd ..</span><br><span class="line">cmake --build build_ngp --config RelWithDebInfo -j</span><br></pre></td></tr></table></figure>
+
+
+
+<p>按以上步骤操作，最后运行demo.py会报 pyngp 错误，使用另一个分支解决</p>
+<p>报错信息：</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">self.ngp = ngp.Testbed(mode, 0) # NGP can only use device = 0</span><br><span class="line">TypeError: __init__(): incompatible constructor arguments. The following argument types are supported:</span><br><span class="line">    1. pyngp.Testbed(arg0: pyngp.TestbedMode)</span><br><span class="line">    2. pyngp.Testbed(arg0: pyngp.TestbedMode, arg1: str, arg2: str)</span><br><span class="line">    3. pyngp.Testbed(arg0: pyngp.TestbedMode, arg1: str, arg2: json)</span><br></pre></td></tr></table></figure>
+
+<p>解决方法：</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta prompt_"># </span><span class="language-bash">删除原 instant-ngp</span></span><br><span class="line">cd thirdparty</span><br><span class="line">rm -rf instant-ngp</span><br><span class="line"><span class="meta prompt_"></span></span><br><span class="line"><span class="meta prompt_"># </span><span class="language-bash">地址：https://github.com/ToniRV/instant-ngp/tree/feature/nerf_slam</span></span><br><span class="line">git clone https://github.com/ToniRV/instant-ngp.git</span><br><span class="line"><span class="meta prompt_"></span></span><br><span class="line"><span class="meta prompt_"># </span><span class="language-bash">安装依赖</span></span><br><span class="line">sudo apt-get install build-essential git python3-dev python3-pip libopenexr-dev libxi-dev libglfw3-dev libglew-dev libomp-dev libxinerama-dev libxcursor-dev</span><br><span class="line"><span class="meta prompt_"></span></span><br><span class="line"><span class="meta prompt_"># </span><span class="language-bash">更新</span></span><br><span class="line">git submodule update --init --recursive</span><br><span class="line"><span class="meta prompt_"></span></span><br><span class="line"><span class="meta prompt_"># </span><span class="language-bash">NeRF-SLAM/</span></span><br><span class="line">mkdir build_ngp &amp;&amp; cd build_ngp</span><br><span class="line"><span class="meta prompt_"></span></span><br><span class="line"><span class="meta prompt_"># </span><span class="language-bash">编译 ngp</span></span><br><span class="line">cmake ../thirdparty/instant-ngp</span><br><span class="line">cd ..</span><br><span class="line">cmake --build build_ngp --config RelWithDebInfo -j</span><br></pre></td></tr></table></figure>
+
+
+
+<h3 id="1-4-编译-gtsam"><a href="#1-4-编译-gtsam" class="headerlink" title="1.4 编译 gtsam"></a>1.4 编译 gtsam</h3><p>官方教程：</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">cmake ./thirdparty/gtsam -DGTSAM_BUILD_PYTHON=1 -B build_gtsam </span><br><span class="line">cmake --build build_gtsam --config RelWithDebInfo -j</span><br><span class="line">cd build_gtsam</span><br><span class="line">make python-install</span><br></pre></td></tr></table></figure>
+
+<p>安装</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">python setup.py install</span><br></pre></td></tr></table></figure>
+
+
+
+<p>实操：</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta prompt_"># </span><span class="language-bash">创建编译目录</span></span><br><span class="line">mkdir build_gtsam &amp;&amp; cd build_gtsam</span><br><span class="line"><span class="meta prompt_"></span></span><br><span class="line"><span class="meta prompt_"># </span><span class="language-bash">编译 gtsam</span></span><br><span class="line">cmake ../thirdparty/gtsam -DGTSAM_BUILD_PYTHON=1</span><br><span class="line"><span class="meta prompt_"></span></span><br><span class="line"><span class="meta prompt_"># </span><span class="language-bash">报错 1：Missing required Boost components &gt;= v1.65, please install/upgrade Boost or configure your search paths.</span></span><br><span class="line"><span class="meta prompt_"># </span><span class="language-bash">解决方式 1： 创建 software，下载 boost 1.65.1 压缩包，解压编译安装</span></span><br><span class="line">cd ..</span><br><span class="line">mkdir software &amp;&amp; cd software</span><br><span class="line">wget https://boostorg.jfrog.io/artifactory/main/release/1.65.1/source/boost_1_65_1.tar.gz</span><br><span class="line"><span class="meta prompt_"></span></span><br><span class="line"><span class="meta prompt_"># </span><span class="language-bash">解决方法 2：直接使用 apt 命令安装</span></span><br><span class="line">conda install boost</span><br><span class="line"></span><br><span class="line">cmake --build build_gtsam --config RelWithDebInfo -j</span><br><span class="line"><span class="meta prompt_"></span></span><br><span class="line"><span class="meta prompt_"># </span><span class="language-bash">报错 ：ModuleNotFoundError: No module named <span class="string">&#x27;pyparsing&#x27;</span></span></span><br><span class="line">conda install pyparsing</span><br><span class="line"><span class="meta prompt_"></span></span><br><span class="line"><span class="meta prompt_"></span></span><br><span class="line"><span class="meta prompt_"># </span><span class="language-bash">gtsam 安装 （gtsam &gt; 4.0.3）</span></span><br><span class="line">cd software</span><br><span class="line">wget https://github.com/borglab/gtsam/archive/refs/tags/4.1.0.tar.gz</span><br><span class="line">tar -xzvf 4.1.0.tar.gz</span><br><span class="line">cd 4.1.0</span><br><span class="line">mkdir build &amp;&amp; cd build</span><br><span class="line"><span class="meta prompt_"></span></span><br><span class="line"><span class="meta prompt_"># </span><span class="language-bash">编译，加入参数无TBB编译</span></span><br><span class="line">cmake .. -DGTSAM_BUILD_PYTHON=1 -DGTSAM_PYTHON_VERSION=3.10.11 -DGTSAM_WITH_TBB=OFF</span><br><span class="line"></span><br><span class="line">make python-intall</span><br><span class="line"></span><br><span class="line">cd build_gtsam</span><br><span class="line">make python-install</span><br></pre></td></tr></table></figure>
+
+
+
+
+
+<h3 id="1-5-下载样本数据集"><a href="#1-5-下载样本数据集" class="headerlink" title="1.5 下载样本数据集"></a>1.5 下载样本数据集</h3><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta prompt_"># </span><span class="language-bash">下载数据集</span></span><br><span class="line">./scripts/download_replica_sample.bash</span><br><span class="line"><span class="meta prompt_"></span></span><br><span class="line"><span class="meta prompt_"># </span><span class="language-bash">执行命令</span></span><br><span class="line">python ./examples/slam_demo.py --dataset_dir=./datasets/Replica/office0 --dataset_name=nerf --buffer=100 --slam --parallel_run --img_stride=2 --fusion=&#x27;nerf&#x27; --multi_gpu --gui</span><br></pre></td></tr></table></figure>
+
+<p>也可以更改参数 <code>--fusion=&#39;sigma&#39;</code> 来运行实现 Sigma-Fusion ，论文地址：<a target="_blank" rel="noopener" href="https://arxiv.org/abs/2210.01276">https://arxiv.org/abs/2210.01276</a></p>
+<h3 id="1-6-监控-GPU"><a href="#1-6-监控-GPU" class="headerlink" title="1.6 监控 GPU"></a>1.6 监控 GPU</h3><h3 id="1-7-X11"><a href="#1-7-X11" class="headerlink" title="1.7 X11"></a>1.7 X11</h3><p>报错信息：</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">03:47:17 ERROR    GLFW error #65544: X11: The DISPLAY environment variable is missing</span><br></pre></td></tr></table></figure>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+      
+    </div>
+
+    
+    
+    
+      <footer class="post-footer">
+        <div class="post-eof"></div>
+      </footer>
+  </article>
+  
+  
+  
+
+      
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="http://example.com/2023/04/26/%E5%B8%B8%E7%94%A8%E5%91%BD%E4%BB%A4%E8%AE%B0%E5%BD%95/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="name" content="wzq11011">
+      <meta itemprop="description" content="">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="CodeCoda">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          
+            <a href="/2023/04/26/%E5%B8%B8%E7%94%A8%E5%91%BD%E4%BB%A4%E8%AE%B0%E5%BD%95/" class="post-title-link" itemprop="url">Common Commands Record</a>
+        </h2>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-calendar"></i>
+              </span>
+              <span class="post-meta-item-text">发表于</span>
+
+              <time title="创建时间：2023-04-26 20:14:54" itemprop="dateCreated datePublished" datetime="2023-04-26T20:14:54+08:00">2023-04-26</time>
+            </span>
+              <span class="post-meta-item">
+                <span class="post-meta-item-icon">
+                  <i class="far fa-calendar-check"></i>
+                </span>
+                <span class="post-meta-item-text">更新于</span>
+                <time title="修改时间：2023-04-28 01:22:32" itemprop="dateModified" datetime="2023-04-28T01:22:32+08:00">2023-04-28</time>
+              </span>
+
+          <br>
+            <span class="post-meta-item" title="本文字数">
+              <span class="post-meta-item-icon">
+                <i class="far fa-file-word"></i>
+              </span>
+                <span class="post-meta-item-text">本文字数：</span>
+              <span>218</span>
+            </span>
+            <span class="post-meta-item" title="阅读时长">
+              <span class="post-meta-item-icon">
+                <i class="far fa-clock"></i>
+              </span>
+                <span class="post-meta-item-text">阅读时长 &asymp;</span>
+              <span>1 分钟</span>
+            </span>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+          <h1 id="1-压缩、解压"><a href="#1-压缩、解压" class="headerlink" title="1 压缩、解压"></a>1 压缩、解压</h1><blockquote>
+<p>tar 参数含义</p>
+</blockquote>
+<ul>
+<li>-c：建立压缩档案</li>
+<li>-x：解压</li>
+<li>-t：查看内容</li>
+<li>-z：有 gzip 属性的</li>
+<li>-j：有 bz2 属性的</li>
+<li>-Z：有 compress 属性的</li>
+<li>-v：显示所有过程</li>
+<li>-f：使用档案名字。该参数为最后一个参数，后面只能接档案名字</li>
+<li>-O：将文件解开到标准输出</li>
+</ul>
+<blockquote>
+<p>常用压缩和解压命令</p>
+</blockquote>
+<p>压缩：</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta prompt_"># </span><span class="language-bash">将目录里所有 jpg 文件打包成 jpg.tar</span></span><br><span class="line">tar -cvf jpg.tar *.jpg</span><br><span class="line"><span class="meta prompt_"></span></span><br><span class="line"><span class="meta prompt_"># </span><span class="language-bash">将目录里所有的 jpg 文件打包成 jpg.tar 后，使用 gzip 压缩，生成 jpg.tar.gz</span></span><br><span class="line">tar -czvf jpg.tar.gz *.jpg</span><br><span class="line"><span class="meta prompt_"></span></span><br><span class="line"><span class="meta prompt_"># </span><span class="language-bash">将目录内指定文件打包为 tar.bz2 形式</span></span><br><span class="line">tar -cjvf jpg.tar.bz2 *.jpg</span><br></pre></td></tr></table></figure>
+
+
+
+<p>解压：</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta prompt_"># </span><span class="language-bash">解压 tar 包</span></span><br><span class="line">tar -xvf fileName.tar</span><br><span class="line"><span class="meta prompt_"></span></span><br><span class="line"><span class="meta prompt_"># </span><span class="language-bash">解压 *.tar.gz 或者 *.tgz</span></span><br><span class="line">tar -xzvf fileName.tar.gz</span><br><span class="line"><span class="meta prompt_"></span></span><br><span class="line"><span class="meta prompt_"># </span><span class="language-bash">解压 tar.bz2</span></span><br><span class="line">tar -xjvf fileName.tar.bz2</span><br><span class="line"><span class="meta prompt_"></span></span><br><span class="line"><span class="meta prompt_"># </span><span class="language-bash">解压 rar</span></span><br><span class="line">unrar e fileName.rar</span><br><span class="line"><span class="meta prompt_"></span></span><br><span class="line"><span class="meta prompt_"># </span><span class="language-bash">解压 zip</span></span><br><span class="line">unzip fileName.zip</span><br></pre></td></tr></table></figure>
+
+
+
+
+
+<p>参考：<a target="_blank" rel="noopener" href="https://blog.csdn.net/imyang2007/article/details/7634470">(126条消息) linux tar 解压命令总结_Young_2717的博客-CSDN博客</a></p>
+
+      
+    </div>
+
+    
+    
+    
+      <footer class="post-footer">
+        <div class="post-eof"></div>
+      </footer>
+  </article>
+  
+  
+  
+
       
   
   
@@ -313,7 +940,7 @@
                   <i class="far fa-calendar-check"></i>
                 </span>
                 <span class="post-meta-item-text">更新于</span>
-                <time title="修改时间：2023-04-26 19:09:21" itemprop="dateModified" datetime="2023-04-26T19:09:21+08:00">2023-04-26</time>
+                <time title="修改时间：2023-04-28 01:22:32" itemprop="dateModified" datetime="2023-04-28T01:22:32+08:00">2023-04-28</time>
               </span>
 
           <br>
@@ -322,7 +949,7 @@
                 <i class="far fa-file-word"></i>
               </span>
                 <span class="post-meta-item-text">本文字数：</span>
-              <span>6</span>
+              <span>11</span>
             </span>
             <span class="post-meta-item" title="阅读时长">
               <span class="post-meta-item-icon">
@@ -341,7 +968,15 @@
     <div class="post-body" itemprop="articleBody">
 
       
-          <h1 id="Hexo-Editor"><a href="#Hexo-Editor" class="headerlink" title="Hexo Editor"></a>Hexo Editor</h1><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sudo apt update</span><br></pre></td></tr></table></figure>
+          <h1 id="1-Urban-Scene-Semantic-Segmentation"><a href="#1-Urban-Scene-Semantic-Segmentation" class="headerlink" title="1 Urban-Scene-Semantic-Segmentation"></a>1 Urban-Scene-Semantic-Segmentation</h1><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sudo apt update</span><br></pre></td></tr></table></figure>
+
+
+
+
+
+
+
+<h1 id="2-COLMAP"><a href="#2-COLMAP" class="headerlink" title="2 COLMAP"></a>2 COLMAP</h1>
       
     </div>
 
@@ -492,7 +1127,7 @@
 <p>如果在同步仓库时出现权限不足的问题，需要将本机公钥添加到 github 中</p>
 <p>问题描述：</p>
 <blockquote>
-<p><a href="mailto:&#x67;&#105;&#116;&#x40;&#x67;&#105;&#x74;&#104;&#117;&#98;&#x2e;&#99;&#111;&#109;">&#x67;&#105;&#116;&#x40;&#x67;&#105;&#x74;&#104;&#117;&#98;&#x2e;&#99;&#111;&#109;</a>: Permission denied (publickey)</p>
+<p><a href="mailto:&#103;&#105;&#x74;&#64;&#x67;&#x69;&#116;&#104;&#117;&#x62;&#46;&#x63;&#111;&#x6d;">&#103;&#105;&#x74;&#64;&#x67;&#x69;&#116;&#104;&#117;&#x62;&#46;&#x63;&#111;&#x6d;</a>: Permission denied (publickey)</p>
 </blockquote>
 <p>解决方法：</p>
 <figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta prompt_"># </span><span class="language-bash">1 验证邮箱与 github 注册邮箱是否一致</span></span><br><span class="line">git config --global --list</span><br><span class="line"><span class="meta prompt_"></span></span><br><span class="line"><span class="meta prompt_"># </span><span class="language-bash">2 设置全局用户名和邮箱</span></span><br><span class="line">git config --global user.name &quot;your name&quot;</span><br><span class="line">git config --global user.email &quot;your email&quot;</span><br><span class="line"><span class="meta prompt_"></span></span><br><span class="line"><span class="meta prompt_"># </span><span class="language-bash">3 生成密钥</span></span><br><span class="line">ssh-keygen -t rsa -C &quot;your email&quot;</span><br><span class="line"><span class="meta prompt_"></span></span><br><span class="line"><span class="meta prompt_"># </span><span class="language-bash">4 将 rsa.pub 公钥内容添加到 github</span> </span><br><span class="line"><span class="meta prompt_"></span></span><br><span class="line"><span class="meta prompt_"># </span><span class="language-bash">5 测试</span></span><br><span class="line">ssh -T git@github.com</span><br></pre></td></tr></table></figure>
@@ -655,7 +1290,7 @@
       <div class="site-state-item site-state-posts">
           <a href="/archives/">
         
-          <span class="site-state-item-count">3</span>
+          <span class="site-state-item-count">7</span>
           <span class="site-state-item-name">日志</span>
         </a>
       </div>
@@ -668,7 +1303,7 @@
       <div class="site-state-item site-state-tags">
             <a href="/tags/">
           
-        <span class="site-state-item-count">2</span>
+        <span class="site-state-item-count">5</span>
         <span class="site-state-item-name">标签</span></a>
       </div>
   </nav>
@@ -701,8 +1336,8 @@
 
 <div class="copyright">
   
-  &copy; 
-  <span itemprop="copyrightYear">2023</span>
+  &copy; 2023 – 
+  <span itemprop="copyrightYear">2024</span>
   <span class="with-love">
     <i class="heart"></i>
   </span>
@@ -711,12 +1346,12 @@
     <span class="post-meta-item-icon">
       <i class="fa fa-chart-area"></i>
     </span>
-    <span title="站点总字数">2k</span>
+    <span title="站点总字数">7k</span>
     <span class="post-meta-divider">|</span>
     <span class="post-meta-item-icon">
       <i class="fa fa-coffee"></i>
     </span>
-    <span title="站点阅读时长">7 分钟</span>
+    <span title="站点阅读时长">27 分钟</span>
 </div>
   <div class="powered-by">由 <a href="https://hexo.io/" class="theme-link" rel="noopener" target="_blank">Hexo</a> & <a href="https://muse.theme-next.org/" class="theme-link" rel="noopener" target="_blank">NexT.Muse</a> 强力驱动
   </div>
