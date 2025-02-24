@@ -52,7 +52,7 @@ language_switcher: false
 
 footer:
   # Specify the date when the site was setup. If not defined, current year will be used.
-  since: 2023
+  since: 2021
 
   # Icon between year and copyright info.
   icon:
@@ -97,31 +97,32 @@ creative_commons:
 # ---------------------------------------------------------------
 
 # Schemes
-# scheme: Muse
+scheme: Muse
 # scheme: Mist
-scheme: Pisces
+# scheme: Pisces
 # scheme: Gemini
 
 # Dark Mode
-darkmode: false
+darkmode: auto  # false true auto
 
 # Darkmode JS
 # For more information: https://github.com/rqh656418510/hexo-next-darkmode, https://github.com/sandoche/Darkmode.js
-darkmode_js:
-  enable: true
-  bottom: '32px' # default: '32px'
-  right: '32px' # default: '32px'
-  left: 'unset' # default: 'unset'
-  time: '0.5s' # default: '0.3s'
-  mixColor: 'transparent' # default: '#fff'
-  backgroundColor: 'transparent' # default: '#fff'
-  buttonColorDark: '#100f2c' # default: '#100f2c'
-  buttonColorLight: '#fff' # default: '#fff'
-  isActivated: false # default false
-  saveInCookies: true # default: true
-  label: '🌓' # default: ''
-  autoMatchOsTheme: true # default: true
-  libUrl: # Set custom library cdn url for Darkmode.js
+
+# darkmode_js:
+#   enable: true
+#   bottom: '32px' # default: '32px'
+#   right: '32px' # default: '32px'
+#   left: 'unset' # default: 'unset'
+#   time: '0.5s' # default: '0.3s'
+#   mixColor: 'transparent' # default: '#fff'
+#   backgroundColor: 'transparent' # default: '#fff'
+#   buttonColorDark: '#100f2c' # default: '#100f2c'
+#   buttonColorLight: '#fff' # default: '#fff'
+#   isActivated: false # default false
+#   saveInCookies: true # default: true
+#   label: '🌓' # default: ''
+#   autoMatchOsTheme: true # default: true
+#   libUrl: # Set custom library cdn url for Darkmode.js
 
 
 # ---------------------------------------------------------------
@@ -177,7 +178,7 @@ sidebar:
   # Sidebar offset from top menubar in pixels (only for Pisces | Gemini).
   offset: 12
   # Enable sidebar on narrow view (only for Muse | Mist).
-  onmobile: false
+  onmobile: true
 
 # Sidebar Avatar
 avatar:
@@ -395,7 +396,7 @@ back2top:
 reading_progress:
   enable: false
   # Available values: top | bottom
-  position: top
+  position: bottom  # top
   color: "#37c6c0"
   height: 3px
 
@@ -587,7 +588,7 @@ comments:
   style: tabs
   # Choose a comment system to be displayed by default.
   # Available values: changyan | disqus | disqusjs | gitalk | livere | valine
-  active: gitalk
+  active: valine
   # Setting `true` means remembering the comment system selected by the visitor.
   storage: true
   # Lazyload all comment systems.
@@ -631,17 +632,17 @@ changyan:
 # Valine
 # For more information: https://valine.js.org, https://github.com/xCss/Valine
 valine:
-  enable: false
-  appid: # Your leancloud application appid
-  appkey: # Your leancloud application appkey
+  enable: true
+  appid: XRWMKmXAiaSen8N3hqHKU6l5-gzGzoHsz # Your leancloud application appid
+  appkey: jPFHxv1CzfFP5ui86wNqTqt1 # Your leancloud application appkey
   notify: false # Mail notifier
   verify: false # Verification code
   placeholder: Just go go # Comment box placeholder
   avatar: mm # Gravatar style
-  guest_info: nick,mail,link # Custom comment header
+  guest_info: nick,mail # Custom comment header  nick,mail,link
   pageSize: 10 # Pagination size
-  language: # Language, available values: en, zh-cn
-  visitor: false # Article reading statistic
+  language: zh-cn # Language, available values: en, zh-cn
+  visitor: true # Article reading statistic
   comment_count: true # If false, comment count will only be displayed in post page, not in home page
   recordIP: false # Whether to record the commenter IP
   serverURLs: # When the custom domain name is enabled, fill it in here (it will be detected automatically by default, no need to fill in)
@@ -654,7 +655,7 @@ livere_uid: # <your_uid>
 # Gitalk
 # For more information: https://gitalk.github.io, https://github.com/gitalk/gitalk
 gitalk:
-  enable: true
+  enable: false  # false
   github_id: wzq11011
   repo: wzq11011.github.io
   client_id: 27abfc7d1c91447cc519
@@ -710,9 +711,9 @@ cnzz_siteid:
 # AppID and AppKey are recommended to be the same as valine's for counter compatibility.
 # Do not enable both `valine.visitor` and `leancloud_visitors`.
 leancloud_visitors:
-  enable: false
-  app_id: # <your app id>
-  app_key: # <your app key>
+  enable: true
+  app_id: XRWMKmXAiaSen8N3hqHKU6l5-gzGzoHsz # <your app id>
+  app_key: jPFHxv1CzfFP5ui86wNqTqt1 # <your app key>
   # Required for apps from CN region
   server_url: # <your server url>
   # Dependencies: https://github.com/theme-next/hexo-leancloud-counter-security
@@ -732,7 +733,7 @@ firestore:
 # Show Views / Visitors of the website / page with busuanzi.
 # Get more information on http://ibruce.info/2015/04/04/busuanzi
 busuanzi_count:
-  enable: false
+  enable: true
   total_visitors: true
   total_visitors_icon: fa fa-user
   total_views: true
