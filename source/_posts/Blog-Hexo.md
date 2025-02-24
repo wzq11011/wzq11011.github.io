@@ -1,15 +1,18 @@
 ---
 title: Blog Hexo
 date: 2023-04-25 16:03:43
+series: 博客搭建
 tags: 
 - Hexo
 - Blog
 categories: 
   - Hexo
   - Blog
-Description:记录使用 hexo + github pages 搭建个人博客的步骤
+description: 记录使用 hexo + github pages 搭建个人博客的步骤
 ---
 
+记录使用 hexo + github pages 搭建个人博客的步骤
+<!--more-->
 
 
 # 1 Hexo 搭建

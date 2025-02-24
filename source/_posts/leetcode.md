@@ -2,7 +2,13 @@
 title: leetcode
 date: 2023-07-13 15:43:58
 tags: leetcode
-Description: 刷题记录，主要参考了代码随想录
+description: 刷题记录，主要参考了代码随想录
+
+# password: 12345
+abstract: 这里有东西被加密了，需要输入密码查看哦。
+message: 输入密码访问...
+wrong_pass_message: 错误，不支持访问。
+wrong_hash_message: 抱歉，这个文章不能被纠正，不过您还是能看看解密后的内容。
 ---
 
 # 代码随想录

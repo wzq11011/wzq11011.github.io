@@ -1,3 +1,22 @@
+
+## 主题
+
+* 更新主题
+```bash
+# next8
+git clone https://github.com/next-theme/hexo-theme-next.git next8
+
+# butterfly
+git clone -b master https://github.com/jerryc127/hexo-theme-butterfly.git themes/butterfly
+npm install hexo-renderer-pug hexo-renderer-stylus
+
+# matery
+git clone https://github.com/blinkfox/hexo-theme-matery.git themes/matery
+
+hexo clean && hexo g && hexo s
+```
+
+
 ```bash
 # 更换主题 Fluid ： https://hexo.fluid-dev.com/docs/start/#%E8%8E%B7%E5%8F%96%E6%9C%80%E6%96%B0%E7%89%88%E6%9C%AC
 

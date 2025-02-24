@@ -2,7 +2,7 @@
 title: sketch recognition
 date: 2023-06-02 15:25:01
 tags:
-Description: sketch recognition
+description: sketch recognition
 ---
 
 # 1 数据集处理

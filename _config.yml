@@ -7,7 +7,7 @@ title: CodeCoda
 subtitle: 宝剑锋从磨砺出，梅花香自苦寒来
 description: ''
 keywords:
-author: wzq11011
+author: Smile2u  # wzq11011
 language: zh-CN
 timezone: ''
 
@@ -44,7 +44,7 @@ post_asset_folder: false
 relative_link: false
 future: true
 highlight:
-  enable: true
+  enable: true  # true
   line_number: true
   auto_detect: true
   tab_replace: ''
@@ -114,7 +114,7 @@ ignore:
 # Extensions
 ## Plugins: https://hexo.io/plugins/
 ## Themes: https://hexo.io/themes/
-theme: fluid  # next
+theme: next  # next fluid next8 butterfly matery
 
 # Deployment
 ## Docs: https://hexo.io/docs/one-command-deployment

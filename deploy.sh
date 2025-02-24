@@ -6,6 +6,9 @@ hexo clean
 # 生成博客文件
 hexo g
 
+# 本地部署
+# hexo server
+
 # 部署到 github
 hexo d
 
