@@ -42,7 +42,7 @@
 
   
 
-  <link rel="stylesheet" href="https://cdn.staticfile.org/lxgw-wenkai-screen-webfont/1.6.0/lxgwwenkaiscreen.css">
+  <link rel="stylesheet" href="https://cdn.staticfile.org/lxgw-wenkai-screen-webfont/1.6.0/lxgwwenkaiscreen.css"><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css">
 <style>.darkmode--activated{--body-bg-color:#282828;--content-bg-color:#333;--card-bg-color:#555;--text-color:#ccc;--blockquote-color:#bbb;--link-color:#ccc;--link-hover-color:#eee;--brand-color:#ddd;--brand-hover-color:#ddd;--table-row-odd-bg-color:#282828;--table-row-hover-bg-color:#363636;--menu-item-bg-color:#555;--btn-default-bg:#222;--btn-default-color:#ccc;--btn-default-border-color:#555;--btn-default-hover-bg:#666;--btn-default-hover-color:#ccc;--btn-default-hover-border-color:#666;--highlight-background:#282b2e;--highlight-foreground:#a9b7c6;--highlight-gutter-background:#34393d;--highlight-gutter-foreground:#9ca9b6}.darkmode--activated img{opacity:.75}.darkmode--activated img:hover{opacity:.9}.darkmode--activated code{color:#69dbdc;background:0 0}button.darkmode-toggle{z-index:9999}.darkmode-ignore,img{display:flex!important}.beian img{display:inline-block!important}</style></head>
 <body>
 
@@ -58,7 +58,7 @@
 <nav class="menu dis-select"></nav>
 </div>
 <div class="widgets">
-<widget class="widget-wrapper post-list"><div class="widget-header dis-select"><span class="name">最近更新</span></div><div class="widget-body fs14"><a class="item title" href="/2024/04/17/hot%20100/"><span class="title">hot 100</span></a><a class="item title" href="/2023/07/13/leetcode/"><span class="title">leetcode</span></a><a class="item title" href="/2023/04/27/nerf-slam/"><span class="title">nerf-slam</span></a><a class="item title" href="/2023/06/02/sketch-recognition/"><span class="title">sketch recognition</span></a><a class="item title" href="/2023/04/26/%E5%B8%B8%E7%94%A8%E5%91%BD%E4%BB%A4%E8%AE%B0%E5%BD%95/"><span class="title">常用命令记录</span></a><a class="item title" href="/2023/04/25/3D-Reconstruction/"><span class="title">3D Reconstruction</span></a><a class="item title" href="/2023/04/25/Blog-Hexo/"><span class="title">Blog Hexo</span></a><a class="item title" href="/2023/05/20/C/"><span class="title">C++</span></a><a class="item title" href="/2023/04/25/Voldor/"><span class="title">voldor-imu</span></a><a class="item title" href="/2025/02/25/hello-world/"><span class="title">Hello World</span></a></div></widget>
+<widget class="widget-wrapper post-list"><div class="widget-header dis-select"><span class="name">最近更新</span></div><div class="widget-body fs14"><a class="item title" href="/2025/02/25/hello-world/"><span class="title">Hello World</span></a><a class="item title" href="/2024/04/17/hot%20100/"><span class="title">hot 100</span></a><a class="item title" href="/2023/07/13/leetcode/"><span class="title">leetcode</span></a><a class="item title" href="/2023/04/27/nerf-slam/"><span class="title">nerf-slam</span></a><a class="item title" href="/2023/06/02/sketch-recognition/"><span class="title">sketch recognition</span></a><a class="item title" href="/2023/04/26/%E5%B8%B8%E7%94%A8%E5%91%BD%E4%BB%A4%E8%AE%B0%E5%BD%95/"><span class="title">常用命令记录</span></a><a class="item title" href="/2023/04/25/3D-Reconstruction/"><span class="title">3D Reconstruction</span></a><a class="item title" href="/2023/04/25/Blog-Hexo/"><span class="title">Blog Hexo</span></a><a class="item title" href="/2023/05/20/C/"><span class="title">C++</span></a><a class="item title" href="/2023/04/25/Voldor/"><span class="title">voldor-imu</span></a></div></widget>
 </div>
 
 </div></aside><div class="l_main" id="main">
@@ -105,8 +105,8 @@
 <footer class="page-footer footnote"><hr><div class="text"><center>
   <span>
   © 2024
-  <a style="font-weight: bold;  auto;" target="_blank" rel="noopener" href="https://github.com/FelicxFoster">Felicx</a>
-  使用 <a style="font-weight: bold;  auto;" target="_blank" rel="noopener" href="https://github.com/FelicxFoster/hexo-theme-stellar">Stellar</a>
+  <a style="font-weight: bold;  auto;" target="_blank" rel="noopener">smile2u</a>
+  使用 <a style="font-weight: bold;  auto;" target="_blank" rel="noopener" href="https://github.com/xaoxuu/hexo-theme-stellar">Stellar</a>
   创建
   </span>
   <br>
@@ -139,7 +139,7 @@
         var todayMinute = today.getMinutes();
         var todaySecond = today.getSeconds();
 
-        var t1 = Date.UTC(2018, 9, 12, 0, 0, 0); // UTC时间，月份从0开始
+        var t1 = Date.UTC(2021, 9, 12, 0, 0, 0); // UTC时间，月份从0开始
         var t2 = Date.UTC(todayYear, todayMonth, todayDate, todayHour, todayMinute, todaySecond);
         var diff = t2 - t1;
 
@@ -150,7 +150,7 @@
         var diffSeconds = Math.floor((diff - (diffYears * 365 + diffDays) * days - diffHours * hours - diffMinutes * minutes) / seconds);
 
         // 更新显示时间的span元素内容
-        runtime_span.innerHTML = "🦉营业：" + diffYears + " 年 " + diffDays + " 天 " + diffHours + " 小时 " + diffMinutes + " 分钟 " + diffSeconds + " 秒🦉";
+        runtime_span.innerHTML = "存活：" + diffYears + " 年 " + diffDays + " 天 " + diffHours + " 小时 " + diffMinutes + " 分钟 " + diffSeconds + " 秒";
       }
 
       show_runtime(); // 初次调用函数以启动定时器

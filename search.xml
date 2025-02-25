@@ -80,7 +80,7 @@
 <p>如果在同步仓库时出现权限不足的问题，需要将本机公钥添加到 github 中</p>
 <p>问题描述：</p>
 <blockquote>
-<p><a href="mailto:&#103;&#105;&#116;&#x40;&#x67;&#105;&#116;&#x68;&#117;&#98;&#46;&#x63;&#x6f;&#x6d;">&#103;&#105;&#116;&#x40;&#x67;&#105;&#116;&#x68;&#117;&#98;&#46;&#x63;&#x6f;&#x6d;</a>: Permission denied (publickey)</p>
+<p><a href="mailto:&#103;&#105;&#116;&#x40;&#103;&#105;&#116;&#x68;&#x75;&#x62;&#x2e;&#99;&#111;&#109;">&#103;&#105;&#116;&#x40;&#103;&#105;&#116;&#x68;&#x75;&#x62;&#x2e;&#99;&#111;&#109;</a>: Permission denied (publickey)</p>
 </blockquote>
 <p>解决方法：</p>
 <figure class="highlight shell"><table><tr><td class="code"><pre><span class="line"><span class="meta prompt_"># </span><span class="language-bash">1 验证邮箱与 github 注册邮箱是否一致</span></span><br><span class="line">git config --global --list</span><br><span class="line"><span class="meta prompt_"></span></span><br><span class="line"><span class="meta prompt_"># </span><span class="language-bash">2 设置全局用户名和邮箱</span></span><br><span class="line">git config --global user.name &quot;your name&quot;</span><br><span class="line">git config --global user.email &quot;your email&quot;</span><br><span class="line"><span class="meta prompt_"></span></span><br><span class="line"><span class="meta prompt_"># </span><span class="language-bash">3 生成密钥</span></span><br><span class="line">ssh-keygen -t rsa -C &quot;your email&quot;</span><br><span class="line"><span class="meta prompt_"></span></span><br><span class="line"><span class="meta prompt_"># </span><span class="language-bash">4 将 rsa.pub 公钥内容添加到 github</span> </span><br><span class="line"><span class="meta prompt_"></span></span><br><span class="line"><span class="meta prompt_"># </span><span class="language-bash">5 测试</span></span><br><span class="line">ssh -T git@github.com</span><br></pre></td></tr></table></figure>
@@ -335,6 +335,103 @@
 <h3 id="Deploy-to-remote-sites"><a href="#Deploy-to-remote-sites" class="headerlink" title="Deploy to remote sites"></a>Deploy to remote sites</h3><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">$ hexo deploy</span><br></pre></td></tr></table></figure>
 
 <p>More info: <a href="https://hexo.io/docs/one-command-deployment.html">Deployment</a></p>
+<h2 id="Stellar"><a href="#Stellar" class="headerlink" title="Stellar"></a>Stellar</h2><p>stellar: <a href="https://xaoxuu.com/wiki/stellar/tag-plugins/express/">stellar</a></p>
+<div class="tag-plugin colorful okr" >
+  <div class="okr-item o" id="okr-o1">
+    <div class="okr-left">
+      <span class="title">O1</span>
+    </div>
+    <div class="okr-center">
+      <span class="title">2024年的小目标：完成 Volantis 6.0 并发布上线</span>
+      <div class="note"><p>来自2025年的复盘：已《基本》实现目标 <span class="tag-plugin emoji"><img no-lazy="" class="inline" src="https://gcore.jsdelivr.net/gh/cdn-x/emoji/tieba/滑稽.png"/></span></p></div>
+    </div>
+    <div class="okr-right colorful" color="blue">
+      <div class="labels">
+        <span class="status label">正常</span>
+        <span class="status percent">44%</span>
+      </div>
+      <div class="progress">
+        <div class="fill" style="width:44%;"></div>
+      </div>
+    </div>
+  </div>
+  
+  <div class="okr-item kr" id="okr-kr1">
+    <div class="okr-left">
+      <span class="title">KR1</span>
+    </div>
+    <div class="okr-center">
+      <span class="title">重构 tag-plugins 和 wiki 系统</span>
+      <div class="note"><ul><li>当 <mark class="tag-plugin colorful mark" color="yellow">KR</mark> 进度为 100% 时，标签默认显示为 <mark class="tag-plugin colorful mark" color="green">已完成</mark></li><li>当 <mark class="tag-plugin colorful mark" color="yellow">KR</mark> 未设置进度时，默认为 <mark class="tag-plugin colorful mark" color="yellow">0%</mark></li><li>当 <mark class="tag-plugin colorful mark" color="yellow">O</mark> 未设置进度时，则显示所有 <mark class="tag-plugin colorful mark" color="yellow">KR</mark> 进度平均值</li></ul></div>
+    </div>
+    <div class="okr-right colorful" color="green">
+      <div class="labels">
+        <span class="status label">已完成</span>
+        <span class="status percent">100%</span>
+      </div>
+      <div class="progress">
+        <div class="fill" style="width:100%;"></div>
+      </div>
+    </div>
+  </div>
+  
+  <div class="okr-item kr" id="okr-kr2">
+    <div class="okr-left">
+      <span class="title">KR2</span>
+    </div>
+    <div class="okr-center">
+      <span class="title">完成主要页面设计稿</span>
+      <div class="note"><div class="tag-plugin tabs" align="left"id="tab_1"><div class="nav-tabs"><div class="tab active"><a href="#tab_1-1">小提示1</a></div><div class="tab"><a href="#tab_1-2">小提示2</a></div></div><div class="tab-content"><div class="tab-pane active" id="tab_1-1"><p>您可以在 _config.yml 文件中修改标签的颜色和文案</p></div><div class="tab-pane" id="tab_1-2"><p>您可以在 _config.yml 文件中增加任意的标签配置</p></div></div></div></div>
+    </div>
+    <div class="okr-right colorful" color="orange">
+      <div class="labels">
+        <span class="status label">延期</span>
+        <span class="status percent">90%</span>
+      </div>
+      <div class="progress">
+        <div class="fill" style="width:90%;"></div>
+      </div>
+    </div>
+  </div>
+  
+  <div class="okr-item kr" id="okr-kr3">
+    <div class="okr-left">
+      <span class="title">KR3</span>
+    </div>
+    <div class="okr-center">
+      <span class="title">完成前置准备工作（如果你知道答案，请在留言区帮帮我！🥹）</span>
+      <div class="note"><div class="tag-plugin colorful checkbox" ><input type="checkbox"/><span>在咸水和海滩之间找一亩地</span></div><div class="tag-plugin colorful checkbox" ><input type="checkbox"/><span>求出圆周率后15位</span></div><div class="tag-plugin colorful checkbox" ><input type="checkbox"/><span>找出宇宙的终极逻辑</span></div><div class="tag-plugin colorful checkbox" ><input type="checkbox"/><span>去地狱里走两步</span></div></div>
+    </div>
+    <div class="okr-right colorful" color="red">
+      <div class="labels">
+        <span class="status label">未完成</span>
+        <span class="status percent">-12%</span>
+      </div>
+      <div class="progress">
+        <div class="fill" style="width:-12%;"></div>
+      </div>
+    </div>
+  </div>
+  
+  <div class="okr-item kr" id="okr-kr-4">
+    <div class="okr-left">
+      <span class="title">KR-4</span>
+    </div>
+    <div class="okr-center">
+      <span class="title">开发、测试和发布</span>
+      <div class="note"><div class="tag-plugin image"><div class="image-bg"><img src="/assets/wiki/stellar/icon.svg" alt="支持嵌套插入图片等其它简单组件" style="height:64px;"/></div><div class="image-meta"><span class="image-caption center">支持嵌套插入图片等其它简单组件</span></div></div></div>
+    </div>
+    <div class="okr-right colorful" color="yellow">
+      <div class="labels">
+        <span class="status label">风险</span>
+        <span class="status percent">0%</span>
+      </div>
+      <div class="progress">
+        <div class="fill" style="width:0%;"></div>
+      </div>
+    </div>
+  </div>
+  </div>
 ]]></content>
   </entry>
   <entry>
