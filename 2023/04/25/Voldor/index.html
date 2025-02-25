@@ -1,0 +1,753 @@
+
+<!DOCTYPE html><html lang="zh-CN">
+
+<head>
+  <meta charset="utf-8">
+  <meta name="hexo-theme" content="https://github.com/xaoxuu/hexo-theme-stellar/tree/1.29.1" theme-name="Stellar" theme-version="1.29.1">
+  
+  <meta name="generator" content="Hexo 6.3.0">
+  <meta http-equiv='x-dns-prefetch-control' content='on' />
+  
+  <meta name="renderer" content="webkit">
+  <meta name="force-rendering" content="webkit">
+  <meta http-equiv="X-UA-Compatible" content="IE=Edge,chrome=1">
+  <meta name="HandheldFriendly" content="True" >
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  <meta name="theme-color" media="(prefers-color-scheme: dark)" content="#000">
+  <meta name="theme-color" content="#f9fafb">
+  
+  <title>voldor-imu - Smile2u's Memo</title>
+
+  
+    <meta name="description" content="voldor 环境配置、ai-imu 论文精读">
+<meta property="og:type" content="article">
+<meta property="og:title" content="voldor-imu">
+<meta property="og:url" content="http://example.com/2023/04/25/Voldor/index.html">
+<meta property="og:site_name" content="Smile2u&#39;s Memo">
+<meta property="og:description" content="voldor 环境配置、ai-imu 论文精读">
+<meta property="og:locale" content="zh_CN">
+<meta property="og:image" content="http://example.com/Voldor.assets/(null)-20230518214845352.(null)">
+<meta property="article:published_time" content="2023-04-25T09:56:33.000Z">
+<meta property="article:modified_time" content="2025-02-25T15:57:55.262Z">
+<meta property="article:author" content="Smile2u">
+<meta property="article:tag" content="voldor">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="http://example.com/Voldor.assets/(null)-20230518214845352.(null)">
+  
+  
+  
+  <meta name="keywords" content="voldor">
+
+  <!-- feed -->
+  
+
+  <link rel="stylesheet" href="/css/main.css?v=1.29.1">
+
+
+  
+
+  
+
+  <link rel="stylesheet" href="https://cdn.staticfile.org/lxgw-wenkai-screen-webfont/1.6.0/lxgwwenkaiscreen.css">
+<style>.darkmode--activated{--body-bg-color:#282828;--content-bg-color:#333;--card-bg-color:#555;--text-color:#ccc;--blockquote-color:#bbb;--link-color:#ccc;--link-hover-color:#eee;--brand-color:#ddd;--brand-hover-color:#ddd;--table-row-odd-bg-color:#282828;--table-row-hover-bg-color:#363636;--menu-item-bg-color:#555;--btn-default-bg:#222;--btn-default-color:#ccc;--btn-default-border-color:#555;--btn-default-hover-bg:#666;--btn-default-hover-color:#ccc;--btn-default-hover-border-color:#666;--highlight-background:#282b2e;--highlight-foreground:#a9b7c6;--highlight-gutter-background:#34393d;--highlight-gutter-foreground:#9ca9b6}.darkmode--activated img{opacity:.75}.darkmode--activated img:hover{opacity:.9}.darkmode--activated code{color:#69dbdc;background:0 0}button.darkmode-toggle{z-index:9999}.darkmode-ignore,img{display:flex!important}.beian img{display:inline-block!important}</style></head>
+<body>
+
+<div class="l_body s:aa content tech" id="start" layout="post" ><aside class="l_left"><div class="leftbar-container">
+
+
+<header class="header"><div class="logo-wrap"><a class="avatar" href="/about/"><div class="bg" style="opacity:0;background-image:url(https://gcore.jsdelivr.net/gh/cdn-x/placeholder@1.0.12/avatar/round/rainbow64@3x.webp);"></div><img no-lazy class="avatar" src="undefined" onerror="javascript:this.classList.add('error');this.src='https://gcore.jsdelivr.net/gh/cdn-x/placeholder@1.0.12/image/2659360.svg';"></a><a class="title" href="/"><div class="main" ff="title">Smile2u's Memo</div></a></div></header>
+
+<div class="nav-area">
+<div class="search-wrapper" id="search-wrapper"><form class="search-form"><a class="search-button" onclick="document.getElementById(&quot;search-input&quot;).focus();"><svg t="1705074644177" viewBox="0 0 1025 1024" version="1.1" xmlns="http://www.w3.org/2000/svg" p-id="1560" width="200" height="200"><path d="M1008.839137 935.96571L792.364903 719.491476a56.783488 56.783488 0 0 0-80.152866 0 358.53545 358.53545 0 1 1 100.857314-335.166073 362.840335 362.840335 0 0 1-3.689902 170.145468 51.248635 51.248635 0 1 0 99.217358 26.444296 462.057693 462.057693 0 1 0-158.255785 242.303546l185.930047 185.725053a51.248635 51.248635 0 0 0 72.568068 0 51.248635 51.248635 0 0 0 0-72.978056z" p-id="1561"></path><path d="M616.479587 615.969233a50.428657 50.428657 0 0 0-61.498362-5.534852 174.655348 174.655348 0 0 1-177.525271 3.484907 49.403684 49.403684 0 0 0-58.833433 6.76482l-3.074918 2.869923a49.403684 49.403684 0 0 0 8.609771 78.10292 277.767601 277.767601 0 0 0 286.992355-5.739847 49.403684 49.403684 0 0 0 8.404776-76.667958z" p-id="1562"></path></svg></a><input type="text" class="search-input" id="search-input" placeholder="站内搜索"></form><div id="search-result"></div><div class="search-no-result">没有找到内容！</div></div>
+
+
+<nav class="menu dis-select"></nav>
+</div>
+<div class="widgets">
+
+
+<widget class="widget-wrapper post-list"><div class="widget-header dis-select"><span class="name">最近更新</span></div><div class="widget-body fs14"><a class="item title" href="/2023/07/13/leetcode/"><span class="title">leetcode</span></a><a class="item title" href="/2023/04/27/nerf-slam/"><span class="title">nerf-slam</span></a><a class="item title" href="/2023/06/02/sketch-recognition/"><span class="title">sketch recognition</span></a><a class="item title" href="/2023/04/26/%E5%B8%B8%E7%94%A8%E5%91%BD%E4%BB%A4%E8%AE%B0%E5%BD%95/"><span class="title">常用命令记录</span></a><a class="item title" href="/2023/04/25/3D-Reconstruction/"><span class="title">3D Reconstruction</span></a><a class="item title" href="/2023/04/25/Blog-Hexo/"><span class="title">Blog Hexo</span></a><a class="item title" href="/2023/05/20/C/"><span class="title">C++</span></a><a class="item title" href="/2023/04/25/Voldor/"><span class="title">voldor-imu</span></a><a class="item title" href="/2025/02/25/hello-world/"><span class="title">Hello World</span></a><a class="item title" href="/2024/04/17/hot%20100/"><span class="title">hot 100</span></a></div></widget>
+</div>
+
+</div></aside><div class="l_main" id="main">
+
+
+
+
+
+<div class="article banner top">
+  <div class="content">
+    <div class="top bread-nav footnote"><div class="left"><div class="flex-row" id="breadcrumb"><a class="cap breadcrumb" href="/">主页</a>
+<span class="sep"></span><a class="cap breadcrumb" href="/">文章</a></div>
+<div class="flex-row" id="post-meta"><span class="text created">发布于：<time datetime="2023-04-25T09:56:33.000Z">2023-04-25</time></span><span class="sep updated"></span><span class="text updated">更新于：<time datetime="2025-02-25T15:57:55.262Z">2025-02-25</time></span></div></div></div>
+    
+    <div class="bottom only-title">
+      
+      <div class="text-area">
+        <h1 class="text title"><span>voldor-imu</span></h1>
+        
+      </div>
+    </div>
+    
+  </div>
+  </div><article class="md-text content"><p>VOLDOR-SLAM: For the times when feature-based or direct methods are not good enough (ICRA 2021)</p>
+<h1 id="1-环境配置"><a href="#1-环境配置" class="headerlink" title="1 环境配置"></a>1 环境配置</h1><h2 id="1-1-VOLDOR-SLAM"><a href="#1-1-VOLDOR-SLAM" class="headerlink" title="1.1 VOLDOR-SLAM"></a>1.1 VOLDOR-SLAM</h2><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta prompt_"># </span><span class="language-bash"><span class="built_in">env</span></span></span><br><span class="line">conda create -n voldor python==3.6.9</span><br><span class="line"><span class="meta prompt_"></span></span><br><span class="line"><span class="meta prompt_"># </span><span class="language-bash">activate</span></span><br><span class="line">conda activate voldor</span><br><span class="line"><span class="meta prompt_"></span></span><br><span class="line"><span class="meta prompt_"># </span><span class="language-bash">install the python dependencies</span></span><br><span class="line">cd slam_py/install</span><br><span class="line">pip install -r ./requirements.txt</span><br><span class="line"><span class="meta prompt_"></span></span><br><span class="line"><span class="meta prompt_"># </span><span class="language-bash">install OpenCV</span></span><br><span class="line">sudo apt install libopencv-dev</span><br><span class="line"><span class="meta prompt_"></span></span><br><span class="line"><span class="meta prompt_"># </span><span class="language-bash">PyOpenGL</span></span><br><span class="line">sudo apt install python-opengl</span><br><span class="line"><span class="meta prompt_"></span></span><br><span class="line"><span class="meta prompt_"># </span><span class="language-bash">Ceres: http://ceres-solver.org/installation.html</span></span><br><span class="line">wget https://github.com/ceres-solver/ceres-solver/archive/refs/tags/2.1.0.tar.gz</span><br><span class="line">tar -zxvf 2.1.0.tar.gz</span><br><span class="line">mv ceres-solver-2.1.0 ceres-solver</span><br><span class="line">cd ceres-solver</span><br><span class="line">mkdir build &amp;&amp; cd build</span><br><span class="line">cmake ..</span><br><span class="line">sudo make install -j12</span><br><span class="line"><span class="meta prompt_"></span></span><br><span class="line"><span class="meta prompt_"># </span><span class="language-bash">pyDBoW3</span></span><br><span class="line">git clone https://github.com/htkseason/pyDBoW3.git</span><br></pre></td></tr></table></figure>
+
+<p>libboost.python</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">wget https://boostorg.jfrog.io/artifactory/main/release/1.68.0/source/boost_1_68_0.tar.gz</span><br></pre></td></tr></table></figure>
+
+<p>在编译安装 pyDBoW3时遇到一些问题，把 build.sh 文件拆分一步步执行，排除错误。</p>
+<p>VOLDOR&#x2F;slam_py&#x2F;install&#x2F;pyDBoW3&#x2F;src&#x2F;CMakeLists.txt 中加入 DBoW3 路径</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">set(DBoW3_DIR /home/data1/sebas/projects/VOLDOR/slam_py/install/pyDBoW3/install/DBow3/lib/cmake/DBoW3)</span><br><span class="line">SET(DBoW3_USE_STATIC_LIBS ON)</span><br><span class="line">find_package(DBoW3 REQUIRED)</span><br></pre></td></tr></table></figure>
+
+<p>然后执行在 pyDBoW3&#x2F;build 目录下执行 cmake 命令</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line">sudo cmake -DBUILD_PYTHON3=on \</span><br><span class="line">      -DPYTHON_EXECUTABLE=/usr/bin/python3.6 \</span><br><span class="line">      -DBUILD_STATICALLY_LINKED=OFF \</span><br><span class="line">      -DOpenCV_DIR=/data/zhangjiguang/wzq/projects/VOLDOR/slam_py/install/pyDBoW3/install/opencv3/build \</span><br><span class="line">      -DDBoW3_DIR=/data/zhangjiguang/wzq/projects/VOLDOR/slam_py/install/pyDBoW3/install/DBow3/build \</span><br><span class="line">      -DDBoW3_INCLUDE_DIRS=/data/zhangjiguang/wzq/projects/VOLDOR/slam_py/install/pyDBoW3/install/DBow3/src \</span><br><span class="line">      -DCMAKE_BUILD_TYPE=Release ../src</span><br><span class="line"><span class="meta prompt_"> </span></span><br><span class="line"><span class="meta prompt_"># </span><span class="language-bash">导入路径的方法：在CMakeLists.txt中更改；或者在命令行设置全局变量</span> </span><br><span class="line">export DBoW3_DIR=/home/data1/sebas/projects/VOLDOR/slam_py/install/pyDBoW3/install/DBow3</span><br><span class="line">export CMAKE_PREFIX_PATH=/home/data1/sebas/projects/VOLDOR/slam_py/install/pyDBoW3/install/DBow3:$CMAKE_PREFIX_PATH</span><br><span class="line"></span><br><span class="line">export CMAKE_PREFIX_PATH=/usr/lib/x86_64-linux-gnu:$CMAKE_PREFIX_PATH</span><br><span class="line"></span><br><span class="line">sudo make -j12</span><br></pre></td></tr></table></figure>
+
+<p>以上命令都执行成功后，在 build 目录下会生成一个 pyDBoW3.so 文件，将其复制到 demo 目录下。</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta prompt_"># </span><span class="language-bash">build vo only</span></span><br><span class="line">cd slam_py/install  </span><br><span class="line">python setup_linux_vo.py build_ext -i</span><br><span class="line"><span class="meta prompt_"></span></span><br><span class="line"><span class="meta prompt_"># </span><span class="language-bash">build full slam pipeline</span></span><br><span class="line">cd slam_py/install  </span><br><span class="line">python setup_linux_full.py build_ext -i</span><br></pre></td></tr></table></figure>
+
+<h2 id="1-2-AI-IMU"><a href="#1-2-AI-IMU" class="headerlink" title="1.2 AI-IMU"></a>1.2 AI-IMU</h2><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta prompt_"># </span><span class="language-bash">ai-imu</span></span><br><span class="line">conda create -n ai-imu python==3.6.9</span><br><span class="line"><span class="meta prompt_"></span></span><br><span class="line"><span class="meta prompt_"># </span><span class="language-bash">install dependencies</span></span><br><span class="line">pip install matplotlib numpy termcolor scipy navpy</span><br><span class="line"><span class="meta prompt_"></span></span><br><span class="line"><span class="meta prompt_"># </span><span class="language-bash">torch</span></span><br><span class="line"><span class="meta prompt_"># </span><span class="language-bash">新版本会报错</span></span><br><span class="line">conda install pytorch==1.12.1 torchvision==0.13.1 torchaudio==0.12.1 cudatoolkit=10.2 -c pytorch</span><br><span class="line"><span class="meta prompt_"></span></span><br><span class="line"><span class="meta prompt_"># </span><span class="language-bash">使用旧版本</span></span><br><span class="line">conda install pytorch torchvision cudatoolkit=10.2</span><br></pre></td></tr></table></figure>
+
+<p>clone the repo and test</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta prompt_"># </span><span class="language-bash"><span class="built_in">clone</span></span> </span><br><span class="line">git clone https://github.com/mbrossar/ai-imu-dr.git</span><br><span class="line"><span class="meta prompt_"></span></span><br><span class="line"><span class="meta prompt_"># </span><span class="language-bash">Download reformated pickle format of the 00-11 KITTI IMU raw data</span></span><br><span class="line">wget &quot;https://www.dropbox.com/s/ey41xsvfqca30vv/data.zip&quot;</span><br><span class="line">mkdir ai-imu-dr/results</span><br><span class="line">unzip data.zip -d ai-imu-dr</span><br><span class="line">rm data.zip</span><br><span class="line"><span class="meta prompt_"></span></span><br><span class="line"><span class="meta prompt_"></span></span><br><span class="line"><span class="meta prompt_"># </span><span class="language-bash">Download training parameters</span></span><br><span class="line">wget &quot;https://www.dropbox.com/s/77kq4s7ziyvsrmi/temp.zip&quot;</span><br><span class="line">unzip temp.zip -d ai-imu-dr/temp</span><br><span class="line">rm temp.zip</span><br><span class="line"><span class="meta prompt_"></span></span><br><span class="line"><span class="meta prompt_"># </span><span class="language-bash">Test the filters</span></span><br><span class="line">cd ai-imu-dr/src</span><br><span class="line">python3 main_kitti.py</span><br></pre></td></tr></table></figure>
+
+<h2 id="1-3-Docker"><a href="#1-3-Docker" class="headerlink" title="1.3 Docker"></a>1.3 Docker</h2><p>ubuntu 安装 docker</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br><span class="line">81</span><br><span class="line">82</span><br><span class="line">83</span><br><span class="line">84</span><br><span class="line">85</span><br><span class="line">86</span><br><span class="line">87</span><br><span class="line">88</span><br><span class="line">89</span><br><span class="line">90</span><br><span class="line">91</span><br><span class="line">92</span><br><span class="line">93</span><br><span class="line">94</span><br><span class="line">95</span><br><span class="line">96</span><br><span class="line">97</span><br><span class="line">98</span><br><span class="line">99</span><br><span class="line">100</span><br><span class="line">101</span><br><span class="line">102</span><br><span class="line">103</span><br><span class="line">104</span><br><span class="line">105</span><br><span class="line">106</span><br><span class="line">107</span><br><span class="line">108</span><br><span class="line">109</span><br><span class="line">110</span><br><span class="line">111</span><br><span class="line">112</span><br><span class="line">113</span><br><span class="line">114</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 安装</span></span><br><span class="line">sudo apt install docker.io nvidia-docker2</span><br><span class="line"></span><br><span class="line"><span class="comment"># 创建 docker 用户组</span></span><br><span class="line">sudo groupadd docker</span><br><span class="line"></span><br><span class="line"><span class="comment"># 将用户加入 docker 用户组</span></span><br><span class="line">sudo gpasswd -a <span class="variable">$&#123;username&#125;</span> docker</span><br><span class="line"></span><br><span class="line"><span class="comment"># 重启 docker 应用</span></span><br><span class="line">sudo systemctl restart docker</span><br><span class="line"></span><br><span class="line"><span class="comment"># 添加访问和执行权限</span></span><br><span class="line">sudo <span class="built_in">chmod</span> a+rw /var/run/docker.sock</span><br><span class="line"></span><br><span class="line"><span class="comment"># 更换 docker 默认存储位置及镜像源</span></span><br><span class="line">docker info</span><br><span class="line"></span><br><span class="line"><span class="comment"># 将默认位置的 docker 文件夹复制到新目录</span></span><br><span class="line">sudo <span class="built_in">mv</span> /var/lib/docker /home/data1/</span><br><span class="line"></span><br><span class="line">sudo vim /etc/docker/daemon.json</span><br><span class="line"></span><br><span class="line"><span class="comment"># 以下为修改内容</span></span><br><span class="line">&#123;</span><br><span class="line">    <span class="string">&quot;runtimes&quot;</span>: &#123;</span><br><span class="line">        <span class="string">&quot;nvidia&quot;</span>: &#123;</span><br><span class="line">            <span class="string">&quot;path&quot;</span>: <span class="string">&quot;nvidia-container-runtime&quot;</span>,</span><br><span class="line">            <span class="string">&quot;runtimeArgs&quot;</span>: []</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;,</span><br><span class="line">    <span class="string">&quot;data-root&quot;</span>:<span class="string">&quot;/home/data1/docker&quot;</span>,</span><br><span class="line">    <span class="string">&quot;registry-mirrors&quot;</span>:[</span><br><span class="line">                        <span class="string">&quot;https://hub-mirror.c.163.com/&quot;</span>,</span><br><span class="line">                        <span class="string">&quot;https://docker.mirrors.ustc.edu.cn/&quot;</span></span><br><span class="line">                        ]</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment"># 重启 docker 服务</span></span><br><span class="line">sudo systemctl daemon-reload</span><br><span class="line">sudo systemctl restart docker</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="comment"># 查看当前文件夹及文件大小</span></span><br><span class="line">sudo <span class="built_in">du</span> -h --max-depth=1</span><br><span class="line"></span><br><span class="line"><span class="comment"># df 以磁盘分区为单位查看文件系统</span></span><br><span class="line"><span class="built_in">df</span> -lh</span><br><span class="line"></span><br><span class="line"><span class="comment"># 拉取镜像:https://hub.docker.com/r/nvidia/cuda/tags?page=3&amp;name=18</span></span><br><span class="line">docker pull nvidia/cuda:11.4.0-devel-ubuntu18.04</span><br><span class="line"></span><br><span class="line"><span class="comment"># test</span></span><br><span class="line">sudo docker run --<span class="built_in">rm</span> --gpus all nvidia/cuda:11.4.0-devel-ubuntu18.04 nvidia-smi</span><br><span class="line"></span><br><span class="line"><span class="comment"># -i 控制台交互  -t 支持终端登录  -d 指定容器运行于后台</span></span><br><span class="line"><span class="comment"># -v 给容器挂载存储卷，挂载到容器某个目录（前者是宿主机目录，后者是容器目录，中间以:分隔）</span></span><br><span class="line"><span class="comment"># -p 端口映射（前者是宿主机目录，后者是容器目录，中间以:分隔，例如 -p 80:80）</span></span><br><span class="line"><span class="comment"># -m  --memory=[] 指定容器内存上限</span></span><br><span class="line"><span class="comment"># --name=[] 指定容器名字</span></span><br><span class="line"><span class="comment"># --gpus all 使用宿主机gpu</span></span><br><span class="line"><span class="comment"># --rm 容器停止后自动删除容器，常用来测试</span></span><br><span class="line">docker run -itd -v ~/work:/work --name=Ubuntu20.04-CUDA --gpus all nvidia/cuda:11.4.2-cudnn8-devel-ubuntu20.04</span><br><span class="line"></span><br><span class="line"><span class="comment"># Titan X</span></span><br><span class="line">docker run --gpus all -itd --privileged=<span class="literal">true</span> -p 50097:22 --name voldor-imu \</span><br><span class="line">       -v /home/data1/projects:/home/projects \</span><br><span class="line">       -e DISPLAY=<span class="variable">$DISPLAY</span> \</span><br><span class="line">       -e GDK_SCALE \</span><br><span class="line">       -e GDK_DPI_SCALE \</span><br><span class="line">       nvidia/cuda:11.4.0-devel-ubuntu18.04 /bin/bash</span><br><span class="line">       </span><br><span class="line"></span><br><span class="line"><span class="comment"># A6000</span></span><br><span class="line">docker run --gpus all -itd --privileged=<span class="literal">true</span> -p 50097:22 --name voldor-imu \</span><br><span class="line">       -v /data/zhangjiguang/wzq/voldor-imu:/home/voldor-imu \</span><br><span class="line">       -e DISPLAY=<span class="variable">$DISPLAY</span> \</span><br><span class="line">       -e GDK_SCALE \</span><br><span class="line">       -e GDK_DPI_SCALE \</span><br><span class="line">       nvidia/cuda:11.4.0-devel-ubuntu18.04 /bin/bash</span><br><span class="line"></span><br><span class="line"><span class="comment"># 查看创建的容器ID</span></span><br><span class="line">docker ps -a </span><br><span class="line"></span><br><span class="line"><span class="comment"># 进入已创建的容器</span></span><br><span class="line">docker attach [ID]</span><br><span class="line"></span><br><span class="line"><span class="comment"># 设置 root 密码</span></span><br><span class="line">passwd</span><br><span class="line"></span><br><span class="line"><span class="comment"># 配置ssh</span></span><br><span class="line">apt update</span><br><span class="line">apt install openssh-server vim wget curl cmake</span><br><span class="line"></span><br><span class="line"><span class="comment"># 设置 ssh 配置文件</span></span><br><span class="line">sudo vim /etc/ssh/sshd_config</span><br><span class="line"></span><br><span class="line">Port 22</span><br><span class="line">PermitRootLogin <span class="built_in">yes</span>  </span><br><span class="line">UsePAM no</span><br><span class="line"></span><br><span class="line"><span class="comment"># </span></span><br><span class="line">service ssh restart</span><br><span class="line"></span><br><span class="line"><span class="comment"># connect</span></span><br><span class="line">ssh root@10.1.16.116 -X -p 50096</span><br><span class="line"></span><br><span class="line"><span class="comment"># DISPLAY</span></span><br><span class="line"><span class="built_in">export</span> DISPLAY=10.1.16.227:0.0</span><br><span class="line"><span class="built_in">echo</span> <span class="variable">$DISPLAY</span></span><br><span class="line"></span><br><span class="line"><span class="comment"># test</span></span><br><span class="line">apt install x11-apps</span><br><span class="line">xclock</span><br></pre></td></tr></table></figure>
+
+<p>其他源介绍：</p>
+<p>科大镜像：<a target="_blank" rel="noopener" href="https://docker.mirrors.ustc.edu.cn/">https://docker.mirrors.ustc.edu.cn/</a></p>
+<p>网易：<a target="_blank" rel="noopener" href="https://hub-mirror.c.163.com/">https://hub-mirror.c.163.com/</a></p>
+<p>七牛云加速器：<a target="_blank" rel="noopener" href="https://reg-mirror.qiniu.com/">https://reg-mirror.qiniu.com</a></p>
+<p>Docker中国区官方镜像：<a target="_blank" rel="noopener" href="https://registry.docker-cn.com/">https://registry.docker-cn.com</a></p>
+<p>阿里云：https:&#x2F;&#x2F;阿里云镜像服务id.mirror.aliyuncs.com</p>
+<p>原文链接：<a target="_blank" rel="noopener" href="https://blog.csdn.net/m0_37282062/article/details/115770314">https://blog.csdn.net/m0_37282062/article/details/115770314</a></p>
+<h3 id="1-3-1-docker-换源及存储位置"><a href="#1-3-1-docker-换源及存储位置" class="headerlink" title="1.3.1 docker 换源及存储位置"></a>1.3.1 docker 换源及存储位置</h3><h3 id="1-3-2-打包发布镜像"><a href="#1-3-2-打包发布镜像" class="headerlink" title="1.3.2 打包发布镜像"></a>1.3.2 打包发布镜像</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">docker commit 07da voldor-imu:v1</span><br><span class="line"></span><br><span class="line"><span class="comment"># tag</span></span><br><span class="line">docker tag voldor-imu:v1 wzq11011/voldor-imu:v1</span><br><span class="line"></span><br><span class="line"><span class="comment"># push</span></span><br><span class="line">docker push wzq11011/voldor-imu:v1</span><br></pre></td></tr></table></figure>
+
+
+
+
+
+<p>退出容器但不关闭容器：ctrl+p+q</p>
+<p>vscode 修改文件提示没有权限，修改文件所有者</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 递归修改文件所有者</span></span><br><span class="line">sudo <span class="built_in">chown</span> -R sebas projects/</span><br><span class="line"></span><br><span class="line"><span class="comment"># 更改用户组</span></span><br><span class="line"><span class="built_in">chgrp</span> -R sebas projects/</span><br><span class="line">git <span class="built_in">clone</span> https://github.com/htkseason/VOLDOR.git</span><br><span class="line">git <span class="built_in">clone</span> https://github.com/mbrossar/ai-imu-dr.git</span><br><span class="line"></span><br><span class="line"><span class="comment"># python 3.6.9</span></span><br><span class="line">python3</span><br><span class="line"></span><br><span class="line"><span class="comment"># pip</span></span><br><span class="line">apt install python3-pip</span><br><span class="line"></span><br><span class="line">pip3 install --upgrade pip</span><br><span class="line"></span><br><span class="line"><span class="comment"># ceres-solver</span></span><br><span class="line"><span class="comment"># http://ceres-solver.org/installation.html#linux</span></span><br><span class="line">apt install cmake libgoogle-glog-dev libgflags-dev libatlas-base-dev libeigen3-dev libsuitesparse-dev</span><br><span class="line"></span><br><span class="line"><span class="comment"># boost</span></span><br><span class="line"><span class="comment"># https://blog.csdn.net/qq_41854911/article/details/119454212</span></span><br><span class="line">apt install libboost-all-dev</span><br><span class="line">docker <span class="built_in">exec</span> -it 07da /bin/bash</span><br></pre></td></tr></table></figure>
+
+<h1 id="2-报错信息记录："><a href="#2-报错信息记录：" class="headerlink" title="2 报错信息记录："></a>2 报错信息记录：</h1><h2 id="2-1-cmake版本问题"><a href="#2-1-cmake版本问题" class="headerlink" title="2.1 cmake版本问题"></a>2.1 cmake版本问题</h2><p>报错：internal error, please report: running “cmake” failed: cannot create transient scope: DBus error “org.freedesktop.DBus.Error.TimedOut”: [Failed to activate service ‘org.freedesktop.systemd1’: timed out (service_start_timeout&#x3D;25000ms)]</p>
+<p>解决：</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">pip uninstall cmake</span><br><span class="line"></span><br><span class="line">sudo apt install cmake</span><br><span class="line"><span class="meta prompt_"></span></span><br><span class="line"><span class="meta prompt_"># </span><span class="language-bash">然后再重新编译解决</span></span><br></pre></td></tr></table></figure>
+
+<h2 id="2-2-Boost"><a href="#2-2-Boost" class="headerlink" title="2.2 Boost"></a>2.2 Boost</h2><p>报错：</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line">-- Boost 1.54 found.</span><br><span class="line">CMake Error at /usr/lib/cmake/Boost-1.81.0/BoostConfig.cmake:141 (find_package):</span><br><span class="line">  Could not find a package configuration file provided by &quot;boost_python-py36&quot;</span><br><span class="line">  (requested version 1.81.0) with any of the following names:</span><br><span class="line"></span><br><span class="line">    boost_python-py36Config.cmake</span><br><span class="line">    boost_python-py36-config.cmake</span><br><span class="line"></span><br><span class="line">  Add the installation prefix of &quot;boost_python-py36&quot; to CMAKE_PREFIX_PATH or</span><br><span class="line">  set &quot;boost_python-py36_DIR&quot; to a directory containing one of the above</span><br><span class="line">  files.  If &quot;boost_python-py36&quot; provides a separate development package or</span><br><span class="line">  SDK, be sure it has been installed.</span><br><span class="line">Call Stack (most recent call first):</span><br><span class="line">  /usr/lib/cmake/Boost-1.81.0/BoostConfig.cmake:262 (boost_find_component)</span><br><span class="line">  /usr/share/cmake-3.10/Modules/FindBoost.cmake:242 (find_package)</span><br><span class="line">  CMakeLists.txt:130 (FIND_PACKAGE)</span><br></pre></td></tr></table></figure>
+
+<p>解决：</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta prompt_"># </span><span class="language-bash">手动下载编译 boost</span></span><br><span class="line">wget https://boostorg.jfrog.io/artifactory/main/release/1.68.0/source/boost_1_68_0.tar.gz</span><br><span class="line"></span><br><span class="line">tar -zxvf boost_1_68_0.tar.gz</span><br><span class="line"></span><br><span class="line">./bootstrap.sh --with-libraries=all --with-toolset=gcc</span><br><span class="line">./b2</span><br><span class="line">sudo ./b2 install</span><br><span class="line">sudo ldconfig</span><br></pre></td></tr></table></figure>
+
+<h2 id="2-3-opencv"><a href="#2-3-opencv" class="headerlink" title="2.3 opencv"></a>2.3 opencv</h2><p>执行demo的时候报错</p>
+<blockquote>
+<p>报错信息如下：</p>
+</blockquote>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">Exception <span class="keyword">in</span> thread Thread-29:</span><br><span class="line">Traceback (most recent call last):</span><br><span class="line">  File <span class="string">&quot;/usr/lib/python3.6/threading.py&quot;</span>, line 916, <span class="keyword">in</span> _bootstrap_inner</span><br><span class="line">    self.run()</span><br><span class="line">  File <span class="string">&quot;/usr/lib/python3.6/threading.py&quot;</span>, line 864, <span class="keyword">in</span> run</span><br><span class="line">    self._target(*self._args, **self._kwargs)</span><br><span class="line">  File <span class="string">&quot;../slam_py/voldor_slam.py&quot;</span>, line 718, <span class="keyword">in</span> vo_thread</span><br><span class="line">    cv2.imshow(<span class="string">&#x27;tmpkf_depth&#x27;</span>, (self.basefocal*0.04)/self.frames[self.fid_cur_tmpkf].get_scaled_depth())</span><br><span class="line">cv2.error: OpenCV(4.7.0) /tmp/pip-install-ftep5xuc/opencv-python_faa811634b06405b915df5c9319b9c00/opencv/modules/highgui/src/window.cpp:1272: error: (-2:Unspecified error) The <span class="keyword">function</span> is not implemented. Rebuild the library with Windows, GTK+ 2.x or Cocoa support. If you are on Ubuntu or Debian, install libgtk2.0-dev and pkg-config, <span class="keyword">then</span> re-run cmake or configure script <span class="keyword">in</span> <span class="keyword">function</span> <span class="string">&#x27;cvShowImage&#x27;</span></span><br></pre></td></tr></table></figure>
+
+<p>解决方法</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 查看 opencv-python 版本</span></span><br><span class="line">pip show opencv-python</span><br><span class="line"></span><br><span class="line"><span class="comment"># 安装对应版本的 opencv-contrib</span></span><br><span class="line">pip install opencv-contrib-python==4.7.0.72</span><br></pre></td></tr></table></figure>
+
+<p>参考：<a target="_blank" rel="noopener" href="https://blog.csdn.net/qq_46018888/article/details/121430749">https://blog.csdn.net/qq_46018888/article/details/121430749</a></p>
+<h1 id="3-论文"><a href="#3-论文" class="headerlink" title="3 论文"></a>3 论文</h1><h2 id="3-1-VOLDOR-SLAM"><a href="#3-1-VOLDOR-SLAM" class="headerlink" title="3.1 VOLDOR-SLAM"></a>3.1 VOLDOR-SLAM</h2><h3 id="3-1-1-摘要总结"><a href="#3-1-1-摘要总结" class="headerlink" title="3.1.1 摘要总结"></a>3.1.1 摘要总结</h3><p>作者提出了一种基于外部密集光流输入的密集间接SLAM系统。扩展了概率视觉里程计模型VOLDOR [Min et al. CVPR’20]，通过引入几何先验来从单目捕获中鲁棒地引导估计，同时无缝地支持立体或RGB-D图像。论文中定制的后端将中间几何估计与管理增量姿态图连接性的自适应优先级方案紧密耦合。利用密集光流方法的最新进展，实现了准确和稳健的相机姿态估计，同时构建了细粒度的全局一致的密集环境地图。我们的开源实现在单个GTX1080Ti GPU上在线运行，速度约为15 FPS。</p>
+<p>相关工作部分回顾了间接SLAM、直接SLAM和密集光流方法的相关文献，并指出了它们的优缺点。间接SLAM方法通过稀疏关键点匹配来建立帧间的几何关系，然后通过PnP或BA等算法来估计相机姿态和场景结构。这些方法通常可以实时运行，但是可能受到缺乏纹理、重复结构或退化几何配置等因素的影响。直接SLAM方法通过联合光流估计一致的场景结构和相机姿态来避免关键点匹配，但是这些方法通常对光照变化敏感，需要精确的光度校准，并且需要有足够的纹理区域。密集光流方法通过计算帧间像素级别的运动来提供稠密的几何信息，计算成本高昂，并且可能受到遮挡、运动模糊或低纹理等因素的影响。</p>
+<h3 id="3-1-2-使用方法"><a href="#3-1-2-使用方法" class="headerlink" title="3.1.2 使用方法"></a>3.1.2 使用方法</h3><p>论文中使用的方法是<strong>密集间接SLAM</strong>，它基于外部密集光流输入来估计相机姿态和场景结构。论文的方法分为两个部分：前端和后端。</p>
+<ul>
+<li>前端部分是基于VOLDOR的概率视觉里程计模型，它使用密集光流残差来建立帧间的几何关系，并利用几何先验来从单目、双目或RGB-D图像中恢复相机运动和深度图。前端部分还包括了一个帧对齐模块，用于校正光流估计的误差，并提高深度图的质量。</li>
+<li>后端部分是一个定制的位姿图优化模块，它将前端的几何估计与一个自适应的优先级方案紧密耦合，以管理增量位姿图的连接性。后端部分还包括了一个地图重建模块，用于从关键帧的深度图中构建细粒度的全局一致的密集环境地图。</li>
+</ul>
+<h3 id="3-1-3-实验部分"><a href="#3-1-3-实验部分" class="headerlink" title="3.1.3 实验部分"></a>3.1.3 实验部分</h3><ul>
+<li>实验部分首先介绍了实验的设置和评估指标，包括相机姿态误差、绝对轨迹误差、相对姿态误差和地图重建误差等。</li>
+<li>然后在四个数据集上进行了实验，分别是TartanAir、KITTI、EuRoC和TUM RGB-D。这些数据集涵盖了不同的输入模式、场景复杂度和运动模式，以验证论文的方法的通用性和鲁棒性。</li>
+<li>接着展示了论文的方法在不同输入模式下的定量结果，包括单目、双目和RGB-D。实验结果表明，论文的方法在所有数据集上都取得了优秀的性能，超过了其他SLAM方法的表现。</li>
+<li>最后展示了论文的方法在不同输入模式下的定性结果，包括相机轨迹、深度图和密集地图。实验结果显示，论文的方法能够有效地估计相机姿态和场景结构，并构建细粒度的全局一致的密集环境地图。</li>
+</ul>
+<h2 id="3-2-AI-IMU"><a href="#3-2-AI-IMU" class="headerlink" title="3.2 AI-IMU"></a>3.2 AI-IMU</h2><h3 id="3-2-1-摘要总结"><a href="#3-2-1-摘要总结" class="headerlink" title="3.2.1 摘要总结"></a>3.2.1 摘要总结</h3><p>论文的主要贡献是提出了一种基于惯性测量单元（IMU）的新颖准确的车辆自定位方法：论文的主要思想是利用卡尔曼滤波器和深度神经网络来动态地调整滤波器的噪声参数。作者在KITTI里程计数据集上进行了实验，证明了该方法仅使用IMU就能准确地估计车辆的三维位置、速度、方向和IMU偏差。其结果在平均平移误差上达到了1.10%，与使用激光雷达或立体视觉的顶级方法相媲美。</p>
+<h3 id="3-2-2-论文结构"><a href="#3-2-2-论文结构" class="headerlink" title="3.2.2 论文结构"></a>3.2.2 论文结构</h3><p>论文使用的方法主要包括以下几个部分：</p>
+<ul>
+<li>基于IMU的自定位模型，使用一个非线性状态空间模型来描述车辆的运动状态和IMU的偏差，其中状态变量包括位置、速度、方向、陀螺仪偏差和加速度计偏差。</li>
+<li>卡尔曼滤波器，使用一个扩展卡尔曼滤波器（EKF）来根据IMU的测量值对状态变量进行估计和更新，其中测量方程是一个恒等映射。</li>
+<li>神经网络，使用一个多层感知机（MLP）来根据IMU的测量值和历史噪声参数来预测当前的噪声参数，包括过程噪声协方差矩阵和测量噪声协方差矩阵。</li>
+<li>训练策略，使用一个端到端的训练策略来同时优化EKF和MLP的参数，目标函数是最小化EKF的估计误差和MLP的预测误差。</li>
+</ul>
+<h3 id="3-2-3-实验部分"><a href="#3-2-3-实验部分" class="headerlink" title="3.2.3 实验部分"></a>3.2.3 实验部分</h3><ul>
+<li>数据集，使用KITTI里程计数据集，该数据集包含了22个序列的车辆运动数据，其中11个序列提供了地面真值1。论文使用了前10个序列作为训练集，后一个序列作为测试集。</li>
+<li>评估指标，使用平均平移误差（ATE）和平均方向误差（AOE）来评估定位的准确性。ATE是指估计的轨迹与地面真值之间的欧氏距离的平均值。AOE是指估计的方向与地面真值之间的角度差的平均值。</li>
+<li>实现细节，使用PyTorch框架实现了EKF和MLP的模型。EKF的状态维度是15，测量维度是6。MLP有两个隐藏层，每层有64个神经元，激活函数是ReLU。训练时使用Adam优化器，学习率是0.001，批大小是256，训练轮数是1000。</li>
+</ul>
+<p>结果分析，使用不同的方法在测试集上进行了定位，并与其他基于激光雷达或立体视觉的方法进行了比较。结果显示，论文提出的方法在ATE上达到了1.10%的误差，在AOE上达到了0.33°的误差。这些结果优于其他仅使用IMU的方法，并且与使用其他传感器的方法相当或更好。</p>
+<h3 id="3-2-4-代码部分"><a href="#3-2-4-代码部分" class="headerlink" title="3.2.4 代码部分"></a>3.2.4 代码部分</h3><p>仅使用惯性测量单元在 KITTI 里程计数据集上的平移误差位 1.10%</p>
+<p><img class="lazy" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAABGdBTUEAALGPC/xhBQAAADhlWElmTU0AKgAAAAgAAYdpAAQAAAABAAAAGgAAAAAAAqACAAQAAAABAAAAAaADAAQAAAABAAAAAQAAAADa6r/EAAAAC0lEQVQIHWNgAAIAAAUAAY27m/MAAAAASUVORK5CYII=" data-src="/./Voldor.assets/(null)-20230518214845352.(null)" alt="img"></p>
+<ul>
+<li><p>main_kitti.py</p>
+</li>
+<li><ul>
+<li>导入必要的模块和库</li>
+<li>class KITTIParameters 定义KITTI数据集参数和类</li>
+<li>class KITTIDataset 读取KITTI数据集文件并处理</li>
+<li>def test_filter 定义测试滤波器</li>
+<li>def launch(<em>args</em>) 程序入口，通过调节read_data的值，来选择是否读数据集。train_filter、test_filter、results_filter<ul>
+<li>train_filter()</li>
+<li>test_filter()</li>
+<li>results_filter()</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+<p>卡尔曼滤波是一种用于估计系统状态的递归滤波器，</p>
+<h1 id="4-光流与IMU结合"><a href="#4-光流与IMU结合" class="headerlink" title="4 光流与IMU结合"></a>4 光流与IMU结合</h1><ul>
+<li>AI-IMU：对IMU数据进行预处理，得到初始的相机姿态和场景结构的估计，以及IMU偏差的自校准。</li>
+<li>VOLDOR：对密集光流数据进行处理，得到帧间的几何关系和深度图，以及帧对齐的校正。</li>
+<li>将AI-IMU方法和论文的方法的输出作为位姿图优化模块的输入，利用自适应优先级方案来管理增量位姿图的连接性，并进行全局优化。</li>
+<li>使用地图重建模块对关键帧的深度图进行融合，得到细粒度的全局一致的密集环境地图。</li>
+</ul>
+
+<div class="article-footer fs14">
+    <section id="license">
+      <div class="header"><span>许可协议</span></div>
+      <div class="body"><p>本文采用 <a target="_blank" rel="noopener" href="https://creativecommons.org/licenses/by-nc-sa/4.0/">署名-非商业性使用-相同方式共享 4.0 国际</a> 许可协议，转载请注明出处。</p>
+</div>
+    </section>
+    </div>
+</article>
+<div class="related-wrap" id="read-next"><section class="body"><div class="item" id="prev"><div class="note">较新文章</div><a href="/2023/04/25/3D-Reconstruction/">3D Reconstruction</a></div><div class="item" id="next"><div class="note">较早文章</div><a href="/2023/04/25/Blog-Hexo/">Blog Hexo</a></div></section></div>
+
+
+
+
+
+
+<footer class="page-footer footnote"><hr><div class="text"><center>
+  <span>
+  © 2024
+  <a style="font-weight: bold;  auto;" target="_blank" rel="noopener" href="https://github.com/FelicxFoster">Felicx</a>
+  使用 <a style="font-weight: bold;  auto;" target="_blank" rel="noopener" href="https://github.com/FelicxFoster/hexo-theme-stellar">Stellar</a>
+  创建
+  </span>
+  <br>
+  <!--不蒜子计数器-->
+  <script async="" src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+  <!--添加一个访问量-->
+  <span>总访问 <span id="busuanzi_value_site_pv" style="font-weight: bold;">113701</span> 次 | 本页访问 <span id="busuanzi_value_page_pv" style="font-weight: bold;">326</span> 次</span>
+  </br>
+  <span id="runtime_span"></span>
+
+  <script type="text/javascript">
+    document.addEventListener('DOMContentLoaded', function() {
+      var runtime_span = document.getElementById('runtime_span');
+
+      function show_runtime() {
+        // 调用定时器
+        setTimeout(show_runtime, 1000);
+
+        var seconds = 1000;
+        var minutes = seconds * 60;
+        var hours = minutes * 60;
+        var days = hours * 24;
+        var years = days * 365;
+
+        var today = new Date();
+        var todayYear = today.getFullYear();
+        var todayMonth = today.getMonth();
+        var todayDate = today.getDate();
+        var todayHour = today.getHours();
+        var todayMinute = today.getMinutes();
+        var todaySecond = today.getSeconds();
+
+        var t1 = Date.UTC(2018, 9, 12, 0, 0, 0); // UTC时间，月份从0开始
+        var t2 = Date.UTC(todayYear, todayMonth, todayDate, todayHour, todayMinute, todaySecond);
+        var diff = t2 - t1;
+
+        var diffYears = Math.floor(diff / years);
+        var diffDays = Math.floor((diff / days) - diffYears * 365);
+        var diffHours = Math.floor((diff - (diffYears * 365 + diffDays) * days) / hours);
+        var diffMinutes = Math.floor((diff - (diffYears * 365 + diffDays) * days - diffHours * hours) / minutes);
+        var diffSeconds = Math.floor((diff - (diffYears * 365 + diffDays) * days - diffHours * hours - diffMinutes * minutes) / seconds);
+
+        // 更新显示时间的span元素内容
+        runtime_span.innerHTML = "🦉营业：" + diffYears + " 年 " + diffDays + " 天 " + diffHours + " 小时 " + diffMinutes + " 分钟 " + diffSeconds + " 秒🦉";
+      }
+
+      show_runtime(); // 初次调用函数以启动定时器
+    });
+  </script>
+</center>
+</div></footer>
+<div class="main-mask" onclick="sidebar.dismiss()"></div></div><aside class="l_right">
+<div class="widgets">
+
+
+
+<widget class="widget-wrapper toc" id="data-toc" collapse="false"><div class="widget-header dis-select"><span class="name">本文目录</span><a class="cap-action" onclick="sidebar.toggleTOC()" ><svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 24 24"><path fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 6h11m-11 6h11m-11 6h11M4 6h1v4m-1 0h2m0 8H4c0-1 2-2 2-3s-1-1.5-2-1"/></svg></a></div><div class="widget-body"><ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#1-%E7%8E%AF%E5%A2%83%E9%85%8D%E7%BD%AE"><span class="toc-text">1 环境配置</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#1-1-VOLDOR-SLAM"><span class="toc-text">1.1 VOLDOR-SLAM</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#1-2-AI-IMU"><span class="toc-text">1.2 AI-IMU</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#1-3-Docker"><span class="toc-text">1.3 Docker</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#1-3-1-docker-%E6%8D%A2%E6%BA%90%E5%8F%8A%E5%AD%98%E5%82%A8%E4%BD%8D%E7%BD%AE"><span class="toc-text">1.3.1 docker 换源及存储位置</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#1-3-2-%E6%89%93%E5%8C%85%E5%8F%91%E5%B8%83%E9%95%9C%E5%83%8F"><span class="toc-text">1.3.2 打包发布镜像</span></a></li></ol></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#2-%E6%8A%A5%E9%94%99%E4%BF%A1%E6%81%AF%E8%AE%B0%E5%BD%95%EF%BC%9A"><span class="toc-text">2 报错信息记录：</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#2-1-cmake%E7%89%88%E6%9C%AC%E9%97%AE%E9%A2%98"><span class="toc-text">2.1 cmake版本问题</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#2-2-Boost"><span class="toc-text">2.2 Boost</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#2-3-opencv"><span class="toc-text">2.3 opencv</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#3-%E8%AE%BA%E6%96%87"><span class="toc-text">3 论文</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#3-1-VOLDOR-SLAM"><span class="toc-text">3.1 VOLDOR-SLAM</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#3-1-1-%E6%91%98%E8%A6%81%E6%80%BB%E7%BB%93"><span class="toc-text">3.1.1 摘要总结</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#3-1-2-%E4%BD%BF%E7%94%A8%E6%96%B9%E6%B3%95"><span class="toc-text">3.1.2 使用方法</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#3-1-3-%E5%AE%9E%E9%AA%8C%E9%83%A8%E5%88%86"><span class="toc-text">3.1.3 实验部分</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#3-2-AI-IMU"><span class="toc-text">3.2 AI-IMU</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#3-2-1-%E6%91%98%E8%A6%81%E6%80%BB%E7%BB%93"><span class="toc-text">3.2.1 摘要总结</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#3-2-2-%E8%AE%BA%E6%96%87%E7%BB%93%E6%9E%84"><span class="toc-text">3.2.2 论文结构</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#3-2-3-%E5%AE%9E%E9%AA%8C%E9%83%A8%E5%88%86"><span class="toc-text">3.2.3 实验部分</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#3-2-4-%E4%BB%A3%E7%A0%81%E9%83%A8%E5%88%86"><span class="toc-text">3.2.4 代码部分</span></a></li></ol></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#4-%E5%85%89%E6%B5%81%E4%B8%8EIMU%E7%BB%93%E5%90%88"><span class="toc-text">4 光流与IMU结合</span></a></li></ol></div><div class="widget-footer">
+
+<a class="top" onclick="util.scrollTop()"><svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 24 24"><g fill="none" stroke="currentColor" stroke-width="1.5"><path d="M2 12c0-4.714 0-7.071 1.464-8.536C4.93 2 7.286 2 12 2c4.714 0 7.071 0 8.535 1.464C22 4.93 22 7.286 22 12c0 4.714 0 7.071-1.465 8.535C19.072 22 16.714 22 12 22s-7.071 0-8.536-1.465C2 19.072 2 16.714 2 12Z"/><path stroke-linecap="round" stroke-linejoin="round" d="m9 15.5l3-3l3 3m-6-4l3-3l3 3"/></g></svg><span>回到顶部</span></a></div></widget>
+</div></aside><div class='float-panel blur'>
+  <button type='button' style='display:none' class='laptop-only rightbar-toggle mobile' onclick='sidebar.rightbar()'>
+    <svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 24 24"><path fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 6h11m-11 6h11m-11 6h11M4 6h1v4m-1 0h2m0 8H4c0-1 2-2 2-3s-1-1.5-2-1"/></svg>
+  </button>
+  <button type='button' style='display:none' class='mobile-only leftbar-toggle mobile' onclick='sidebar.leftbar()'>
+    <svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 24 24"><g fill="none" stroke="currentColor" stroke-width="1.5"><path d="M2 11c0-3.771 0-5.657 1.172-6.828C4.343 3 6.229 3 10 3h4c3.771 0 5.657 0 6.828 1.172C22 5.343 22 7.229 22 11v2c0 3.771 0 5.657-1.172 6.828C19.657 21 17.771 21 14 21h-4c-3.771 0-5.657 0-6.828-1.172C2 18.657 2 16.771 2 13z"/><path id="sep" stroke-linecap="round" d="M5.5 10h6m-5 4h4m4.5 7V3"/></g></svg>
+  </button>
+</div>
+</div><div class="scripts">
+<script type="text/javascript">
+  const ctx = {
+    date_suffix: {
+      just: `刚刚`,
+      min: `分钟前`,
+      hour: `小时前`,
+      day: `天前`,
+    },
+    root : `/`,
+  };
+
+  // required plugins (only load if needs)
+  if (`local_search`) {
+    ctx.search = {};
+    ctx.search.service = `local_search`;
+    if (ctx.search.service == 'local_search') {
+      let service_obj = Object.assign({}, `{"field":"all","path":"/search.json","content":true,"skip_search":null,"sort":"-date"}`);
+      ctx.search[ctx.search.service] = service_obj;
+    }
+  }
+  const def = {
+    avatar: `https://gcore.jsdelivr.net/gh/cdn-x/placeholder@1.0.12/avatar/round/3442075.svg`,
+    cover: `https://gcore.jsdelivr.net/gh/cdn-x/placeholder@1.0.12/cover/76b86c0226ffd.svg`,
+  };
+  const deps = {
+    jquery: `https://cdn.jsdelivr.net/npm/jquery@3.7.1/dist/jquery.min.js`,
+    marked: `https://cdn.jsdelivr.net/npm/marked@13.0.1/lib/marked.umd.min.js`
+  }
+  
+
+</script>
+
+<script type="text/javascript">
+  const utils = {
+    // 懒加载 css https://github.com/filamentgroup/loadCSS
+    css: (href, before, media, attributes) => {
+      var doc = window.document;
+      var ss = doc.createElement("link");
+      var ref;
+      if (before) {
+        ref = before;
+      } else {
+        var refs = (doc.body || doc.getElementsByTagName("head")[0]).childNodes;
+        ref = refs[refs.length - 1];
+      }
+      var sheets = doc.styleSheets;
+      if (attributes) {
+        for (var attributeName in attributes) {
+          if (attributes.hasOwnProperty(attributeName)) {
+            ss.setAttribute(attributeName, attributes[attributeName]);
+          }
+        }
+      }
+      ss.rel = "stylesheet";
+      ss.href = href;
+      ss.media = "only x";
+      function ready(cb) {
+        if (doc.body) {
+          return cb();
+        }
+        setTimeout(function () {
+          ready(cb);
+        });
+      }
+      ready(function () {
+        ref.parentNode.insertBefore(ss, before ? ref : ref.nextSibling);
+      });
+      var onloadcssdefined = function (cb) {
+        var resolvedHref = ss.href;
+        var i = sheets.length;
+        while (i--) {
+          if (sheets[i].href === resolvedHref) {
+            return cb();
+          }
+        }
+        setTimeout(function () {
+          onloadcssdefined(cb);
+        });
+      };
+      function loadCB() {
+        if (ss.addEventListener) {
+          ss.removeEventListener("load", loadCB);
+        }
+        ss.media = media || "all";
+      }
+      if (ss.addEventListener) {
+        ss.addEventListener("load", loadCB);
+      }
+      ss.onloadcssdefined = onloadcssdefined;
+      onloadcssdefined(loadCB);
+      return ss;
+    },
+
+    js: (src, opt) => new Promise((resolve, reject) => {
+      var script = document.createElement('script');
+      if (src.startsWith('/')){
+        src = ctx.root + src.substring(1);
+      }
+      script.src = src;
+      if (opt) {
+        for (let key of Object.keys(opt)) {
+          script[key] = opt[key]
+        }
+      } else {
+        // 默认异步，如果需要同步，第二个参数传入 {} 即可
+        script.async = true
+      }
+      script.onerror = reject
+      script.onload = script.onreadystatechange = function() {
+        const loadState = this.readyState
+        if (loadState && loadState !== 'loaded' && loadState !== 'complete') return
+        script.onload = script.onreadystatechange = null
+        resolve()
+      }
+      document.head.appendChild(script)
+    }),
+
+    jq: (fn) => {
+      if (typeof jQuery === 'undefined') {
+        utils.js(deps.jquery).then(fn)
+      } else {
+        fn()
+      }
+    },
+    
+    onLoading: (el) => {
+      if (el) {
+        $(el).append('<div class="loading-wrap"><svg xmlns="http://www.w3.org/2000/svg" width="2em" height="2em" preserveAspectRatio="xMidYMid meet" viewBox="0 0 24 24"><g fill="none" stroke="currentColor" stroke-linecap="round" stroke-width="2"><path stroke-dasharray="60" stroke-dashoffset="60" stroke-opacity=".3" d="M12 3C16.9706 3 21 7.02944 21 12C21 16.9706 16.9706 21 12 21C7.02944 21 3 16.9706 3 12C3 7.02944 7.02944 3 12 3Z"><animate fill="freeze" attributeName="stroke-dashoffset" dur="1.3s" values="60;0"/></path><path stroke-dasharray="15" stroke-dashoffset="15" d="M12 3C16.9706 3 21 7.02944 21 12"><animate fill="freeze" attributeName="stroke-dashoffset" dur="0.3s" values="15;0"/><animateTransform attributeName="transform" dur="1.5s" repeatCount="indefinite" type="rotate" values="0 12 12;360 12 12"/></path></g></svg></div>');
+      }
+    },
+    onLoadSuccess: (el) => {
+      if (el) {
+        $(el).find('.loading-wrap').remove();
+      }
+    },
+    onLoadFailure: (el) => {
+      if (el) {
+        $(el).find('.loading-wrap svg').remove();
+        $(el).find('.loading-wrap').append('<svg xmlns="http://www.w3.org/2000/svg" width="2em" height="2em" preserveAspectRatio="xMidYMid meet" viewBox="0 0 24 24"><g fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"><path stroke-dasharray="60" stroke-dashoffset="60" d="M12 3L21 20H3L12 3Z"><animate fill="freeze" attributeName="stroke-dashoffset" dur="0.5s" values="60;0"/></path><path stroke-dasharray="6" stroke-dashoffset="6" d="M12 10V14"><animate fill="freeze" attributeName="stroke-dashoffset" begin="0.6s" dur="0.2s" values="6;0"/></path></g><circle cx="12" cy="17" r="1" fill="currentColor" fill-opacity="0"><animate fill="freeze" attributeName="fill-opacity" begin="0.8s" dur="0.4s" values="0;1"/></circle></svg>');
+        $(el).find('.loading-wrap').addClass('error');
+      }
+    },
+    request: (el, url, callback, onFailure) => {
+      let retryTimes = 3;
+      utils.onLoading(el);
+      function req() {
+        return new Promise((resolve, reject) => {
+          let status = 0; // 0 等待 1 完成 2 超时
+          let timer = setTimeout(() => {
+            if (status === 0) {
+              status = 2;
+              timer = null;
+              reject('请求超时');
+              if (retryTimes == 0) {
+                onFailure();
+              }
+            }
+          }, 5000);
+          fetch(url).then(function(response) {
+            if (status !== 2) {
+              clearTimeout(timer);
+              resolve(response);
+              timer = null;
+              status = 1;
+            }
+            if (response.ok) {
+              return response.json();
+            }
+            throw new Error('Network response was not ok.');
+          }).then(function(data) {
+            retryTimes = 0;
+            utils.onLoadSuccess(el);
+            callback(data);
+          }).catch(function(error) {
+            if (retryTimes > 0) {
+              retryTimes -= 1;
+              setTimeout(() => {
+                req();
+              }, 5000);
+            } else {
+              utils.onLoadFailure(el);
+              onFailure();
+            }
+          });
+        });
+      }
+      req();
+    },
+  };
+</script>
+
+<script>
+  const sidebar = {
+    leftbar: () => {
+      if (l_body) {
+        l_body.toggleAttribute('leftbar');
+        l_body.removeAttribute('rightbar');
+      }
+    },
+    rightbar: () => {
+      if (l_body) {
+        l_body.toggleAttribute('rightbar');
+        l_body.removeAttribute('leftbar');
+      }
+    },
+    dismiss: () => {
+      if (l_body) {
+        l_body.removeAttribute('leftbar');
+        l_body.removeAttribute('rightbar');
+      }
+    },
+    toggleTOC: () => {
+      document.querySelector('#data-toc').classList.toggle('collapse');
+    }
+  }
+</script>
+<script type="text/javascript">
+  (() => {
+    const tagSwitchers = document.querySelectorAll('.tag-subtree.parent-tag > a > .tag-switcher-wrapper')
+    for (const tagSwitcher of tagSwitchers) {
+      tagSwitcher.addEventListener('click', (e) => {
+        const parent = e.target.closest('.tag-subtree.parent-tag')
+        parent.classList.toggle('expanded')
+        e.preventDefault()
+      })
+    }
+
+    // Get active tag from query string, then activate it.
+    const urlParams = new URLSearchParams(window.location.search)
+    const activeTag = urlParams.get('tag')
+    if (activeTag) {
+      let tag = document.querySelector(`.tag-subtree[data-tag="${activeTag}"]`)
+      if (tag) {
+        tag.querySelector('a').classList.add('active')
+        
+        while (tag) {
+          tag.classList.add('expanded')
+          tag = tag.parentElement.closest('.tag-subtree.parent-tag')
+        }
+      }
+    }
+  })()
+</script>
+
+
+<!-- required -->
+<script src="/js/main.js?v=1.29.1" defer></script>
+
+<script type="text/javascript">
+  const applyTheme = (theme) => {
+    if (theme === 'auto') {
+      document.documentElement.removeAttribute('data-theme')
+    } else {
+      document.documentElement.setAttribute('data-theme', theme)
+    }
+
+    applyThemeToGiscus(theme)
+  }
+
+  const applyThemeToGiscus = (theme) => {
+    theme = theme === 'auto' ? 'preferred_color_scheme' : theme
+
+    const cmt = document.getElementById('giscus')
+    if (cmt) {
+      // This works before giscus load.
+      cmt.setAttribute('data-theme', theme)
+    }
+
+    const iframe = document.querySelector('#comments > section.giscus > iframe')
+    if (iframe) {
+      // This works after giscus loaded.
+      const src = iframe.src
+      const newSrc = src.replace(/theme=[\w]+/, `theme=${theme}`)
+      iframe.src = newSrc
+    }
+  }
+
+  const switchTheme = () => {
+    // light -> dark -> auto -> light -> ...
+    const currentTheme = document.documentElement.getAttribute('data-theme')
+    let newTheme;
+    switch (currentTheme) {
+      case 'light':
+        newTheme = 'dark'
+        break
+      case 'dark':
+        newTheme = 'auto'
+        break
+      default:
+        newTheme = 'light'
+    }
+    applyTheme(newTheme)
+    window.localStorage.setItem('Stellar.theme', newTheme)
+
+    const messages = {
+      light: `切换到浅色模式`,
+      dark: `切换到深色模式`,
+      auto: `切换到跟随系统配色`,
+    }
+    hud?.toast?.(messages[newTheme])
+  }
+
+  (() => {
+    // Apply user's preferred theme, if any.
+    const theme = window.localStorage.getItem('Stellar.theme')
+    if (theme !== null) {
+      applyTheme(theme)
+    }
+  })()
+</script>
+
+
+<!-- optional -->
+
+
+
+<script defer>
+  window.addEventListener('DOMContentLoaded', (event) => {
+    ctx.services = Object.assign({}, JSON.parse(`{"mdrender":{"js":"/js/services/mdrender.js"},"siteinfo":{"js":"/js/services/siteinfo.js","api":null},"ghinfo":{"js":"/js/services/ghinfo.js"},"sites":{"js":"/js/services/sites.js"},"friends":{"js":"/js/services/friends.js"},"timeline":{"js":"/js/services/timeline.js"},"fcircle":{"js":"/js/services/fcircle.js"},"weibo":{"js":"/js/services/weibo.js"},"memos":{"js":"/js/services/memos.js"},"twikoo":{"js":"/js/services/twikoo_latest_comment.js"},"waline":{"js":"/js/services/waline_latest_comment.js"},"artalk":{"js":"/js/services/artalk_latest_comment.js"},"giscus":{"js":"/js/services/giscus_latest_comment.js"}}`));
+    for (let id of Object.keys(ctx.services)) {
+      const js = ctx.services[id].js;
+      if (id == 'siteinfo') {
+        ctx.cardlinks = document.querySelectorAll('a.link-card[cardlink]');
+        if (ctx.cardlinks?.length > 0) {
+          utils.js(js, { defer: true }).then(function () {
+            setCardLink(ctx.cardlinks);
+          });
+        }
+      } else {
+        const els = document.getElementsByClassName(`ds-${id}`);
+        if (els?.length > 0) {
+          utils.jq(() => {
+            if (id == 'timeline' || 'memos' || 'marked') {
+              utils.js(deps.marked).then(function () {
+                utils.js(js, { defer: true });
+              });
+            } else {
+              utils.js(js, { defer: true });
+            }
+          });
+        }
+      }
+    }
+  });
+</script>
+
+<script>
+  window.addEventListener('DOMContentLoaded', (event) => {
+    ctx.search = {
+      path: `/search.json`,
+    }
+    utils.js('/js/search/local-search.js', { defer: true });
+  });
+</script><script>
+  window.FPConfig = {
+    delay: 0,
+    ignoreKeywords: [],
+    maxRPS: 5,
+    hoverDelay: 25
+  };
+</script>
+<script defer src="https://cdn.jsdelivr.net/npm/flying-pages@2/flying-pages.min.js"></script><script defer src="https://cdn.jsdelivr.net/npm/vanilla-lazyload@19.1.3/dist/lazyload.min.js"></script>
+<script>
+  // https://www.npmjs.com/package/vanilla-lazyload
+  // Set the options globally
+  // to make LazyLoad self-initialize
+  window.lazyLoadOptions = {
+    elements_selector: ".lazy",
+  };
+  // Listen to the initialization event
+  // and get the instance of LazyLoad
+  window.addEventListener(
+    "LazyLoad::Initialized",
+    function (event) {
+      window.lazyLoadInstance = event.detail.instance;
+    },
+    false
+  );
+  document.addEventListener('DOMContentLoaded', function () {
+    window.lazyLoadInstance?.update();
+  });
+</script><script>
+  ctx.fancybox = {
+    selector: `.timenode p>img`,
+    css: `https://cdn.jsdelivr.net/npm/@fancyapps/ui@5.0/dist/fancybox/fancybox.css`,
+    js: `https://cdn.jsdelivr.net/npm/@fancyapps/ui@5.0/dist/fancybox/fancybox.umd.js`
+  };
+  var selector = '[data-fancybox]:not(.error)';
+  if (ctx.fancybox.selector) {
+    selector += `, ${ctx.fancybox.selector}`
+  }
+  var needFancybox = document.querySelectorAll(selector).length !== 0;
+  if (!needFancybox) {
+    const els = document.getElementsByClassName('ds-memos');
+    if (els != undefined && els.length > 0) {
+      needFancybox = true;
+    }
+  }
+  if (needFancybox) {
+    utils.css(ctx.fancybox.css);
+    utils.js(ctx.fancybox.js, { defer: true }).then(function () {
+      Fancybox.bind(selector, {
+        hideScrollbar: false,
+        Thumbs: {
+          autoStart: false,
+        },
+        caption: (fancybox, slide) => {
+          return slide.triggerEl.alt || slide.triggerEl.dataset.caption || null
+        }
+      });
+    })
+  }
+</script>
+<script>
+  window.addEventListener('DOMContentLoaded', (event) => {
+    const swiper_api = document.getElementById('swiper-api');
+    if (swiper_api != undefined) {
+      utils.css(`https://unpkg.com/swiper@10.3.1/swiper-bundle.min.css`);
+      utils.js(`https://unpkg.com/swiper@10.3.1/swiper-bundle.min.js`, { defer: true }).then(function () {
+        const effect = swiper_api.getAttribute('effect') || '';
+        var swiper = new Swiper('.swiper#swiper-api', {
+          slidesPerView: 'auto',
+          spaceBetween: 8,
+          centeredSlides: true,
+          effect: effect,
+          rewind: true,
+          pagination: {
+            el: '.swiper-pagination',
+            clickable: true,
+          },
+          navigation: {
+            nextEl: '.swiper-button-next',
+            prevEl: '.swiper-button-prev',
+          },
+        });
+      })
+    }
+  });
+</script>
+<script>
+  document.addEventListener('DOMContentLoaded', function () {
+    window.codeElements = document.querySelectorAll('.code');
+    if (window.codeElements.length > 0) {
+      ctx.copycode = {
+        default_text: `Copy`,
+        success_text: `Copied`,
+        toast: `复制成功`,
+      };
+      utils.js('/js/plugins/copycode.js');
+    }
+  });
+</script>
+
+
+<!-- inject -->
+
+</div></body></html>
