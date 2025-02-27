@@ -17,25 +17,24 @@
   <meta name="theme-color" media="(prefers-color-scheme: dark)" content="#000">
   <meta name="theme-color" content="#f9fafb">
   
-  <title>Java常用知识 - Smile2u's Memo</title>
+  <title>C++ - Smile2u's Memo</title>
 
   
-    <meta name="description" content="记录常用的java基础知识">
+    <meta name="description" content="c++ 学习">
 <meta property="og:type" content="article">
-<meta property="og:title" content="Java常用知识">
-<meta property="og:url" content="http://example.com/2025/02/26/Java%E5%B8%B8%E7%94%A8%E7%9F%A5%E8%AF%86/index.html">
+<meta property="og:title" content="C++">
+<meta property="og:url" content="http://example.com/posts/15279.html">
 <meta property="og:site_name" content="Smile2u&#39;s Memo">
-<meta property="og:description" content="记录常用的java基础知识">
+<meta property="og:description" content="c++ 学习">
 <meta property="og:locale" content="zh_CN">
-<meta property="article:published_time" content="2025-02-26T15:12:28.000Z">
-<meta property="article:modified_time" content="2025-02-26T16:38:26.264Z">
+<meta property="article:published_time" content="2023-05-20T06:32:08.000Z">
+<meta property="article:modified_time" content="2025-02-25T21:28:13.619Z">
 <meta property="article:author" content="Smile2u">
-<meta property="article:tag" content="java">
 <meta name="twitter:card" content="summary">
   
   
   
-  <meta name="keywords" content="java">
+  
 
   <!-- feed -->
   
@@ -67,7 +66,7 @@
 <div class="widgets">
 
 
-<widget class="widget-wrapper post-list"><div class="widget-header dis-select"><span class="name">最近更新</span></div><div class="widget-body fs14"><a class="item title" href="/2023/04/25/Blog-Hexo/"><span class="title">Blog Hexo</span></a><a class="item title" href="/2025/02/26/Java%E5%B8%B8%E7%94%A8%E7%9F%A5%E8%AF%86/"><span class="title">Java常用知识</span></a><a class="item title" href="/2023/04/26/%E5%B8%B8%E7%94%A8%E5%91%BD%E4%BB%A4%E8%AE%B0%E5%BD%95/"><span class="title">常用命令记录</span></a><a class="item title" href="/2023/05/20/C/"><span class="title">C++</span></a><a class="item title" href="/2023/04/25/Voldor/"><span class="title">voldor-imu</span></a><a class="item title" href="/2024/04/17/hot%20100/"><span class="title">hot 100</span></a><a class="item title" href="/2023/07/13/leetcode/"><span class="title">leetcode</span></a><a class="item title" href="/2023/04/27/nerf-slam/"><span class="title">nerf-slam</span></a><a class="item title" href="/2023/06/02/sketch-recognition/"><span class="title">sketch recognition</span></a><a class="item title" href="/2023/04/25/3D-Reconstruction/"><span class="title">3D Reconstruction</span></a></div></widget>
+<widget class="widget-wrapper post-list"><div class="widget-header dis-select"><span class="name">最近更新</span></div><div class="widget-body fs14"><a class="item title" href="/posts/6245.html"><span class="title">leetcode刷题记录（1）</span></a><a class="item title" href="/posts/39773.html"><span class="title">Blog Hexo</span></a><a class="item title" href="/posts/34181.html"><span class="title">Java常用知识</span></a><a class="item title" href="/posts/35783.html"><span class="title">常用命令记录</span></a><a class="item title" href="/posts/15279.html"><span class="title">C++</span></a><a class="item title" href="/posts/11821.html"><span class="title">voldor-imu</span></a><a class="item title" href="/posts/35102.html"><span class="title">hot 100</span></a><a class="item title" href="/posts/14158.html"><span class="title">leetcode</span></a><a class="item title" href="/posts/22247.html"><span class="title">nerf-slam</span></a><a class="item title" href="/posts/10043.html"><span class="title">sketch recognition</span></a></div></widget>
 </div>
 
 </div></aside><div class="l_main" id="main">
@@ -79,80 +78,40 @@
 <div class="article banner top">
   <div class="content">
     <div class="top bread-nav footnote"><div class="left"><div class="flex-row" id="breadcrumb"><a class="cap breadcrumb" href="/">主页</a>
-<span class="sep"></span><a class="cap breadcrumb" href="/">文章</a><span class="sep"></span><a class="cap breadcrumb-link" href="/categories/java/">java</a></div>
-<div class="flex-row" id="post-meta"><span class="text created">发布于：<time datetime="2025-02-26T15:12:28.000Z">2025-02-26</time></span><span class="sep updated"></span><span class="text updated">更新于：<time datetime="2025-02-26T16:38:26.264Z">2025-02-27</time></span></div></div></div>
+<span class="sep"></span><a class="cap breadcrumb" href="/">文章</a></div>
+<div class="flex-row" id="post-meta"><span class="text created">发布于：<time datetime="2023-05-20T06:32:08.000Z">2023-05-20</time></span><span class="sep updated"></span><span class="text updated">更新于：<time datetime="2025-02-25T21:28:13.619Z">2025-02-26</time></span></div></div></div>
     
     <div class="bottom only-title">
       
       <div class="text-area">
-        <h1 class="text title"><span>Java常用知识</span></h1>
+        <h1 class="text title"><span>C++</span></h1>
         
       </div>
     </div>
     
   </div>
-  </div><article class="md-text content"><h1 id="基础"><a href="#基础" class="headerlink" title="基础"></a>基础</h1><h2 id="char"><a href="#char" class="headerlink" title="char"></a>char</h2><p><code>char</code>是Java的基本数据类型之一，用来表示单个字符。每个<code>char</code>变量占用16位（2字节），可以存储一个Unicode字符 </p>
-<h3 id="创建-char"><a href="#创建-char" class="headerlink" title="创建 char"></a>创建 <code>char</code></h3><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="type">char</span> <span class="variable">ch1</span> <span class="operator">=</span> <span class="string">&#x27;A&#x27;</span>; <span class="comment">// 单引号内必须是单个字符</span></span><br><span class="line"><span class="type">char</span> <span class="variable">ch2</span> <span class="operator">=</span> <span class="number">65</span>;  <span class="comment">// 使用ASCII值也可以创建字符，这里会显示&#x27;A&#x27;</span></span><br></pre></td></tr></table></figure>
-
-<h3 id="常用操作"><a href="#常用操作" class="headerlink" title="常用操作"></a>常用操作</h3><ul>
-<li><p>算术运算：由于<code>char</code>实际上是一个整数类型的别名，所以可以直接参与算术运算。</p>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="type">char</span> <span class="variable">a</span> <span class="operator">=</span> <span class="string">&#x27;a&#x27;</span>;</span><br><span class="line"><span class="type">char</span> <span class="variable">b</span> <span class="operator">=</span> (<span class="type">char</span>)(a + <span class="number">1</span>); <span class="comment">// 结果为&#x27;b&#x27;</span></span><br></pre></td></tr></table></figure>
-
-
+  </div><article class="md-text content"><h1 id="1-C"><a href="#1-C" class="headerlink" title="1 C++"></a>1 C++</h1><p>基础：变量、条件、循环、字符串、数组、函数、结构体等</p>
+<p>重要：指针和内存管理</p>
+<p>书籍：c++ primer</p>
+<h1 id="2-数据结构与算法"><a href="#2-数据结构与算法" class="headerlink" title="2 数据结构与算法"></a>2 数据结构与算法</h1><p>大话数据结构、剑指offer、leetcode 刷题</p>
+<p>常见的数据结构：字符串、链表、二叉树、堆、栈、队列、哈希等</p>
+<p>常见的算法：查找、排序、动态规划等</p>
+<h1 id="3-操作系统"><a href="#3-操作系统" class="headerlink" title="3 操作系统"></a>3 操作系统</h1><p>进程和线程：原子性、并发、锁等</p>
+<p>内存：内存分布、内存调度</p>
+<h1 id="4-计算机网络"><a href="#4-计算机网络" class="headerlink" title="4 计算机网络"></a>4 计算机网络</h1><p>TCP&#x2F;IP协议栈：ARP协议、IP协议、ICMP协议、TCP协议、UDP协议、DNS协议、HTTP&#x2F;HTTPS协议</p>
+<p>书籍：tcp&#x2F;ip详解</p>
+<h1 id="5-设计模式"><a href="#5-设计模式" class="headerlink" title="5 设计模式"></a>5 设计模式</h1><p>单例、工厂、代理、策略、模板方法</p>
+<p>书籍：《大话设计模式》</p>
+<h1 id="5-实践"><a href="#5-实践" class="headerlink" title="5 实践"></a>5 实践</h1><ul>
+<li><p>Linux操作系统、shell编程、脚本</p>
 </li>
-<li><p>比较：可以使用<code>==</code>, <code>&lt;</code>, <code>&gt;</code>, <code>&lt;=</code>, <code>&gt;=</code>等进行比较。</p>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="type">boolean</span> <span class="variable">isGreater</span> <span class="operator">=</span> (<span class="string">&#x27;d&#x27;</span> &gt; <span class="string">&#x27;b&#x27;</span>); <span class="comment">// true</span></span><br></pre></td></tr></table></figure></li>
-</ul>
-<h3 id="与-String-的联系和区别"><a href="#与-String-的联系和区别" class="headerlink" title="与 String 的联系和区别"></a>与 String 的联系和区别</h3><ul>
-<li><p><strong>相互转换</strong>：可以通过多种方式进行<code>char</code>和<code>String</code>之间的转换</p>
-<ul>
-<li><p>将<code>String</code>转换为<code>char</code>数组</p>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="type">String</span> <span class="variable">str</span> <span class="operator">=</span> <span class="string">&quot;hello&quot;</span>;</span><br><span class="line"><span class="type">char</span>[] chars = str.toCharArray(); <span class="comment">// 返回包含所有字符的数组</span></span><br></pre></td></tr></table></figure>
+<li><p>编译、调试工具： GNU官方关于gcc和gdb的官方文档。《跟我一起写makefile》  gdb调试《debugging with gdb》</p>
 </li>
-<li><p>将<code>char</code>转换为<code>String</code></p>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="type">char</span> <span class="variable">ch</span> <span class="operator">=</span> <span class="string">&#x27;a&#x27;</span>;</span><br><span class="line"><span class="type">String</span> <span class="variable">strFromChar</span> <span class="operator">=</span> Character.toString(ch); <span class="comment">// 或者String.valueOf(ch)</span></span><br></pre></td></tr></table></figure></li>
-</ul>
-</li>
-<li><p><strong>区别</strong></p>
-<ul>
-<li><p><strong>基本 vs 引用类型</strong>：<code>char</code>是基本数据类型，而<code>String</code>是一个引用类型。</p>
-</li>
-<li><p><strong>不变性</strong>：<code>String</code>对象是不可变的，而<code>char</code>是可变的。</p>
-</li>
-<li><p><strong>内存管理</strong>：<code>String</code>对象通常存储在堆上，而<code>char</code>直接存储其值。</p>
+<li><p>Linux系统编程、多线程编程（线程、资源、信号、同步、互斥、锁等）、 网络编程</p>
 </li>
 </ul>
-</li>
-</ul>
-<h2 id="Character"><a href="#Character" class="headerlink" title="Character"></a>Character</h2><h3 id="概念"><a href="#概念" class="headerlink" title="概念"></a>概念</h3><p>在Java中，<code>Character</code>类是位于<code>java.lang</code>包中的一个包装类（wrapper class），它提供了对基本数据类型<code>char</code>的封装，并提供了一系列静态方法来操作字符。<code>Character</code>类的对象包含一个类型为<code>char</code>的单个字段，使得基本数据类型能够作为对象进行处理。</p>
-<p><code>Character</code>类的主要用途是对单个字符进行操作，例如检查字符是否为字母、数字、转换大小写等。以下是<code>Character</code>类的一些基础概念和用法：</p>
-<h3 id="创建-Character-对象"><a href="#创建-Character-对象" class="headerlink" title="创建 Character 对象"></a>创建 Character 对象</h3><p>尽管在Java中可以使用自动装箱（autoboxing）将<code>char</code>类型的值直接赋给<code>Character</code>对象，但也可以显式地通过构造函数创建：</p>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="type">Character</span> <span class="variable">ch</span> <span class="operator">=</span> <span class="keyword">new</span> <span class="title class_">Character</span>(<span class="string">&#x27;a&#x27;</span>);</span><br></pre></td></tr></table></figure>
-
-<p>然而，由于自动装箱的存在，通常不需要这样做，可以直接写成：</p>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="type">Character</span> <span class="variable">ch</span> <span class="operator">=</span> <span class="string">&#x27;a&#x27;</span>;</span><br></pre></td></tr></table></figure>
-
-
-
-
-
-<h2 id="String"><a href="#String" class="headerlink" title="String"></a>String</h2><h3 id="概念-1"><a href="#概念-1" class="headerlink" title="概念"></a>概念</h3><p>在Java中，<code>String</code>是不可变的类，这意味着一旦创建了一个<code>String</code>对象，它的值就不能改变。所有对字符串的操作都会返回一个新的<code>String</code>对象。 （引用类型）</p>
-<h3 id="常用方法"><a href="#常用方法" class="headerlink" title="常用方法"></a>常用方法</h3><ul>
-<li><code>length()</code>：获取字符串长度</li>
-<li><code>charAt(int index)</code>：获取指定位置的字符</li>
-<li><code>substring(int beginIndex, int endIndex)</code>：获取子串</li>
-<li><code>equals(Object anObject)</code>：比较两个字符串是否相等</li>
-<li><code>toLowerCase()</code> 和 <code>toUpperCase()</code>：转换大小写</li>
-<li><code>trim()</code>：去除首尾空白字符</li>
-<li><code>replace(char oldChar, char newChar)</code>：替换字符</li>
-<li><code>split(String regex)</code>：根据正则表达式分割字符串</li>
-<li><code>concat(String str)</code>：连接字符串</li>
-<li><code>indexOf(int ch)</code> 和 <code>lastIndexOf(int ch)</code> 查找字符或子串的位置</li>
-</ul>
-<h3 id="不可变性"><a href="#不可变性" class="headerlink" title="不可变性"></a>不可变性</h3><p>由于<code>String</code>对象是不可变的，在进行修改操作时会生成新的<code>String</code>对象。</p>
-<h1 id="参考"><a href="#参考" class="headerlink" title="参考"></a>参考</h1><ol>
-<li>通义千问</li>
-</ol>
+<p>书籍：</p>
+<h1 id="else"><a href="#else" class="headerlink" title="else"></a>else</h1><p>b站：程序羊</p>
 
 <div class="article-footer fs14">
     <section id="license">
@@ -162,7 +121,7 @@
     </section>
     </div>
 </article>
-<div class="related-wrap" id="read-next"><section class="body"><div class="item" id="prev"></div><div class="item" id="next"><div class="note">较早文章</div><a href="/2025/02/25/hello-world/">Hello World</a></div></section></div>
+<div class="related-wrap" id="read-next"><section class="body"><div class="item" id="prev"><div class="note">较新文章</div><a href="/posts/10043.html">sketch recognition</a></div><div class="item" id="next"><div class="note">较早文章</div><a href="/posts/22247.html">nerf-slam</a></div></section></div>
 
 
 
@@ -242,7 +201,7 @@
 
 
 
-<widget class="widget-wrapper toc" id="data-toc" collapse="false"><div class="widget-header dis-select"><span class="name">本文目录</span><a class="cap-action" onclick="sidebar.toggleTOC()" ><svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 24 24"><path fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 6h11m-11 6h11m-11 6h11M4 6h1v4m-1 0h2m0 8H4c0-1 2-2 2-3s-1-1.5-2-1"/></svg></a></div><div class="widget-body"><ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#%E5%9F%BA%E7%A1%80"><span class="toc-text">基础</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#char"><span class="toc-text">char</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%88%9B%E5%BB%BA-char"><span class="toc-text">创建 char</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%B8%B8%E7%94%A8%E6%93%8D%E4%BD%9C"><span class="toc-text">常用操作</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E4%B8%8E-String-%E7%9A%84%E8%81%94%E7%B3%BB%E5%92%8C%E5%8C%BA%E5%88%AB"><span class="toc-text">与 String 的联系和区别</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Character"><span class="toc-text">Character</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E6%A6%82%E5%BF%B5"><span class="toc-text">概念</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%88%9B%E5%BB%BA-Character-%E5%AF%B9%E8%B1%A1"><span class="toc-text">创建 Character 对象</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#String"><span class="toc-text">String</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E6%A6%82%E5%BF%B5-1"><span class="toc-text">概念</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%B8%B8%E7%94%A8%E6%96%B9%E6%B3%95"><span class="toc-text">常用方法</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E4%B8%8D%E5%8F%AF%E5%8F%98%E6%80%A7"><span class="toc-text">不可变性</span></a></li></ol></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E5%8F%82%E8%80%83"><span class="toc-text">参考</span></a></li></ol></div><div class="widget-footer">
+<widget class="widget-wrapper toc" id="data-toc" collapse="false"><div class="widget-header dis-select"><span class="name">本文目录</span><a class="cap-action" onclick="sidebar.toggleTOC()" ><svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 24 24"><path fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 6h11m-11 6h11m-11 6h11M4 6h1v4m-1 0h2m0 8H4c0-1 2-2 2-3s-1-1.5-2-1"/></svg></a></div><div class="widget-body"><ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#1-C"><span class="toc-text">1 C++</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#2-%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84%E4%B8%8E%E7%AE%97%E6%B3%95"><span class="toc-text">2 数据结构与算法</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#3-%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F"><span class="toc-text">3 操作系统</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#4-%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C"><span class="toc-text">4 计算机网络</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#5-%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F"><span class="toc-text">5 设计模式</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#5-%E5%AE%9E%E8%B7%B5"><span class="toc-text">5 实践</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#else"><span class="toc-text">else</span></a></li></ol></div><div class="widget-footer">
 
 <a class="top" onclick="util.scrollTop()"><svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 24 24"><g fill="none" stroke="currentColor" stroke-width="1.5"><path d="M2 12c0-4.714 0-7.071 1.464-8.536C4.93 2 7.286 2 12 2c4.714 0 7.071 0 8.535 1.464C22 4.93 22 7.286 22 12c0 4.714 0 7.071-1.465 8.535C19.072 22 16.714 22 12 22s-7.071 0-8.536-1.465C2 19.072 2 16.714 2 12Z"/><path stroke-linecap="round" stroke-linejoin="round" d="m9 15.5l3-3l3 3m-6-4l3-3l3 3"/></g></svg><span>回到顶部</span></a><a class="buttom" onclick="util.scrollComment()"><svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 24 24"><path fill="currentColor" fill-rule="evenodd" d="M10.46 1.25h3.08c1.603 0 2.86 0 3.864.095c1.023.098 1.861.3 2.6.752a5.75 5.75 0 0 1 1.899 1.899c.452.738.654 1.577.752 2.6c.095 1.004.095 2.261.095 3.865v1.067c0 1.141 0 2.036-.05 2.759c-.05.735-.153 1.347-.388 1.913a5.75 5.75 0 0 1-3.112 3.112c-.805.334-1.721.408-2.977.43a10.81 10.81 0 0 0-.929.036c-.198.022-.275.054-.32.08c-.047.028-.112.078-.224.232c-.121.166-.258.396-.476.764l-.542.916c-.773 1.307-2.69 1.307-3.464 0l-.542-.916a10.605 10.605 0 0 0-.476-.764c-.112-.154-.177-.204-.224-.232c-.045-.026-.122-.058-.32-.08c-.212-.023-.49-.03-.93-.037c-1.255-.021-2.171-.095-2.976-.429A5.75 5.75 0 0 1 1.688 16.2c-.235-.566-.338-1.178-.389-1.913c-.049-.723-.049-1.618-.049-2.76v-1.066c0-1.604 0-2.86.095-3.865c.098-1.023.3-1.862.752-2.6a5.75 5.75 0 0 1 1.899-1.899c.738-.452 1.577-.654 2.6-.752C7.6 1.25 8.857 1.25 10.461 1.25M6.739 2.839c-.914.087-1.495.253-1.959.537A4.25 4.25 0 0 0 3.376 4.78c-.284.464-.45 1.045-.537 1.96c-.088.924-.089 2.11-.089 3.761v1c0 1.175 0 2.019.046 2.685c.045.659.131 1.089.278 1.441a4.25 4.25 0 0 0 2.3 2.3c.515.214 1.173.294 2.429.316h.031c.398.007.747.013 1.037.045c.311.035.616.104.909.274c.29.17.5.395.682.645c.169.232.342.525.538.856l.559.944a.52.52 0 0 0 .882 0l.559-.944c.196-.331.37-.624.538-.856c.182-.25.392-.476.682-.645c.293-.17.598-.24.909-.274c.29-.032.639-.038 1.037-.045h.032c1.255-.022 1.913-.102 2.428-.316a4.25 4.25 0 0 0 2.3-2.3c.147-.352.233-.782.278-1.441c.046-.666.046-1.51.046-2.685v-1c0-1.651 0-2.837-.089-3.762c-.087-.914-.253-1.495-.537-1.959a4.25 4.25 0 0 0-1.403-1.403c-.464-.284-1.045-.45-1.96-.537c-.924-.088-2.11-.089-3.761-.089h-3c-1.651 0-2.837 0-3.762.089" clip-rule="evenodd"/><path fill="currentColor" d="M9 11a1 1 0 1 1-2 0a1 1 0 0 1 2 0m4 0a1 1 0 1 1-2 0a1 1 0 0 1 2 0m4 0a1 1 0 1 1-2 0a1 1 0 0 1 2 0"/></svg><span>参与讨论</span></a></div></widget>
 </div></aside><div class='float-panel blur'>

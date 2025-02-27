@@ -2,7 +2,7 @@
 <search>
   <entry>
     <title>3D Reconstruction</title>
-    <url>/2023/04/25/3D-Reconstruction/</url>
+    <url>/posts/18060.html</url>
     <content><![CDATA[<link rel="stylesheet" class="aplayer-secondary-style-marker" href="/assets/css/APlayer.min.css"><script src="/assets/js/APlayer.min.js" class="aplayer-secondary-script-marker"></script><h1 id="1-Urban-Scene-Semantic-Segmentation"><a href="#1-Urban-Scene-Semantic-Segmentation" class="headerlink" title="1 Urban-Scene-Semantic-Segmentation"></a>1 Urban-Scene-Semantic-Segmentation</h1><figure class="highlight shell"><table><tr><td class="code"><pre><span class="line">sudo apt update</span><br></pre></td></tr></table></figure>
 
 
@@ -14,8 +14,108 @@
 <h1 id="2-COLMAP"><a href="#2-COLMAP" class="headerlink" title="2 COLMAP"></a>2 COLMAP</h1>]]></content>
   </entry>
   <entry>
+    <title>C++</title>
+    <url>/posts/15279.html</url>
+    <content><![CDATA[<link rel="stylesheet" class="aplayer-secondary-style-marker" href="/assets/css/APlayer.min.css"><script src="/assets/js/APlayer.min.js" class="aplayer-secondary-script-marker"></script><h1 id="1-C"><a href="#1-C" class="headerlink" title="1 C++"></a>1 C++</h1><p>基础：变量、条件、循环、字符串、数组、函数、结构体等</p>
+<p>重要：指针和内存管理</p>
+<p>书籍：c++ primer</p>
+<h1 id="2-数据结构与算法"><a href="#2-数据结构与算法" class="headerlink" title="2 数据结构与算法"></a>2 数据结构与算法</h1><p>大话数据结构、剑指offer、leetcode 刷题</p>
+<p>常见的数据结构：字符串、链表、二叉树、堆、栈、队列、哈希等</p>
+<p>常见的算法：查找、排序、动态规划等</p>
+<h1 id="3-操作系统"><a href="#3-操作系统" class="headerlink" title="3 操作系统"></a>3 操作系统</h1><p>进程和线程：原子性、并发、锁等</p>
+<p>内存：内存分布、内存调度</p>
+<h1 id="4-计算机网络"><a href="#4-计算机网络" class="headerlink" title="4 计算机网络"></a>4 计算机网络</h1><p>TCP&#x2F;IP协议栈：ARP协议、IP协议、ICMP协议、TCP协议、UDP协议、DNS协议、HTTP&#x2F;HTTPS协议</p>
+<p>书籍：tcp&#x2F;ip详解</p>
+<h1 id="5-设计模式"><a href="#5-设计模式" class="headerlink" title="5 设计模式"></a>5 设计模式</h1><p>单例、工厂、代理、策略、模板方法</p>
+<p>书籍：《大话设计模式》</p>
+<h1 id="5-实践"><a href="#5-实践" class="headerlink" title="5 实践"></a>5 实践</h1><ul>
+<li><p>Linux操作系统、shell编程、脚本</p>
+</li>
+<li><p>编译、调试工具： GNU官方关于gcc和gdb的官方文档。《跟我一起写makefile》  gdb调试《debugging with gdb》</p>
+</li>
+<li><p>Linux系统编程、多线程编程（线程、资源、信号、同步、互斥、锁等）、 网络编程</p>
+</li>
+</ul>
+<p>书籍：</p>
+<h1 id="else"><a href="#else" class="headerlink" title="else"></a>else</h1><p>b站：程序羊</p>
+]]></content>
+  </entry>
+  <entry>
+    <title>Java常用知识</title>
+    <url>/posts/34181.html</url>
+    <content><![CDATA[<link rel="stylesheet" class="aplayer-secondary-style-marker" href="/assets/css/APlayer.min.css"><script src="/assets/js/APlayer.min.js" class="aplayer-secondary-script-marker"></script><h1 id="基础"><a href="#基础" class="headerlink" title="基础"></a>基础</h1><h2 id="char"><a href="#char" class="headerlink" title="char"></a>char</h2><p><code>char</code>是Java的基本数据类型之一，用来表示单个字符。每个<code>char</code>变量占用16位（2字节），可以存储一个Unicode字符 </p>
+<h3 id="创建-char"><a href="#创建-char" class="headerlink" title="创建 char"></a>创建 <code>char</code></h3><figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="type">char</span> <span class="variable">ch1</span> <span class="operator">=</span> <span class="string">&#x27;A&#x27;</span>; <span class="comment">// 单引号内必须是单个字符</span></span><br><span class="line"><span class="type">char</span> <span class="variable">ch2</span> <span class="operator">=</span> <span class="number">65</span>;  <span class="comment">// 使用ASCII值也可以创建字符，这里会显示&#x27;A&#x27;</span></span><br></pre></td></tr></table></figure>
+
+<h3 id="常用操作"><a href="#常用操作" class="headerlink" title="常用操作"></a>常用操作</h3><ul>
+<li><p>算术运算：由于<code>char</code>实际上是一个整数类型的别名，所以可以直接参与算术运算。</p>
+<figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="type">char</span> <span class="variable">a</span> <span class="operator">=</span> <span class="string">&#x27;a&#x27;</span>;</span><br><span class="line"><span class="type">char</span> <span class="variable">b</span> <span class="operator">=</span> (<span class="type">char</span>)(a + <span class="number">1</span>); <span class="comment">// 结果为&#x27;b&#x27;</span></span><br></pre></td></tr></table></figure>
+
+
+</li>
+<li><p>比较：可以使用<code>==</code>, <code>&lt;</code>, <code>&gt;</code>, <code>&lt;=</code>, <code>&gt;=</code>等进行比较。</p>
+<figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="type">boolean</span> <span class="variable">isGreater</span> <span class="operator">=</span> (<span class="string">&#x27;d&#x27;</span> &gt; <span class="string">&#x27;b&#x27;</span>); <span class="comment">// true</span></span><br></pre></td></tr></table></figure></li>
+</ul>
+<h3 id="与-String-的联系和区别"><a href="#与-String-的联系和区别" class="headerlink" title="与 String 的联系和区别"></a>与 String 的联系和区别</h3><ul>
+<li><p><strong>相互转换</strong>：可以通过多种方式进行<code>char</code>和<code>String</code>之间的转换</p>
+<ul>
+<li><p>将<code>String</code>转换为<code>char</code>数组</p>
+<figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="type">String</span> <span class="variable">str</span> <span class="operator">=</span> <span class="string">&quot;hello&quot;</span>;</span><br><span class="line"><span class="type">char</span>[] chars = str.toCharArray(); <span class="comment">// 返回包含所有字符的数组</span></span><br></pre></td></tr></table></figure>
+</li>
+<li><p>将<code>char</code>转换为<code>String</code></p>
+<figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="type">char</span> <span class="variable">ch</span> <span class="operator">=</span> <span class="string">&#x27;a&#x27;</span>;</span><br><span class="line"><span class="type">String</span> <span class="variable">strFromChar</span> <span class="operator">=</span> Character.toString(ch); <span class="comment">// 或者String.valueOf(ch)</span></span><br></pre></td></tr></table></figure></li>
+</ul>
+</li>
+<li><p><strong>区别</strong></p>
+<ul>
+<li><p><strong>基本 vs 引用类型</strong>：<code>char</code>是基本数据类型，而<code>String</code>是一个引用类型。</p>
+</li>
+<li><p><strong>不变性</strong>：<code>String</code>对象是不可变的，而<code>char</code>是可变的。</p>
+</li>
+<li><p><strong>内存管理</strong>：<code>String</code>对象通常存储在堆上，而<code>char</code>直接存储其值。</p>
+</li>
+</ul>
+</li>
+</ul>
+<h2 id="Character"><a href="#Character" class="headerlink" title="Character"></a>Character</h2><h3 id="概念"><a href="#概念" class="headerlink" title="概念"></a>概念</h3><p>在Java中，<code>Character</code>类是位于<code>java.lang</code>包中的一个包装类（wrapper class），它提供了对基本数据类型<code>char</code>的封装，并提供了一系列静态方法来操作字符。<code>Character</code>类的对象包含一个类型为<code>char</code>的单个字段，使得基本数据类型能够作为对象进行处理。</p>
+<p><code>Character</code>类的主要用途是对单个字符进行操作，例如检查字符是否为字母、数字、转换大小写等。以下是<code>Character</code>类的一些基础概念和用法：</p>
+<h3 id="创建-Character-对象"><a href="#创建-Character-对象" class="headerlink" title="创建 Character 对象"></a>创建 Character 对象</h3><p>尽管在Java中可以使用自动装箱（autoboxing）将<code>char</code>类型的值直接赋给<code>Character</code>对象，但也可以显式地通过构造函数创建：</p>
+<figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="type">Character</span> <span class="variable">ch</span> <span class="operator">=</span> <span class="keyword">new</span> <span class="title class_">Character</span>(<span class="string">&#x27;a&#x27;</span>);</span><br></pre></td></tr></table></figure>
+
+<p>然而，由于自动装箱的存在，通常不需要这样做，可以直接写成：</p>
+<figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="type">Character</span> <span class="variable">ch</span> <span class="operator">=</span> <span class="string">&#x27;a&#x27;</span>;</span><br></pre></td></tr></table></figure>
+
+
+
+
+
+<h2 id="String"><a href="#String" class="headerlink" title="String"></a>String</h2><h3 id="概念-1"><a href="#概念-1" class="headerlink" title="概念"></a>概念</h3><p>在Java中，<code>String</code>是不可变的类，这意味着一旦创建了一个<code>String</code>对象，它的值就不能改变。所有对字符串的操作都会返回一个新的<code>String</code>对象。 （引用类型）</p>
+<h3 id="常用方法"><a href="#常用方法" class="headerlink" title="常用方法"></a>常用方法</h3><ul>
+<li><code>length()</code>：获取字符串长度</li>
+<li><code>charAt(int index)</code>：获取指定位置的字符</li>
+<li><code>substring(int beginIndex, int endIndex)</code>：获取子串</li>
+<li><code>equals(Object anObject)</code>：比较两个字符串是否相等</li>
+<li><code>toLowerCase()</code> 和 <code>toUpperCase()</code>：转换大小写</li>
+<li><code>trim()</code>：去除首尾空白字符</li>
+<li><code>replace(char oldChar, char newChar)</code>：替换字符</li>
+<li><code>split(String regex)</code>：根据正则表达式分割字符串</li>
+<li><code>concat(String str)</code>：连接字符串</li>
+<li><code>indexOf(int ch)</code> 和 <code>lastIndexOf(int ch)</code> 查找字符或子串的位置</li>
+</ul>
+<h3 id="不可变性"><a href="#不可变性" class="headerlink" title="不可变性"></a>不可变性</h3><p>由于<code>String</code>对象是不可变的，在进行修改操作时会生成新的<code>String</code>对象。</p>
+<h1 id="参考"><a href="#参考" class="headerlink" title="参考"></a>参考</h1><ol>
+<li>通义千问</li>
+</ol>
+]]></content>
+      <categories>
+        <category>java</category>
+      </categories>
+      <tags>
+        <tag>java</tag>
+      </tags>
+  </entry>
+  <entry>
     <title>Blog Hexo</title>
-    <url>/2023/04/25/Blog-Hexo/</url>
+    <url>/posts/39773.html</url>
     <content><![CDATA[<link rel="stylesheet" class="aplayer-secondary-style-marker" href="/assets/css/APlayer.min.css"><script src="/assets/js/APlayer.min.js" class="aplayer-secondary-script-marker"></script><p>记录使用 hexo + github pages 搭建个人博客的步骤</p>
 <span id="more"></span>
 
@@ -80,7 +180,7 @@
 <p>如果在同步仓库时出现权限不足的问题，需要将本机公钥添加到 github 中</p>
 <p>问题描述：</p>
 <blockquote>
-<p><a href="mailto:&#x67;&#x69;&#116;&#x40;&#103;&#x69;&#116;&#x68;&#x75;&#x62;&#x2e;&#99;&#x6f;&#x6d;">&#x67;&#x69;&#116;&#x40;&#103;&#x69;&#116;&#x68;&#x75;&#x62;&#x2e;&#99;&#x6f;&#x6d;</a>: Permission denied (publickey)</p>
+<p><a href="mailto:&#103;&#x69;&#116;&#64;&#x67;&#105;&#x74;&#x68;&#117;&#98;&#46;&#99;&#x6f;&#x6d;">&#103;&#x69;&#116;&#64;&#x67;&#105;&#x74;&#x68;&#117;&#98;&#46;&#99;&#x6f;&#x6d;</a>: Permission denied (publickey)</p>
 </blockquote>
 <p>解决方法：</p>
 <figure class="highlight shell"><table><tr><td class="code"><pre><span class="line"><span class="meta prompt_"># </span><span class="language-bash">1 验证邮箱与 github 注册邮箱是否一致</span></span><br><span class="line">git config --global --list</span><br><span class="line"><span class="meta prompt_"></span></span><br><span class="line"><span class="meta prompt_"># </span><span class="language-bash">2 设置全局用户名和邮箱</span></span><br><span class="line">git config --global user.name &quot;your name&quot;</span><br><span class="line">git config --global user.email &quot;your email&quot;</span><br><span class="line"><span class="meta prompt_"></span></span><br><span class="line"><span class="meta prompt_"># </span><span class="language-bash">3 生成密钥</span></span><br><span class="line">ssh-keygen -t rsa -C &quot;your email&quot;</span><br><span class="line"><span class="meta prompt_"></span></span><br><span class="line"><span class="meta prompt_"># </span><span class="language-bash">4 将 rsa.pub 公钥内容添加到 github</span> </span><br><span class="line"><span class="meta prompt_"></span></span><br><span class="line"><span class="meta prompt_"># </span><span class="language-bash">5 测试</span></span><br><span class="line">ssh -T git@github.com</span><br></pre></td></tr></table></figure>
@@ -151,6 +251,20 @@
 <p>pjax：</p>
 <h2 id="2-6-标签页、分类页、搜索页"><a href="#2-6-标签页、分类页、搜索页" class="headerlink" title="2.6 标签页、分类页、搜索页"></a>2.6 标签页、分类页、搜索页</h2><h1 id="3-Hexo-插件记录"><a href="#3-Hexo-插件记录" class="headerlink" title="3 Hexo 插件记录"></a>3 Hexo 插件记录</h1><h2 id="3-1"><a href="#3-1" class="headerlink" title="3.1"></a>3.1</h2><h2 id="3-2"><a href="#3-2" class="headerlink" title="3.2"></a>3.2</h2><h2 id="3-3"><a href="#3-3" class="headerlink" title="3.3"></a>3.3</h2><h2 id="3-4-代码高亮"><a href="#3-4-代码高亮" class="headerlink" title="3.4 代码高亮"></a>3.4 代码高亮</h2><h2 id="3-5-在线编写"><a href="#3-5-在线编写" class="headerlink" title="3.5 在线编写"></a>3.5 在线编写</h2><p>1  <a href="http://localhost:5777/#/login">Hexo Editor</a></p>
 <p>2  <a href="http://localhost:4000/admin/#/">Hexo Admin</a></p>
+<h2 id="3-6-永久链接"><a href="#3-6-永久链接" class="headerlink" title="3.6 永久链接"></a>3.6 永久链接</h2><ul>
+<li>安装插件 hexo-abbrlink</li>
+</ul>
+<figure class="highlight java"><table><tr><td class="code"><pre><span class="line">npm install hexo-abbrlink --save</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+
+<ul>
+<li>修改<code>_config.yml</code>文件中的配置项（记得把原来的<code>permalink:</code>删除掉）</li>
+</ul>
+<figure class="highlight java"><table><tr><td class="code"><pre><span class="line">#设置永久链接</span><br><span class="line">permalink: posts/:abbrlink.html  # 此处可以自己设置，也可以直接使用 :/abbrlink</span><br><span class="line">abbrlink:</span><br><span class="line">    alg: crc16   #算法： crc16(<span class="keyword">default</span>) and crc32</span><br><span class="line">    rep: dec     #进制： dec(<span class="keyword">default</span>) and hex</span><br></pre></td></tr></table></figure>
+
+
+
+
+
 <h1 id="4-多终端同步"><a href="#4-多终端同步" class="headerlink" title="4 多终端同步"></a>4 多终端同步</h1><p>注意：<code>username.github.io</code> 存放的是 <code>hexo</code> 生成的静态文件，用于展示博客内容；<code>HexoBlog</code> 仓库用于存放博客源码，可设置其为私人仓库。</p>
 <p>新设备只需要克隆博客源码，然后重新配置一遍 <code>hexo</code> 运行环境就可以继续写博客了。</p>
 <h1 id="5-定时更新博客"><a href="#5-定时更新博客" class="headerlink" title="5 定时更新博客"></a>5 定时更新博客</h1><p><strong>目标</strong>：通过脚本定时生成博客、部署博客、同步博客源码</p>
@@ -232,108 +346,8 @@
       </tags>
   </entry>
   <entry>
-    <title>C++</title>
-    <url>/2023/05/20/C/</url>
-    <content><![CDATA[<link rel="stylesheet" class="aplayer-secondary-style-marker" href="/assets/css/APlayer.min.css"><script src="/assets/js/APlayer.min.js" class="aplayer-secondary-script-marker"></script><h1 id="1-C"><a href="#1-C" class="headerlink" title="1 C++"></a>1 C++</h1><p>基础：变量、条件、循环、字符串、数组、函数、结构体等</p>
-<p>重要：指针和内存管理</p>
-<p>书籍：c++ primer</p>
-<h1 id="2-数据结构与算法"><a href="#2-数据结构与算法" class="headerlink" title="2 数据结构与算法"></a>2 数据结构与算法</h1><p>大话数据结构、剑指offer、leetcode 刷题</p>
-<p>常见的数据结构：字符串、链表、二叉树、堆、栈、队列、哈希等</p>
-<p>常见的算法：查找、排序、动态规划等</p>
-<h1 id="3-操作系统"><a href="#3-操作系统" class="headerlink" title="3 操作系统"></a>3 操作系统</h1><p>进程和线程：原子性、并发、锁等</p>
-<p>内存：内存分布、内存调度</p>
-<h1 id="4-计算机网络"><a href="#4-计算机网络" class="headerlink" title="4 计算机网络"></a>4 计算机网络</h1><p>TCP&#x2F;IP协议栈：ARP协议、IP协议、ICMP协议、TCP协议、UDP协议、DNS协议、HTTP&#x2F;HTTPS协议</p>
-<p>书籍：tcp&#x2F;ip详解</p>
-<h1 id="5-设计模式"><a href="#5-设计模式" class="headerlink" title="5 设计模式"></a>5 设计模式</h1><p>单例、工厂、代理、策略、模板方法</p>
-<p>书籍：《大话设计模式》</p>
-<h1 id="5-实践"><a href="#5-实践" class="headerlink" title="5 实践"></a>5 实践</h1><ul>
-<li><p>Linux操作系统、shell编程、脚本</p>
-</li>
-<li><p>编译、调试工具： GNU官方关于gcc和gdb的官方文档。《跟我一起写makefile》  gdb调试《debugging with gdb》</p>
-</li>
-<li><p>Linux系统编程、多线程编程（线程、资源、信号、同步、互斥、锁等）、 网络编程</p>
-</li>
-</ul>
-<p>书籍：</p>
-<h1 id="else"><a href="#else" class="headerlink" title="else"></a>else</h1><p>b站：程序羊</p>
-]]></content>
-  </entry>
-  <entry>
-    <title>Java常用知识</title>
-    <url>/2025/02/26/Java%E5%B8%B8%E7%94%A8%E7%9F%A5%E8%AF%86/</url>
-    <content><![CDATA[<link rel="stylesheet" class="aplayer-secondary-style-marker" href="/assets/css/APlayer.min.css"><script src="/assets/js/APlayer.min.js" class="aplayer-secondary-script-marker"></script><h1 id="基础"><a href="#基础" class="headerlink" title="基础"></a>基础</h1><h2 id="char"><a href="#char" class="headerlink" title="char"></a>char</h2><p><code>char</code>是Java的基本数据类型之一，用来表示单个字符。每个<code>char</code>变量占用16位（2字节），可以存储一个Unicode字符 </p>
-<h3 id="创建-char"><a href="#创建-char" class="headerlink" title="创建 char"></a>创建 <code>char</code></h3><figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="type">char</span> <span class="variable">ch1</span> <span class="operator">=</span> <span class="string">&#x27;A&#x27;</span>; <span class="comment">// 单引号内必须是单个字符</span></span><br><span class="line"><span class="type">char</span> <span class="variable">ch2</span> <span class="operator">=</span> <span class="number">65</span>;  <span class="comment">// 使用ASCII值也可以创建字符，这里会显示&#x27;A&#x27;</span></span><br></pre></td></tr></table></figure>
-
-<h3 id="常用操作"><a href="#常用操作" class="headerlink" title="常用操作"></a>常用操作</h3><ul>
-<li><p>算术运算：由于<code>char</code>实际上是一个整数类型的别名，所以可以直接参与算术运算。</p>
-<figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="type">char</span> <span class="variable">a</span> <span class="operator">=</span> <span class="string">&#x27;a&#x27;</span>;</span><br><span class="line"><span class="type">char</span> <span class="variable">b</span> <span class="operator">=</span> (<span class="type">char</span>)(a + <span class="number">1</span>); <span class="comment">// 结果为&#x27;b&#x27;</span></span><br></pre></td></tr></table></figure>
-
-
-</li>
-<li><p>比较：可以使用<code>==</code>, <code>&lt;</code>, <code>&gt;</code>, <code>&lt;=</code>, <code>&gt;=</code>等进行比较。</p>
-<figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="type">boolean</span> <span class="variable">isGreater</span> <span class="operator">=</span> (<span class="string">&#x27;d&#x27;</span> &gt; <span class="string">&#x27;b&#x27;</span>); <span class="comment">// true</span></span><br></pre></td></tr></table></figure></li>
-</ul>
-<h3 id="与-String-的联系和区别"><a href="#与-String-的联系和区别" class="headerlink" title="与 String 的联系和区别"></a>与 String 的联系和区别</h3><ul>
-<li><p><strong>相互转换</strong>：可以通过多种方式进行<code>char</code>和<code>String</code>之间的转换</p>
-<ul>
-<li><p>将<code>String</code>转换为<code>char</code>数组</p>
-<figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="type">String</span> <span class="variable">str</span> <span class="operator">=</span> <span class="string">&quot;hello&quot;</span>;</span><br><span class="line"><span class="type">char</span>[] chars = str.toCharArray(); <span class="comment">// 返回包含所有字符的数组</span></span><br></pre></td></tr></table></figure>
-</li>
-<li><p>将<code>char</code>转换为<code>String</code></p>
-<figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="type">char</span> <span class="variable">ch</span> <span class="operator">=</span> <span class="string">&#x27;a&#x27;</span>;</span><br><span class="line"><span class="type">String</span> <span class="variable">strFromChar</span> <span class="operator">=</span> Character.toString(ch); <span class="comment">// 或者String.valueOf(ch)</span></span><br></pre></td></tr></table></figure></li>
-</ul>
-</li>
-<li><p><strong>区别</strong></p>
-<ul>
-<li><p><strong>基本 vs 引用类型</strong>：<code>char</code>是基本数据类型，而<code>String</code>是一个引用类型。</p>
-</li>
-<li><p><strong>不变性</strong>：<code>String</code>对象是不可变的，而<code>char</code>是可变的。</p>
-</li>
-<li><p><strong>内存管理</strong>：<code>String</code>对象通常存储在堆上，而<code>char</code>直接存储其值。</p>
-</li>
-</ul>
-</li>
-</ul>
-<h2 id="Character"><a href="#Character" class="headerlink" title="Character"></a>Character</h2><h3 id="概念"><a href="#概念" class="headerlink" title="概念"></a>概念</h3><p>在Java中，<code>Character</code>类是位于<code>java.lang</code>包中的一个包装类（wrapper class），它提供了对基本数据类型<code>char</code>的封装，并提供了一系列静态方法来操作字符。<code>Character</code>类的对象包含一个类型为<code>char</code>的单个字段，使得基本数据类型能够作为对象进行处理。</p>
-<p><code>Character</code>类的主要用途是对单个字符进行操作，例如检查字符是否为字母、数字、转换大小写等。以下是<code>Character</code>类的一些基础概念和用法：</p>
-<h3 id="创建-Character-对象"><a href="#创建-Character-对象" class="headerlink" title="创建 Character 对象"></a>创建 Character 对象</h3><p>尽管在Java中可以使用自动装箱（autoboxing）将<code>char</code>类型的值直接赋给<code>Character</code>对象，但也可以显式地通过构造函数创建：</p>
-<figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="type">Character</span> <span class="variable">ch</span> <span class="operator">=</span> <span class="keyword">new</span> <span class="title class_">Character</span>(<span class="string">&#x27;a&#x27;</span>);</span><br></pre></td></tr></table></figure>
-
-<p>然而，由于自动装箱的存在，通常不需要这样做，可以直接写成：</p>
-<figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="type">Character</span> <span class="variable">ch</span> <span class="operator">=</span> <span class="string">&#x27;a&#x27;</span>;</span><br></pre></td></tr></table></figure>
-
-
-
-
-
-<h2 id="String"><a href="#String" class="headerlink" title="String"></a>String</h2><h3 id="概念-1"><a href="#概念-1" class="headerlink" title="概念"></a>概念</h3><p>在Java中，<code>String</code>是不可变的类，这意味着一旦创建了一个<code>String</code>对象，它的值就不能改变。所有对字符串的操作都会返回一个新的<code>String</code>对象。 （引用类型）</p>
-<h3 id="常用方法"><a href="#常用方法" class="headerlink" title="常用方法"></a>常用方法</h3><ul>
-<li><code>length()</code>：获取字符串长度</li>
-<li><code>charAt(int index)</code>：获取指定位置的字符</li>
-<li><code>substring(int beginIndex, int endIndex)</code>：获取子串</li>
-<li><code>equals(Object anObject)</code>：比较两个字符串是否相等</li>
-<li><code>toLowerCase()</code> 和 <code>toUpperCase()</code>：转换大小写</li>
-<li><code>trim()</code>：去除首尾空白字符</li>
-<li><code>replace(char oldChar, char newChar)</code>：替换字符</li>
-<li><code>split(String regex)</code>：根据正则表达式分割字符串</li>
-<li><code>concat(String str)</code>：连接字符串</li>
-<li><code>indexOf(int ch)</code> 和 <code>lastIndexOf(int ch)</code> 查找字符或子串的位置</li>
-</ul>
-<h3 id="不可变性"><a href="#不可变性" class="headerlink" title="不可变性"></a>不可变性</h3><p>由于<code>String</code>对象是不可变的，在进行修改操作时会生成新的<code>String</code>对象。</p>
-<h1 id="参考"><a href="#参考" class="headerlink" title="参考"></a>参考</h1><ol>
-<li>通义千问</li>
-</ol>
-]]></content>
-      <categories>
-        <category>java</category>
-      </categories>
-      <tags>
-        <tag>java</tag>
-      </tags>
-  </entry>
-  <entry>
     <title>voldor-imu</title>
-    <url>/2023/04/25/Voldor/</url>
+    <url>/posts/11821.html</url>
     <content><![CDATA[<link rel="stylesheet" class="aplayer-secondary-style-marker" href="/assets/css/APlayer.min.css"><script src="/assets/js/APlayer.min.js" class="aplayer-secondary-script-marker"></script><p>VOLDOR-SLAM: For the times when feature-based or direct methods are not good enough (ICRA 2021)</p>
 <h1 id="1-环境配置"><a href="#1-环境配置" class="headerlink" title="1 环境配置"></a>1 环境配置</h1><h2 id="1-1-VOLDOR-SLAM"><a href="#1-1-VOLDOR-SLAM" class="headerlink" title="1.1 VOLDOR-SLAM"></a>1.1 VOLDOR-SLAM</h2><figure class="highlight shell"><table><tr><td class="code"><pre><span class="line"><span class="meta prompt_"># </span><span class="language-bash"><span class="built_in">env</span></span></span><br><span class="line">conda create -n voldor python==3.6.9</span><br><span class="line"><span class="meta prompt_"></span></span><br><span class="line"><span class="meta prompt_"># </span><span class="language-bash">activate</span></span><br><span class="line">conda activate voldor</span><br><span class="line"><span class="meta prompt_"></span></span><br><span class="line"><span class="meta prompt_"># </span><span class="language-bash">install the python dependencies</span></span><br><span class="line">cd slam_py/install</span><br><span class="line">pip install -r ./requirements.txt</span><br><span class="line"><span class="meta prompt_"></span></span><br><span class="line"><span class="meta prompt_"># </span><span class="language-bash">install OpenCV</span></span><br><span class="line">sudo apt install libopencv-dev</span><br><span class="line"><span class="meta prompt_"></span></span><br><span class="line"><span class="meta prompt_"># </span><span class="language-bash">PyOpenGL</span></span><br><span class="line">sudo apt install python-opengl</span><br><span class="line"><span class="meta prompt_"></span></span><br><span class="line"><span class="meta prompt_"># </span><span class="language-bash">Ceres: http://ceres-solver.org/installation.html</span></span><br><span class="line">wget https://github.com/ceres-solver/ceres-solver/archive/refs/tags/2.1.0.tar.gz</span><br><span class="line">tar -zxvf 2.1.0.tar.gz</span><br><span class="line">mv ceres-solver-2.1.0 ceres-solver</span><br><span class="line">cd ceres-solver</span><br><span class="line">mkdir build &amp;&amp; cd build</span><br><span class="line">cmake ..</span><br><span class="line">sudo make install -j12</span><br><span class="line"><span class="meta prompt_"></span></span><br><span class="line"><span class="meta prompt_"># </span><span class="language-bash">pyDBoW3</span></span><br><span class="line">git clone https://github.com/htkseason/pyDBoW3.git</span><br></pre></td></tr></table></figure>
 
@@ -455,7 +469,7 @@
   </entry>
   <entry>
     <title>Hello World</title>
-    <url>/2025/02/25/hello-world/</url>
+    <url>/posts/16107.html</url>
     <content><![CDATA[<link rel="stylesheet" class="aplayer-secondary-style-marker" href="/assets/css/APlayer.min.css"><script src="/assets/js/APlayer.min.js" class="aplayer-secondary-script-marker"></script><p>Welcome to <a href="https://hexo.io/">Hexo</a>! This is your very first post. Check <a href="https://hexo.io/docs/">documentation</a> for more info. If you get any problems when using Hexo, you can find the answer in <a href="https://hexo.io/docs/troubleshooting.html">troubleshooting</a> or you can ask me on <a href="https://github.com/hexojs/hexo/issues">GitHub</a>.</p>
 <span id="more"></span>
 
@@ -572,7 +586,7 @@
   </entry>
   <entry>
     <title>hot 100</title>
-    <url>/2024/04/17/hot%20100/</url>
+    <url>/posts/35102.html</url>
     <content><![CDATA[<link rel="stylesheet" class="aplayer-secondary-style-marker" href="/assets/css/APlayer.min.css"><script src="/assets/js/APlayer.min.js" class="aplayer-secondary-script-marker"></script><blockquote>
 <p>Leetcode hot 100 刷题记录</p>
 </blockquote>
@@ -780,8 +794,156 @@
       </tags>
   </entry>
   <entry>
+    <title>leetcode刷题记录（1）</title>
+    <url>/posts/6245.html</url>
+    <content><![CDATA[<link rel="stylesheet" class="aplayer-secondary-style-marker" href="/assets/css/APlayer.min.css"><script src="/assets/js/APlayer.min.js" class="aplayer-secondary-script-marker"></script><blockquote>
+<p>主要使用 java 重新刷一遍代码随想录。</p>
+</blockquote>
+<p>2025-2-18 00:00 开始</p>
+<span id="more"></span>
+
+<p>思路：</p>
+<ul>
+<li>需要查询一个元素是否出现过，或者一个元素是否在集合里的时候，就要第一时间想到哈希法</li>
+<li></li>
+</ul>
+<h1 id="1-数组"><a href="#1-数组" class="headerlink" title="1 数组"></a>1 数组</h1><h2 id="1-1-二分查找"><a href="#1-1-二分查找" class="headerlink" title="1.1 二分查找"></a>1.1 二分查找</h2><p>有序数组、无重复元素</p>
+<figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="keyword">class</span> <span class="title class_">Solution</span> &#123;</span><br><span class="line">    <span class="keyword">public</span> <span class="type">int</span> <span class="title function_">search</span><span class="params">(<span class="type">int</span>[] nums, <span class="type">int</span> target)</span> &#123;</span><br><span class="line">        <span class="type">int</span> <span class="variable">len</span> <span class="operator">=</span> nums.length;</span><br><span class="line">        <span class="keyword">if</span> (target &lt; nums[<span class="number">0</span>] || target &gt; nums[len - <span class="number">1</span>]) <span class="keyword">return</span> -<span class="number">1</span>;</span><br><span class="line">        <span class="type">int</span> <span class="variable">left</span> <span class="operator">=</span> <span class="number">0</span>, right = len - <span class="number">1</span>;</span><br><span class="line">        <span class="keyword">while</span> (left &lt;= right) &#123;</span><br><span class="line">            <span class="type">int</span> <span class="variable">mid</span> <span class="operator">=</span> (left + right) / <span class="number">2</span>;</span><br><span class="line">            <span class="keyword">if</span> (target == nums[mid]) <span class="keyword">return</span> mid;</span><br><span class="line">            <span class="keyword">else</span> <span class="keyword">if</span> (target &gt; nums[mid]) left = mid + <span class="number">1</span>;</span><br><span class="line">            <span class="keyword">else</span> right = mid - <span class="number">1</span>;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">return</span> -<span class="number">1</span>;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h2 id="1-2-移除元素"><a href="#1-2-移除元素" class="headerlink" title="1.2 移除元素"></a>1.2 移除元素</h2><p>在数组中移除目标元素，然后将剩余元素往前排。（原地移除）</p>
+<ul>
+<li>暴力：两层for循环，一个for循环遍历数组元素 ，第二个for循环更新数组。</li>
+<li>易错：<code>i--</code>，后面元素都向前移了一位，最外层循环 <code>i</code> 应保持不变。</li>
+</ul>
+<figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="keyword">class</span> <span class="title class_">Solution</span> &#123;</span><br><span class="line">    <span class="keyword">public</span> <span class="type">int</span> <span class="title function_">removeElement</span><span class="params">(<span class="type">int</span>[] nums, <span class="type">int</span> val)</span> &#123;</span><br><span class="line">        <span class="type">int</span> <span class="variable">len</span> <span class="operator">=</span> nums.length;</span><br><span class="line">        <span class="keyword">for</span> (<span class="type">int</span> <span class="variable">i</span> <span class="operator">=</span> <span class="number">0</span>; i &lt; len; i++) &#123;</span><br><span class="line">            <span class="keyword">if</span> (nums[i] == val) &#123;</span><br><span class="line">                <span class="keyword">for</span> (<span class="type">int</span> <span class="variable">j</span> <span class="operator">=</span> i + <span class="number">1</span>; j &lt; len; j ++) nums[j - <span class="number">1</span>] = nums[j];</span><br><span class="line">                i--;</span><br><span class="line">                len--;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">return</span> len;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<ul>
+<li>快慢指针（数组、链表、字符串等）：通过一个快指针和慢指针在一个for循环下完成两个for循环的工作。</li>
+<li>注意：fast 在前面找不同于 val 的元素，然后传给 slow</li>
+</ul>
+<figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="keyword">class</span> <span class="title class_">Solution</span> &#123;</span><br><span class="line">    <span class="keyword">public</span> <span class="type">int</span> <span class="title function_">removeElement</span><span class="params">(<span class="type">int</span>[] nums, <span class="type">int</span> val)</span> &#123;</span><br><span class="line">        <span class="type">int</span> <span class="variable">len</span> <span class="operator">=</span> nums.length;</span><br><span class="line">        <span class="type">int</span> <span class="variable">slow</span> <span class="operator">=</span> <span class="number">0</span>;</span><br><span class="line">        <span class="keyword">for</span> (<span class="type">int</span> <span class="variable">fast</span> <span class="operator">=</span> <span class="number">0</span>; fast &lt; len; fast++) &#123;</span><br><span class="line">            <span class="keyword">if</span> (nums[fast] != val) &#123;</span><br><span class="line">                nums[slow] = nums[fast];</span><br><span class="line">                slow++;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">return</span> slow;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h2 id="1-3-有序数组的平方"><a href="#1-3-有序数组的平方" class="headerlink" title="1.3 有序数组的平方"></a>1.3 有序数组的平方</h2><ul>
+<li>先平方，再排序 O(n + nlogn)</li>
+</ul>
+<figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="keyword">class</span> <span class="title class_">Solution</span> &#123;</span><br><span class="line">    <span class="keyword">public</span> <span class="type">int</span>[] sortedSquares(<span class="type">int</span>[] nums) &#123;</span><br><span class="line">        <span class="keyword">for</span> (<span class="type">int</span> <span class="variable">i</span> <span class="operator">=</span> <span class="number">0</span>; i &lt; nums.length; i++) &#123;</span><br><span class="line">            nums[i] = nums[i] * nums[i];</span><br><span class="line">        &#125;</span><br><span class="line">        Arrays.sort(nums);</span><br><span class="line">        <span class="keyword">return</span> nums;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<ul>
+<li>双指针：从两头往中间收缩，比较两头元素平方的大小。取较大值填入新数组的右边界位置</li>
+</ul>
+<figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="keyword">class</span> <span class="title class_">Solution</span> &#123;</span><br><span class="line">    <span class="keyword">public</span> <span class="type">int</span>[] sortedSquares(<span class="type">int</span>[] nums) &#123;</span><br><span class="line">        <span class="type">int</span> <span class="variable">len</span> <span class="operator">=</span> nums.length;</span><br><span class="line">        <span class="type">int</span> <span class="variable">i</span> <span class="operator">=</span> <span class="number">0</span>, j = len - <span class="number">1</span>;</span><br><span class="line">        <span class="type">int</span>[] result = <span class="keyword">new</span> <span class="title class_">int</span>[len];</span><br><span class="line">        <span class="type">int</span> <span class="variable">k</span> <span class="operator">=</span> len - <span class="number">1</span>;</span><br><span class="line">        <span class="keyword">while</span> (i &lt;= j) &#123;</span><br><span class="line">            <span class="keyword">if</span> (nums[i] * nums[i] &lt;= nums[j] * nums[j]) &#123;</span><br><span class="line">                result[k] = nums[j] * nums[j];</span><br><span class="line">                k--;</span><br><span class="line">                j--;</span><br><span class="line">            &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">                result[k] = nums[i] * nums[i];</span><br><span class="line">                k--;</span><br><span class="line">                i++;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">return</span> result;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h2 id="1-4-长度最小的子数组"><a href="#1-4-长度最小的子数组" class="headerlink" title="1.4 长度最小的子数组"></a>1.4 长度最小的子数组</h2><ul>
+<li>滑动窗口：for循环控制窗口右边界，while循环控制窗口左边界</li>
+<li>时间复杂度：O(n)</li>
+<li>易错：result初始化，最后返回值，while循环逻辑</li>
+</ul>
+<figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="keyword">class</span> <span class="title class_">Solution</span> &#123;</span><br><span class="line">    <span class="keyword">public</span> <span class="type">int</span> <span class="title function_">minSubArrayLen</span><span class="params">(<span class="type">int</span> target, <span class="type">int</span>[] nums)</span> &#123;</span><br><span class="line">        <span class="type">int</span> <span class="variable">len</span> <span class="operator">=</span> nums.length;</span><br><span class="line">        <span class="type">int</span> <span class="variable">left</span> <span class="operator">=</span> <span class="number">0</span>, sum = <span class="number">0</span>;</span><br><span class="line">        <span class="type">int</span> <span class="variable">result</span> <span class="operator">=</span> Integer.MAX_VALUE;</span><br><span class="line">        <span class="keyword">for</span> (<span class="type">int</span> <span class="variable">right</span> <span class="operator">=</span> <span class="number">0</span>; right &lt; len; right++) &#123;</span><br><span class="line">            sum += nums[right];</span><br><span class="line">            <span class="keyword">while</span> (sum &gt;= target) &#123;</span><br><span class="line">                result = Math.min(right - left + <span class="number">1</span>, result);</span><br><span class="line">                sum -= nums[left++];</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">return</span> result == Integer.MAX_VALUE ? <span class="number">0</span> : result;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h2 id="1-5-螺旋矩阵-II"><a href="#1-5-螺旋矩阵-II" class="headerlink" title="1.5 螺旋矩阵 II"></a>1.5 螺旋矩阵 II</h2><ul>
+<li>模拟：一圈一圈的填充矩阵，从顶部的左到右，最右边的上到下，底部的右到左，最左边的下到上。</li>
+<li>易错：边界条件的处理</li>
+</ul>
+<figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="keyword">class</span> <span class="title class_">Solution</span> &#123;</span><br><span class="line">    <span class="keyword">public</span> <span class="type">int</span>[][] generateMatrix(<span class="type">int</span> n) &#123;</span><br><span class="line">        <span class="type">int</span>[][] nums = <span class="keyword">new</span> <span class="title class_">int</span>[n][n];</span><br><span class="line">        <span class="type">int</span> <span class="variable">startX</span> <span class="operator">=</span> <span class="number">0</span>, startY = <span class="number">0</span>;</span><br><span class="line">        <span class="type">int</span> <span class="variable">count</span> <span class="operator">=</span> <span class="number">1</span>, loop = <span class="number">1</span>, offset = <span class="number">1</span>;</span><br><span class="line">        <span class="type">int</span> i, j;</span><br><span class="line">        <span class="keyword">while</span> (loop &lt;= n / <span class="number">2</span>) &#123;</span><br><span class="line">            i = startX;</span><br><span class="line">            j = startY;</span><br><span class="line"></span><br><span class="line">            <span class="keyword">for</span> (; j &lt; n - offset; j++) nums[i][j] = count++;</span><br><span class="line">            <span class="keyword">for</span> (; i &lt; n - offset; i++) nums[i][j] = count++;</span><br><span class="line">            <span class="keyword">for</span> (; j &gt; startY; j--) nums[i][j] = count++;</span><br><span class="line">            <span class="keyword">for</span> (; i &gt; startX; i--) nums[i][j] = count++;</span><br><span class="line"></span><br><span class="line">            startX++;</span><br><span class="line">            startY++;</span><br><span class="line">            offset++;</span><br><span class="line">            loop++;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">if</span> (n % <span class="number">2</span> == <span class="number">1</span>) nums[startX][startY] = count;</span><br><span class="line">        <span class="keyword">return</span> nums;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h2 id="1-6-区间和-（自选）"><a href="#1-6-区间和-（自选）" class="headerlink" title="1.6 区间和 （自选）"></a>1.6 区间和 （自选）</h2><ul>
+<li>前缀和：重复利用计算过的子数组之和，减少计算次数</li>
+<li>易错：</li>
+</ul>
+<figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="keyword">import</span> java.util.Scanner;</span><br><span class="line"></span><br><span class="line"><span class="keyword">public</span> <span class="keyword">class</span> <span class="title class_">Main</span> &#123;</span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title function_">main</span><span class="params">(String[] args)</span> &#123;</span><br><span class="line">        <span class="type">Scanner</span> <span class="variable">scan</span> <span class="operator">=</span> <span class="keyword">new</span> <span class="title class_">Scanner</span>(System.in);</span><br><span class="line">        </span><br><span class="line">        <span class="type">int</span> <span class="variable">n</span> <span class="operator">=</span> scan.nextInt();</span><br><span class="line">        <span class="type">int</span>[] nums = <span class="keyword">new</span> <span class="title class_">int</span>[n];</span><br><span class="line">        <span class="type">int</span>[] sum = <span class="keyword">new</span> <span class="title class_">int</span>[n];</span><br><span class="line">        </span><br><span class="line">        <span class="keyword">for</span> (<span class="type">int</span> <span class="variable">i</span> <span class="operator">=</span> <span class="number">0</span>; i &lt; n; i++) &#123;</span><br><span class="line">            nums[i] = scan.nextInt();</span><br><span class="line">            <span class="keyword">if</span> (i == <span class="number">0</span>) sum[i] = nums[i];</span><br><span class="line">            <span class="keyword">else</span> sum[i] = sum[i-<span class="number">1</span>] + nums[i];</span><br><span class="line">        &#125;</span><br><span class="line">        </span><br><span class="line">        <span class="keyword">while</span> (scan.hasNextInt()) &#123;</span><br><span class="line">            <span class="type">int</span> <span class="variable">a</span> <span class="operator">=</span> scan.nextInt();</span><br><span class="line">            <span class="type">int</span> <span class="variable">b</span> <span class="operator">=</span> scan.nextInt();</span><br><span class="line">            </span><br><span class="line">            <span class="type">int</span> result;</span><br><span class="line">            <span class="keyword">if</span> (a == <span class="number">0</span>) result = sum[b];</span><br><span class="line">            <span class="keyword">else</span> result = sum[b] - sum[a - <span class="number">1</span>];</span><br><span class="line">            </span><br><span class="line">            System.out.println(result);</span><br><span class="line">        &#125;</span><br><span class="line">        </span><br><span class="line">        scan.close();</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h2 id="1-7-开发商购买土地-（自选）"><a href="#1-7-开发商购买土地-（自选）" class="headerlink" title="1.7 开发商购买土地 （自选）"></a>1.7 开发商购买土地 （自选）</h2><h1 id="2-链表"><a href="#2-链表" class="headerlink" title="2 链表"></a>2 链表</h1><h2 id="2-1-移除链表元素"><a href="#2-1-移除链表元素" class="headerlink" title="2.1 移除链表元素"></a>2.1 移除链表元素</h2><ul>
+<li>虚拟节点</li>
+</ul>
+<figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="comment">/**</span></span><br><span class="line"><span class="comment"> * Definition for singly-linked list.</span></span><br><span class="line"><span class="comment"> * public class ListNode &#123;</span></span><br><span class="line"><span class="comment"> *     int val;</span></span><br><span class="line"><span class="comment"> *     ListNode next;</span></span><br><span class="line"><span class="comment"> *     ListNode() &#123;&#125;</span></span><br><span class="line"><span class="comment"> *     ListNode(int val) &#123; this.val = val; &#125;</span></span><br><span class="line"><span class="comment"> *     ListNode(int val, ListNode next) &#123; this.val = val; this.next = next; &#125;</span></span><br><span class="line"><span class="comment"> * &#125;</span></span><br><span class="line"><span class="comment"> */</span></span><br><span class="line"><span class="keyword">class</span> <span class="title class_">Solution</span> &#123;</span><br><span class="line">    <span class="keyword">public</span> ListNode <span class="title function_">removeElements</span><span class="params">(ListNode head, <span class="type">int</span> val)</span> &#123;</span><br><span class="line">        <span class="type">ListNode</span> <span class="variable">dummy</span> <span class="operator">=</span> <span class="keyword">new</span> <span class="title class_">ListNode</span>();</span><br><span class="line">        dummy.next = head;</span><br><span class="line">        <span class="type">ListNode</span> <span class="variable">cur</span> <span class="operator">=</span> dummy;</span><br><span class="line"></span><br><span class="line">        <span class="keyword">while</span> (cur.next != <span class="literal">null</span>) &#123;</span><br><span class="line">           <span class="keyword">if</span> (cur.next.val == val) cur.next = cur.next.next;</span><br><span class="line">           <span class="keyword">else</span> cur = cur.next; </span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">return</span> dummy.next;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h2 id="2-2-设计链表"><a href="#2-2-设计链表" class="headerlink" title="2.2 设计链表"></a>2.2 设计链表</h2><ul>
+<li>单链表</li>
+</ul>
+<figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="keyword">class</span> <span class="title class_">MyLinkedList</span> &#123;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">class</span> <span class="title class_">ListNode</span> &#123;</span><br><span class="line">        <span class="type">int</span> val;</span><br><span class="line">        ListNode next;</span><br><span class="line">        ListNode() &#123;&#125;;</span><br><span class="line">        ListNode(<span class="type">int</span> val) &#123;<span class="built_in">this</span>.val = val;&#125;</span><br><span class="line">        ListNode(<span class="type">int</span> val, ListNode next) &#123;<span class="built_in">this</span>.val = val; <span class="built_in">this</span>.next = next;&#125;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">private</span> <span class="type">int</span> size;</span><br><span class="line">    <span class="keyword">private</span> ListNode head;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">public</span> <span class="title function_">MyLinkedList</span><span class="params">()</span> &#123;</span><br><span class="line">        <span class="built_in">this</span>.size = <span class="number">0</span>;</span><br><span class="line">        <span class="built_in">this</span>.head = <span class="keyword">new</span> <span class="title class_">ListNode</span>(<span class="number">0</span>);</span><br><span class="line">    &#125;</span><br><span class="line">    </span><br><span class="line">    <span class="keyword">public</span> <span class="type">int</span> <span class="title function_">get</span><span class="params">(<span class="type">int</span> index)</span> &#123;</span><br><span class="line">        <span class="keyword">if</span> (index &lt; <span class="number">0</span> || index &gt;= size) <span class="keyword">return</span> -<span class="number">1</span>;</span><br><span class="line">        <span class="type">ListNode</span> <span class="variable">cur</span> <span class="operator">=</span> head;</span><br><span class="line"></span><br><span class="line">        <span class="keyword">for</span> (<span class="type">int</span> <span class="variable">i</span> <span class="operator">=</span> <span class="number">0</span>; i &lt;= index; i++) cur = cur.next;</span><br><span class="line">        <span class="comment">// while (index &gt;= 0) &#123;</span></span><br><span class="line">        <span class="comment">//     cur = cur.next;</span></span><br><span class="line">        <span class="comment">//     index--;</span></span><br><span class="line">        <span class="comment">// &#125;</span></span><br><span class="line">        <span class="keyword">return</span> cur.val;</span><br><span class="line">    &#125;</span><br><span class="line">    </span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">void</span> <span class="title function_">addAtHead</span><span class="params">(<span class="type">int</span> val)</span> &#123;</span><br><span class="line">        <span class="type">ListNode</span> <span class="variable">tmp</span> <span class="operator">=</span> <span class="keyword">new</span> <span class="title class_">ListNode</span>(val);</span><br><span class="line">        tmp.next = head.next;</span><br><span class="line">        head.next = tmp;</span><br><span class="line">        size++;</span><br><span class="line">        <span class="comment">// return head;</span></span><br><span class="line">    &#125;</span><br><span class="line">    </span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">void</span> <span class="title function_">addAtTail</span><span class="params">(<span class="type">int</span> val)</span> &#123;</span><br><span class="line">        <span class="type">ListNode</span> <span class="variable">cur</span> <span class="operator">=</span> head;</span><br><span class="line">        <span class="keyword">while</span> (cur.next != <span class="literal">null</span>) cur = cur.next;</span><br><span class="line">        <span class="comment">// for (int i = 0; i &lt; size; i++) cur = cur.next;</span></span><br><span class="line">        <span class="type">ListNode</span> <span class="variable">newNode</span> <span class="operator">=</span> <span class="keyword">new</span> <span class="title class_">ListNode</span>(val);</span><br><span class="line">        cur.next = newNode;</span><br><span class="line">        size++;</span><br><span class="line">    &#125;</span><br><span class="line">    </span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">void</span> <span class="title function_">addAtIndex</span><span class="params">(<span class="type">int</span> index, <span class="type">int</span> val)</span> &#123;</span><br><span class="line">        <span class="keyword">if</span> (index &lt; <span class="number">0</span> || index &gt; size) <span class="keyword">return</span>;</span><br><span class="line">        <span class="type">ListNode</span> <span class="variable">cur</span> <span class="operator">=</span> head;</span><br><span class="line">        <span class="type">ListNode</span> <span class="variable">newNode</span> <span class="operator">=</span> <span class="keyword">new</span> <span class="title class_">ListNode</span>(val);</span><br><span class="line">        <span class="keyword">for</span> (<span class="type">int</span> <span class="variable">i</span> <span class="operator">=</span> <span class="number">0</span>; i &lt; index; i++) cur = cur.next;</span><br><span class="line">        newNode.next = cur.next;</span><br><span class="line">        cur.next = newNode;</span><br><span class="line">        size++;</span><br><span class="line">    &#125;</span><br><span class="line">    </span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">void</span> <span class="title function_">deleteAtIndex</span><span class="params">(<span class="type">int</span> index)</span> &#123;</span><br><span class="line">        <span class="keyword">if</span> (index &lt; <span class="number">0</span> || index &gt;= size) <span class="keyword">return</span>;</span><br><span class="line">        <span class="type">ListNode</span> <span class="variable">cur</span> <span class="operator">=</span> head;</span><br><span class="line">        <span class="keyword">for</span> (<span class="type">int</span> <span class="variable">i</span> <span class="operator">=</span> <span class="number">0</span>; i &lt; index; i++) cur = cur.next;</span><br><span class="line">        cur.next = cur.next.next;</span><br><span class="line">        size--;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">/**</span></span><br><span class="line"><span class="comment"> * Your MyLinkedList object will be instantiated and called as such:</span></span><br><span class="line"><span class="comment"> * MyLinkedList obj = new MyLinkedList();</span></span><br><span class="line"><span class="comment"> * int param_1 = obj.get(index);</span></span><br><span class="line"><span class="comment"> * obj.addAtHead(val);</span></span><br><span class="line"><span class="comment"> * obj.addAtTail(val);</span></span><br><span class="line"><span class="comment"> * obj.addAtIndex(index,val);</span></span><br><span class="line"><span class="comment"> * obj.deleteAtIndex(index);</span></span><br><span class="line"><span class="comment"> */</span></span><br></pre></td></tr></table></figure>
+
+<ul>
+<li>双链表</li>
+</ul>
+<figure class="highlight java"><table><tr><td class="code"><pre><span class="line"></span><br></pre></td></tr></table></figure>
+
+<h2 id="2-3-翻转链表"><a href="#2-3-翻转链表" class="headerlink" title="2.3 翻转链表"></a>2.3 翻转链表</h2><ul>
+<li>双指针</li>
+</ul>
+<figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="comment">/**</span></span><br><span class="line"><span class="comment"> * Definition for singly-linked list.</span></span><br><span class="line"><span class="comment"> * public class ListNode &#123;</span></span><br><span class="line"><span class="comment"> *     int val;</span></span><br><span class="line"><span class="comment"> *     ListNode next;</span></span><br><span class="line"><span class="comment"> *     ListNode() &#123;&#125;</span></span><br><span class="line"><span class="comment"> *     ListNode(int val) &#123; this.val = val; &#125;</span></span><br><span class="line"><span class="comment"> *     ListNode(int val, ListNode next) &#123; this.val = val; this.next = next; &#125;</span></span><br><span class="line"><span class="comment"> * &#125;</span></span><br><span class="line"><span class="comment"> */</span></span><br><span class="line"><span class="keyword">class</span> <span class="title class_">Solution</span> &#123;</span><br><span class="line">    <span class="keyword">public</span> ListNode <span class="title function_">reverseList</span><span class="params">(ListNode head)</span> &#123;</span><br><span class="line">        <span class="type">ListNode</span> <span class="variable">pre</span> <span class="operator">=</span> <span class="literal">null</span>, tmp = <span class="literal">null</span>, cur = head;</span><br><span class="line">        <span class="keyword">while</span> (cur != <span class="literal">null</span>) &#123;</span><br><span class="line">            tmp = cur.next;</span><br><span class="line">            cur.next = pre;</span><br><span class="line">            pre = cur;</span><br><span class="line">            cur = tmp;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">return</span> pre;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<ul>
+<li>递归</li>
+</ul>
+<figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="comment">/**</span></span><br><span class="line"><span class="comment"> * Definition for singly-linked list.</span></span><br><span class="line"><span class="comment"> * public class ListNode &#123;</span></span><br><span class="line"><span class="comment"> *     int val;</span></span><br><span class="line"><span class="comment"> *     ListNode next;</span></span><br><span class="line"><span class="comment"> *     ListNode() &#123;&#125;</span></span><br><span class="line"><span class="comment"> *     ListNode(int val) &#123; this.val = val; &#125;</span></span><br><span class="line"><span class="comment"> *     ListNode(int val, ListNode next) &#123; this.val = val; this.next = next; &#125;</span></span><br><span class="line"><span class="comment"> * &#125;</span></span><br><span class="line"><span class="comment"> */</span></span><br><span class="line"><span class="keyword">class</span> <span class="title class_">Solution</span> &#123;</span><br><span class="line">    <span class="keyword">public</span> ListNode <span class="title function_">reverseList</span><span class="params">(ListNode head)</span> &#123;</span><br><span class="line">        <span class="keyword">return</span> reverse(<span class="literal">null</span>, head);</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">private</span> ListNode <span class="title function_">reverse</span><span class="params">(ListNode pre, ListNode cur)</span> &#123;</span><br><span class="line">        <span class="keyword">if</span> (cur == <span class="literal">null</span>) <span class="keyword">return</span> pre;</span><br><span class="line">        <span class="type">ListNode</span> <span class="variable">tmp</span> <span class="operator">=</span> cur.next;</span><br><span class="line">        cur.next = pre;</span><br><span class="line">        <span class="keyword">return</span> reverse(cur, tmp);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h2 id="2-4-两两交换链表中的节点"><a href="#2-4-两两交换链表中的节点" class="headerlink" title="2.4 两两交换链表中的节点"></a>2.4 两两交换链表中的节点</h2><figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="comment">/**</span></span><br><span class="line"><span class="comment"> * Definition for singly-linked list.</span></span><br><span class="line"><span class="comment"> * public class ListNode &#123;</span></span><br><span class="line"><span class="comment"> *     int val;</span></span><br><span class="line"><span class="comment"> *     ListNode next;</span></span><br><span class="line"><span class="comment"> *     ListNode() &#123;&#125;</span></span><br><span class="line"><span class="comment"> *     ListNode(int val) &#123; this.val = val; &#125;</span></span><br><span class="line"><span class="comment"> *     ListNode(int val, ListNode next) &#123; this.val = val; this.next = next; &#125;</span></span><br><span class="line"><span class="comment"> * &#125;</span></span><br><span class="line"><span class="comment"> */</span></span><br><span class="line"><span class="keyword">class</span> <span class="title class_">Solution</span> &#123;</span><br><span class="line">    <span class="keyword">public</span> ListNode <span class="title function_">swapPairs</span><span class="params">(ListNode head)</span> &#123;</span><br><span class="line">        <span class="type">ListNode</span> <span class="variable">dummy</span> <span class="operator">=</span> <span class="keyword">new</span> <span class="title class_">ListNode</span>(<span class="number">0</span>, head);</span><br><span class="line">        <span class="type">ListNode</span> <span class="variable">cur</span> <span class="operator">=</span> dummy;</span><br><span class="line">        <span class="keyword">while</span> (cur.next != <span class="literal">null</span> &amp;&amp; cur.next.next != <span class="literal">null</span>) &#123;</span><br><span class="line">            <span class="type">ListNode</span> <span class="variable">node1</span> <span class="operator">=</span> cur.next;</span><br><span class="line">            <span class="type">ListNode</span> <span class="variable">node2</span> <span class="operator">=</span> cur.next.next;</span><br><span class="line">            cur.next = node2;</span><br><span class="line">            node1.next = node2.next;</span><br><span class="line">            node2.next = node1;</span><br><span class="line">            cur = node1;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">return</span> dummy.next;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<ul>
+<li>递归</li>
+</ul>
+<figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="keyword">class</span> <span class="title class_">Solution</span> &#123;</span><br><span class="line">    <span class="keyword">public</span> ListNode <span class="title function_">swapPairs</span><span class="params">(ListNode head)</span> &#123;</span><br><span class="line">        <span class="keyword">if</span> (head == <span class="literal">null</span> || head.next == <span class="literal">null</span>) <span class="keyword">return</span> head;</span><br><span class="line">        <span class="type">ListNode</span> <span class="variable">next</span> <span class="operator">=</span> head.next;</span><br><span class="line">        <span class="type">ListNode</span> <span class="variable">newNode</span> <span class="operator">=</span> swapPairs(next.next);</span><br><span class="line">        head.next = newNode;</span><br><span class="line">        next.next = head;</span><br><span class="line">        <span class="keyword">return</span> next;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h2 id="2-5-删除链表的倒数第-N-个结点"><a href="#2-5-删除链表的倒数第-N-个结点" class="headerlink" title="2.5 删除链表的倒数第 N 个结点"></a>2.5 删除链表的倒数第 N 个结点</h2><ul>
+<li>双指针法</li>
+</ul>
+<figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="comment">/**</span></span><br><span class="line"><span class="comment"> * Definition for singly-linked list.</span></span><br><span class="line"><span class="comment"> * public class ListNode &#123;</span></span><br><span class="line"><span class="comment"> *     int val;</span></span><br><span class="line"><span class="comment"> *     ListNode next;</span></span><br><span class="line"><span class="comment"> *     ListNode() &#123;&#125;</span></span><br><span class="line"><span class="comment"> *     ListNode(int val) &#123; this.val = val; &#125;</span></span><br><span class="line"><span class="comment"> *     ListNode(int val, ListNode next) &#123; this.val = val; this.next = next; &#125;</span></span><br><span class="line"><span class="comment"> * &#125;</span></span><br><span class="line"><span class="comment"> */</span></span><br><span class="line"><span class="keyword">class</span> <span class="title class_">Solution</span> &#123;</span><br><span class="line">    <span class="keyword">public</span> ListNode <span class="title function_">removeNthFromEnd</span><span class="params">(ListNode head, <span class="type">int</span> n)</span> &#123;</span><br><span class="line">        <span class="type">ListNode</span> <span class="variable">dummy</span> <span class="operator">=</span> <span class="keyword">new</span> <span class="title class_">ListNode</span>(<span class="number">0</span>, head);</span><br><span class="line">        <span class="type">ListNode</span> <span class="variable">fast</span> <span class="operator">=</span> dummy, slow = dummy;</span><br><span class="line">        <span class="keyword">for</span> (<span class="type">int</span> <span class="variable">i</span> <span class="operator">=</span> <span class="number">0</span>; i &lt;= n; i++) fast = fast.next;</span><br><span class="line">        <span class="keyword">while</span> (fast != <span class="literal">null</span>) &#123;</span><br><span class="line">            fast = fast.next;</span><br><span class="line">            slow = slow.next;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">if</span> (slow.next != <span class="literal">null</span>) slow.next = slow.next.next;</span><br><span class="line">        <span class="keyword">return</span> dummy.next;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h2 id="2-6-链表相交"><a href="#2-6-链表相交" class="headerlink" title="2.6 链表相交"></a>2.6 链表相交</h2><h2 id="2-7-环形链表II"><a href="#2-7-环形链表II" class="headerlink" title="2.7 环形链表II"></a>2.7 环形链表II</h2><h1 id="3-哈希表"><a href="#3-哈希表" class="headerlink" title="3 哈希表"></a>3 哈希表</h1><h2 id="3-1-有效的字母异位词"><a href="#3-1-有效的字母异位词" class="headerlink" title="3.1 有效的字母异位词"></a>3.1 有效的字母异位词</h2><ul>
+<li>字典解法</li>
+</ul>
+<figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="keyword">class</span> <span class="title class_">Solution</span> &#123;</span><br><span class="line">    <span class="keyword">public</span> <span class="type">boolean</span> <span class="title function_">isAnagram</span><span class="params">(String s, String t)</span> &#123;</span><br><span class="line">        <span class="type">int</span>[] record = <span class="keyword">new</span> <span class="title class_">int</span>[<span class="number">26</span>];</span><br><span class="line">        <span class="keyword">for</span> (<span class="type">int</span> <span class="variable">i</span> <span class="operator">=</span> <span class="number">0</span>; i &lt; s.length(); i++) record[s.charAt(i) - <span class="string">&#x27;a&#x27;</span>]++;</span><br><span class="line">        <span class="keyword">for</span> (<span class="type">int</span> <span class="variable">i</span> <span class="operator">=</span> <span class="number">0</span>; i &lt; t.length(); i++) record[t.charAt(i) - <span class="string">&#x27;a&#x27;</span>]--;</span><br><span class="line">        <span class="keyword">for</span> (<span class="type">int</span> count : record) &#123;</span><br><span class="line">            <span class="keyword">if</span> (count != <span class="number">0</span>) <span class="keyword">return</span> <span class="literal">false</span>;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">return</span> <span class="literal">true</span>;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h2 id="3-2-两个数组的交集"><a href="#3-2-两个数组的交集" class="headerlink" title="3.2 两个数组的交集"></a>3.2 两个数组的交集</h2><ul>
+<li>HashSet</li>
+</ul>
+<figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="keyword">class</span> <span class="title class_">Solution</span> &#123;</span><br><span class="line">    <span class="keyword">public</span> <span class="type">int</span>[] intersection(<span class="type">int</span>[] nums1, <span class="type">int</span>[] nums2) &#123;</span><br><span class="line">        HashSet&lt;Integer&gt; hashSet = <span class="keyword">new</span> <span class="title class_">HashSet</span>&lt;Integer&gt;();</span><br><span class="line">        HashSet&lt;Integer&gt; result = <span class="keyword">new</span> <span class="title class_">HashSet</span>&lt;Integer&gt;();</span><br><span class="line">        <span class="keyword">for</span> (<span class="type">int</span> num : nums1) hashSet.add(num);</span><br><span class="line">        <span class="keyword">for</span> (<span class="type">int</span> num : nums2) &#123;</span><br><span class="line">            <span class="keyword">if</span> (hashSet.contains(num)) result.add(num);</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="comment">// return result.stream().mapToInt(x -&gt; x).toArray();</span></span><br><span class="line"></span><br><span class="line">        <span class="type">int</span>[] array = <span class="keyword">new</span> <span class="title class_">int</span>[result.size()];</span><br><span class="line">        <span class="type">int</span> <span class="variable">i</span> <span class="operator">=</span> <span class="number">0</span>;</span><br><span class="line">        <span class="keyword">for</span> (<span class="type">int</span> num : result) array[i++] = num;</span><br><span class="line">        <span class="keyword">return</span> array;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h2 id="3-3-快乐数"><a href="#3-3-快乐数" class="headerlink" title="3.3 快乐数"></a>3.3 快乐数</h2><figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="keyword">class</span> <span class="title class_">Solution</span> &#123;</span><br><span class="line">    <span class="keyword">public</span> <span class="type">boolean</span> <span class="title function_">isHappy</span><span class="params">(<span class="type">int</span> n)</span> &#123;</span><br><span class="line">        Set&lt;Integer&gt; set = <span class="keyword">new</span> <span class="title class_">HashSet</span>&lt;&gt;();</span><br><span class="line">        <span class="keyword">while</span> (n != <span class="number">1</span> &amp;&amp; !set.contains(n)) &#123;</span><br><span class="line">            set.add(n);</span><br><span class="line">            n = getNextNumber(n);</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">return</span> n == <span class="number">1</span>;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">public</span> <span class="type">int</span> <span class="title function_">getNextNumber</span><span class="params">(<span class="type">int</span> n)</span> &#123;</span><br><span class="line">        <span class="type">int</span> <span class="variable">res</span> <span class="operator">=</span> <span class="number">0</span>;</span><br><span class="line">        <span class="keyword">while</span> (n &gt; <span class="number">0</span>) &#123;</span><br><span class="line">            <span class="type">int</span> <span class="variable">tmp</span> <span class="operator">=</span> n % <span class="number">10</span>;</span><br><span class="line">            res += tmp * tmp;</span><br><span class="line">            n = n / <span class="number">10</span>;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">return</span> res;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h2 id="3-4-两数之和"><a href="#3-4-两数之和" class="headerlink" title="3.4 两数之和"></a>3.4 两数之和</h2><ul>
+<li>两层 for 循环</li>
+<li>HashMap： key  value</li>
+</ul>
+<figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="keyword">class</span> <span class="title class_">Solution</span> &#123;</span><br><span class="line">    <span class="keyword">public</span> <span class="type">int</span>[] twoSum(<span class="type">int</span>[] nums, <span class="type">int</span> target) &#123;</span><br><span class="line">        <span class="comment">// int len = nums.length;</span></span><br><span class="line">        <span class="comment">// int[] res = new int[2];</span></span><br><span class="line">        <span class="comment">// for (int i = 0; i &lt; len; i++) &#123;</span></span><br><span class="line">        <span class="comment">//     for (int j = i + 1; j &lt; len; j++) &#123;</span></span><br><span class="line">        <span class="comment">//         if (nums[i] + nums[j] == target) &#123;</span></span><br><span class="line">        <span class="comment">//             res[0] = i;</span></span><br><span class="line">        <span class="comment">//             res[1] = j;  </span></span><br><span class="line">        <span class="comment">//         &#125;</span></span><br><span class="line">        <span class="comment">//     &#125;</span></span><br><span class="line">        <span class="comment">// &#125;</span></span><br><span class="line">        <span class="comment">// return res;</span></span><br><span class="line"></span><br><span class="line">        Map&lt;Integer, Integer&gt; hashMap = <span class="keyword">new</span> <span class="title class_">HashMap</span>&lt;&gt;();</span><br><span class="line">        <span class="keyword">for</span> (<span class="type">int</span> <span class="variable">i</span> <span class="operator">=</span> <span class="number">0</span>; i &lt; nums.length; i++) &#123;</span><br><span class="line">            <span class="type">int</span> <span class="variable">tmp</span> <span class="operator">=</span> target - nums[i];</span><br><span class="line">            <span class="keyword">if</span> (hashMap.containsKey(tmp)) <span class="keyword">return</span> <span class="keyword">new</span> <span class="title class_">int</span>[]&#123;i, hashMap.get(tmp)&#125;;</span><br><span class="line">            <span class="keyword">else</span> hashMap.put(nums[i], i);</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">return</span> <span class="literal">null</span>;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h2 id="3-5-四数相加"><a href="#3-5-四数相加" class="headerlink" title="3.5 四数相加"></a>3.5 四数相加</h2><figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="keyword">class</span> <span class="title class_">Solution</span> &#123;</span><br><span class="line">    <span class="keyword">public</span> <span class="type">int</span> <span class="title function_">fourSumCount</span><span class="params">(<span class="type">int</span>[] nums1, <span class="type">int</span>[] nums2, <span class="type">int</span>[] nums3, <span class="type">int</span>[] nums4)</span> &#123;</span><br><span class="line">        <span class="type">int</span> <span class="variable">res</span> <span class="operator">=</span> <span class="number">0</span>;</span><br><span class="line">        Map&lt;Integer, Integer&gt; map = <span class="keyword">new</span> <span class="title class_">HashMap</span>&lt;&gt;();</span><br><span class="line">        <span class="keyword">for</span> (<span class="type">int</span> <span class="variable">i</span> <span class="operator">=</span> <span class="number">0</span>; i &lt; nums1.length; i++) &#123;</span><br><span class="line">            <span class="keyword">for</span> (<span class="type">int</span> <span class="variable">j</span> <span class="operator">=</span> <span class="number">0</span>; j &lt; nums1.length; j++) &#123;</span><br><span class="line">                <span class="type">int</span> <span class="variable">tmp</span> <span class="operator">=</span> nums1[i] + nums2[j];</span><br><span class="line">                map.put(tmp, map.getOrDefault(tmp, <span class="number">0</span>) + <span class="number">1</span>);</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">for</span> (<span class="type">int</span> <span class="variable">i</span> <span class="operator">=</span> <span class="number">0</span>; i &lt; nums3.length; i++) &#123;</span><br><span class="line">            <span class="keyword">for</span> (<span class="type">int</span> <span class="variable">j</span> <span class="operator">=</span> <span class="number">0</span>; j &lt; nums4.length; j++) &#123;</span><br><span class="line">                <span class="type">int</span> <span class="variable">tmp</span> <span class="operator">=</span> <span class="number">0</span> - (nums3[i] + nums4[j]);</span><br><span class="line">                res += map.getOrDefault(tmp, <span class="number">0</span>);</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">return</span> res;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h2 id="3-6-赎金信"><a href="#3-6-赎金信" class="headerlink" title="3.6 赎金信"></a>3.6 赎金信</h2><figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="keyword">class</span> <span class="title class_">Solution</span> &#123;</span><br><span class="line">    <span class="keyword">public</span> <span class="type">boolean</span> <span class="title function_">canConstruct</span><span class="params">(String ransomNote, String magazine)</span> &#123;</span><br><span class="line">        <span class="keyword">if</span> (ransomNote.length() &gt; magazine.length()) <span class="keyword">return</span> <span class="literal">false</span>;</span><br><span class="line">        <span class="type">int</span>[] count = <span class="keyword">new</span> <span class="title class_">int</span>[<span class="number">26</span>];</span><br><span class="line">        <span class="keyword">for</span> (<span class="type">char</span> c : magazine.toCharArray()) count[c - <span class="string">&#x27;a&#x27;</span>]++;</span><br><span class="line">        <span class="keyword">for</span> (<span class="type">char</span> c : ransomNote.toCharArray()) count[c - <span class="string">&#x27;a&#x27;</span>]--;</span><br><span class="line">        <span class="keyword">for</span> (<span class="type">int</span> i : count) &#123;</span><br><span class="line">            <span class="keyword">if</span> (i &lt; <span class="number">0</span>) <span class="keyword">return</span> <span class="literal">false</span>;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">return</span> <span class="literal">true</span>;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h2 id="3-7-三数之和"><a href="#3-7-三数之和" class="headerlink" title="3.7 三数之和"></a>3.7 三数之和</h2><ul>
+<li>双指针法</li>
+</ul>
+<figure class="highlight java"><table><tr><td class="code"><pre><span class="line"></span><br></pre></td></tr></table></figure>
+
+<h2 id="3-8-四数之和"><a href="#3-8-四数之和" class="headerlink" title="3.8 四数之和"></a>3.8 四数之和</h2><h1 id="4-字符串"><a href="#4-字符串" class="headerlink" title="4 字符串"></a>4 字符串</h1><h2 id="4-1-反转字符串"><a href="#4-1-反转字符串" class="headerlink" title="4.1 反转字符串"></a>4.1 反转字符串</h2><ul>
+<li>双指针</li>
+</ul>
+<figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="keyword">class</span> <span class="title class_">Solution</span> &#123;</span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">void</span> <span class="title function_">reverseString</span><span class="params">(<span class="type">char</span>[] s)</span> &#123;</span><br><span class="line">        <span class="type">int</span> <span class="variable">len</span> <span class="operator">=</span> s.length;</span><br><span class="line">        <span class="type">int</span> <span class="variable">l</span> <span class="operator">=</span> <span class="number">0</span>, r = len - <span class="number">1</span>;</span><br><span class="line">        <span class="keyword">while</span> (l &lt; r) &#123;</span><br><span class="line">            <span class="type">char</span> <span class="variable">tmp</span> <span class="operator">=</span> s[l];</span><br><span class="line">            s[l] = s[r];</span><br><span class="line">            s[r] = tmp;</span><br><span class="line">            l++;</span><br><span class="line">            r--;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h2 id="4-2-反转字符串II"><a href="#4-2-反转字符串II" class="headerlink" title="4.2 反转字符串II"></a>4.2 反转字符串II</h2><p><code>StringBuffer</code> 是 Java 中的一个类，用于表示可变的字符序列。与 <code>String</code> 类不同，<code>StringBuffer</code> 的内容可以被修改而不创建新的对象，这使得它在需要频繁修改字符串内容的场景中非常有用。</p>
+<figure class="highlight java"><table><tr><td class="code"><pre><span class="line"></span><br></pre></td></tr></table></figure>
+
+<h2 id="4-3-替换数字"><a href="#4-3-替换数字" class="headerlink" title="4.3 替换数字"></a>4.3 替换数字</h2><figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="keyword">import</span> java.util.Scanner;</span><br><span class="line"></span><br><span class="line"><span class="keyword">public</span> <span class="keyword">class</span> <span class="title class_">Main</span> &#123;</span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">static</span> String <span class="title function_">replaceNumbers</span><span class="params">(String s)</span> &#123;</span><br><span class="line">        <span class="type">int</span> <span class="variable">sLen</span> <span class="operator">=</span> s.length();</span><br><span class="line">        <span class="type">int</span> <span class="variable">count</span> <span class="operator">=</span> <span class="number">0</span>;</span><br><span class="line">        <span class="keyword">for</span> (<span class="type">int</span> <span class="variable">i</span> <span class="operator">=</span> <span class="number">0</span>; i &lt; sLen; i++) &#123;</span><br><span class="line">            <span class="keyword">if</span> (Character.isDigit(s.charAt(i))) count++;</span><br><span class="line">        &#125;</span><br><span class="line">        </span><br><span class="line">        <span class="type">int</span> <span class="variable">newSLen</span> <span class="operator">=</span> sLen + count * <span class="number">5</span>;</span><br><span class="line">        <span class="type">char</span>[] newS = <span class="keyword">new</span> <span class="title class_">char</span>[newSLen];</span><br><span class="line">        <span class="type">int</span> <span class="variable">j</span> <span class="operator">=</span> newSLen - <span class="number">1</span>;</span><br><span class="line">        <span class="keyword">for</span> (<span class="type">int</span> <span class="variable">i</span> <span class="operator">=</span> sLen - <span class="number">1</span>; i &gt;= <span class="number">0</span>; i--) &#123;</span><br><span class="line">            <span class="keyword">if</span> (Character.isDigit(s.charAt(i))) &#123;</span><br><span class="line">                newS[j--] = <span class="string">&#x27;r&#x27;</span>;</span><br><span class="line">                newS[j--] = <span class="string">&#x27;e&#x27;</span>;</span><br><span class="line">                newS[j--] = <span class="string">&#x27;b&#x27;</span>;</span><br><span class="line">                newS[j--] = <span class="string">&#x27;m&#x27;</span>;</span><br><span class="line">                newS[j--] = <span class="string">&#x27;u&#x27;</span>;</span><br><span class="line">                newS[j--] = <span class="string">&#x27;n&#x27;</span>;</span><br><span class="line">            &#125; <span class="keyword">else</span> newS[j--] = s.charAt(i);</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">return</span> <span class="keyword">new</span> <span class="title class_">String</span>(newS);</span><br><span class="line">    &#125;</span><br><span class="line">    </span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title function_">main</span><span class="params">(String[] args)</span> &#123;</span><br><span class="line">        <span class="type">Scanner</span> <span class="variable">scan</span> <span class="operator">=</span> <span class="keyword">new</span> <span class="title class_">Scanner</span>(System.in);</span><br><span class="line">        <span class="type">String</span> <span class="variable">s</span> <span class="operator">=</span> scan.next();</span><br><span class="line">        System.out.println(replaceNumbers(s));</span><br><span class="line">        scan.close();</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h2 id="4-4-反转字符串里的单词"><a href="#4-4-反转字符串里的单词" class="headerlink" title="4.4 反转字符串里的单词"></a>4.4 反转字符串里的单词</h2><h2 id="4-5-右旋转字符串"><a href="#4-5-右旋转字符串" class="headerlink" title="4.5 右旋转字符串"></a>4.5 右旋转字符串</h2><h2 id="4-6-实现-strStr"><a href="#4-6-实现-strStr" class="headerlink" title="4.6 实现 strStr"></a>4.6 实现 strStr</h2><h2 id="4-7-重复的子字符串"><a href="#4-7-重复的子字符串" class="headerlink" title="4.7 重复的子字符串"></a>4.7 重复的子字符串</h2><h1 id="5-双指针法"><a href="#5-双指针法" class="headerlink" title="5 双指针法"></a>5 双指针法</h1><h1 id="6-栈与队列"><a href="#6-栈与队列" class="headerlink" title="6 栈与队列"></a>6 栈与队列</h1><h1 id="7-二叉树"><a href="#7-二叉树" class="headerlink" title="7 二叉树"></a>7 二叉树</h1><h1 id="8-回溯算法"><a href="#8-回溯算法" class="headerlink" title="8 回溯算法"></a>8 回溯算法</h1><h1 id="9-贪心算法"><a href="#9-贪心算法" class="headerlink" title="9 贪心算法"></a>9 贪心算法</h1><h1 id="10-动态规划"><a href="#10-动态规划" class="headerlink" title="10 动态规划"></a>10 动态规划</h1><h1 id="11-单调栈"><a href="#11-单调栈" class="headerlink" title="11 单调栈"></a>11 单调栈</h1><h1 id="12-图论"><a href="#12-图论" class="headerlink" title="12 图论"></a>12 图论</h1><h1 id="参考"><a href="#参考" class="headerlink" title="参考"></a>参考</h1><ol>
+<li><p><a href="https://www.programmercarl.com/">代码随想录</a></p>
+</li>
+<li><p><a href="https://tongyi.aliyun.com/">通义千问</a></p>
+</li>
+</ol>
+]]></content>
+      <categories>
+        <category>leetcode</category>
+      </categories>
+      <tags>
+        <tag>java</tag>
+        <tag>leetcode</tag>
+      </tags>
+  </entry>
+  <entry>
     <title>leetcode</title>
-    <url>/2023/07/13/leetcode/</url>
+    <url>/posts/14158.html</url>
     <content><![CDATA[<link rel="stylesheet" class="aplayer-secondary-style-marker" href="/assets/css/APlayer.min.css"><script src="/assets/js/APlayer.min.js" class="aplayer-secondary-script-marker"></script><h1 id="代码随想录"><a href="#代码随想录" class="headerlink" title="代码随想录"></a>代码随想录</h1><p>地址：<a href="https://programmercarl.com/">https://programmercarl.com/</a></p>
 <blockquote>
 <p>以下学习内容来自于 chatgpt、通义千问等大语言模型（LLMs） <a href="http://www.runoob.com/">菜鸟教程 - 学的不仅是技术，更是梦想！</a></p>
@@ -1601,7 +1763,7 @@
   </entry>
   <entry>
     <title>nerf-slam</title>
-    <url>/2023/04/27/nerf-slam/</url>
+    <url>/posts/22247.html</url>
     <content><![CDATA[<link rel="stylesheet" class="aplayer-secondary-style-marker" href="/assets/css/APlayer.min.css"><script src="/assets/js/APlayer.min.js" class="aplayer-secondary-script-marker"></script><h1 id="Nerf-SLAM"><a href="#Nerf-SLAM" class="headerlink" title="Nerf-SLAM"></a>Nerf-SLAM</h1><h2 id="1-配置环境"><a href="#1-配置环境" class="headerlink" title="1 配置环境"></a>1 配置环境</h2><h3 id="1-1-Ubuntu-Clash-终端代理"><a href="#1-1-Ubuntu-Clash-终端代理" class="headerlink" title="1.1 Ubuntu Clash 终端代理"></a>1.1 Ubuntu Clash 终端代理</h3><p>clash 选择节点并调整为 global 模式，在 ~&#x2F;.bashrc 中添加以下内容</p>
 <figure class="highlight shell"><table><tr><td class="code"><pre><span class="line">export https_proxy=http://127.0.0.1:7890 </span><br><span class="line">export http_proxy=http://127.0.0.1:7890 </span><br><span class="line">export all_proxy=socks5://127.0.0.1:7890</span><br></pre></td></tr></table></figure>
 
@@ -1715,7 +1877,7 @@
   </entry>
   <entry>
     <title>sketch recognition</title>
-    <url>/2023/06/02/sketch-recognition/</url>
+    <url>/posts/10043.html</url>
     <content><![CDATA[<link rel="stylesheet" class="aplayer-secondary-style-marker" href="/assets/css/APlayer.min.css"><script src="/assets/js/APlayer.min.js" class="aplayer-secondary-script-marker"></script><h1 id="1-数据集处理"><a href="#1-数据集处理" class="headerlink" title="1 数据集处理"></a>1 数据集处理</h1><p>服务器地址：10.1.16.116</p>
 <p>数据集目录：&#x2F;home&#x2F;data1&#x2F;sebas&#x2F;projects&#x2F;sketch-recognition&#x2F;resnet152-test&#x2F;dataset</p>
 <ul>
@@ -1757,7 +1919,7 @@
   </entry>
   <entry>
     <title>常用命令记录</title>
-    <url>/2023/04/26/%E5%B8%B8%E7%94%A8%E5%91%BD%E4%BB%A4%E8%AE%B0%E5%BD%95/</url>
+    <url>/posts/35783.html</url>
     <content><![CDATA[<link rel="stylesheet" class="aplayer-secondary-style-marker" href="/assets/css/APlayer.min.css"><script src="/assets/js/APlayer.min.js" class="aplayer-secondary-script-marker"></script><h1 id="1-压缩、解压"><a href="#1-压缩、解压" class="headerlink" title="1 压缩、解压"></a>1 压缩、解压</h1><blockquote>
 <p>tar 参数含义</p>
 </blockquote>
