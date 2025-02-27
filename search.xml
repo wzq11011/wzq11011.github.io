@@ -80,7 +80,7 @@
 <p>如果在同步仓库时出现权限不足的问题，需要将本机公钥添加到 github 中</p>
 <p>问题描述：</p>
 <blockquote>
-<p><a href="mailto:&#x67;&#x69;&#x74;&#x40;&#x67;&#x69;&#x74;&#104;&#x75;&#x62;&#46;&#99;&#x6f;&#x6d;">&#x67;&#x69;&#x74;&#x40;&#x67;&#x69;&#x74;&#104;&#x75;&#x62;&#46;&#99;&#x6f;&#x6d;</a>: Permission denied (publickey)</p>
+<p><a href="mailto:&#x67;&#105;&#x74;&#x40;&#103;&#x69;&#x74;&#x68;&#117;&#x62;&#46;&#99;&#111;&#x6d;">&#x67;&#105;&#x74;&#x40;&#103;&#x69;&#x74;&#x68;&#117;&#x62;&#46;&#99;&#111;&#x6d;</a>: Permission denied (publickey)</p>
 </blockquote>
 <p>解决方法：</p>
 <figure class="highlight shell"><table><tr><td class="code"><pre><span class="line"><span class="meta prompt_"># </span><span class="language-bash">1 验证邮箱与 github 注册邮箱是否一致</span></span><br><span class="line">git config --global --list</span><br><span class="line"><span class="meta prompt_"></span></span><br><span class="line"><span class="meta prompt_"># </span><span class="language-bash">2 设置全局用户名和邮箱</span></span><br><span class="line">git config --global user.name &quot;your name&quot;</span><br><span class="line">git config --global user.email &quot;your email&quot;</span><br><span class="line"><span class="meta prompt_"></span></span><br><span class="line"><span class="meta prompt_"># </span><span class="language-bash">3 生成密钥</span></span><br><span class="line">ssh-keygen -t rsa -C &quot;your email&quot;</span><br><span class="line"><span class="meta prompt_"></span></span><br><span class="line"><span class="meta prompt_"># </span><span class="language-bash">4 将 rsa.pub 公钥内容添加到 github</span> </span><br><span class="line"><span class="meta prompt_"></span></span><br><span class="line"><span class="meta prompt_"># </span><span class="language-bash">5 测试</span></span><br><span class="line">ssh -T git@github.com</span><br></pre></td></tr></table></figure>
@@ -962,6 +962,120 @@
       </tags>
   </entry>
   <entry>
+    <title>nerf-slam</title>
+    <url>/posts/22247.html</url>
+    <content><![CDATA[<link rel="stylesheet" class="aplayer-secondary-style-marker" href="/assets/css/APlayer.min.css"><script src="/assets/js/APlayer.min.js" class="aplayer-secondary-script-marker"></script><h1 id="Nerf-SLAM"><a href="#Nerf-SLAM" class="headerlink" title="Nerf-SLAM"></a>Nerf-SLAM</h1><h2 id="1-配置环境"><a href="#1-配置环境" class="headerlink" title="1 配置环境"></a>1 配置环境</h2><h3 id="1-1-Ubuntu-Clash-终端代理"><a href="#1-1-Ubuntu-Clash-终端代理" class="headerlink" title="1.1 Ubuntu Clash 终端代理"></a>1.1 Ubuntu Clash 终端代理</h3><p>clash 选择节点并调整为 global 模式，在 ~&#x2F;.bashrc 中添加以下内容</p>
+<figure class="highlight shell"><table><tr><td class="code"><pre><span class="line">export https_proxy=http://127.0.0.1:7890 </span><br><span class="line">export http_proxy=http://127.0.0.1:7890 </span><br><span class="line">export all_proxy=socks5://127.0.0.1:7890</span><br></pre></td></tr></table></figure>
+
+<p>保存文件，并更新文件</p>
+<figure class="highlight shell"><table><tr><td class="code"><pre><span class="line">source ~/.bashrc</span><br><span class="line"><span class="meta prompt_"></span></span><br><span class="line"><span class="meta prompt_"># </span><span class="language-bash">测试终端是否代理</span></span><br><span class="line">curl cip.cc</span><br><span class="line"><span class="meta prompt_"></span></span><br><span class="line"><span class="meta prompt_"># </span><span class="language-bash">显示香港的节点，则代表成功</span></span><br></pre></td></tr></table></figure>
+
+<h3 id="1-2-Install-nerf-slam"><a href="#1-2-Install-nerf-slam" class="headerlink" title="1.2 Install nerf-slam"></a>1.2 Install nerf-slam</h3><p>项目地址：<a href="https://github.com/ToniRV/NeRF-SLAM">ToniRV&#x2F;NeRF-SLAM: NeRF-SLAM: Real-Time Dense Monocular SLAM with Neural Radiance Fields. https://arxiv.org/abs/2210.13641 + Sigma-Fusion: Probabilistic Volumetric Fusion for Dense Monocular SLAM https://arxiv.org/abs/2210.01276 (github.com)</a></p>
+<p>使用 git 拉取项目代码</p>
+<figure class="highlight shell"><table><tr><td class="code"><pre><span class="line">git clone https://github.com/ToniRV/NeRF-SLAM.git --recurse-submodules</span><br><span class="line">git submodule update --init --recursive</span><br></pre></td></tr></table></figure>
+
+
+
+<p>使用 conda 创建一个虚拟环境，防止污染其他环境</p>
+<figure class="highlight shell"><table><tr><td class="code"><pre><span class="line"><span class="meta prompt_"># </span><span class="language-bash">创建一个名为 nerf-slam 的虚拟环境</span></span><br><span class="line">conda create -n nerf-slam</span><br><span class="line"><span class="meta prompt_"></span></span><br><span class="line"><span class="meta prompt_"># </span><span class="language-bash">查看所有虚拟环境</span></span><br><span class="line">conda env list</span><br><span class="line"><span class="meta prompt_"></span></span><br><span class="line"><span class="meta prompt_"># </span><span class="language-bash">进入创建的虚拟环境</span></span><br><span class="line">conda activate nerf-slam</span><br><span class="line"><span class="meta prompt_"></span></span><br><span class="line"><span class="meta prompt_"># </span><span class="language-bash">install torch (CUDA 11.3)</span></span><br><span class="line">pip install torch==1.12.1+cu113 torchvision==0.13.1+cu113 --extra-index-url https://download.pytorch.org/whl/cu113</span><br></pre></td></tr></table></figure>
+
+<p>使用 pip 安装依赖</p>
+<figure class="highlight shell"><table><tr><td class="code"><pre><span class="line">pip install -r requirements.txt</span><br><span class="line"><span class="meta prompt_"></span></span><br><span class="line"><span class="meta prompt_"># </span><span class="language-bash">安装第三方库 gtsam 所需的依赖</span></span><br><span class="line">pip install -r ./thirdparty/gtsam/python/requirements.txt</span><br></pre></td></tr></table></figure>
+
+<h3 id="1-3-编译-ngp"><a href="#1-3-编译-ngp" class="headerlink" title="1.3 编译 ngp"></a>1.3 编译 ngp</h3><p>官方教程：（cmake 版本需要大于 3.22）</p>
+<figure class="highlight shell"><table><tr><td class="code"><pre><span class="line">sudo apt install cmake</span><br><span class="line">cmake ./thirdparty/instant-ngp -B build_ngp</span><br><span class="line">cmake --build build_ngp --config RelWithDebInfo -j</span><br></pre></td></tr></table></figure>
+
+<p>实操：</p>
+<figure class="highlight shell"><table><tr><td class="code"><pre><span class="line"><span class="meta prompt_"># </span><span class="language-bash">nerf-slam 环境下，安装最新版 cmake</span></span><br><span class="line">conda install cmake</span><br><span class="line"><span class="meta prompt_"></span></span><br><span class="line"><span class="meta prompt_"># </span><span class="language-bash">NeRF-SLAM 目录下</span></span><br><span class="line">mkdir build_ngp &amp;&amp; cd build_ngp</span><br><span class="line"><span class="meta prompt_"></span></span><br><span class="line"><span class="meta prompt_"># </span><span class="language-bash">编译 ngp</span></span><br><span class="line">cmake ../thirdparty/instant-ngp</span><br><span class="line"><span class="meta prompt_"></span></span><br><span class="line"><span class="meta prompt_"># </span><span class="language-bash">报错 1：randr headers not found;install libxrandr</span></span><br><span class="line">sudo apt install libxrandr-dev</span><br><span class="line"><span class="meta prompt_"></span></span><br><span class="line"><span class="meta prompt_"># </span><span class="language-bash">报错 2：Xinerama headers not found; install libxinerama development package</span></span><br><span class="line">sudo apt install libxinerama-dev</span><br><span class="line"><span class="meta prompt_"></span></span><br><span class="line"><span class="meta prompt_"># </span><span class="language-bash">报错 3：Xcursor headers not found; install libxcursor development package</span></span><br><span class="line">sudo apt install libxcursor-dev</span><br><span class="line"><span class="meta prompt_"></span></span><br><span class="line"><span class="meta prompt_"># </span><span class="language-bash">报错 4：Could NOT find GLEW (missing: GLEW_INCLUDE_DIRS GLEW_LIBRARIES)</span></span><br><span class="line">sudo apt install libglew-dev</span><br><span class="line"><span class="meta prompt_"></span></span><br><span class="line"><span class="meta prompt_"># </span><span class="language-bash">到这一步基本没问题了</span></span><br><span class="line">cd ..</span><br><span class="line">cmake --build build_ngp --config RelWithDebInfo -j</span><br></pre></td></tr></table></figure>
+
+
+
+<p>按以上步骤操作，最后运行demo.py会报 pyngp 错误，使用另一个分支解决</p>
+<p>报错信息：</p>
+<figure class="highlight shell"><table><tr><td class="code"><pre><span class="line">self.ngp = ngp.Testbed(mode, 0) # NGP can only use device = 0</span><br><span class="line">TypeError: __init__(): incompatible constructor arguments. The following argument types are supported:</span><br><span class="line">    1. pyngp.Testbed(arg0: pyngp.TestbedMode)</span><br><span class="line">    2. pyngp.Testbed(arg0: pyngp.TestbedMode, arg1: str, arg2: str)</span><br><span class="line">    3. pyngp.Testbed(arg0: pyngp.TestbedMode, arg1: str, arg2: json)</span><br></pre></td></tr></table></figure>
+
+<p>解决方法：</p>
+<figure class="highlight shell"><table><tr><td class="code"><pre><span class="line"><span class="meta prompt_"># </span><span class="language-bash">删除原 instant-ngp</span></span><br><span class="line">cd thirdparty</span><br><span class="line">rm -rf instant-ngp</span><br><span class="line"><span class="meta prompt_"></span></span><br><span class="line"><span class="meta prompt_"># </span><span class="language-bash">地址：https://github.com/ToniRV/instant-ngp/tree/feature/nerf_slam</span></span><br><span class="line">git clone https://github.com/ToniRV/instant-ngp.git</span><br><span class="line"><span class="meta prompt_"></span></span><br><span class="line"><span class="meta prompt_"># </span><span class="language-bash">安装依赖</span></span><br><span class="line">sudo apt-get install build-essential git python3-dev python3-pip libopenexr-dev libxi-dev libglfw3-dev libglew-dev libomp-dev libxinerama-dev libxcursor-dev</span><br><span class="line"><span class="meta prompt_"></span></span><br><span class="line"><span class="meta prompt_"># </span><span class="language-bash">更新</span></span><br><span class="line">git submodule update --init --recursive</span><br><span class="line"><span class="meta prompt_"></span></span><br><span class="line"><span class="meta prompt_"># </span><span class="language-bash">NeRF-SLAM/</span></span><br><span class="line">mkdir build_ngp &amp;&amp; cd build_ngp</span><br><span class="line"><span class="meta prompt_"></span></span><br><span class="line"><span class="meta prompt_"># </span><span class="language-bash">编译 ngp</span></span><br><span class="line">cmake ../thirdparty/instant-ngp</span><br><span class="line">cd ..</span><br><span class="line">cmake --build build_ngp --config RelWithDebInfo -j</span><br></pre></td></tr></table></figure>
+
+
+
+<h3 id="1-4-编译-gtsam"><a href="#1-4-编译-gtsam" class="headerlink" title="1.4 编译 gtsam"></a>1.4 编译 gtsam</h3><p>官方教程：</p>
+<figure class="highlight shell"><table><tr><td class="code"><pre><span class="line">cmake ./thirdparty/gtsam -DGTSAM_BUILD_PYTHON=1 -B build_gtsam </span><br><span class="line">cmake --build build_gtsam --config RelWithDebInfo -j</span><br><span class="line">cd build_gtsam</span><br><span class="line">make python-install</span><br></pre></td></tr></table></figure>
+
+<p>安装</p>
+<figure class="highlight shell"><table><tr><td class="code"><pre><span class="line">python setup.py install</span><br></pre></td></tr></table></figure>
+
+
+
+<p>实操：</p>
+<figure class="highlight shell"><table><tr><td class="code"><pre><span class="line"><span class="meta prompt_"># </span><span class="language-bash">创建编译目录</span></span><br><span class="line">mkdir build_gtsam &amp;&amp; cd build_gtsam</span><br><span class="line"><span class="meta prompt_"></span></span><br><span class="line"><span class="meta prompt_"># </span><span class="language-bash">编译 gtsam</span></span><br><span class="line">cmake ../thirdparty/gtsam -DGTSAM_BUILD_PYTHON=1</span><br><span class="line"><span class="meta prompt_"></span></span><br><span class="line"><span class="meta prompt_"># </span><span class="language-bash">报错 1：Missing required Boost components &gt;= v1.65, please install/upgrade Boost or configure your search paths.</span></span><br><span class="line"><span class="meta prompt_"># </span><span class="language-bash">解决方式 1： 创建 software，下载 boost 1.65.1 压缩包，解压编译安装</span></span><br><span class="line">cd ..</span><br><span class="line">mkdir software &amp;&amp; cd software</span><br><span class="line">wget https://boostorg.jfrog.io/artifactory/main/release/1.65.1/source/boost_1_65_1.tar.gz</span><br><span class="line"><span class="meta prompt_"></span></span><br><span class="line"><span class="meta prompt_"># </span><span class="language-bash">解决方法 2：直接使用 apt 命令安装</span></span><br><span class="line">conda install boost</span><br><span class="line"></span><br><span class="line">cmake --build build_gtsam --config RelWithDebInfo -j</span><br><span class="line"><span class="meta prompt_"></span></span><br><span class="line"><span class="meta prompt_"></span></span><br><span class="line"><span class="meta prompt_"># </span><span class="language-bash">报错 ：ModuleNotFoundError: No module named <span class="string">&#x27;pyparsing&#x27;</span></span></span><br><span class="line">conda install pyparsing</span><br><span class="line"><span class="meta prompt_"></span></span><br><span class="line"><span class="meta prompt_"># </span><span class="language-bash">报错：</span></span><br><span class="line"><span class="meta prompt_"># </span><span class="language-bash">解决：https://github.com/ToniRV/NeRF-SLAM/issues/23</span></span><br><span class="line"><span class="meta prompt_"></span></span><br><span class="line"><span class="meta prompt_"></span></span><br><span class="line"><span class="meta prompt_"># </span><span class="language-bash">gtsam 安装 （gtsam &gt; 4.0.3）</span></span><br><span class="line">cd software</span><br><span class="line">wget https://github.com/borglab/gtsam/archive/refs/tags/4.1.0.tar.gz</span><br><span class="line">tar -xzvf 4.1.0.tar.gz</span><br><span class="line">cd gtsam-4.1.0</span><br><span class="line">mkdir build &amp;&amp; cd build</span><br><span class="line"><span class="meta prompt_"></span></span><br><span class="line"><span class="meta prompt_"># </span><span class="language-bash">编译，加入参数无TBB编译</span></span><br><span class="line">cmake .. -DGTSAM_BUILD_PYTHON=1 -DGTSAM_PYTHON_VERSION=3.10.11 -DGTSAM_WITH_TBB=OFF</span><br><span class="line"></span><br><span class="line">make python-install</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+
+
+
+<p>Install:</p>
+<figure class="highlight shell"><table><tr><td class="code"><pre><span class="line">python setup.py install</span><br></pre></td></tr></table></figure>
+
+
+
+<p>增加虚拟内存</p>
+<figure class="highlight shell"><table><tr><td class="code"><pre><span class="line"><span class="meta prompt_"># </span><span class="language-bash">bs 单位：1024*1024*1024=1073741824</span></span><br><span class="line">sudo dd if=/dev/zero of=swapfile bs=1024 count=96000000</span><br><span class="line">sudo dd if=/dev/zero of=swapfile bs=1073741824 count=48</span><br><span class="line"><span class="meta prompt_"></span></span><br><span class="line"><span class="meta prompt_"># </span><span class="language-bash">把空间格式化为 swap</span> </span><br><span class="line">sudo mkswap /swapfile</span><br><span class="line"><span class="meta prompt_"></span></span><br><span class="line"><span class="meta prompt_"># </span><span class="language-bash">使用创建的 swap 空间</span></span><br><span class="line">chmod 0600 /swapfile</span><br><span class="line">sudo swapon /swapfile</span><br><span class="line"><span class="meta prompt_"></span></span><br><span class="line"><span class="meta prompt_"># </span><span class="language-bash">释放空间</span></span><br><span class="line">swapoff -a</span><br></pre></td></tr></table></figure>
+
+
+
+
+
+
+
+<h3 id="1-5-下载样本数据集"><a href="#1-5-下载样本数据集" class="headerlink" title="1.5 下载样本数据集"></a>1.5 下载样本数据集</h3><figure class="highlight shell"><table><tr><td class="code"><pre><span class="line"><span class="meta prompt_"># </span><span class="language-bash">下载数据集</span></span><br><span class="line">./scripts/download_replica_sample.bash</span><br><span class="line"><span class="meta prompt_"></span></span><br><span class="line"><span class="meta prompt_"># </span><span class="language-bash">执行命令</span></span><br><span class="line">python ./examples/slam_demo.py --dataset_dir=./datasets/Replica/office0 --dataset_name=nerf --buffer=100 --slam --parallel_run --img_stride=2 --fusion=&#x27;nerf&#x27; --multi_gpu --gui</span><br><span class="line"><span class="meta prompt_"></span></span><br><span class="line"><span class="meta prompt_"># </span><span class="language-bash">报错：AttributeError: <span class="built_in">type</span> object <span class="string">&#x27;gtsam.gtsam.Pose3&#x27;</span> has no attribute <span class="string">&#x27;identity&#x27;</span>. Did you mean: <span class="string">&#x27;Identity&#x27;</span>?</span></span><br><span class="line"></span><br><span class="line"></span><br></pre></td></tr></table></figure>
+
+<p>也可以更改参数 <code>--fusion=&#39;sigma&#39;</code> 来运行实现 Sigma-Fusion ，论文地址：<a href="https://arxiv.org/abs/2210.01276">https://arxiv.org/abs/2210.01276</a></p>
+<h3 id="1-6-监控-GPU"><a href="#1-6-监控-GPU" class="headerlink" title="1.6 监控 GPU"></a>1.6 监控 GPU</h3><h3 id="1-7-X11"><a href="#1-7-X11" class="headerlink" title="1.7 X11"></a>1.7 X11</h3><p>报错信息：</p>
+<figure class="highlight shell"><table><tr><td class="code"><pre><span class="line">03:47:17 ERROR    GLFW error #65544: X11: The DISPLAY environment variable is missing</span><br></pre></td></tr></table></figure>
+
+<blockquote>
+<p>如果以上配置仍然出现问题，可按对应问题在 Issues 里面寻找解决方案，或者也可以尝试后面第二节给出的配置流程（亲测：Titan X 显存不足，A6000 可以跑）</p>
+</blockquote>
+<h1 id="2-jrpowers-x2F-NeRF-SLAM"><a href="#2-jrpowers-x2F-NeRF-SLAM" class="headerlink" title="2 jrpowers&#x2F;NeRF-SLAM"></a>2 <a href="https://github.com/jrpowers">jrpowers</a>&#x2F;<strong><a href="https://github.com/jrpowers/NeRF-SLAM">NeRF-SLAM</a></strong></h1><h2 id="2-1-Install"><a href="#2-1-Install" class="headerlink" title="2.1 Install"></a>2.1 Install</h2><p><a href="https://github.com/jrpowers/NeRF-SLAM">jrpowers&#x2F;NeRF-SLAM: Real-Time Dense Monocular SLAM with Neural Radiance Fields. https://arxiv.org/abs/2210.13641 + Sigma-Fusion: Probabilistic Volumetric Fusion for Dense Monocular SLAM https://arxiv.org/abs/2210.01276 (github.com)</a></p>
+<p>Clone repo with submodules:</p>
+<figure class="highlight shell"><table><tr><td class="code"><pre><span class="line">git clone https://github.com/jrpowers/NeRF-SLAM.git --recurse-submodules</span><br><span class="line">git submodule update --init --recursive</span><br><span class="line">cd thirdparty/instant-ngp/ &amp;&amp; git checkout feature/nerf_slam</span><br></pre></td></tr></table></figure>
+
+
+
+<h2 id="2-2-Install-CUDA-11-7-and-Pytorch"><a href="#2-2-Install-CUDA-11-7-and-Pytorch" class="headerlink" title="2.2 Install CUDA 11.7 and Pytorch"></a>2.2 Install CUDA 11.7 and Pytorch</h2><p>Use a virtual environment</p>
+<figure class="highlight shell"><table><tr><td class="code"><pre><span class="line">conda create -n nerf-slam</span><br><span class="line">conda activate nerf-slam</span><br><span class="line"><span class="meta prompt_"></span></span><br><span class="line"><span class="meta prompt_"># </span><span class="language-bash">CUDA</span></span><br><span class="line">conda install -c &quot;nvidia/label/cuda-11.7.0&quot; cuda-toolkit</span><br><span class="line"><span class="meta prompt_"></span></span><br><span class="line"><span class="meta prompt_"># </span><span class="language-bash">pytorch</span></span><br><span class="line">conda install python==3.7</span><br><span class="line">pip install torch==1.13.1+cu117 torchvision==0.14.1+cu117 --extra-index-url https://download.pytorch.org/whl/cu117</span><br></pre></td></tr></table></figure>
+
+
+
+<h2 id="2-3-Pip-install-requirements"><a href="#2-3-Pip-install-requirements" class="headerlink" title="2.3 Pip install requirements"></a>2.3 Pip install requirements</h2><figure class="highlight shell"><table><tr><td class="code"><pre><span class="line">pip install -r requirements.txt</span><br><span class="line">pip install -r ./thirdparty/gtsam/python/requirements.txt</span><br></pre></td></tr></table></figure>
+
+
+
+<h2 id="2-4-Compile-ngp-cmake-gt-3-22"><a href="#2-4-Compile-ngp-cmake-gt-3-22" class="headerlink" title="2.4 Compile ngp(cmake&gt;3.22)"></a>2.4 Compile ngp(cmake&gt;3.22)</h2><figure class="highlight shell"><table><tr><td class="code"><pre><span class="line"><span class="meta prompt_"># </span><span class="language-bash">原版ngp会报错，该分支解决问题</span></span><br><span class="line">cd thirdparty/instant-ngp/ &amp;&amp; git checkout feature/nerf_slam</span><br><span class="line"><span class="meta prompt_"></span></span><br><span class="line"><span class="meta prompt_"># </span><span class="language-bash">NeRF-SLAM 目录下</span></span><br><span class="line">mkdir build_ngp &amp;&amp; cd build_ngp</span><br><span class="line"><span class="meta prompt_"></span></span><br><span class="line"><span class="meta prompt_"># </span><span class="language-bash">编译 ngp</span></span><br><span class="line">cmake ../thirdparty/instant-ngp</span><br><span class="line">cd ..</span><br><span class="line">cmake --build build_ngp --config RelWithDebInfo -j</span><br></pre></td></tr></table></figure>
+
+
+
+<h2 id="2-5-Compile-gtsam-and-enable-the-python-wrapper"><a href="#2-5-Compile-gtsam-and-enable-the-python-wrapper" class="headerlink" title="2.5 Compile gtsam and enable the python wrapper"></a>2.5 Compile gtsam and enable the python wrapper</h2><figure class="highlight shell"><table><tr><td class="code"><pre><span class="line"><span class="meta prompt_"># </span><span class="language-bash">创建编译目录</span></span><br><span class="line">mkdir build_gtsam &amp;&amp; cd build_gtsam</span><br><span class="line"><span class="meta prompt_"></span></span><br><span class="line"><span class="meta prompt_"># </span><span class="language-bash">编译 gtsam</span></span><br><span class="line">cmake ../thirdparty/gtsam -DGTSAM_BUILD_PYTHON=1</span><br><span class="line">cd ..</span><br><span class="line">cmake --build build_gtsam --config RelWithDebInfo -j</span><br><span class="line">cd build_gtsam</span><br><span class="line">make python-install</span><br></pre></td></tr></table></figure>
+
+
+
+<h2 id="2-6-Run"><a href="#2-6-Run" class="headerlink" title="2.6 Run"></a>2.6 Run</h2><figure class="highlight shell"><table><tr><td class="code"><pre><span class="line"><span class="meta prompt_"># </span><span class="language-bash">Install</span></span><br><span class="line">python setup.py install</span><br><span class="line"><span class="meta prompt_"></span></span><br><span class="line"><span class="meta prompt_"># </span><span class="language-bash">Download Sample Data</span></span><br><span class="line">./scripts/download_replica_sample.bash</span><br><span class="line"><span class="meta prompt_"></span></span><br><span class="line"><span class="meta prompt_"># </span><span class="language-bash">run the <span class="built_in">command</span> or run.sh</span></span><br><span class="line">python ./examples/slam_demo.py --dataset_dir=./datasets/Replica/office0 --dataset_name=nerf --buffer=100 --slam --parallel_run --img_stride=2 --fusion=&#x27;nerf&#x27; --multi_gpu --gui</span><br><span class="line">./run.sh</span><br></pre></td></tr></table></figure>
+
+
+
+
+
+
+
+
+
+
+
+]]></content>
+      <tags>
+        <tag>slam</tag>
+      </tags>
+  </entry>
+  <entry>
     <title>leetcode</title>
     <url>/posts/14158.html</url>
     <content><![CDATA[<link rel="stylesheet" class="aplayer-secondary-style-marker" href="/assets/css/APlayer.min.css"><script src="/assets/js/APlayer.min.js" class="aplayer-secondary-script-marker"></script><h1 id="代码随想录"><a href="#代码随想录" class="headerlink" title="代码随想录"></a>代码随想录</h1><p>地址：<a href="https://programmercarl.com/">https://programmercarl.com/</a></p>
@@ -1779,120 +1893,6 @@
 <h3 id="6-1-排序算法"><a href="#6-1-排序算法" class="headerlink" title="6.1 排序算法"></a>6.1 排序算法</h3><h4 id="冒泡排序"><a href="#冒泡排序" class="headerlink" title="冒泡排序"></a>冒泡排序</h4><h4 id="快速排序"><a href="#快速排序" class="headerlink" title="快速排序"></a>快速排序</h4><h4 id="归并排序"><a href="#归并排序" class="headerlink" title="归并排序"></a>归并排序</h4><h4 id="堆排序"><a href="#堆排序" class="headerlink" title="堆排序"></a>堆排序</h4>]]></content>
       <tags>
         <tag>leetcode</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>nerf-slam</title>
-    <url>/posts/22247.html</url>
-    <content><![CDATA[<link rel="stylesheet" class="aplayer-secondary-style-marker" href="/assets/css/APlayer.min.css"><script src="/assets/js/APlayer.min.js" class="aplayer-secondary-script-marker"></script><h1 id="Nerf-SLAM"><a href="#Nerf-SLAM" class="headerlink" title="Nerf-SLAM"></a>Nerf-SLAM</h1><h2 id="1-配置环境"><a href="#1-配置环境" class="headerlink" title="1 配置环境"></a>1 配置环境</h2><h3 id="1-1-Ubuntu-Clash-终端代理"><a href="#1-1-Ubuntu-Clash-终端代理" class="headerlink" title="1.1 Ubuntu Clash 终端代理"></a>1.1 Ubuntu Clash 终端代理</h3><p>clash 选择节点并调整为 global 模式，在 ~&#x2F;.bashrc 中添加以下内容</p>
-<figure class="highlight shell"><table><tr><td class="code"><pre><span class="line">export https_proxy=http://127.0.0.1:7890 </span><br><span class="line">export http_proxy=http://127.0.0.1:7890 </span><br><span class="line">export all_proxy=socks5://127.0.0.1:7890</span><br></pre></td></tr></table></figure>
-
-<p>保存文件，并更新文件</p>
-<figure class="highlight shell"><table><tr><td class="code"><pre><span class="line">source ~/.bashrc</span><br><span class="line"><span class="meta prompt_"></span></span><br><span class="line"><span class="meta prompt_"># </span><span class="language-bash">测试终端是否代理</span></span><br><span class="line">curl cip.cc</span><br><span class="line"><span class="meta prompt_"></span></span><br><span class="line"><span class="meta prompt_"># </span><span class="language-bash">显示香港的节点，则代表成功</span></span><br></pre></td></tr></table></figure>
-
-<h3 id="1-2-Install-nerf-slam"><a href="#1-2-Install-nerf-slam" class="headerlink" title="1.2 Install nerf-slam"></a>1.2 Install nerf-slam</h3><p>项目地址：<a href="https://github.com/ToniRV/NeRF-SLAM">ToniRV&#x2F;NeRF-SLAM: NeRF-SLAM: Real-Time Dense Monocular SLAM with Neural Radiance Fields. https://arxiv.org/abs/2210.13641 + Sigma-Fusion: Probabilistic Volumetric Fusion for Dense Monocular SLAM https://arxiv.org/abs/2210.01276 (github.com)</a></p>
-<p>使用 git 拉取项目代码</p>
-<figure class="highlight shell"><table><tr><td class="code"><pre><span class="line">git clone https://github.com/ToniRV/NeRF-SLAM.git --recurse-submodules</span><br><span class="line">git submodule update --init --recursive</span><br></pre></td></tr></table></figure>
-
-
-
-<p>使用 conda 创建一个虚拟环境，防止污染其他环境</p>
-<figure class="highlight shell"><table><tr><td class="code"><pre><span class="line"><span class="meta prompt_"># </span><span class="language-bash">创建一个名为 nerf-slam 的虚拟环境</span></span><br><span class="line">conda create -n nerf-slam</span><br><span class="line"><span class="meta prompt_"></span></span><br><span class="line"><span class="meta prompt_"># </span><span class="language-bash">查看所有虚拟环境</span></span><br><span class="line">conda env list</span><br><span class="line"><span class="meta prompt_"></span></span><br><span class="line"><span class="meta prompt_"># </span><span class="language-bash">进入创建的虚拟环境</span></span><br><span class="line">conda activate nerf-slam</span><br><span class="line"><span class="meta prompt_"></span></span><br><span class="line"><span class="meta prompt_"># </span><span class="language-bash">install torch (CUDA 11.3)</span></span><br><span class="line">pip install torch==1.12.1+cu113 torchvision==0.13.1+cu113 --extra-index-url https://download.pytorch.org/whl/cu113</span><br></pre></td></tr></table></figure>
-
-<p>使用 pip 安装依赖</p>
-<figure class="highlight shell"><table><tr><td class="code"><pre><span class="line">pip install -r requirements.txt</span><br><span class="line"><span class="meta prompt_"></span></span><br><span class="line"><span class="meta prompt_"># </span><span class="language-bash">安装第三方库 gtsam 所需的依赖</span></span><br><span class="line">pip install -r ./thirdparty/gtsam/python/requirements.txt</span><br></pre></td></tr></table></figure>
-
-<h3 id="1-3-编译-ngp"><a href="#1-3-编译-ngp" class="headerlink" title="1.3 编译 ngp"></a>1.3 编译 ngp</h3><p>官方教程：（cmake 版本需要大于 3.22）</p>
-<figure class="highlight shell"><table><tr><td class="code"><pre><span class="line">sudo apt install cmake</span><br><span class="line">cmake ./thirdparty/instant-ngp -B build_ngp</span><br><span class="line">cmake --build build_ngp --config RelWithDebInfo -j</span><br></pre></td></tr></table></figure>
-
-<p>实操：</p>
-<figure class="highlight shell"><table><tr><td class="code"><pre><span class="line"><span class="meta prompt_"># </span><span class="language-bash">nerf-slam 环境下，安装最新版 cmake</span></span><br><span class="line">conda install cmake</span><br><span class="line"><span class="meta prompt_"></span></span><br><span class="line"><span class="meta prompt_"># </span><span class="language-bash">NeRF-SLAM 目录下</span></span><br><span class="line">mkdir build_ngp &amp;&amp; cd build_ngp</span><br><span class="line"><span class="meta prompt_"></span></span><br><span class="line"><span class="meta prompt_"># </span><span class="language-bash">编译 ngp</span></span><br><span class="line">cmake ../thirdparty/instant-ngp</span><br><span class="line"><span class="meta prompt_"></span></span><br><span class="line"><span class="meta prompt_"># </span><span class="language-bash">报错 1：randr headers not found;install libxrandr</span></span><br><span class="line">sudo apt install libxrandr-dev</span><br><span class="line"><span class="meta prompt_"></span></span><br><span class="line"><span class="meta prompt_"># </span><span class="language-bash">报错 2：Xinerama headers not found; install libxinerama development package</span></span><br><span class="line">sudo apt install libxinerama-dev</span><br><span class="line"><span class="meta prompt_"></span></span><br><span class="line"><span class="meta prompt_"># </span><span class="language-bash">报错 3：Xcursor headers not found; install libxcursor development package</span></span><br><span class="line">sudo apt install libxcursor-dev</span><br><span class="line"><span class="meta prompt_"></span></span><br><span class="line"><span class="meta prompt_"># </span><span class="language-bash">报错 4：Could NOT find GLEW (missing: GLEW_INCLUDE_DIRS GLEW_LIBRARIES)</span></span><br><span class="line">sudo apt install libglew-dev</span><br><span class="line"><span class="meta prompt_"></span></span><br><span class="line"><span class="meta prompt_"># </span><span class="language-bash">到这一步基本没问题了</span></span><br><span class="line">cd ..</span><br><span class="line">cmake --build build_ngp --config RelWithDebInfo -j</span><br></pre></td></tr></table></figure>
-
-
-
-<p>按以上步骤操作，最后运行demo.py会报 pyngp 错误，使用另一个分支解决</p>
-<p>报错信息：</p>
-<figure class="highlight shell"><table><tr><td class="code"><pre><span class="line">self.ngp = ngp.Testbed(mode, 0) # NGP can only use device = 0</span><br><span class="line">TypeError: __init__(): incompatible constructor arguments. The following argument types are supported:</span><br><span class="line">    1. pyngp.Testbed(arg0: pyngp.TestbedMode)</span><br><span class="line">    2. pyngp.Testbed(arg0: pyngp.TestbedMode, arg1: str, arg2: str)</span><br><span class="line">    3. pyngp.Testbed(arg0: pyngp.TestbedMode, arg1: str, arg2: json)</span><br></pre></td></tr></table></figure>
-
-<p>解决方法：</p>
-<figure class="highlight shell"><table><tr><td class="code"><pre><span class="line"><span class="meta prompt_"># </span><span class="language-bash">删除原 instant-ngp</span></span><br><span class="line">cd thirdparty</span><br><span class="line">rm -rf instant-ngp</span><br><span class="line"><span class="meta prompt_"></span></span><br><span class="line"><span class="meta prompt_"># </span><span class="language-bash">地址：https://github.com/ToniRV/instant-ngp/tree/feature/nerf_slam</span></span><br><span class="line">git clone https://github.com/ToniRV/instant-ngp.git</span><br><span class="line"><span class="meta prompt_"></span></span><br><span class="line"><span class="meta prompt_"># </span><span class="language-bash">安装依赖</span></span><br><span class="line">sudo apt-get install build-essential git python3-dev python3-pip libopenexr-dev libxi-dev libglfw3-dev libglew-dev libomp-dev libxinerama-dev libxcursor-dev</span><br><span class="line"><span class="meta prompt_"></span></span><br><span class="line"><span class="meta prompt_"># </span><span class="language-bash">更新</span></span><br><span class="line">git submodule update --init --recursive</span><br><span class="line"><span class="meta prompt_"></span></span><br><span class="line"><span class="meta prompt_"># </span><span class="language-bash">NeRF-SLAM/</span></span><br><span class="line">mkdir build_ngp &amp;&amp; cd build_ngp</span><br><span class="line"><span class="meta prompt_"></span></span><br><span class="line"><span class="meta prompt_"># </span><span class="language-bash">编译 ngp</span></span><br><span class="line">cmake ../thirdparty/instant-ngp</span><br><span class="line">cd ..</span><br><span class="line">cmake --build build_ngp --config RelWithDebInfo -j</span><br></pre></td></tr></table></figure>
-
-
-
-<h3 id="1-4-编译-gtsam"><a href="#1-4-编译-gtsam" class="headerlink" title="1.4 编译 gtsam"></a>1.4 编译 gtsam</h3><p>官方教程：</p>
-<figure class="highlight shell"><table><tr><td class="code"><pre><span class="line">cmake ./thirdparty/gtsam -DGTSAM_BUILD_PYTHON=1 -B build_gtsam </span><br><span class="line">cmake --build build_gtsam --config RelWithDebInfo -j</span><br><span class="line">cd build_gtsam</span><br><span class="line">make python-install</span><br></pre></td></tr></table></figure>
-
-<p>安装</p>
-<figure class="highlight shell"><table><tr><td class="code"><pre><span class="line">python setup.py install</span><br></pre></td></tr></table></figure>
-
-
-
-<p>实操：</p>
-<figure class="highlight shell"><table><tr><td class="code"><pre><span class="line"><span class="meta prompt_"># </span><span class="language-bash">创建编译目录</span></span><br><span class="line">mkdir build_gtsam &amp;&amp; cd build_gtsam</span><br><span class="line"><span class="meta prompt_"></span></span><br><span class="line"><span class="meta prompt_"># </span><span class="language-bash">编译 gtsam</span></span><br><span class="line">cmake ../thirdparty/gtsam -DGTSAM_BUILD_PYTHON=1</span><br><span class="line"><span class="meta prompt_"></span></span><br><span class="line"><span class="meta prompt_"># </span><span class="language-bash">报错 1：Missing required Boost components &gt;= v1.65, please install/upgrade Boost or configure your search paths.</span></span><br><span class="line"><span class="meta prompt_"># </span><span class="language-bash">解决方式 1： 创建 software，下载 boost 1.65.1 压缩包，解压编译安装</span></span><br><span class="line">cd ..</span><br><span class="line">mkdir software &amp;&amp; cd software</span><br><span class="line">wget https://boostorg.jfrog.io/artifactory/main/release/1.65.1/source/boost_1_65_1.tar.gz</span><br><span class="line"><span class="meta prompt_"></span></span><br><span class="line"><span class="meta prompt_"># </span><span class="language-bash">解决方法 2：直接使用 apt 命令安装</span></span><br><span class="line">conda install boost</span><br><span class="line"></span><br><span class="line">cmake --build build_gtsam --config RelWithDebInfo -j</span><br><span class="line"><span class="meta prompt_"></span></span><br><span class="line"><span class="meta prompt_"></span></span><br><span class="line"><span class="meta prompt_"># </span><span class="language-bash">报错 ：ModuleNotFoundError: No module named <span class="string">&#x27;pyparsing&#x27;</span></span></span><br><span class="line">conda install pyparsing</span><br><span class="line"><span class="meta prompt_"></span></span><br><span class="line"><span class="meta prompt_"># </span><span class="language-bash">报错：</span></span><br><span class="line"><span class="meta prompt_"># </span><span class="language-bash">解决：https://github.com/ToniRV/NeRF-SLAM/issues/23</span></span><br><span class="line"><span class="meta prompt_"></span></span><br><span class="line"><span class="meta prompt_"></span></span><br><span class="line"><span class="meta prompt_"># </span><span class="language-bash">gtsam 安装 （gtsam &gt; 4.0.3）</span></span><br><span class="line">cd software</span><br><span class="line">wget https://github.com/borglab/gtsam/archive/refs/tags/4.1.0.tar.gz</span><br><span class="line">tar -xzvf 4.1.0.tar.gz</span><br><span class="line">cd gtsam-4.1.0</span><br><span class="line">mkdir build &amp;&amp; cd build</span><br><span class="line"><span class="meta prompt_"></span></span><br><span class="line"><span class="meta prompt_"># </span><span class="language-bash">编译，加入参数无TBB编译</span></span><br><span class="line">cmake .. -DGTSAM_BUILD_PYTHON=1 -DGTSAM_PYTHON_VERSION=3.10.11 -DGTSAM_WITH_TBB=OFF</span><br><span class="line"></span><br><span class="line">make python-install</span><br><span class="line"></span><br></pre></td></tr></table></figure>
-
-
-
-<p>Install:</p>
-<figure class="highlight shell"><table><tr><td class="code"><pre><span class="line">python setup.py install</span><br></pre></td></tr></table></figure>
-
-
-
-<p>增加虚拟内存</p>
-<figure class="highlight shell"><table><tr><td class="code"><pre><span class="line"><span class="meta prompt_"># </span><span class="language-bash">bs 单位：1024*1024*1024=1073741824</span></span><br><span class="line">sudo dd if=/dev/zero of=swapfile bs=1024 count=96000000</span><br><span class="line">sudo dd if=/dev/zero of=swapfile bs=1073741824 count=48</span><br><span class="line"><span class="meta prompt_"></span></span><br><span class="line"><span class="meta prompt_"># </span><span class="language-bash">把空间格式化为 swap</span> </span><br><span class="line">sudo mkswap /swapfile</span><br><span class="line"><span class="meta prompt_"></span></span><br><span class="line"><span class="meta prompt_"># </span><span class="language-bash">使用创建的 swap 空间</span></span><br><span class="line">chmod 0600 /swapfile</span><br><span class="line">sudo swapon /swapfile</span><br><span class="line"><span class="meta prompt_"></span></span><br><span class="line"><span class="meta prompt_"># </span><span class="language-bash">释放空间</span></span><br><span class="line">swapoff -a</span><br></pre></td></tr></table></figure>
-
-
-
-
-
-
-
-<h3 id="1-5-下载样本数据集"><a href="#1-5-下载样本数据集" class="headerlink" title="1.5 下载样本数据集"></a>1.5 下载样本数据集</h3><figure class="highlight shell"><table><tr><td class="code"><pre><span class="line"><span class="meta prompt_"># </span><span class="language-bash">下载数据集</span></span><br><span class="line">./scripts/download_replica_sample.bash</span><br><span class="line"><span class="meta prompt_"></span></span><br><span class="line"><span class="meta prompt_"># </span><span class="language-bash">执行命令</span></span><br><span class="line">python ./examples/slam_demo.py --dataset_dir=./datasets/Replica/office0 --dataset_name=nerf --buffer=100 --slam --parallel_run --img_stride=2 --fusion=&#x27;nerf&#x27; --multi_gpu --gui</span><br><span class="line"><span class="meta prompt_"></span></span><br><span class="line"><span class="meta prompt_"># </span><span class="language-bash">报错：AttributeError: <span class="built_in">type</span> object <span class="string">&#x27;gtsam.gtsam.Pose3&#x27;</span> has no attribute <span class="string">&#x27;identity&#x27;</span>. Did you mean: <span class="string">&#x27;Identity&#x27;</span>?</span></span><br><span class="line"></span><br><span class="line"></span><br></pre></td></tr></table></figure>
-
-<p>也可以更改参数 <code>--fusion=&#39;sigma&#39;</code> 来运行实现 Sigma-Fusion ，论文地址：<a href="https://arxiv.org/abs/2210.01276">https://arxiv.org/abs/2210.01276</a></p>
-<h3 id="1-6-监控-GPU"><a href="#1-6-监控-GPU" class="headerlink" title="1.6 监控 GPU"></a>1.6 监控 GPU</h3><h3 id="1-7-X11"><a href="#1-7-X11" class="headerlink" title="1.7 X11"></a>1.7 X11</h3><p>报错信息：</p>
-<figure class="highlight shell"><table><tr><td class="code"><pre><span class="line">03:47:17 ERROR    GLFW error #65544: X11: The DISPLAY environment variable is missing</span><br></pre></td></tr></table></figure>
-
-<blockquote>
-<p>如果以上配置仍然出现问题，可按对应问题在 Issues 里面寻找解决方案，或者也可以尝试后面第二节给出的配置流程（亲测：Titan X 显存不足，A6000 可以跑）</p>
-</blockquote>
-<h1 id="2-jrpowers-x2F-NeRF-SLAM"><a href="#2-jrpowers-x2F-NeRF-SLAM" class="headerlink" title="2 jrpowers&#x2F;NeRF-SLAM"></a>2 <a href="https://github.com/jrpowers">jrpowers</a>&#x2F;<strong><a href="https://github.com/jrpowers/NeRF-SLAM">NeRF-SLAM</a></strong></h1><h2 id="2-1-Install"><a href="#2-1-Install" class="headerlink" title="2.1 Install"></a>2.1 Install</h2><p><a href="https://github.com/jrpowers/NeRF-SLAM">jrpowers&#x2F;NeRF-SLAM: Real-Time Dense Monocular SLAM with Neural Radiance Fields. https://arxiv.org/abs/2210.13641 + Sigma-Fusion: Probabilistic Volumetric Fusion for Dense Monocular SLAM https://arxiv.org/abs/2210.01276 (github.com)</a></p>
-<p>Clone repo with submodules:</p>
-<figure class="highlight shell"><table><tr><td class="code"><pre><span class="line">git clone https://github.com/jrpowers/NeRF-SLAM.git --recurse-submodules</span><br><span class="line">git submodule update --init --recursive</span><br><span class="line">cd thirdparty/instant-ngp/ &amp;&amp; git checkout feature/nerf_slam</span><br></pre></td></tr></table></figure>
-
-
-
-<h2 id="2-2-Install-CUDA-11-7-and-Pytorch"><a href="#2-2-Install-CUDA-11-7-and-Pytorch" class="headerlink" title="2.2 Install CUDA 11.7 and Pytorch"></a>2.2 Install CUDA 11.7 and Pytorch</h2><p>Use a virtual environment</p>
-<figure class="highlight shell"><table><tr><td class="code"><pre><span class="line">conda create -n nerf-slam</span><br><span class="line">conda activate nerf-slam</span><br><span class="line"><span class="meta prompt_"></span></span><br><span class="line"><span class="meta prompt_"># </span><span class="language-bash">CUDA</span></span><br><span class="line">conda install -c &quot;nvidia/label/cuda-11.7.0&quot; cuda-toolkit</span><br><span class="line"><span class="meta prompt_"></span></span><br><span class="line"><span class="meta prompt_"># </span><span class="language-bash">pytorch</span></span><br><span class="line">conda install python==3.7</span><br><span class="line">pip install torch==1.13.1+cu117 torchvision==0.14.1+cu117 --extra-index-url https://download.pytorch.org/whl/cu117</span><br></pre></td></tr></table></figure>
-
-
-
-<h2 id="2-3-Pip-install-requirements"><a href="#2-3-Pip-install-requirements" class="headerlink" title="2.3 Pip install requirements"></a>2.3 Pip install requirements</h2><figure class="highlight shell"><table><tr><td class="code"><pre><span class="line">pip install -r requirements.txt</span><br><span class="line">pip install -r ./thirdparty/gtsam/python/requirements.txt</span><br></pre></td></tr></table></figure>
-
-
-
-<h2 id="2-4-Compile-ngp-cmake-gt-3-22"><a href="#2-4-Compile-ngp-cmake-gt-3-22" class="headerlink" title="2.4 Compile ngp(cmake&gt;3.22)"></a>2.4 Compile ngp(cmake&gt;3.22)</h2><figure class="highlight shell"><table><tr><td class="code"><pre><span class="line"><span class="meta prompt_"># </span><span class="language-bash">原版ngp会报错，该分支解决问题</span></span><br><span class="line">cd thirdparty/instant-ngp/ &amp;&amp; git checkout feature/nerf_slam</span><br><span class="line"><span class="meta prompt_"></span></span><br><span class="line"><span class="meta prompt_"># </span><span class="language-bash">NeRF-SLAM 目录下</span></span><br><span class="line">mkdir build_ngp &amp;&amp; cd build_ngp</span><br><span class="line"><span class="meta prompt_"></span></span><br><span class="line"><span class="meta prompt_"># </span><span class="language-bash">编译 ngp</span></span><br><span class="line">cmake ../thirdparty/instant-ngp</span><br><span class="line">cd ..</span><br><span class="line">cmake --build build_ngp --config RelWithDebInfo -j</span><br></pre></td></tr></table></figure>
-
-
-
-<h2 id="2-5-Compile-gtsam-and-enable-the-python-wrapper"><a href="#2-5-Compile-gtsam-and-enable-the-python-wrapper" class="headerlink" title="2.5 Compile gtsam and enable the python wrapper"></a>2.5 Compile gtsam and enable the python wrapper</h2><figure class="highlight shell"><table><tr><td class="code"><pre><span class="line"><span class="meta prompt_"># </span><span class="language-bash">创建编译目录</span></span><br><span class="line">mkdir build_gtsam &amp;&amp; cd build_gtsam</span><br><span class="line"><span class="meta prompt_"></span></span><br><span class="line"><span class="meta prompt_"># </span><span class="language-bash">编译 gtsam</span></span><br><span class="line">cmake ../thirdparty/gtsam -DGTSAM_BUILD_PYTHON=1</span><br><span class="line">cd ..</span><br><span class="line">cmake --build build_gtsam --config RelWithDebInfo -j</span><br><span class="line">cd build_gtsam</span><br><span class="line">make python-install</span><br></pre></td></tr></table></figure>
-
-
-
-<h2 id="2-6-Run"><a href="#2-6-Run" class="headerlink" title="2.6 Run"></a>2.6 Run</h2><figure class="highlight shell"><table><tr><td class="code"><pre><span class="line"><span class="meta prompt_"># </span><span class="language-bash">Install</span></span><br><span class="line">python setup.py install</span><br><span class="line"><span class="meta prompt_"></span></span><br><span class="line"><span class="meta prompt_"># </span><span class="language-bash">Download Sample Data</span></span><br><span class="line">./scripts/download_replica_sample.bash</span><br><span class="line"><span class="meta prompt_"></span></span><br><span class="line"><span class="meta prompt_"># </span><span class="language-bash">run the <span class="built_in">command</span> or run.sh</span></span><br><span class="line">python ./examples/slam_demo.py --dataset_dir=./datasets/Replica/office0 --dataset_name=nerf --buffer=100 --slam --parallel_run --img_stride=2 --fusion=&#x27;nerf&#x27; --multi_gpu --gui</span><br><span class="line">./run.sh</span><br></pre></td></tr></table></figure>
-
-
-
-
-
-
-
-
-
-
-
-]]></content>
-      <tags>
-        <tag>slam</tag>
       </tags>
   </entry>
   <entry>
